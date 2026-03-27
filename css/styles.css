@@ -1,4 +1,22 @@
-<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --gold: #c9a84c;
+  --gold-dim: #8a6e30;
+  --white: #e8e4d8;
+  --muted: #8a8070;
+  --dark: #0a0906;
+  --panel: rgba(255,255,255,0.03);
+  --border: rgba(201,168,76,0.2);
+}
+
+body {
+  background: var(--dark);
+  color: var(--white);
+  font-family: 'Rajdhani', sans-serif;
+  overflow-x: hidden;
+}
+
   * { margin: 0; padding: 0; box-sizing: border-box; }
   :root {
     --gold: #c9a84c;
@@ -185,4 +203,3 @@
   footer { border-top: 0.5px solid var(--border); padding: 3rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; font-size: 0.72rem; letter-spacing: 0.1em; color: var(--muted); }
   .footer-logo { font-family: 'Cinzel', serif; color: var(--gold-dim); letter-spacing: 0.2em; font-size: 0.85rem; }
   .footer-disclaimer { font-size: 0.65rem; color: rgba(138,128,112,0.5); max-width: 400px; text-align: center; line-height: 1.6; }
-</style>
