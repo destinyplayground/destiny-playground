@@ -239,20 +239,66 @@
     <div class="footer-copy">&copy; 2026 Destiny Playground</div>
   </div>
 </footer>
-
+  
 <script>
-  const toggle = document.getElementById('navToggle');
-  const menu = document.getElementById('mobileMenu');
-  toggle.addEventListener('click', () => {
-    menu.classList.toggle('open');
-    toggle.classList.toggle('active');
-  });
-  menu.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      menu.classList.remove('open');
-      toggle.classList.remove('active');
-    });
-  });
+  async function loadNews() {
+    const grid = document.getElementById('news-grid');
+    try {
+      const res = await fetch('articles.json');
+      if (!res.ok) throw new Error('Failed to load');
+      const articles = await res.json();
+
+      const featured = articles.find(a => a.featured);
+      const rest = articles.filter(a => !a.featured).slice(0, 3);
+
+      grid.innerHTML = '';
+
+      if (featured) {
+        const fc = document.createElement('a');
+        fc.className = 'news-card-featured';
+        fc.href = featured.file;
+        fc.innerHTML = `
+          <div class="featured-img-box">
+            <div class="featured-img-placeholder"><span>&#9670;</span></div>
+          </div>
+          <div class="featured-content">
+            <div class="featured-tag">${featured.tag} &nbsp;&#8212;&nbsp; Featured</div>
+            <div class="featured-title">${featured.title}</div>
+            <div class="featured-desc">${featured.excerpt}</div>
+            <span class="btn-secondary" style="width:fit-content; padding:0.65rem 1.8rem; font-size:0.75rem;">Read More</span>
+          </div>
+        `;
+        grid.appendChild(fc);
+      }
+
+      rest.forEach(article => {
+        const card = document.createElement('a');
+        card.className = 'news-card-small';
+        card.href = article.file;
+        card.innerHTML = `
+          <div>
+            <div class="news-tag">${article.tag}</div>
+            <div class="news-card-title">${article.title}</div>
+            <div class="news-card-excerpt">${article.excerpt}</div>
+          </div>
+          <div class="news-card-date">${article.date}</div>
+        `;
+        grid.appendChild(card);
+      });
+
+      if (!featured && rest.length === 0) {
+        grid.innerHTML = '<div class="news-error">No transmissions yet. Check back soon, Guardian.</div>';
+      }
+
+    } catch (err) {
+      grid.innerHTML = `<div class="news-error">
+        Transmissions offline.<br>
+        <span style="font-size:0.78rem; opacity:0.6;">Make sure articles.json is in the same folder as index.html.</span>
+      </div>`;
+    }
+  }
+
+  loadNews();
 </script>
 
 </body>
