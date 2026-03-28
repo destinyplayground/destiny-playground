@@ -1,11 +1,11 @@
 [
   {
-    "title": "The Playground Takes Shape - First Dev Update",
+    "title": "Abilities & Subclasses - Using, Unlocking & Upgrading",
     "tag": "Dev Update",
     "date": "28 Mar, 2026",
     "author": "CNT Darthgaming",
-    "excerpt": "Work has begun on the opening chapter...",
-    "file": "articles/article-template.html",
+    "excerpt": "This is about the ability system, including selection, unlocking, & upgrading!",
+    "file": "articles/dev-update-25-03-2026.html",
     "featured": true
   }
 ]
