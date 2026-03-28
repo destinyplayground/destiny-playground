@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Abilities & Subclasses - Using, Unlocking & Upgrading</title>
+<title>Abilities & Subclasses — Dev Update — Destiny Playground</title>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -66,14 +66,52 @@
   .callout { border-left: 2px solid var(--gold-dim); padding: 1.2rem 1.5rem; background: rgba(201,168,76,0.04); margin: 2rem 0; }
   .callout p { margin: 0; color: var(--muted); font-style: italic; }
 
+  .dev-notice {
+    border: 0.5px solid var(--border); padding: 1.5rem 1.8rem;
+    background: rgba(201,168,76,0.02); margin: 0 0 2.5rem;
+  }
+  .dev-notice-label { font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.8rem; }
+  .dev-notice-label::after { content: ''; flex: 1; height: 0.5px; background: var(--border); }
+  .dev-notice p { font-size: 0.88rem; line-height: 1.75; color: var(--muted); font-weight: 300; margin-bottom: 0.8rem; letter-spacing: 0.02em; }
+  .dev-notice p:last-child { margin-bottom: 0; }
+
+  .survey-box {
+    border: 0.5px solid var(--gold-dim); padding: 1.8rem 2rem;
+    background: rgba(201,168,76,0.03); margin: 2rem 0;
+    display: flex; flex-direction: column; gap: 1rem;
+  }
+  .survey-box-label { font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); }
+  .survey-box-title { font-family: 'Cinzel', serif; font-size: 1.1rem; letter-spacing: 0.06em; color: var(--white); }
+  .survey-box p { font-size: 0.9rem; line-height: 1.7; color: var(--muted); font-weight: 300; margin: 0; }
+  .survey-btn {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    padding: 0.75rem 2rem; font-family: 'Rajdhani', sans-serif;
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+    background: var(--gold); color: #0a0906; text-decoration: none;
+    clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+    transition: background 0.2s; width: fit-content;
+  }
+  .survey-btn:hover { background: #e0bb5c; }
+
+  .rarity-track { display: flex; align-items: center; gap: 0; margin: 1.2rem 0 1.5rem; flex-wrap: wrap; }
+  .rarity-step {
+    padding: 0.4rem 1rem; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+    border: 0.5px solid var(--border); color: var(--muted); background: rgba(255,255,255,0.01);
+    position: relative;
+  }
+  .rarity-step.common { color: #b8b09e; border-color: rgba(184,176,158,0.3); }
+  .rarity-step.uncommon { color: #5dca8a; border-color: rgba(93,202,138,0.3); }
+  .rarity-step.rare { color: #5db7eb; border-color: rgba(93,183,235,0.3); }
+  .rarity-step.legendary { color: #c09fe0; border-color: rgba(192,159,224,0.3); }
+  .rarity-step.exotic { color: var(--gold); border-color: var(--border); }
+  .rarity-arrow { font-size: 0.7rem; color: var(--gold-dim); padding: 0 0.3rem; }
+
   .article-image { margin: 2rem 0; }
   .article-image img { width: 100%; display: block; border: 0.5px solid var(--border); opacity: 0.9; transition: opacity 0.3s; }
   .article-image img:hover { opacity: 1; }
   .article-image.full-width { max-width: 100vw; margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%); }
   .article-image.full-width img { border-left: none; border-right: none; }
-  .article-image.float-right { float: right; width: 45%; margin: 0 0 1.5rem 2rem; }
   .image-caption { font-size: 0.72rem; letter-spacing: 0.1em; color: var(--muted); padding: 0.6rem 0.8rem; border-left: 2px solid var(--border); margin-top: 0.5rem; font-style: italic; }
-  .clearfix::after { content: ''; display: table; clear: both; }
 
   .video-embed { margin: 2.5rem 0; }
   .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border: 0.5px solid var(--border); }
@@ -92,6 +130,21 @@
   .section-banner-label { font-size: 0.65rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
   .section-banner-label::before, .section-banner-label::after { content: ''; display: inline-block; width: 30px; height: 0.5px; background: var(--gold-dim); vertical-align: middle; margin: 0 0.8rem; }
   .section-banner-title { font-family: 'Cinzel', serif; font-size: clamp(1.2rem, 3vw, 2rem); letter-spacing: 0.12em; text-transform: uppercase; color: var(--white); }
+
+  .hiatus-box {
+    border: 0.5px solid rgba(201,168,76,0.35); padding: 1.8rem 2rem;
+    background: rgba(201,168,76,0.04); margin: 2.5rem 0;
+  }
+  .hiatus-box-label { font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem; }
+  .hiatus-box p { font-size: 0.92rem; line-height: 1.75; color: #b8b09e; font-weight: 300; margin: 0; }
+
+  .teaser-box {
+    border: 0.5px solid var(--border); padding: 1.8rem 2rem;
+    background: rgba(255,255,255,0.01); margin: 2.5rem 0; text-align: center;
+  }
+  .teaser-box-label { font-size: 0.62rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
+  .teaser-box-title { font-family: 'Cinzel', serif; font-size: 1.2rem; letter-spacing: 0.08em; color: var(--white); margin-bottom: 0.8rem; }
+  .teaser-box p { font-size: 0.9rem; line-height: 1.7; color: var(--muted); font-weight: 300; margin: 0; }
 
   .divider { width: 100%; height: 0.5px; background: linear-gradient(to right, transparent, var(--border), transparent); }
 
@@ -146,44 +199,14 @@
 
 <div style="height: 64px;"></div>
 
-<!--
-  ═══════════════════════════════════════════
-  HERO BANNER
-  Option A — use a real image (recommended):
-    Replace the banner-placeholder div below with:
-    <img class="banner-img" src="images/your-banner.jpg" alt="Banner">
-
-  Option B — use the placeholder (no image):
-    Leave the banner-placeholder div as-is.
-  ═══════════════════════════════════════════
--->
 <div class="banner">
-
-  <!-- OPTION A: Real image — uncomment this and remove the placeholder div below -->
   <img class="banner-img" src="/destiny-playground/images/banner_1.png" alt="Banner">
-
-  <!-- OPTION B: Placeholder — remove this if using a real image above
-  <div class="banner-placeholder">
-    <div class="banner-placeholder-icon"><span>&#9670;</span></div>
-    <div class="banner-placeholder-text">Replace with your banner image</div>
-  </div>
-  -->
-
   <div class="banner-overlay"></div>
-
-  <!-- Change tag to match article type: Dev Update / Announcement / Lore Drop / Behind the Scenes / Patch Notes -->
   <div class="banner-tag">Dev Update</div>
 </div>
 
-
-<!--
-  ═══════════════════════════════════════════
-  ARTICLE HEADER
-  Change: title, date, author, meta-tag text
-  ═══════════════════════════════════════════
--->
 <div class="article-header">
-  <h1 class="article-title">Abilities & Subclasses - Using, Unlocking & Upgrading</h1>
+  <h1 class="article-title">Abilities &amp; Subclasses — Using, Unlocking &amp; Upgrading</h1>
   <div class="article-meta">
     <span class="meta-date">25 Mar, 2026</span>
     <div class="meta-sep"></div>
@@ -192,152 +215,125 @@
   </div>
 </div>
 
-
-<!--
-  ═══════════════════════════════════════════
-  ARTICLE BODY
-  Available components inside here:
-
-  PARAGRAPH:
-    <p>Your text here.</p>
-
-  HEADING (large, gold underline):
-    <h2>Section Title</h2>
-
-  SUBHEADING (small, gold text):
-    <h3>Subheading</h3>
-
-  BULLET LIST:
-    <ul>
-      <li>Item one</li>
-      <li>Item two</li>
-    </ul>
-
-  CALLOUT QUOTE:
-    <div class="callout"><p>"Your quote here."</p></div>
-
-  INLINE IMAGE (full width):
-    <div class="article-image">
-      <img src="images/your-image.jpg" alt="Description">
-      <div class="image-caption">Caption text here</div>
-    </div>
-
-  INLINE IMAGE (full bleed, breaks out of column):
-    <div class="article-image full-width">
-      <img src="images/your-image.jpg" alt="Description">
-      <div class="image-caption">Caption text here</div>
-    </div>
-
-  INLINE IMAGE (floated right, text wraps beside it):
-    <div class="clearfix">
-      <div class="article-image float-right">
-        <img src="images/your-image.jpg" alt="Description">
-        <div class="image-caption">Caption</div>
-      </div>
-      <p>Text that wraps beside the image goes here.</p>
-    </div>
-
-  YOUTUBE VIDEO:
-    Find your video ID — it's the part after ?v= in the YouTube URL.
-    Example: youtube.com/watch?v=dQw4w9WgXcQ → ID is dQw4w9WgXcQ
-    <div class="video-embed">
-      <div class="video-wrapper">
-        <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" allowfullscreen></iframe>
-      </div>
-      <div class="video-caption">Optional caption</div>
-    </div>
-
-  SECTION BANNER (decorative, no background image):
-    <div class="section-banner">
-      <div class="section-banner-inner">
-        <div class="section-banner-label">Small Label</div>
-        <div class="section-banner-title">Big Title</div>
-      </div>
-    </div>
-
-  SECTION BANNER (with background image):
-    <div class="section-banner" style="background-image: url('images/your-image.jpg');">
-      <div class="section-banner-inner">
-        <div class="section-banner-label">Small Label</div>
-        <div class="section-banner-title">Big Title</div>
-      </div>
-    </div>
-  ═══════════════════════════════════════════
--->
 <div class="article-body">
 
-  <div class="image-caption">
-   The purpose of these dev updates is to share systems currently in development. What you're seeing right now are the foundations & skeletons of systems, nowhere near their final versions.
-   <br></br>
-   Things like names, values, stats, & organisation are often placeholders or early iterations. Refinement, balancing, & polish come later in development. Because of this, please keep in mind that everything shown in dev updates is subject to change. Choosing final names at this stage doesn’t affect my ability to design, implement, & test the systems themselves.
-   <br></br>
-   Feedback & suggestions are always welcome, but constructive feedback with reasoning is far more helpful than simple reactions, & keeping the above in mind is important. It's also worth remembering that seeing a system from the outside doesn’t always show the full context of how it connects with other systems or the wider project.
+  <div class="dev-notice">
+    <div class="dev-notice-label">Developer Note</div>
+    <p>The purpose of these dev updates is to share systems currently in development and to give insight into the early stages of design as the project evolves. What you're seeing right now are the foundations and skeletons of systems, nowhere near their final versions.</p>
+    <p>Things like names, values, stats, &amp; organisation are often placeholders or early iterations. My current focus is building the core structure &amp; functionality of systems first. Refinement, balancing, &amp; polish come later in development.</p>
+    <p>Because of this, please keep in mind that everything shown in dev updates is subject to change. Feedback &amp; suggestions are always welcome, but constructive feedback with reasoning is far more helpful than simple reactions. It's also worth remembering that seeing a system from the outside doesn't always show the full context of how it connects with other systems or the wider project.</p>
   </div>
 
-  <br></br>
+  <p>This week's dev update is focused on the Ability System, including subclasses, ability selection, &amp; unlocking. This system is currently in the design phase, so there's no UI to show just yet — this update is focused on explaining the direction &amp; core structure behind it.</p>
 
-  <p>
-   This week’s dev update is focused on the Ability System, including subclasses, ability selection, & unlocking. This system is currently in the design phase, so there’s no UI to show just yet, this update is focused on explaining the direction & core structure behind it.
-  </p>
-
-  <h2>Community Survey</h2>
-  <p>A reminder that the first Destiny Playground community survey is live! This is the first survey of our community-driven development initiative to help shape the future of the project.</p>
-  <p>It takes on average 15 minutes, is completely anonymous, & includes context throughout, so even if you're not deeply familiar with Destiny-style systems, you can still meaningfully contribute.</p>
-  <p>Survey Link: https://forms.office.com/r/gJdn0F1EZp </p>
-
-  <h2>What's In Progress</h2>
-  <h3>Opening Cutscene</h3>
-  <p>The script for the opening cutscene is written and ready. Voice acting is being recorded using a custom Ghost filter effect built in Audacity.</p>
-
-  <div class="article-image">
-    <img src="images/your-screenshot-here.jpg" alt="Description of your screenshot">
-    <div class="image-caption">Caption goes here — describe what's in the image</div>
+  <div class="survey-box">
+    <div class="survey-box-label">Community Initiative</div>
+    <div class="survey-box-title">Community Survey — Now Live</div>
+    <p>The first Destiny Playground community survey is live! This is the first survey of our community-driven development initiative to help shape the future of the project. It takes on average 15 minutes, is completely anonymous, &amp; includes context throughout — so even if you're not deeply familiar with Destiny-style systems, you can still meaningfully contribute.</p>
+    <a class="survey-btn" href="https://forms.office.com/r/gJdn0F1EZp" target="_blank">Take the Survey &#8594;</a>
   </div>
 
-  <p>More work continues on the audio side. Expect a behind-the-scenes post on this process soon.</p>
+  <h2>Ability Structure</h2>
+  <p>Each subclass provides access to four core abilities. These can be used at any time via key binds and do not take up inventory slots.</p>
 
-  <div class="section-banner">
-    <div class="section-banner-inner">
-      <div class="section-banner-label">Spotlight</div>
-      <div class="section-banner-title">First Look at the World</div>
-    </div>
-  </div>
-
-  <h3>Voice Acting &amp; Audio</h3>
-  <p>All voice acting for the server is being handled in-house for now, using Audacity processing and voice filters to bring the Ghost character to life.</p>
-
-  <div class="clearfix">
-    <div class="article-image float-right">
-      <img src="images/your-screenshot-here.jpg" alt="Description">
-      <div class="image-caption">A float-right image sits beside your text</div>
-    </div>
-    <p>This paragraph will sit next to the floated image on the right. Great for showing a screenshot alongside an explanation. The text wraps naturally around it.</p>
-    <p>You can have multiple paragraphs beside the image. Once the image height is exceeded, text returns to full width automatically.</p>
-  </div>
-
-  <!--
-    YOUTUBE EMBED — replace YOUR_VIDEO_ID below.
-    Get the ID from your YouTube URL: youtube.com/watch?v=YOUR_VIDEO_ID
-  -->
-  <div class="video-embed">
-    <div class="video-wrapper">
-      <iframe src="https://www.youtube.com/watch?v=0A9y_oxA1HA" allowfullscreen></iframe>
-    </div>
-    <div class="video-caption">Video caption goes here — describe what this clip shows</div>
-  </div>
-
-  <h2>What's Coming Next</h2>
   <ul>
-    <li>Completion of the opening cutscene recording and editing</li>
-    <li>Official reveal trailer production</li>
-    <li>Lore page covering the alternate timeline</li>
-    <li>First look at in-server builds and screenshots</li>
+    <li>Grenade</li>
+    <li>Melee</li>
+    <li>Class Ability</li>
+    <li>Super</li>
   </ul>
 
-  <p>Thanks for being here at the start. More updates to follow soon — stay tuned, Guardian.</p>
+  <p>Each class &amp; subclass will have a selection of abilities to choose from:</p>
+
+  <ul>
+    <li>3 Grenades</li>
+    <li>2 Melees</li>
+    <li>2 Class Abilities</li>
+    <li>2 Supers</li>
+  </ul>
+
+  <p>Abilities can be freely swapped through a menu, allowing players to adjust their build at any time.</p>
+
+  <!-- Replace with your actual ability structure image when ready -->
+  <!--
+  <div class="article-image">
+    <img src="/destiny-playground/images/ability-structure.png" alt="Ability structure overview">
+    <div class="image-caption">Overview of the ability structure for each subclass</div>
+  </div>
+  -->
+
+  <h2>Subclasses</h2>
+  <p>At launch, each class will have access to the 3 Light subclasses. Dark subclasses are not planned for launch.</p>
+  <p>Aspects &amp; Fragments have been considered, but will not be included at launch. This may be revisited post-launch depending on how it fits. The goal is to keep subclasses clear, impactful, &amp; easy to build around — without overcomplicating the system early on.</p>
+
+  <h2>Unlocking Subclasses &amp; Abilities</h2>
+  <p>When starting out, players will unlock their first subclass early on at a basic level, with a limited set of abilities. Progression is structured as follows:</p>
+
+  <ul>
+    <li>First subclass unlocked early in the campaign</li>
+    <li>Second subclass unlocked later in the campaign</li>
+    <li>Third subclass unlocked post-campaign</li>
+    <li>Each subclass also has its own dedicated upgrade quest, which unlocks the remaining abilities for that subclass</li>
+  </ul>
+
+  <p>Rather than unlocking abilities individually in any order, this system is designed to be more structured &amp; streamlined.</p>
+
+  <h2>Ability Progression — Rarity System</h2>
+  <p>Abilities will have their own rarity tiers, similar to gear progression. Each subclass starts at Common and can be upgraded through repeatable activities, quests, or tasks.</p>
+
+  <div class="rarity-track">
+    <span class="rarity-step common">Common</span>
+    <span class="rarity-arrow">&#8594;</span>
+    <span class="rarity-step uncommon">Uncommon</span>
+    <span class="rarity-arrow">&#8594;</span>
+    <span class="rarity-step rare">Rare</span>
+    <span class="rarity-arrow">&#8594;</span>
+    <span class="rarity-step legendary">Legendary</span>
+    <span class="rarity-arrow">&#8594;</span>
+    <span class="rarity-step exotic">Exotic</span>
+  </div>
+
+  <p>Upgrading a subclass increases the effectiveness of its abilities, including things like damage, effects, and cooldown. This ensures abilities scale alongside the player's progression, rather than remaining static or falling out of balance.</p>
+
+  <h2>Ability Selection</h2>
+  <p>Abilities are managed through the Character Menu. From here, players can:</p>
+
+  <ul>
+    <li>Equip a subclass</li>
+    <li>Inspect that subclass</li>
+    <li>Swap abilities</li>
+    <li>View ability details &amp; rarities</li>
+  </ul>
+
+  <p>This system is designed to make build crafting accessible &amp; flexible, while still allowing depth.</p>
+
+  <h2>Current State &amp; Future Updates</h2>
+  <p>This system is still in development, and while the core direction is mostly set, details may still change as it moves into implementation. Once UI development begins, future updates will include menu designs, ability showcases, and subclass breakdowns.</p>
+
+  <div class="callout">
+    <p>We are currently aiming to share UI &amp; ability showcases around May, if development timelines allow. Concept work will be shared on our Ko-fi before then.</p>
+  </div>
+
+  <div class="hiatus-box">
+    <div class="hiatus-box-label">&#9670; Development Update Schedule</div>
+    <p>Due to upcoming exams and assignments, development updates will be paused from early March to end of April. Development time will be extremely limited during this period — dev updates will be on hiatus, progress will be minimal, &amp; response times may be slower. The server will remain online and the staff team will still have access to continue work. After this period I will resume work, alongside a short break before fully returning. Thank you for your patience and continued support — it genuinely means a lot.</p>
+  </div>
+
+  <div class="teaser-box">
+    <div class="teaser-box-label">Coming Soon</div>
+    <div class="teaser-box-title">Planet 3 Reveal — Next Week</div>
+    <p>Congrats to those that have found the teaser we planted 2 weeks ago! If you haven't found it yet... guess you gotta look harder. We'll have further teasers very soon — but we'd love to hear what you think Planet 3 will be before we do!</p>
+  </div>
+
+  <!-- Add your planet 3 teaser image here when ready -->
+  <!--
+  <div class="article-image">
+    <img src="/destiny-playground/images/planet3-teaser.png" alt="Planet 3 teaser">
+    <div class="image-caption">Can you figure out what Planet 3 might be?</div>
+  </div>
+  -->
 
 </div>
-
 
 <div class="closing">
   <div class="closing-note">
@@ -363,7 +359,7 @@
 <div class="divider"></div>
 
 <div class="back-section">
-  <a class="btn-back" href="index.html">&#8592; Back to News</a>
+  <a class="btn-back" href="/destiny-playground/index.html">&#8592; Back to News</a>
 </div>
 
 <footer>
