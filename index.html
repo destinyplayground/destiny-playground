@@ -3,6 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="/destiny-playground/css/styles.css">
+<link rel="stylesheet" href="/destiny-playground/css/a11y-overrides.css">
+  
 <title>Destiny Playground</title>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/destiny-playground/css/styles.css">
@@ -11,7 +15,6 @@
 <body>
   
 <div id="nav-placeholder"></div>
-<script src="/destiny-playground/js/nav-loader.js"></script>
 
 <!-- HERO -->
 <div class="hero">
@@ -175,23 +178,9 @@
 
 <!-- FOOTER -->
 <div id="footer-placeholder"></div>
+<script src="/destiny-playground/js/shared.js"></script>
   
 <script>
-  function loadNav() {
-  fetch('/destiny-playground/nav.html')
-    .then(r => r.text())
-    .then(html => {
-      const placeholder = document.getElementById('nav-placeholder');
-      placeholder.innerHTML = html;
-      placeholder.querySelectorAll('script').forEach(oldScript => {
-        const newScript = document.createElement('script');
-        newScript.textContent = oldScript.textContent;
-        document.body.appendChild(newScript);
-      });
-    });
-  }
-  loadNav();
-  
   async function loadNews() {
     const grid = document.getElementById('news-grid');
     try {
