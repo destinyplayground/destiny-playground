@@ -221,8 +221,97 @@ nav {
   content: ' ↗'; font-size: .6rem; opacity: .4;
 }
 
-/* ── RESPONSIVE ── */
+/* ── ACCESSIBILITY BUTTON & PANEL ── */
+.nav-a11y { position: relative; margin-left: .75rem; flex-shrink: 0; }
+
+.nav-a11y-btn {
+  width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  background: none; border: .5px solid var(--nav-border);
+  cursor: pointer; color: var(--nav-text);
+  transition: color .2s, border-color .2s, background .2s;
+}
+.nav-a11y-btn:hover { color: var(--nav-text-hover); border-color: var(--gold-dim); background: var(--gold-faint); }
+.nav-a11y-btn[aria-expanded="true"] { color: var(--gold); border-color: var(--gold); background: var(--gold-faint); }
+.nav-a11y-icon { width: 18px; height: 18px; }
+
+.nav-a11y-panel {
+  position: absolute; top: calc(100% + 8px); right: 0;
+  width: 270px;
+  background: var(--drop-bg);
+  border: .5px solid var(--nav-border);
+  border-top: 1.5px solid var(--gold);
+  padding: .6rem 0 .5rem;
+  opacity: 0; pointer-events: none;
+  transform: translateY(-6px);
+  transition: opacity .18s, transform .18s;
+  z-index: 1001;
+}
+.nav-a11y-panel.open { opacity: 1; pointer-events: all; transform: translateY(0); }
+
+.a11y-panel-label {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: .58rem; font-weight: 600; letter-spacing: .3em;
+  text-transform: uppercase; color: var(--gold);
+  padding: .2rem 1.2rem .7rem; border-bottom: .5px solid var(--nav-border);
+  margin-bottom: .4rem;
+}
+
+.a11y-option {
+  width: 100%; display: flex; align-items: center; gap: .9rem;
+  padding: .6rem 1.2rem;
+  background: none; border: none; cursor: pointer;
+  text-align: left; transition: background .15s;
+}
+.a11y-option:hover { background: var(--gold-faint); }
+.a11y-option.active { background: rgba(201,168,76,.06); }
+
+.a11y-option-icon {
+  width: 28px; height: 28px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  border: .5px solid rgba(201,168,76,.2);
+  font-size: .75rem; font-weight: 700;
+  color: var(--nav-text); font-family: sans-serif;
+  transition: border-color .15s, color .15s;
+}
+.a11y-option.active .a11y-option-icon { border-color: var(--gold); color: var(--gold); }
+
+.a11y-option-name {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: .74rem; font-weight: 600; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--nav-text);
+  transition: color .15s;
+}
+.a11y-option.active .a11y-option-name { color: var(--gold); }
+
+.a11y-option-desc {
+  font-size: .65rem; color: var(--muted);
+  letter-spacing: .04em; margin-top: .15rem;
+  font-family: sans-serif; font-weight: 400; text-transform: none;
+}
+
+.a11y-check {
+  margin-left: auto; font-size: .8rem; color: var(--gold);
+  opacity: 0; transition: opacity .15s; flex-shrink: 0;
+}
+.a11y-option.active .a11y-check { opacity: 1; }
+
+.a11y-reset {
+  width: calc(100% - 2.4rem); margin: .6rem 1.2rem 0;
+  padding: .45rem; background: none;
+  border: .5px solid rgba(201,168,76,.15); cursor: pointer;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: .62rem; font-weight: 600; letter-spacing: .2em;
+  text-transform: uppercase; color: var(--muted);
+  transition: all .15s;
+}
+.a11y-reset:hover { border-color: var(--gold-dim); color: var(--gold); background: var(--gold-faint); }
+
+/* ── RESPONSIVE: hide a11y label on small screens but keep button ── */
 @media (max-width: 900px) {
+  .nav-a11y { margin-left: .5rem; }
+  .nav-a11y-panel { right: 0; }
+}
   nav { padding: 0 1.5rem; }
   .nav-links { display: none; }
   .nav-links-right { display: none; }
@@ -289,6 +378,51 @@ nav {
         <a href="https://x.com/destinyplaygrnd" target="_blank">Twitter / X</a>
         <a href="https://bsky.app/profile/thedestinyplayground.bsky.social" target="_blank">Bluesky</a>
       </div>
+    </div>
+  </div>
+
+  <!-- Accessibility dropdown -->
+  <div class="nav-a11y" id="navA11y">
+    <button class="nav-a11y-btn" id="a11yToggle" aria-label="Accessibility options" aria-expanded="false" aria-haspopup="true">
+      <svg class="nav-a11y-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="5" r="1.5"/>
+        <path d="M12 8v4m0 0l-3 5m3-5l3 5"/>
+        <path d="M8.5 10.5S10 10 12 10s3.5.5 3.5.5"/>
+      </svg>
+    </button>
+    <div class="nav-a11y-panel" id="a11yPanel" role="menu" aria-label="Accessibility options">
+      <div class="a11y-panel-label">Accessibility</div>
+      <button class="a11y-option" id="a11y-light" role="menuitem" onclick="toggleA11y('light')">
+        <span class="a11y-option-icon">&#9788;</span>
+        <div><div class="a11y-option-name">Light Mode</div><div class="a11y-option-desc">Full theme, light background</div></div>
+        <span class="a11y-check" aria-hidden="true">&#10003;</span>
+      </button>
+      <button class="a11y-option" id="a11y-font" role="menuitem" onclick="toggleA11y('font')">
+        <span class="a11y-option-icon">Aa</span>
+        <div><div class="a11y-option-name">Simple Font</div><div class="a11y-option-desc">Switches to a plain sans-serif</div></div>
+        <span class="a11y-check" aria-hidden="true">&#10003;</span>
+      </button>
+      <button class="a11y-option" id="a11y-size" role="menuitem" onclick="toggleA11y('size')">
+        <span class="a11y-option-icon">A+</span>
+        <div><div class="a11y-option-name">Larger Text</div><div class="a11y-option-desc">Increases base font size</div></div>
+        <span class="a11y-check" aria-hidden="true">&#10003;</span>
+      </button>
+      <button class="a11y-option" id="a11y-contrast" role="menuitem" onclick="toggleA11y('contrast')">
+        <span class="a11y-option-icon">&#9680;</span>
+        <div><div class="a11y-option-name">High Contrast</div><div class="a11y-option-desc">Bold colours, clear borders</div></div>
+        <span class="a11y-check" aria-hidden="true">&#10003;</span>
+      </button>
+      <button class="a11y-option" id="a11y-dyslexia" role="menuitem" onclick="toggleA11y('dyslexia')">
+        <span class="a11y-option-icon">&#9638;</span>
+        <div><div class="a11y-option-name">Dyslexia Friendly</div><div class="a11y-option-desc">Spaced, readable font</div></div>
+        <span class="a11y-check" aria-hidden="true">&#10003;</span>
+      </button>
+      <button class="a11y-option" id="a11y-motion" role="menuitem" onclick="toggleA11y('motion')">
+        <span class="a11y-option-icon">&#9632;</span>
+        <div><div class="a11y-option-name">Reduce Motion</div><div class="a11y-option-desc">Turns off animations</div></div>
+        <span class="a11y-check" aria-hidden="true">&#10003;</span>
+      </button>
+      <button class="a11y-reset" onclick="resetA11y()">Reset all</button>
     </div>
   </div>
 
@@ -413,5 +547,102 @@ nav {
       if (parent) parent.classList.add('active');
     }
   });
+
+  /* ── ACCESSIBILITY PANEL ── */
+  const a11yBtn   = document.getElementById('a11yToggle');
+  const a11yPanel = document.getElementById('a11yPanel');
+
+  a11yBtn.addEventListener('click', function(e) {
+    const open = a11yPanel.classList.toggle('open');
+    a11yBtn.setAttribute('aria-expanded', open);
+    e.stopPropagation();
+    // close nav dropdowns when a11y opens
+    document.querySelectorAll('.nav-category').forEach(function(c) { c.classList.remove('open'); });
+  });
+
+  // close a11y panel when clicking elsewhere
+  document.addEventListener('click', function(e) {
+    if (!document.getElementById('navA11y').contains(e.target)) {
+      a11yPanel.classList.remove('open');
+      a11yBtn.setAttribute('aria-expanded', false);
+    }
+  });
+
+  // also close nav dropdowns when a11y panel is open
+  document.querySelectorAll('.nav-category').forEach(function(cat) {
+    cat.addEventListener('click', function() {
+      a11yPanel.classList.remove('open');
+      a11yBtn.setAttribute('aria-expanded', false);
+    });
+  });
 })();
+
+/* ── ACCESSIBILITY MODE LOGIC ── */
+// modes and the html class they toggle
+var A11Y_MODES = {
+  light:    'a11y-light',
+  font:     'a11y-font',
+  size:     'a11y-size',
+  contrast: 'a11y-contrast',
+  dyslexia: 'a11y-dyslexia',
+  motion:   'a11y-motion'
+};
+
+// mutually exclusive pairs — turning one off turns the other off
+var A11Y_EXCLUSIVE = [
+  ['light', 'contrast']  // light mode and contrast mode don't mix
+];
+
+function applyA11yFromStorage() {
+  Object.keys(A11Y_MODES).forEach(function(key) {
+    var stored = localStorage.getItem('a11y-' + key);
+    if (stored === 'true') {
+      document.documentElement.classList.add(A11Y_MODES[key]);
+      var btn = document.getElementById('a11y-' + key);
+      if (btn) btn.classList.add('active');
+    }
+  });
+}
+
+function toggleA11y(mode) {
+  var htmlClass = A11Y_MODES[mode];
+  var isActive  = document.documentElement.classList.contains(htmlClass);
+  var btn       = document.getElementById('a11y-' + mode);
+
+  if (isActive) {
+    // turn off
+    document.documentElement.classList.remove(htmlClass);
+    localStorage.setItem('a11y-' + mode, 'false');
+    if (btn) btn.classList.remove('active');
+  } else {
+    // turn on — first handle exclusives
+    A11Y_EXCLUSIVE.forEach(function(pair) {
+      if (pair.indexOf(mode) !== -1) {
+        pair.forEach(function(other) {
+          if (other !== mode) {
+            document.documentElement.classList.remove(A11Y_MODES[other]);
+            localStorage.setItem('a11y-' + other, 'false');
+            var otherBtn = document.getElementById('a11y-' + other);
+            if (otherBtn) otherBtn.classList.remove('active');
+          }
+        });
+      }
+    });
+    document.documentElement.classList.add(htmlClass);
+    localStorage.setItem('a11y-' + mode, 'true');
+    if (btn) btn.classList.add('active');
+  }
+}
+
+function resetA11y() {
+  Object.keys(A11Y_MODES).forEach(function(key) {
+    document.documentElement.classList.remove(A11Y_MODES[key]);
+    localStorage.setItem('a11y-' + key, 'false');
+    var btn = document.getElementById('a11y-' + key);
+    if (btn) btn.classList.remove('active');
+  });
+}
+
+// apply saved prefs immediately on load
+applyA11yFromStorage();
 </script>
