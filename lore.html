@@ -168,7 +168,15 @@
 
 /* ── GUARDIANS ── */
 .guardians-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;margin-top:3.5rem;background:var(--border);}
-.guardian-card{background:var(--dark);padding:2.5rem;position:relative;overflow:hidden;transition:background .25s;}
+.guardian-col{display:flex;flex-direction:column;background:var(--border);gap:1.5px;}
+.guardian-banner{position:relative;background:var(--dark);overflow:hidden;}
+.guardian-banner-img-slot{width:100%;aspect-ratio:3/4;max-height:320px;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.guardian-banner-img-slot img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;}
+.guardian-banner-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;border:.5px dashed rgba(201,168,76,.15);background:rgba(201,168,76,.02);}
+.guardian-banner-label{font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--class-color,var(--gold));opacity:.5;}
+.guardian-banner-hint{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);opacity:.35;}
+.guardian-banner::after{content:'';position:absolute;bottom:0;left:0;right:0;height:60px;background:linear-gradient(to top,var(--dark),transparent);pointer-events:none;}
+.guardian-card{background:var(--dark);padding:2.5rem;position:relative;overflow:hidden;transition:background .25s;flex:1;}
 .guardian-card:hover{background:rgba(201,168,76,.025);}
 .guardian-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1.5px;background:linear-gradient(to right,transparent,var(--class-color,var(--gold)),transparent);opacity:0;transition:opacity .3s;}
 .guardian-card:hover::after{opacity:1;}
@@ -243,30 +251,26 @@
 .mystery-status-dot.revealed{background:var(--gold);}
 .mystery-status-label{font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);}
 
-/* ── LORE ARCHIVE ── */
-.lore-entries-layout{display:grid;grid-template-columns:220px 1fr;gap:1.5px;margin-top:3.5rem;background:var(--border);}
-.lore-entry-nav{background:var(--dark);padding:2rem 0;}
-.lore-entry-nav-label{font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);padding:0 1.5rem 1rem;border-bottom:.5px solid var(--border);margin-bottom:.5rem;}
-.lore-entry-nav-item{padding:.8rem 1.5rem;font-size:.74rem;letter-spacing:.1em;color:var(--muted);cursor:pointer;transition:all .2s;position:relative;border-bottom:.5px solid rgba(201,168,76,.05);}
-.lore-entry-nav-item::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--gold);transform:scaleY(0);transition:transform .2s;}
-.lore-entry-nav-item:hover{color:var(--white);background:rgba(201,168,76,.04);}
-.lore-entry-nav-item:hover::before,.lore-entry-nav-item.active::before{transform:scaleY(1);}
-.lore-entry-nav-item.active{color:var(--gold);}
-.lore-entry-body{background:rgba(255,255,255,.015);padding:3.5rem;}
-.lore-entry-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:2.5rem;gap:2rem;}
-.lore-entry-classification{font-size:.6rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;}
-.lore-entry-title{font-family:'Cinzel',serif;font-size:1.6rem;font-weight:700;letter-spacing:.06em;color:var(--white);}
-.lore-entry-ref{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(138,128,112,.4);margin-top:.4rem;}
-.lore-entry-stamp{flex-shrink:0;border:.5px solid rgba(201,168,76,.2);padding:.5rem 1rem;text-align:center;}
-.lore-stamp-word{font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.2em;color:var(--gold-dim);text-transform:uppercase;display:block;}
-.lore-stamp-num{font-size:1.2rem;font-weight:600;color:rgba(201,168,76,.3);font-family:'Cinzel',serif;}
-.lore-entry-divider{width:100%;height:.5px;background:linear-gradient(to right,var(--border),transparent);margin-bottom:2.5rem;}
-.lore-entry-text{font-size:.93rem;line-height:2.05;color:var(--body-text);font-weight:300;max-width:660px;}
-.lore-entry-text p{margin-bottom:1.4rem;}
-.lore-entry-text p:last-child{margin-bottom:0;}
-.lore-entry-text .highlight{color:var(--white);font-weight:400;}
-.lore-entry-text .gold-word{color:var(--gold-dim);}
-.lore-entry-footer{margin-top:2.5rem;padding-top:1.5rem;border-top:.5px solid rgba(201,168,76,.08);font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(138,128,112,.4);}
+/* ── LORE ARCHIVE (COLLECTIONS) ── */
+.archive-status-banner{display:flex;align-items:center;gap:1.2rem;padding:1.2rem 1.8rem;background:rgba(201,168,76,.03);border:.5px solid rgba(201,168,76,.14);margin-top:2.5rem;margin-bottom:3rem;font-size:.82rem;color:var(--muted);letter-spacing:.06em;}
+.archive-status-icon{flex-shrink:0;width:28px;height:28px;border:.5px solid rgba(201,168,76,.2);display:flex;align-items:center;justify-content:center;}
+.archive-collections{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5px;background:var(--border);}
+.archive-collection{background:var(--dark);padding:2.2rem 2.5rem;position:relative;overflow:hidden;transition:background .25s;}
+.archive-collection:hover{background:rgba(201,168,76,.025);}
+.archive-collection::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;background:linear-gradient(to right,transparent,rgba(201,168,76,.25),transparent);transform:scaleX(0);transform-origin:left;transition:transform .35s;}
+.archive-collection:hover::before{transform:scaleX(1);}
+.archive-collection-header{display:flex;align-items:flex-start;gap:1.2rem;margin-bottom:1rem;}
+.archive-collection-icon{font-size:.9rem;color:rgba(201,168,76,.3);margin-top:.2rem;flex-shrink:0;}
+.archive-collection-tag{font-size:.58rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:.35rem;}
+.archive-collection-name{font-family:'Cinzel',serif;font-size:1.05rem;font-weight:700;letter-spacing:.06em;color:var(--white);}
+.archive-collection-lock{font-size:.55rem;color:rgba(201,168,76,.2);margin-left:auto;flex-shrink:0;padding-top:.3rem;}
+.archive-collection-desc{font-size:.87rem;line-height:1.82;color:var(--body-text);font-weight:300;margin-bottom:1.4rem;}
+.archive-collection-footer{display:flex;align-items:center;justify-content:space-between;padding-top:1rem;border-top:.5px solid rgba(201,168,76,.07);}
+.archive-entry-count{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);}
+.archive-lock-label{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(201,168,76,.35);border:.5px solid rgba(201,168,76,.15);padding:2px 8px;}
+.archive-collection--more{opacity:.65;}
+@media (max-width:768px){.archive-collections{grid-template-columns:1fr;}}
+
 
 /* ── RESPONSIVE ── */
 @media (max-width:1100px){
@@ -277,7 +281,6 @@
   .missions-timeline::before{left:120px;}
   .mission-row{grid-template-columns:120px 1fr;gap:2rem;}
   .mission-dot{left:115px;}
-  .lore-entries-layout{grid-template-columns:180px 1fr;}
 }
 @media (max-width:768px){
   .lore-section{padding:4rem 1.5rem;}
@@ -285,14 +288,12 @@
   .social-grid{grid-template-columns:1fr;}
   .factions-layout{grid-template-columns:1fr;}
   .enemies-grid,.guardians-grid,.mysteries-grid{grid-template-columns:1fr;}
+  .guardian-banner-img-slot{max-height:200px;}
   .mystery-card--wide{grid-column:span 1;grid-template-columns:1fr;}
   .missions-timeline::before{display:none;}
   .mission-row{grid-template-columns:1fr;gap:0;}
   .mission-meta{flex-direction:row;align-items:center;padding:1.5rem;background:var(--dark);}
   .mission-dot{display:none;}
-  .lore-entries-layout{grid-template-columns:1fr;}
-  .lore-entry-nav{display:none;}
-  .lore-entry-header{flex-direction:column;}
   .traveler-banner,.lore-hero{padding:4rem 1.5rem;}
   .lore-hero{padding-top:8rem;}
   .dest-tabs{flex-wrap:wrap;}
@@ -312,7 +313,7 @@
   <div class="lore-rune"></div><div class="lore-rune"></div><div class="lore-rune"></div><div class="lore-rune"></div>
   <div class="lore-eyebrow"><span class="lore-eyebrow-line"></span>Classified &mdash; Eyes Only<span class="lore-eyebrow-line"></span></div>
   <h1 class="lore-hero-title">The <span>Lore</span><br>Archive</h1>
-  <p class="lore-hero-sub">Worlds &middot; Factions &middot; Guardians &middot; Enemies &middot; Mysteries</p>
+
   <nav class="lore-nav">
     <button class="lore-nav-pill active" onclick="navPill(this,'planets')">Planets</button>
     <button class="lore-nav-pill" onclick="navPill(this,'factions')">Factions</button>
@@ -351,28 +352,25 @@
     <div class="destinations-layout">
 
       <!-- EARTH -->
-      <div class="dest-row layout-left" style="--dest-color:#4a9fd4;">
+      <div class="dest-row layout-left" style="--dest-color:#5a9a50;">
         <div class="dest-info-panel">
-          <div class="dest-status dest-status--active">Confirmed &mdash; Active</div>
           <div class="dest-name">Earth</div>
           <div class="dest-subtitle">European Dead Zone &middot; The Northreach</div>
-          <div class="dest-desc">Earth is fractured but not finished. The forests of the European Dead Zone have reclaimed the ruins with something that feels almost intentional &mdash; as if the wilderness is holding its breath. Further north, the Northreach stretches into frozen wastes where pre-Collapse military infrastructure rusts beneath the ice and House Kings patrol for ether in the dark. Earth is where the story begins. It is not where it ends.</div>
+          <div class="dest-desc">Earth is fractured but not finished. The forests of the European Dead Zone have reclaimed the ruins with something that feels almost intentional &mdash; as if the wilderness is holding its breath. Further north, the Northreach stretches into frozen wastes where pre-Collapse military infrastructure rusts beneath the ice. Earth is where the story begins. It is not where it ends.</div>
           <div class="dest-zones">
-            <div class="dest-zone-row"><div class="dest-zone-dot" style="background:#4a9fd4;"></div><div class="dest-zone-name">European Dead Zone</div><div class="dest-zone-type">Patrol Zone</div></div>
-            <div class="dest-zone-row"><div class="dest-zone-dot" style="background:#3a7fa4;"></div><div class="dest-zone-name">The Northreach</div><div class="dest-zone-type">Patrol Zone</div></div>
-            <div class="dest-zone-row"><div class="dest-zone-dot" style="background:rgba(74,159,212,.4);"></div><div class="dest-zone-name">The Cosmodrome</div><div class="dest-zone-type">Story Zone</div></div>
+            <div class="dest-zone-row"><div class="dest-zone-dot" style="background:#5a9a50;"></div><div class="dest-zone-name">European Dead Zone</div><div class="dest-zone-type">Patrol Zone</div></div>
+            <div class="dest-zone-row"><div class="dest-zone-dot" style="background:#3a7a30;"></div><div class="dest-zone-name">The Northreach</div><div class="dest-zone-type">Story Zone</div></div>
           </div>
           <div class="dest-stats">
-            <div class="dest-stat"><div class="dest-stat-val" style="color:#4a9fd4;">3</div><div class="dest-stat-label">Zones</div></div>
-            <div class="dest-stat"><div class="dest-stat-val" style="color:#4a9fd4;">Fallen</div><div class="dest-stat-label">Primary Threat</div></div>
-            <div class="dest-stat"><div class="dest-stat-val" style="color:#4a9fd4;">Active</div><div class="dest-stat-label">Status</div></div>
+            <div class="dest-stat"><div class="dest-stat-val" style="color:#5a9a50;">2</div><div class="dest-stat-label">Zones</div></div>
+            <div class="dest-stat"><div class="dest-stat-val" style="color:#5a9a50;">Fallen / Cabal</div><div class="dest-stat-label">Primary Threats</div></div>
           </div>
         </div>
         <div class="dest-planet-panel">
-          <div class="dest-planet-bg" style="background:radial-gradient(ellipse at 30% 20%,rgba(74,159,212,.08) 0%,transparent 60%),radial-gradient(ellipse at 70% 80%,rgba(40,100,60,.06) 0%,transparent 50%),#060a0d;"></div>
+          <div class="dest-planet-bg" style="background:radial-gradient(ellipse at 30% 20%,rgba(90,154,80,.10) 0%,transparent 60%),radial-gradient(ellipse at 70% 80%,rgba(40,100,40,.08) 0%,transparent 50%),#060a06;"></div>
           <div class="dest-planet-ring" style="width:220px;height:220px;position:absolute;top:50%;left:50%;margin:-110px 0 0 -110px;"></div>
           <div class="dest-planet-ring" style="width:310px;height:310px;position:absolute;top:50%;left:50%;margin:-155px 0 0 -155px;"></div>
-          <div class="dest-planet-sphere" style="width:140px;height:140px;background:radial-gradient(ellipse at 30% 28%,#2a5f8f 0%,#1a3d5c 35%,#0d2035 65%,#060e1a 100%);box-shadow:0 0 40px rgba(42,95,143,.25),inset -10px -10px 30px rgba(0,0,0,.5);"></div>
+          <div class="dest-planet-sphere" style="width:140px;height:140px;background:radial-gradient(ellipse at 30% 28%,#3a7a30 0%,#2a5a20 35%,#1a3a10 65%,#0a1a06 100%);box-shadow:0 0 40px rgba(90,154,80,.25),inset -10px -10px 30px rgba(0,0,0,.5);"></div>
         </div>
       </div>
 
@@ -385,19 +383,17 @@
           <div class="dest-planet-sphere" style="width:130px;height:130px;background:radial-gradient(ellipse at 35% 30%,#b8dff0 0%,#7ab8d8 25%,#3a7090 55%,#1a3848 80%,#0a1820 100%);box-shadow:0 0 40px rgba(136,196,232,.2),inset -8px -8px 25px rgba(0,0,0,.5);"></div>
         </div>
         <div class="dest-info-panel">
-          <div class="dest-status dest-status--active">Confirmed &mdash; Active</div>
           <div class="dest-name">Europa</div>
           <div class="dest-subtitle">Moon of Jupiter &middot; Darkness Stronghold</div>
-          <div class="dest-desc">Jupiter's frozen moon hides an ocean beneath a crust of ancient ice &mdash; and beneath that ocean, something the Darkness found long before humanity arrived. The House of Salvation clings to warmth in the ruins of a Bray Exoscience facility. The Vex have constructed gate networks across the surface. And the Pyramid structures half-buried in black ice remain utterly silent, patient as geology.</div>
+          <div class="dest-desc">Jupiter's frozen moon hides an ocean beneath a crust of ancient ice &mdash; and beneath that ocean, something the Darkness found long before humanity arrived. The House of Salvation clings to warmth in the ruins of a Bray Exoscience facility. The Vex have constructed gate networks across the surface. Something beneath the black ice remains utterly silent, patient as geology.</div>
           <div class="dest-zones">
             <div class="dest-zone-row"><div class="dest-zone-dot" style="background:#88c4e8;"></div><div class="dest-zone-name">Eventide Ruins</div><div class="dest-zone-type">Patrol Zone</div></div>
             <div class="dest-zone-row"><div class="dest-zone-dot" style="background:#6aaac8;"></div><div class="dest-zone-name">Cadmus Ridge</div><div class="dest-zone-type">Patrol Zone</div></div>
-            <div class="dest-zone-row"><div class="dest-zone-dot" style="background:rgba(136,196,232,.4);"></div><div class="dest-zone-name">Bray Exoscience</div><div class="dest-zone-type">Story Zone</div></div>
+            <div class="dest-zone-row"><div class="dest-zone-dot" style="background:rgba(136,196,232,.4);"></div><div class="dest-zone-name">Bray Exoscience</div><div class="dest-zone-type">Patrol Zone</div></div>
           </div>
           <div class="dest-stats">
             <div class="dest-stat"><div class="dest-stat-val" style="color:#88c4e8;">3</div><div class="dest-stat-label">Zones</div></div>
-            <div class="dest-stat"><div class="dest-stat-val" style="color:#88c4e8;">Fallen / Vex</div><div class="dest-stat-label">Primary Threat</div></div>
-            <div class="dest-stat"><div class="dest-stat-val" style="color:#88c4e8;">Active</div><div class="dest-stat-label">Status</div></div>
+            <div class="dest-stat"><div class="dest-stat-val" style="color:#88c4e8;">Fallen / Vex</div><div class="dest-stat-label">Primary Threats</div></div>
           </div>
         </div>
       </div>
@@ -405,19 +401,17 @@
       <!-- MOON -->
       <div class="dest-row layout-left" style="--dest-color:#9a8e80;">
         <div class="dest-info-panel">
-          <div class="dest-status dest-status--active">Confirmed &mdash; Active</div>
           <div class="dest-name">The Moon</div>
           <div class="dest-subtitle">The Hellmouth &middot; Anchor of Light</div>
           <div class="dest-desc">The Moon is a graveyard. Hive have carved themselves into the lunar crust over centuries, hollowing out entire mountain ranges for their rituals and their gods. The Hellmouth is the wound they left &mdash; a descent into something far older and stranger than the Hive themselves. Guardians have been sent here and not returned. The ones who do come back changed. The Anchor of Light still holds. Barely.</div>
           <div class="dest-zones">
             <div class="dest-zone-row"><div class="dest-zone-dot" style="background:#9a8e80;"></div><div class="dest-zone-name">Archer's Line</div><div class="dest-zone-type">Patrol Zone</div></div>
             <div class="dest-zone-row"><div class="dest-zone-dot" style="background:#7a6e62;"></div><div class="dest-zone-name">The Hellmouth</div><div class="dest-zone-type">Patrol Zone</div></div>
-            <div class="dest-zone-row"><div class="dest-zone-dot" style="background:rgba(154,142,128,.4);"></div><div class="dest-zone-name">Anchor of Light</div><div class="dest-zone-type">Story Zone</div></div>
+            <div class="dest-zone-row"><div class="dest-zone-dot" style="background:rgba(154,142,128,.4);"></div><div class="dest-zone-name">Anchor of Light</div><div class="dest-zone-type">Patrol Zone</div></div>
           </div>
           <div class="dest-stats">
             <div class="dest-stat"><div class="dest-stat-val" style="color:#9a8e80;">3</div><div class="dest-stat-label">Zones</div></div>
-            <div class="dest-stat"><div class="dest-stat-val" style="color:#9a8e80;">Hive</div><div class="dest-stat-label">Primary Threat</div></div>
-            <div class="dest-stat"><div class="dest-stat-val" style="color:#9a8e80;">Active</div><div class="dest-stat-label">Status</div></div>
+            <div class="dest-stat"><div class="dest-stat-val" style="color:#9a8e80;">Hive / Fallen</div><div class="dest-stat-label">Primary Threats</div></div>
           </div>
         </div>
         <div class="dest-planet-panel">
@@ -437,19 +431,18 @@
           <div class="dest-planet-sphere" style="width:138px;height:138px;background:radial-gradient(ellipse at 30% 28%,#c05030 0%,#8a3018 35%,#501808 65%,#200a04 100%);box-shadow:0 0 40px rgba(192,96,64,.22),inset -10px -10px 30px rgba(0,0,0,.5);"></div>
         </div>
         <div class="dest-info-panel">
-          <div class="dest-status dest-status--confirmed">Confirmed &mdash; Week IV Reveal</div>
           <div class="dest-name">Mars</div>
-          <div class="dest-subtitle">Hellas Basin &middot; Braytech Futurescape</div>
-          <div class="dest-desc">The Cabal arrived on Mars decades before Guardians had the reach to follow. They sealed off Rasputin's bunkers, entombed the remnants of Clovis Bray infrastructure under Exclusion Zones, and have been building something in the Hellas Basin. Whatever they found beneath the Martian ice has not been disclosed. The Warmind is still online. It is not currently taking questions.</div>
+          <div class="dest-subtitle">Meridian Bay &middot; The Red Planet</div>
+          <div class="dest-desc">The Cabal arrived on Mars decades before Guardians had the reach to follow. They carved Exclusion Zones across the Meridian Bay, fortified ancient ruins, and have been building something in the deep desert. Whatever they found beneath the Martian dunes has not been disclosed. The Warmind still has bunkers here. It is not currently taking questions.</div>
           <div class="dest-zones">
-            <div class="dest-zone-row"><div class="dest-zone-dot" style="background:#c06040;"></div><div class="dest-zone-name">Braytech Futurescape</div><div class="dest-zone-type">Patrol Zone</div></div>
-            <div class="dest-zone-row"><div class="dest-zone-dot" style="background:#a04030;"></div><div class="dest-zone-name">Hellas Basin</div><div class="dest-zone-type">Patrol Zone</div></div>
-            <div class="dest-zone-row"><div class="dest-zone-dot" style="background:rgba(192,96,64,.4);"></div><div class="dest-zone-name">Ana's Dome</div><div class="dest-zone-type">Story Zone</div></div>
+            <div class="dest-zone-row"><div class="dest-zone-dot" style="background:#c06040;"></div><div class="dest-zone-name">The Barrens</div><div class="dest-zone-type">Patrol Zone</div></div>
+            <div class="dest-zone-row"><div class="dest-zone-dot" style="background:#a04030;"></div><div class="dest-zone-name">The Scablands</div><div class="dest-zone-type">Patrol Zone</div></div>
+            <div class="dest-zone-row"><div class="dest-zone-dot" style="background:#903828;"></div><div class="dest-zone-name">Tharsis Junction</div><div class="dest-zone-type">Patrol Zone</div></div>
+            <div class="dest-zone-row"><div class="dest-zone-dot" style="background:rgba(192,96,64,.4);"></div><div class="dest-zone-name">The Buried City</div><div class="dest-zone-type">Patrol Zone</div></div>
           </div>
           <div class="dest-stats">
-            <div class="dest-stat"><div class="dest-stat-val" style="color:#c06040;">3</div><div class="dest-stat-label">Zones</div></div>
-            <div class="dest-stat"><div class="dest-stat-val" style="color:#c06040;">Cabal</div><div class="dest-stat-label">Primary Threat</div></div>
-            <div class="dest-stat"><div class="dest-stat-val" style="color:#c06040;">Week IV</div><div class="dest-stat-label">Reveal</div></div>
+            <div class="dest-stat"><div class="dest-stat-val" style="color:#c06040;">4</div><div class="dest-stat-label">Zones</div></div>
+            <div class="dest-stat"><div class="dest-stat-val" style="color:#c06040;">Cabal / Vex</div><div class="dest-stat-label">Primary Threats</div></div>
           </div>
         </div>
       </div>
@@ -463,14 +456,14 @@
 
       <div class="social-card" style="--social-color:#7ab870;">
         <div class="social-card-header">
-          <div><div class="social-label">Social Space &mdash; Primary Hub</div><div class="social-name">The Farm</div></div>
+          <div><div class="social-label">Social Space &mdash; Guardian Hub</div><div class="social-name">The Farm</div></div>
           <div class="social-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="rgba(122,184,112,0.5)" stroke-width="1" stroke-linecap="round">
               <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
             </svg>
           </div>
         </div>
-        <div class="social-desc">Hidden in a dense stretch of the European Dead Zone, the Farm is what's left of Guardian civilization when no one is performing for anyone. It is not grand. It is a collection of repurposed structures around a working water wheel &mdash; a place where survivors chose to keep building instead of waiting to die. Vendors operate from converted shipping containers. The Cryptarch is here, somehow, cataloguing things no one has time to look at. A Fallen collaborator sorts supplies near the back and tries to stay out of the way. The Farm is messy and imperfect and exactly what humanity looks like when it refuses to quit. Come here to resupply, collect bounties, connect with Vanguard contacts, and remember what you're actually fighting for.</div>
+        <div class="social-desc">Hidden in a dense stretch of the European Dead Zone, the Farm is what's left of Guardian civilization when no one is performing for anyone. It is not grand. It is a collection of repurposed structures around a working water wheel &mdash; a place where survivors chose to keep building instead of waiting to die. Come here to resupply, collect bounties, connect with Vanguard contacts, and remember what you're actually fighting for.</div>
         <div class="social-features">
           <div class="social-feature">Vendor Hub</div><div class="social-feature">Bounty Board</div><div class="social-feature">Cryptarch</div><div class="social-feature">Postmaster</div><div class="social-feature">Gunsmith</div><div class="social-feature">Clan Meet</div>
         </div>
@@ -478,16 +471,16 @@
 
       <div class="social-card" style="--social-color:#c9a84c;">
         <div class="social-card-header">
-          <div><div class="social-label">Social Space &mdash; Endgame Hub</div><div class="social-name">The Last City</div></div>
+          <div><div class="social-label">Social Space &mdash; Guardian Hub</div><div class="social-name">The Last City</div></div>
           <div class="social-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="rgba(201,168,76,0.5)" stroke-width="1" stroke-linecap="round">
               <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><path d="M12 3V1"/>
             </svg>
           </div>
         </div>
-        <div class="social-desc">The Last City has always stood in the Traveler's shadow. Before the Collapse it was a symbol &mdash; a civilization that believed in its own future. Now it is something harder: a city that was destroyed and chose to rebuild anyway. Some districts haven't been reclaimed. The streets are quieter than they used to be. But the Vanguard operates from the Tower above the Bazaar, Guardians walk the market districts, and the Cryptarchy's archives expand every week. The Last City is where the endgame lives: high-level faction allegiances, the Trials of the Nine, exotic vendor networks, and the full Vanguard command structure. It is not just a social space. It is proof that something worth protecting still exists.</div>
+        <div class="social-desc">The Last City has always stood in the Traveler's shadow. Before the Collapse it was a symbol &mdash; a civilization that believed in its own future. Now it is something harder: a city that was destroyed and chose to rebuild anyway. The Vanguard operates from the Tower above the Bazaar. Guardians walk the market districts. The Cryptarchy's archives expand every week. The City endures.</div>
         <div class="social-features">
-          <div class="social-feature">The Tower</div><div class="social-feature">Vanguard Command</div><div class="social-feature">Faction Vendors</div><div class="social-feature">Trials Access</div><div class="social-feature">The Bazaar</div><div class="social-feature">Exotic Kiosk</div><div class="social-feature">Cryptarchy</div>
+          <div class="social-feature">The Tower</div><div class="social-feature">Vanguard Command</div><div class="social-feature">Faction Vendors</div><div class="social-feature">The Bazaar</div><div class="social-feature">Cryptarchy</div>
         </div>
       </div>
 
@@ -512,8 +505,8 @@
 <!-- FACTIONS -->
 <div class="lore-section" id="factions">
   <div class="section-label">Power Structures</div>
-  <h2 class="section-title">Factions &amp; Allies</h2>
-  <p class="section-intro">Every faction has a history. Every enemy was something else once. Understanding who they are &mdash; not just what they are &mdash; is the difference between a Guardian and a weapon that happens to be pointed in the right direction.</p>
+  <h2 class="section-title">Allies</h2>
+  <p class="section-intro">Every faction has a history. Understanding who they are &mdash; not just what they are &mdash; is the difference between a Guardian and a weapon that happens to be pointed in the right direction.</p>
 
   <div class="factions-layout">
     <div class="faction-list">
@@ -525,26 +518,6 @@
       <div class="faction-tab" style="--faction-color:#7ab870;" onclick="switchFaction(this,'f-survivors')">
         <div class="faction-tab-icon">&#9632;</div>
         <div><div class="faction-tab-name">The Survivors</div><div class="faction-tab-type">Allied &mdash; Civilians</div></div>
-        <div class="faction-tab-arrow">&#8594;</div>
-      </div>
-      <div class="faction-tab" style="--faction-color:#c8603a;" onclick="switchFaction(this,'f-fallen')">
-        <div class="faction-tab-icon">&#9670;</div>
-        <div><div class="faction-tab-name">The Fallen</div><div class="faction-tab-type">Enemy &mdash; Eliksni Houses</div></div>
-        <div class="faction-tab-arrow">&#8594;</div>
-      </div>
-      <div class="faction-tab" style="--faction-color:#7a6880;" onclick="switchFaction(this,'f-hive')">
-        <div class="faction-tab-icon">&#9670;</div>
-        <div><div class="faction-tab-name">The Hive</div><div class="faction-tab-type">Enemy &mdash; Sword Logic</div></div>
-        <div class="faction-tab-arrow">&#8594;</div>
-      </div>
-      <div class="faction-tab" style="--faction-color:#6088cc;" onclick="switchFaction(this,'f-vex')">
-        <div class="faction-tab-icon">&#9670;</div>
-        <div><div class="faction-tab-name">The Vex</div><div class="faction-tab-type">Enemy &mdash; Collective</div></div>
-        <div class="faction-tab-arrow">&#8594;</div>
-      </div>
-      <div class="faction-tab" style="--faction-color:#c06040;" onclick="switchFaction(this,'f-cabal')">
-        <div class="faction-tab-icon">&#9670;</div>
-        <div><div class="faction-tab-name">The Cabal</div><div class="faction-tab-type">Enemy &mdash; Imperial Legion</div></div>
         <div class="faction-tab-arrow">&#8594;</div>
       </div>
     </div>
@@ -603,49 +576,79 @@
   <p class="section-intro">The Traveler chose carefully. Or perhaps it chose everyone and these are the ones the Light decided to keep. Three classes. Three philosophies. One shared purpose &mdash; or at least, that's the working theory.</p>
 
   <div class="guardians-grid">
-    <div class="guardian-card" style="--class-color:#c9a84c;">
-      <div class="guardian-class-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="rgba(201,168,76,0.55)" stroke-width="1" stroke-linecap="round">
-          <path d="M12 2L4 7v5c0 5.5 3.5 10.7 8 12 4.5-1.3 8-6.5 8-12V7l-8-5z"/><path d="M9 12l2 2 4-4"/>
-        </svg>
+    <div class="guardian-col">
+      <div class="guardian-banner" style="--class-color:#c9a84c;">
+        <div class="guardian-banner-img-slot">
+          <div class="guardian-banner-placeholder">
+            <div class="guardian-banner-label">Hunter</div>
+            <div class="guardian-banner-hint">Image Slot</div>
+          </div>
+        </div>
       </div>
-      <div class="guardian-class-name">Hunter</div>
-      <div class="guardian-class-role">Pathfinder &middot; Survivor &middot; Lone Wolf</div>
-      <div class="guardian-lore">Hunters were wanderers before they were Guardians. They mapped the wilds, scavenged in places no one else went, and survived on instinct alone. That hasn't changed. They move fast, commit late, and trust their own read of a situation over anyone else's briefing. In Destiny Playground, Hunters excel at mobility, precision damage, and solo engagements. They don't always play well with others. That's a known issue.</div>
-      <div class="guardian-subclasses">
-        <div class="subclass-row"><div class="subclass-dot" style="background:#e8882a;"></div>Gunslinger &mdash; Solar &mdash; Precision &amp; Golden Gun</div>
-        <div class="subclass-row"><div class="subclass-dot" style="background:#6088cc;"></div>Arcstrider &mdash; Arc &mdash; Lightning Staff &amp; Speed</div>
-        <div class="subclass-row"><div class="subclass-dot" style="background:#8060b8;"></div>Nightstalker &mdash; Void &mdash; Shadowshot &amp; Stealth</div>
-      </div>
-    </div>
-    <div class="guardian-card" style="--class-color:#8060b8;">
-      <div class="guardian-class-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="rgba(128,96,184,0.55)" stroke-width="1" stroke-linecap="round">
-          <circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.2 4.2l2.8 2.8M17 17l2.8 2.8M1 12h4M19 12h4M4.2 19.8l2.8-2.8M17 7l2.8-2.8"/>
-        </svg>
-      </div>
-      <div class="guardian-class-name">Warlock</div>
-      <div class="guardian-class-role">Scholar &middot; Channeler &middot; Arcane</div>
-      <div class="guardian-lore">Warlocks studied the Traveler's Light with the same obsession others gave to weapons or survival. They turned paracausal energy into something that functions like sorcery &mdash; bending physics for specific outcomes, at significant personal cost when they miscalculate. They are powerful and constitutionally incapable of not asking why something works. In Destiny Playground, Warlocks bring devastating offensive abilities and team-sustaining support.</div>
-      <div class="guardian-subclasses">
-        <div class="subclass-row"><div class="subclass-dot" style="background:#e8882a;"></div>Dawnblade &mdash; Solar &mdash; Aerial Combat &amp; Fire</div>
-        <div class="subclass-row"><div class="subclass-dot" style="background:#6088cc;"></div>Stormcaller &mdash; Arc &mdash; Chain Lightning &amp; Surge</div>
-        <div class="subclass-row"><div class="subclass-dot" style="background:#8060b8;"></div>Voidwalker &mdash; Void &mdash; Nova Bomb &amp; Devour</div>
+      <div class="guardian-card" style="--class-color:#c9a84c;">
+        <div class="guardian-class-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="rgba(201,168,76,0.55)" stroke-width="1" stroke-linecap="round">
+            <path d="M12 2L4 7v5c0 5.5 3.5 10.7 8 12 4.5-1.3 8-6.5 8-12V7l-8-5z"/><path d="M9 12l2 2 4-4"/>
+          </svg>
+        </div>
+        <div class="guardian-class-name">Hunter</div>
+        <div class="guardian-class-role">Pathfinder &middot; Survivor &middot; Lone Wolf</div>
+        <div class="guardian-lore">Hunters were wanderers before they were Guardians. They mapped the wilds, scavenged in places no one else went, and survived on instinct alone. That hasn't changed. They move fast, commit late, and trust their own read of a situation over anyone else's briefing. In Destiny Playground, Hunters excel at mobility, precision damage, and solo engagements. They don't always play well with others. That's a known issue.</div>
+        <div class="guardian-subclasses">
+          <div class="subclass-row"><div class="subclass-dot" style="background:#e8882a;"></div>Gunslinger &mdash; Solar &mdash; Precision &amp; Golden Gun</div>
+          <div class="subclass-row"><div class="subclass-dot" style="background:#6088cc;"></div>Arcstrider &mdash; Arc &mdash; Lightning Staff &amp; Speed</div>
+          <div class="subclass-row"><div class="subclass-dot" style="background:#8060b8;"></div>Nightstalker &mdash; Void &mdash; Shadowshot &amp; Stealth</div>
+        </div>
       </div>
     </div>
-    <div class="guardian-card" style="--class-color:#6088cc;">
-      <div class="guardian-class-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="rgba(96,136,204,0.55)" stroke-width="1" stroke-linecap="round">
-          <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
-        </svg>
+    <div class="guardian-col">
+      <div class="guardian-banner" style="--class-color:#8060b8;">
+        <div class="guardian-banner-img-slot">
+          <div class="guardian-banner-placeholder">
+            <div class="guardian-banner-label">Warlock</div>
+            <div class="guardian-banner-hint">Image Slot</div>
+          </div>
+        </div>
       </div>
-      <div class="guardian-class-name">Titan</div>
-      <div class="guardian-class-role">Defender &middot; Vanguard &middot; The Wall</div>
-      <div class="guardian-lore">Titans built the walls. Literally, in many cases. They volunteered for the hardest assignments, the rearguard actions, the impossible last stands. They are not subtle &mdash; subtlety is not what a Titan brings to any conversation. In Destiny Playground, Titans anchor fireteams: taking hits that would stop anyone else, holding space when everything collapses, and occasionally solving problems by punching them hard enough.</div>
-      <div class="guardian-subclasses">
-        <div class="subclass-row"><div class="subclass-dot" style="background:#e8882a;"></div>Sunbreaker &mdash; Solar &mdash; Hammer of Sol &amp; Armor</div>
-        <div class="subclass-row"><div class="subclass-dot" style="background:#6088cc;"></div>Striker &mdash; Arc &mdash; Fist of Havoc &amp; Juggernaut</div>
-        <div class="subclass-row"><div class="subclass-dot" style="background:#8060b8;"></div>Sentinel &mdash; Void &mdash; Ward of Dawn &amp; Shield</div>
+      <div class="guardian-card" style="--class-color:#8060b8;">
+        <div class="guardian-class-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="rgba(128,96,184,0.55)" stroke-width="1" stroke-linecap="round">
+            <circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.2 4.2l2.8 2.8M17 17l2.8 2.8M1 12h4M19 12h4M4.2 19.8l2.8-2.8M17 7l2.8-2.8"/>
+          </svg>
+        </div>
+        <div class="guardian-class-name">Warlock</div>
+        <div class="guardian-class-role">Scholar &middot; Channeler &middot; Arcane</div>
+        <div class="guardian-lore">Warlocks studied the Traveler's Light with the same obsession others gave to weapons or survival. They turned paracausal energy into something that functions like sorcery &mdash; bending physics for specific outcomes, at significant personal cost when they miscalculate. They are powerful and constitutionally incapable of not asking why something works. In Destiny Playground, Warlocks bring devastating offensive abilities and team-sustaining support.</div>
+        <div class="guardian-subclasses">
+          <div class="subclass-row"><div class="subclass-dot" style="background:#e8882a;"></div>Dawnblade &mdash; Solar &mdash; Aerial Combat &amp; Fire</div>
+          <div class="subclass-row"><div class="subclass-dot" style="background:#6088cc;"></div>Stormcaller &mdash; Arc &mdash; Chain Lightning &amp; Surge</div>
+          <div class="subclass-row"><div class="subclass-dot" style="background:#8060b8;"></div>Voidwalker &mdash; Void &mdash; Nova Bomb &amp; Devour</div>
+        </div>
+      </div>
+    </div>
+    <div class="guardian-col">
+      <div class="guardian-banner" style="--class-color:#6088cc;">
+        <div class="guardian-banner-img-slot">
+          <div class="guardian-banner-placeholder">
+            <div class="guardian-banner-label">Titan</div>
+            <div class="guardian-banner-hint">Image Slot</div>
+          </div>
+        </div>
+      </div>
+      <div class="guardian-card" style="--class-color:#6088cc;">
+        <div class="guardian-class-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="rgba(96,136,204,0.55)" stroke-width="1" stroke-linecap="round">
+            <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
+          </svg>
+        </div>
+        <div class="guardian-class-name">Titan</div>
+        <div class="guardian-class-role">Defender &middot; Vanguard &middot; The Wall</div>
+        <div class="guardian-lore">Titans built the walls. Literally, in many cases. They volunteered for the hardest assignments, the rearguard actions, the impossible last stands. They are not subtle &mdash; subtlety is not what a Titan brings to any conversation. In Destiny Playground, Titans anchor fireteams: taking hits that would stop anyone else, holding space when everything collapses, and occasionally solving problems by punching them hard enough.</div>
+        <div class="guardian-subclasses">
+          <div class="subclass-row"><div class="subclass-dot" style="background:#e8882a;"></div>Sunbreaker &mdash; Solar &mdash; Hammer of Sol &amp; Armor</div>
+          <div class="subclass-row"><div class="subclass-dot" style="background:#6088cc;"></div>Striker &mdash; Arc &mdash; Fist of Havoc &amp; Juggernaut</div>
+          <div class="subclass-row"><div class="subclass-dot" style="background:#8060b8;"></div>Sentinel &mdash; Void &mdash; Ward of Dawn &amp; Shield</div>
+        </div>
       </div>
     </div>
   </div>
@@ -670,7 +673,7 @@
         <div class="enemy-glyph" style="--enemy-color:#c8603a;"><div class="enemy-glyph-inner"></div></div>
       </div>
       <div class="enemy-lore">Organized by House hierarchy and fueled by ether. Dregs are the expendable bottom rung &mdash; two arms severed as punishment, fighting to earn them back. Vandals form the core infantry. Captains command and hit hard. Shanks provide drone support. Archons are pseudo-religious commanders who amplify the ether supply for their House. Kells are rulers. The more ether a Fallen unit has access to, the larger, more intelligent, and more dangerous they become.</div>
-      <div class="enemy-units"><div class="enemy-unit-tag">Dreg</div><div class="enemy-unit-tag">Vandal</div><div class="enemy-unit-tag">Captain</div><div class="enemy-unit-tag">Shank</div><div class="enemy-unit-tag">Archon</div><div class="enemy-unit-tag">Kell</div><div class="enemy-unit-tag">Spider Tank</div></div>
+      <div class="enemy-units"><div class="enemy-unit-tag">House Kings</div><div class="enemy-unit-tag">House Devils</div><div class="enemy-unit-tag">House Salvation</div><div class="enemy-unit-tag">House Wolves</div></div>
     </div>
     <div class="enemy-card" style="--enemy-color:#7a6880;">
       <div class="enemy-card-header">
@@ -682,7 +685,7 @@
         <div class="enemy-glyph" style="--enemy-color:#7a6880;"><div class="enemy-glyph-inner"></div></div>
       </div>
       <div class="enemy-lore">Thralls are suicidal fast-movers: pure violence at low cost. Acolytes provide ranged support. Knights are melee juggernauts shielded in void. Wizards channel Darkness energy. Ogres are engines of rage whose screams track targets independently. Shriekers patrol fixed positions with lethal precision. At the apex: Ascendant Hive, bound to their gods through Throne Worlds, nearly impossible to permanently kill without reaching them in their own dimension.</div>
-      <div class="enemy-units"><div class="enemy-unit-tag">Thrall</div><div class="enemy-unit-tag">Acolyte</div><div class="enemy-unit-tag">Knight</div><div class="enemy-unit-tag">Wizard</div><div class="enemy-unit-tag">Ogre</div><div class="enemy-unit-tag">Shrieker</div><div class="enemy-unit-tag">Ascendant</div></div>
+      <div class="enemy-units"><div class="enemy-unit-tag">Spawn of Crota</div><div class="enemy-unit-tag">Court of Oryx</div><div class="enemy-unit-tag">Grasp of Nokris</div><div class="enemy-unit-tag">Savathûn's Brood</div></div>
     </div>
     <div class="enemy-card" style="--enemy-color:#6088cc;">
       <div class="enemy-card-header">
@@ -694,7 +697,7 @@
         <div class="enemy-glyph" style="--enemy-color:#6088cc;"><div class="enemy-glyph-inner"></div></div>
       </div>
       <div class="enemy-lore">Goblins are the expendable frontline. Hobgoblins fold themselves out of reality when damaged, becoming temporarily invulnerable. Harpies provide aerial support. Minotaurs blink across short distances to close gaps instantly. Hydras are command nodes with rotating void shields. Cyclops are heavy artillery platforms. All are networked. Destroying a unit is a setback. The network recalculates and sends more. There is no winning by attrition &mdash; there is only specific target elimination.</div>
-      <div class="enemy-units"><div class="enemy-unit-tag">Goblin</div><div class="enemy-unit-tag">Hobgoblin</div><div class="enemy-unit-tag">Harpy</div><div class="enemy-unit-tag">Minotaur</div><div class="enemy-unit-tag">Hydra</div><div class="enemy-unit-tag">Cyclops</div></div>
+      <div class="enemy-units"><div class="enemy-unit-tag">Sol Divisive</div><div class="enemy-unit-tag">Aphix Invasive</div><div class="enemy-unit-tag">Hezen Corrective</div><div class="enemy-unit-tag">Virgo Prohibition</div></div>
     </div>
     <div class="enemy-card" style="--enemy-color:#c06040;">
       <div class="enemy-card-header">
@@ -706,7 +709,7 @@
         <div class="enemy-glyph" style="--enemy-color:#c06040;"><div class="enemy-glyph-inner"></div></div>
       </div>
       <div class="enemy-lore">Cabal units are heavily armored, disciplined, and operate in coordinated squads. Legionaries hold the line. Psions use psionic abilities that let them split into duplicates when killed, and their probability-warping makes them dangerous at any range. Phalanxes push forward behind massive ballistic shields. Centurions command. Colossi are walking heavy weapons platforms. They are not a mob. They are an army with centuries of operational experience, and they are nowhere near finished.</div>
-      <div class="enemy-units"><div class="enemy-unit-tag">Legionary</div><div class="enemy-unit-tag">Psion</div><div class="enemy-unit-tag">Phalanx</div><div class="enemy-unit-tag">Centurion</div><div class="enemy-unit-tag">Colossus</div><div class="enemy-unit-tag">Interceptor</div><div class="enemy-unit-tag">Thresher</div></div>
+      <div class="enemy-units"><div class="enemy-unit-tag">Blind Legion</div><div class="enemy-unit-tag">Siege Dancers</div><div class="enemy-unit-tag">Dust Giants</div><div class="enemy-unit-tag">Sand Eaters</div></div>
     </div>
   </div>
 </div>
@@ -728,14 +731,7 @@
 <div class="lore-section" id="missions">
   <div class="section-label">Campaign &amp; Objectives</div>
   <h2 class="section-title">Missions</h2>
-  <p class="section-intro">The campaign unfolds across all four destinations. Each mission advances the story, unlocks new zones, and reveals more about what the Darkness has been quietly building toward since the Collapse.</p>
-
-  <div class="timeline-legend">
-    <div class="tl-legend-item"><div class="tl-legend-dot" style="background:var(--gold);box-shadow:0 0 6px rgba(201,168,76,.4);"></div>Campaign Story</div>
-    <div class="tl-legend-item"><div class="tl-legend-dot" style="background:#6088cc;"></div>Strike</div>
-    <div class="tl-legend-item"><div class="tl-legend-dot" style="background:#50b078;"></div>Patrol / Repeatable</div>
-    <div class="tl-legend-item"><div class="tl-legend-dot" style="background:rgba(138,128,112,.3);"></div>Classified</div>
-  </div>
+  <p class="section-intro">The campaign is still being written. What can be shared is this: it begins in the Northreach, and it begins with you waking up.</p>
 
   <div class="missions-timeline">
     <div class="mission-row featured">
@@ -744,67 +740,17 @@
       <div class="mission-content">
         <div class="mission-tag-row"><span class="mission-tag story">Story</span><span class="mission-tag featured">Act I &mdash; Opening</span></div>
         <div class="mission-title">A Guardian Rises</div>
-        <div class="mission-desc">You wake up in the ruins of the European Dead Zone. No memory. No name. Just a Ghost hovering over you, a broken world all around you, and the immediate problem of a Fallen patrol that has noticed the Light. This is where it begins.</div>
-        <div class="mission-location">Location: <span>Earth &mdash; European Dead Zone</span></div>
-      </div>
-    </div>
-    <div class="mission-row">
-      <div class="mission-meta"><div class="mission-type">Campaign</div><div class="mission-number">02</div></div>
-      <div class="mission-dot"></div>
-      <div class="mission-content">
-        <div class="mission-tag-row"><span class="mission-tag story">Story</span></div>
-        <div class="mission-title">The Dark Within</div>
-        <div class="mission-desc">A Hive Seeder has crashed in the Northreach. Something inside it is awake. The Vanguard wants it eliminated. Your Ghost thinks the behavioral patterns don't match anything in existing Hive models. Both concerns are valid and mutually escalating.</div>
+        <div class="mission-desc">A Guardian awakens in the ruins of the Northreach. No memory. No name. Just a Ghost hovering overhead, a broken world all around, and the immediate problem of a patrol that has noticed the Light. This is where it begins.</div>
         <div class="mission-location">Location: <span>Earth &mdash; The Northreach</span></div>
-      </div>
-    </div>
-    <div class="mission-row strike">
-      <div class="mission-meta"><div class="mission-type">Strike</div><div class="mission-number">03</div></div>
-      <div class="mission-dot"></div>
-      <div class="mission-content">
-        <div class="mission-tag-row"><span class="mission-tag strike">Strike</span><span class="mission-tag patrol">Repeatable</span></div>
-        <div class="mission-title">The Devils' Lair</div>
-        <div class="mission-desc">House Devils have reactivated a Warmind defense array in the Cosmodrome. Their Archon Priest, Sepiks Prime, conducts a ritual that would give them control over salvaged Clovis Bray technology. Three Guardians go in. The Archon does not come out.</div>
-        <div class="mission-location">Location: <span>Earth &mdash; The Cosmodrome</span></div>
-      </div>
-    </div>
-    <div class="mission-row">
-      <div class="mission-meta"><div class="mission-type">Campaign</div><div class="mission-number">04</div></div>
-      <div class="mission-dot"></div>
-      <div class="mission-content">
-        <div class="mission-tag-row"><span class="mission-tag story">Story</span></div>
-        <div class="mission-title">Hellmouth Descent</div>
-        <div class="mission-desc">The Hellmouth is not a cave system. It becomes clear very quickly. It is a ritual space of enormous scale &mdash; and something at its bottom has been receiving the sacraments of every Hive kill made on the Moon for three hundred years. Time to find out what it's been building toward.</div>
-        <div class="mission-location">Location: <span>The Moon &mdash; The Hellmouth</span></div>
-      </div>
-    </div>
-    <div class="mission-row">
-      <div class="mission-meta"><div class="mission-type">Campaign</div><div class="mission-number">05</div></div>
-      <div class="mission-dot"></div>
-      <div class="mission-content">
-        <div class="mission-tag-row"><span class="mission-tag story">Story</span></div>
-        <div class="mission-title">Eventide Protocol</div>
-        <div class="mission-desc">The Bray Exoscience facility on Europa was supposed to be abandoned. The data relays are not the output of an empty building. House of Salvation has been inside for months. What they found in sub-level seven is apparently the reason they haven't left.</div>
-        <div class="mission-location">Location: <span>Europa &mdash; Bray Exoscience</span></div>
-      </div>
-    </div>
-    <div class="mission-row strike">
-      <div class="mission-meta"><div class="mission-type">Strike</div><div class="mission-number">06</div></div>
-      <div class="mission-dot"></div>
-      <div class="mission-content">
-        <div class="mission-tag-row"><span class="mission-tag strike">Strike</span><span class="mission-tag patrol">Repeatable</span></div>
-        <div class="mission-title">The Glassway</div>
-        <div class="mission-desc">A Vex gate network across Cadmus Ridge has opened a passage to somewhere that cannot be mapped by conventional means. What's coming through is not standard Vex unit composition. The Vanguard wants it closed. The Vex have other calculations in mind.</div>
-        <div class="mission-location">Location: <span>Europa &mdash; Cadmus Ridge</span></div>
       </div>
     </div>
     <div class="mission-row">
       <div class="mission-meta"><div class="mission-type">Classified</div><div class="mission-number">??</div></div>
       <div class="mission-dot"></div>
       <div class="mission-content">
-        <div class="mission-tag-row"><span class="mission-tag locked">Locked</span><span class="mission-tag locked">Mars &mdash; Week IV</span></div>
-        <div class="mission-title">Awaiting Revelation&hellip;</div>
-        <div class="mission-desc" style="color:var(--muted);">Further campaign missions will be revealed as dev updates continue. The Mars destination reveal is scheduled for Week IV. Check the roadmap for the full development timeline.</div>
+        <div class="mission-tag-row"><span class="mission-tag locked">Locked</span></div>
+        <div class="mission-title">Further Missions &mdash; Classified</div>
+        <div class="mission-desc" style="color:var(--muted);">The full campaign will be revealed closer to server launch. Check the roadmap for the development timeline.</div>
         <div class="mission-location">Location: <span style="color:var(--muted);">Classified</span></div>
       </div>
     </div>
@@ -820,41 +766,47 @@
   <p class="section-intro">Some things in this universe do not have explanations yet. Some may never. These are the open questions &mdash; the threads that Destiny Playground's lore is built around pulling on.</p>
 
   <div class="mysteries-grid">
-    <div class="mystery-card mystery-card--wide">
-      <div>
-        <div class="mystery-tag">Mystery &mdash; Priority One</div>
-        <div class="mystery-title">What is the Darkness, and why is it returning?</div>
-        <div class="mystery-text">The Darkness came once before and the Traveler stopped it &mdash; or wounded itself stopping it, which is not the same thing. The Darkness retreated. It did not leave. The Pyramid structures appearing across the solar system are not an invasion fleet. They are more like <em>messages</em>. Someone is trying to communicate something specific. The disturbing part is that some Guardians can hear it. In Destiny Playground, the Darkness is not simply an enemy. It is a philosophy with a counterargument to everything the Light claims to be &mdash; and it is not entirely wrong about the Light's limitations.</div>
-        <div class="mystery-status-row"><div class="mystery-status-dot unknown"></div><div class="mystery-status-label">Status: Active Investigation &mdash; Priority One</div></div>
-      </div>
-      <div>
-        <div class="mystery-tag">Intercepted Signal &mdash; Fragment 7</div>
-        <div class="mystery-title">Pyramid Transmission, Partial Translation</div>
-        <div class="mystery-text"><em>&ldquo;We have watched you. We have watched the Light make you strong, and we have watched what that strength costs you. We are what the Light refuses to look at directly. We are the answer the Traveler cannot give. You will understand this eventually. The door we have been building opens from your side.&rdquo;</em><br><br>Signal origin: unlocatable. Translation: Ghost-assisted, partial. Vanguard classification: Level 5, eyes only.</div>
-        <div class="mystery-status-row"><div class="mystery-status-dot partial"></div><div class="mystery-status-label">Source: Partially Authenticated</div></div>
-      </div>
+    <div class="mystery-card">
+      <div class="mystery-tag">Mystery &mdash; Priority One</div>
+      <div class="mystery-title">What is the Darkness, and why is it returning?</div>
+      <div class="mystery-text">The Darkness came once before and the Traveler stopped it &mdash; or wounded itself stopping it, which is not the same thing. The Darkness retreated. It did not leave. It has been patient ever since, watching, probing, <em>sending things ahead of itself</em> to assess what resistance remains. Whether it is preparing a second attempt or simply waiting for the Light to exhaust itself is not yet known.</div>
+      <div class="mystery-status-row"><div class="mystery-status-dot unknown"></div><div class="mystery-status-label">Status: Active Investigation &mdash; Priority One</div></div>
       <div class="mystery-number">I</div>
     </div>
     <div class="mystery-card">
       <div class="mystery-tag">Mystery &mdash; Warmind</div>
-      <div class="mystery-title">What did Rasputin decide during the Collapse?</div>
-      <div class="mystery-text">Rasputin was Earth's last and most powerful defense system. During the Collapse, it went silent. The records suggest it <em>made a choice</em> in those final moments &mdash; not to fight the Darkness directly, but to do something else entirely. Its bunkers remain sealed on Mars and Earth. Its guns still track objects in the sky. Whatever it decided, it has not changed its mind. It simply has not explained itself to anyone who has asked.</div>
-      <div class="mystery-status-row"><div class="mystery-status-dot partial"></div><div class="mystery-status-label">Status: Sealed &mdash; Warmind Access Required</div></div>
+      <div class="mystery-title">What did the Warmind decide during the Collapse?</div>
+      <div class="mystery-text">Earth's defense network was the last line before the Traveler itself. During the Collapse, the Warmind went silent. The records suggest it <em>made a choice</em> in those final moments &mdash; not to fight the Darkness directly, but to do something else entirely. Its bunkers remain sealed. Its guns still track objects in the sky. Whatever it decided, it has not explained itself to anyone who has asked.</div>
+      <div class="mystery-status-row"><div class="mystery-status-dot partial"></div><div class="mystery-status-label">Status: Sealed &mdash; Authorization Required</div></div>
       <div class="mystery-number">II</div>
     </div>
     <div class="mystery-card">
       <div class="mystery-tag">Mystery &mdash; Clovis Bray</div>
       <div class="mystery-title">What did Bray build beneath Europa?</div>
-      <div class="mystery-text">The Bray Exoscience facility ran experiments classified above Vanguard clearance levels during the Golden Age. The Deep Stone Crypt is somewhere beneath it. Exo Guardians report recurring dreams of a place they describe in consistent disconnected detail: a black orb, a long descent, something that taught them to forget. House of Salvation has been inside for months. <em>Something in sub-level seven</em> has convinced them not to go lower. Nobody knows what that something is.</div>
+      <div class="mystery-text">The Bray Exoscience facility ran experiments classified above Vanguard clearance levels during the Golden Age. The Deep Stone Crypt is somewhere beneath it. Exo Guardians report recurring identical dreams: a black orb, a long descent, something that taught them to forget. House of Salvation has been inside for months. <em>Something in sub-level seven</em> has convinced them not to go lower. Nobody knows what that something is.</div>
       <div class="mystery-status-row"><div class="mystery-status-dot unknown"></div><div class="mystery-status-label">Status: Active Site &mdash; Unknown Threat</div></div>
       <div class="mystery-number">III</div>
     </div>
     <div class="mystery-card">
       <div class="mystery-tag">Mystery &mdash; The Nine</div>
       <div class="mystery-title">Who are the Nine, and what do they want?</div>
-      <div class="mystery-text">They send Emissaries. They observe the Trials. They offer rewards without conditions. The Nine are <em>something</em> &mdash; ancient intelligences, dark matter given consciousness, echoes of the first humans to reach the outer solar system. Nobody agrees. What is agreed: they know things they shouldn't, they want things that cannot be named, and when they speak, it is worth listening even when you cannot determine whether they're on your side. Especially then.</div>
+      <div class="mystery-text">They send Emissaries. They observe the Trials. They offer rewards without conditions. The Nine are <em>something</em> &mdash; ancient intelligences, dark matter given consciousness, echoes of the first humans to reach the outer solar system. Nobody agrees on what. What is agreed: they know things they shouldn't, and when they speak, it is worth listening even when you cannot determine whether they're on your side.</div>
       <div class="mystery-status-row"><div class="mystery-status-dot unknown"></div><div class="mystery-status-label">Status: Deeply Unresolved</div></div>
       <div class="mystery-number">IV</div>
+    </div>
+    <div class="mystery-card">
+      <div class="mystery-tag">Mystery &mdash; The Traveler</div>
+      <div class="mystery-title">Why did the Traveler choose humanity?</div>
+      <div class="mystery-text">It came to Mars. It terraformed worlds. It said nothing. Of all the species in the solar system it could have uplifted &mdash; and there were others, before the Collapse &mdash; it chose humanity. The Eliksni believe it chose them first, and then <em>abandoned</em> them. That belief has fueled centuries of war. What the Traveler actually intended has never been explained. Whether it is capable of explanation is its own open question.</div>
+      <div class="mystery-status-row"><div class="mystery-status-dot unknown"></div><div class="mystery-status-label">Status: Unanswered &mdash; Origin Unknown</div></div>
+      <div class="mystery-number">V</div>
+    </div>
+    <div class="mystery-card">
+      <div class="mystery-tag">Mystery &mdash; The Ghosts</div>
+      <div class="mystery-title">How did the Traveler know who to make Ghosts for?</div>
+      <div class="mystery-text">Each Ghost was created for a specific Guardian. This is not metaphor &mdash; Ghosts search for centuries, cross continents, sift through ruins, and <em>know</em> when they've found the right person. How the Traveler encoded that knowledge before going silent, and what it saw in each Guardian worth preserving, has no current explanation. The Ghosts themselves report they simply know. That answer satisfies no one, including the Ghosts.</div>
+      <div class="mystery-status-row"><div class="mystery-status-dot unknown"></div><div class="mystery-status-label">Status: No Framework Available</div></div>
+      <div class="mystery-number">VI</div>
     </div>
   </div>
 </div>
@@ -865,97 +817,111 @@
 <div class="lore-section" id="archive">
   <div class="section-label">Classified Documents</div>
   <h2 class="section-title">Lore Archive</h2>
-  <p class="section-intro">Primary source documents recovered from Ghost shells, Vanguard records, and field transmissions. Clearance levels apply.</p>
+  <p class="section-intro">The Archive will house lore books &mdash; collections of found documents, field transmissions, and recovered records. Each book contains multiple entries. No lore has been published yet; collections will unlock as the server launches and the story unfolds.</p>
 
-  <div class="lore-entries-layout">
-    <div class="lore-entry-nav">
-      <div class="lore-entry-nav-label">Entries</div>
-      <div class="lore-entry-nav-item active" onclick="switchEntry(this,'entry-ghost')">Ghost &mdash; Origin</div>
-      <div class="lore-entry-nav-item" onclick="switchEntry(this,'entry-traveler')">The Traveler</div>
-      <div class="lore-entry-nav-item" onclick="switchEntry(this,'entry-collapse')">The Collapse</div>
-      <div class="lore-entry-nav-item" onclick="switchEntry(this,'entry-light')">The Light</div>
-      <div class="lore-entry-nav-item" onclick="switchEntry(this,'entry-europa')">Europa &mdash; Bray</div>
-      <div class="lore-entry-nav-item" onclick="switchEntry(this,'entry-northreach')">The Northreach</div>
+  <div class="archive-status-banner">
+    <div class="archive-status-icon"><div class="ghost-icon-inner" style="width:14px;height:14px;animation:ghost-pulse 3s ease-in-out infinite;"></div></div>
+    <div class="archive-status-text">Ghost &mdash; <span style="color:var(--white);">Archive is sealed pending server launch.</span> Lore books will be published as the story progresses. Check back after launch.</div>
+  </div>
+
+  <div class="archive-collections">
+
+    <div class="archive-collection locked">
+      <div class="archive-collection-header">
+        <div class="archive-collection-icon">&#9670;</div>
+        <div>
+          <div class="archive-collection-tag">Collection &mdash; Field Records</div>
+          <div class="archive-collection-name">Ghost Transmissions, Vol. I</div>
+        </div>
+        <div class="archive-collection-lock">&#9632;</div>
+      </div>
+      <div class="archive-collection-desc">Recovered transmissions from Ghost shells operating across Earth and the Northreach. First-hand observations from the earliest days of the Guardian program.</div>
+      <div class="archive-collection-footer">
+        <div class="archive-entry-count">~12 entries</div>
+        <div class="archive-lock-label">Unreleased &mdash; Pending Launch</div>
+      </div>
     </div>
 
-    <div id="entry-ghost" class="lore-entry-body">
-      <div class="lore-entry-header">
-        <div><div class="lore-entry-classification">Vanguard Archive &mdash; Ghost Studies Division</div><div class="lore-entry-title">Ghost: Origin &amp; Purpose</div><div class="lore-entry-ref">Ref. GH-001 &mdash; Level 3 Clearance</div></div>
-        <div class="lore-entry-stamp"><span class="lore-stamp-word">Archive</span><div class="lore-stamp-num">001</div></div>
+    <div class="archive-collection locked">
+      <div class="archive-collection-header">
+        <div class="archive-collection-icon">&#9651;</div>
+        <div>
+          <div class="archive-collection-tag">Collection &mdash; Vanguard Intelligence</div>
+          <div class="archive-collection-name">The Enemy We Know</div>
+        </div>
+        <div class="archive-collection-lock">&#9632;</div>
       </div>
-      <div class="lore-entry-divider"></div>
-      <div class="lore-entry-text">
-        <p>The <span class="highlight">Traveler</span> created the Ghosts in the final moments before it went silent. What compelled it to spend what remained of its Light on billions of small floating intelligences &mdash; rather than a second attempt at fighting the Darkness &mdash; has not been explained. The Ghosts themselves do not know. They have the directive and the capability. The reasoning was not included in the transmission.</p>
-        <p>Each Ghost carries one singular purpose: <span class="gold-word">find the one they were made for.</span> This is not metaphor. The bond between a Guardian and their Ghost is not transferable, not assignable, and not manufactured through proximity or time. A Ghost knows when they've found their Guardian. So does the Guardian, even if they can't explain why.</p>
-        <p>In Destiny Playground, your Ghost is your companion, scanner, revival anchor, and the closest thing you have to someone who is <span class="highlight">unconditionally on your side</span> in a solar system that is largely not. They have opinions, which they will share. They are occasionally right. Take care of them.</p>
+      <div class="archive-collection-desc">Vanguard threat assessments, field reports from Guardian scouts, and intercepted communications across all known enemy factions.</div>
+      <div class="archive-collection-footer">
+        <div class="archive-entry-count">~18 entries</div>
+        <div class="archive-lock-label">Unreleased &mdash; Pending Launch</div>
       </div>
-      <div class="lore-entry-footer">Destiny Playground &mdash; Lore Archive &mdash; Fan Project &mdash; Not Affiliated with Bungie, Inc.</div>
     </div>
-    <div id="entry-traveler" class="lore-entry-body" style="display:none;">
-      <div class="lore-entry-header">
-        <div><div class="lore-entry-classification">Vanguard Archive &mdash; Cosmology Division</div><div class="lore-entry-title">The Traveler</div><div class="lore-entry-ref">Ref. TV-001 &mdash; Level 4 Clearance</div></div>
-        <div class="lore-entry-stamp"><span class="lore-stamp-word">Archive</span><div class="lore-stamp-num">002</div></div>
+
+    <div class="archive-collection locked">
+      <div class="archive-collection-header">
+        <div class="archive-collection-icon">&#9632;</div>
+        <div>
+          <div class="archive-collection-tag">Collection &mdash; Historical Record</div>
+          <div class="archive-collection-name">Before the Collapse</div>
+        </div>
+        <div class="archive-collection-lock">&#9632;</div>
       </div>
-      <div class="lore-entry-divider"></div>
-      <div class="lore-entry-text">
-        <p>It arrived in Martian orbit without warning and <span class="highlight">said nothing</span>. Within decades, the Martian permafrost had receded and oceans emerged. Venus became breathable. Jupiter's moons became accessible. The Traveler transformed worlds without explaining itself, and humanity adapted to the transformation with the mixture of gratitude and unease it brings to everything it doesn't understand.</p>
-        <p>This period is known as the <span class="gold-word">Golden Age</span>. Colonies spread. Lifespans extended. The Clovis Bray corporation ran experiments on Europa that would not have been legally possible had there been laws capable of keeping up with the technology. And then the Darkness arrived, following the Traveler like a shadow that had finally caught up with the thing casting it.</p>
-        <p>The Traveler fought back. The Collapse happened anyway. In the aftermath, the Traveler hangs above what remains of the Last City &mdash; <span class="highlight">its shell cracked, its voice gone</span>. Whether it is healing, waiting, or simply present in the way that a wound is present, no one can determine. The Ghosts it created continue searching. That is the closest thing to an ongoing answer currently available.</p>
+      <div class="archive-collection-desc">Fragments recovered from Golden Age archives. Personal logs, corporate communications, and scientific records from a civilization that no longer exists.</div>
+      <div class="archive-collection-footer">
+        <div class="archive-entry-count">~20 entries</div>
+        <div class="archive-lock-label">Unreleased &mdash; Pending Launch</div>
       </div>
-      <div class="lore-entry-footer">Destiny Playground &mdash; Lore Archive &mdash; Fan Project &mdash; Not Affiliated with Bungie, Inc.</div>
     </div>
-    <div id="entry-collapse" class="lore-entry-body" style="display:none;">
-      <div class="lore-entry-header">
-        <div><div class="lore-entry-classification">Vanguard Archive &mdash; Historical Records</div><div class="lore-entry-title">The Collapse</div><div class="lore-entry-ref">Ref. CL-001 &mdash; Level 5 Clearance</div></div>
-        <div class="lore-entry-stamp"><span class="lore-stamp-word">Archive</span><div class="lore-stamp-num">003</div></div>
+
+    <div class="archive-collection locked">
+      <div class="archive-collection-header">
+        <div class="archive-collection-icon">&#9670;</div>
+        <div>
+          <div class="archive-collection-tag">Collection &mdash; Destination Lore</div>
+          <div class="archive-collection-name">Places That Remember</div>
+        </div>
+        <div class="archive-collection-lock">&#9632;</div>
       </div>
-      <div class="lore-entry-divider"></div>
-      <div class="lore-entry-text">
-        <p>What survives of the historical record from before the Collapse is fragmentary and inconsistent. The consistent part is the shape of the event: <span class="highlight">fast, total, and without precedent.</span> Colonies went dark mid-transmission. Ships fell silent. The Warmind Rasputin fired everything it had and the calculations came back negative. Nothing was enough.</p>
-        <p>In the final moments, the Traveler acted. A pulse of paracausal energy, described in the few surviving accounts as <span class="gold-word">a light that felt like a decision</span>, pushed the Darkness back from Earth. The Darkness retreated. The Traveler went silent. Humanity survived, reduced to one city, under a wounded god that could no longer speak to them.</p>
-        <p>The Collapse was not the end of the war. It was the end of the first engagement. The Darkness has been patient since &mdash; watching, testing, <span class="highlight">sending things ahead of itself</span> to assess what resistance it can expect when it returns in earnest. Guardians are the answer to that assessment. Whether the answer is sufficient is the central question of every mission in Destiny Playground.</p>
+      <div class="archive-collection-desc">Location intelligence, environmental surveys, and reports from Guardians who explored destinations and came back with more questions than answers.</div>
+      <div class="archive-collection-footer">
+        <div class="archive-entry-count">~15 entries</div>
+        <div class="archive-lock-label">Unreleased &mdash; Pending Launch</div>
       </div>
-      <div class="lore-entry-footer">Destiny Playground &mdash; Lore Archive &mdash; Fan Project &mdash; Not Affiliated with Bungie, Inc.</div>
     </div>
-    <div id="entry-light" class="lore-entry-body" style="display:none;">
-      <div class="lore-entry-header">
-        <div><div class="lore-entry-classification">Vanguard Archive &mdash; Paracausal Studies</div><div class="lore-entry-title">The Light</div><div class="lore-entry-ref">Ref. LT-001 &mdash; Level 3 Clearance</div></div>
-        <div class="lore-entry-stamp"><span class="lore-stamp-word">Archive</span><div class="lore-stamp-num">004</div></div>
+
+    <div class="archive-collection locked">
+      <div class="archive-collection-header">
+        <div class="archive-collection-icon">&#9651;</div>
+        <div>
+          <div class="archive-collection-tag">Collection &mdash; The Darkness</div>
+          <div class="archive-collection-name">What the Light Won't Say</div>
+        </div>
+        <div class="archive-collection-lock">&#9632;</div>
       </div>
-      <div class="lore-entry-divider"></div>
-      <div class="lore-entry-text">
-        <p>The <span class="gold-word">Light</span> is not magic. It is also not science, in any framework that survived the Collapse. It is a paracausal force &mdash; existing outside normal chains of cause and effect. It resurrects the dead. It allows Guardians to project Solar, Arc, and Void energy from their bare hands. It makes the physically impossible into a recurring problem that Guardians are expected to solve by next Tuesday.</p>
-        <p>The Traveler is the source, or the conduit, or possibly both. Ghosts channel it to their Guardians. <span class="highlight">Guardians shape it through their subclass</span> &mdash; Solar, Arc, or Void, each a different expression of the same underlying force, differentiated by the Guardian's intent and temperament more than any technical specification. A Warlock and a Titan using the same Solar subclass will do fundamentally different things with it. This is not an accident.</p>
-        <p>What the Light cannot do is answer questions about itself. Warlocks have spent lifetimes trying. They've produced frameworks that are useful without being complete &mdash; which is the honest best case for any inquiry into something that predates inquiry. The Light gives Guardians their power. <span class="highlight">What they do with that power is the only part that belongs entirely to them.</span></p>
+      <div class="archive-collection-desc">Intercepted signals, anomalous readings, and Warlock research into the Darkness &mdash; what it is, what it wants, and what it has been whispering to Guardians in the dark.</div>
+      <div class="archive-collection-footer">
+        <div class="archive-entry-count">~10 entries</div>
+        <div class="archive-lock-label">Unreleased &mdash; Pending Launch</div>
       </div>
-      <div class="lore-entry-footer">Destiny Playground &mdash; Lore Archive &mdash; Fan Project &mdash; Not Affiliated with Bungie, Inc.</div>
     </div>
-    <div id="entry-europa" class="lore-entry-body" style="display:none;">
-      <div class="lore-entry-header">
-        <div><div class="lore-entry-classification">Vanguard Archive &mdash; Destination Intelligence</div><div class="lore-entry-title">Europa &mdash; Bray Exoscience</div><div class="lore-entry-ref">Ref. EU-003 &mdash; Level 4 Clearance</div></div>
-        <div class="lore-entry-stamp"><span class="lore-stamp-word">Archive</span><div class="lore-stamp-num">005</div></div>
+
+    <div class="archive-collection locked archive-collection--more">
+      <div class="archive-collection-header">
+        <div class="archive-collection-icon" style="opacity:.4;">&#8943;</div>
+        <div>
+          <div class="archive-collection-tag">And More</div>
+          <div class="archive-collection-name">Additional Collections</div>
+        </div>
+        <div class="archive-collection-lock" style="opacity:.3;">&#9632;</div>
       </div>
-      <div class="lore-entry-divider"></div>
-      <div class="lore-entry-text">
-        <p>The Clovis Bray corporation built its most ambitious facility on <span class="highlight">Jupiter's frozen moon</span> for a specific reason: the projects it ran there could not be permitted near populated areas, and the extreme cold assisted with containment procedures that failed at room temperature. What those procedures contained has not been fully disclosed.</p>
-        <p>What is known: the <span class="gold-word">Deep Stone Crypt</span> is somewhere beneath the Bray Exoscience facility. Exo Guardians &mdash; those whose consciousness was transferred into mechanical frames before the Collapse &mdash; report recurring identical dreams: a black orb, a long descent, something that taught them to forget. The Crypt is not metaphorical. It is a place. Getting there is the problem.</p>
-        <p>Current status: the House of Salvation operates inside the upper levels. They have not explained why. The Vex gate network across Cadmus Ridge continues expanding. <span class="highlight">Something in sub-level seven</span> has apparently convinced the Fallen not to descend further. Guardian assessment is ongoing and overdue.</p>
+      <div class="archive-collection-desc" style="opacity:.5;">Many more lore books are planned &mdash; faction histories, personal journals, weapon lore, exotic item records, and collections that will only unlock through in-server events and discoveries.</div>
+      <div class="archive-collection-footer">
+        <div class="archive-entry-count">Unknown</div>
+        <div class="archive-lock-label">To Be Announced</div>
       </div>
-      <div class="lore-entry-footer">Destiny Playground &mdash; Lore Archive &mdash; Fan Project &mdash; Not Affiliated with Bungie, Inc.</div>
     </div>
-    <div id="entry-northreach" class="lore-entry-body" style="display:none;">
-      <div class="lore-entry-header">
-        <div><div class="lore-entry-classification">Vanguard Archive &mdash; Destination Intelligence</div><div class="lore-entry-title">Earth &mdash; The Northreach</div><div class="lore-entry-ref">Ref. EA-002 &mdash; Level 2 Clearance</div></div>
-        <div class="lore-entry-stamp"><span class="lore-stamp-word">Archive</span><div class="lore-stamp-num">006</div></div>
-      </div>
-      <div class="lore-entry-divider"></div>
-      <div class="lore-entry-text">
-        <p>The Northreach is what happens when you take a subarctic industrial region, remove its population during a civilizational collapse, and leave it to the Fallen for three centuries. <span class="highlight">It is not friendly terrain.</span> Frozen infrastructure. Collapsed transit networks. Pre-Collapse military installations half-buried in permafrost &mdash; their weapons still occasionally functional, their targeting systems still occasionally tracking things that move.</p>
-        <p>House Kings operate primarily from the Northreach. The Kings are the most politically sophisticated of the Fallen Houses, and they chose terrain that is <span class="gold-word">difficult to patrol and full of things that can still shoot back</span> on their behalf. They are not here by accident. Something in the deep north matters to them &mdash; something found in ruins that they have not shared with the other Houses.</p>
-        <p>For Guardians, the Northreach offers patrol access to pre-Collapse military archives, active Fallen supply chains worth disrupting, and at least two structures that <span class="highlight">Ghost analysis cannot fully account for</span> in terms of construction date or purpose. Non-standard protocols apply more often than expected. Consider yourself warned.</p>
-      </div>
-      <div class="lore-entry-footer">Destiny Playground &mdash; Lore Archive &mdash; Fan Project &mdash; Not Affiliated with Bungie, Inc.</div>
-    </div>
+
   </div>
 </div>
 
@@ -965,7 +931,7 @@
   <div class="ghost-icon"><div class="ghost-icon-inner"></div></div>
   <div>
     <div class="ghost-callout-label">Ghost &mdash; End of Archive Access</div>
-    <div class="ghost-callout-text">&ldquo;That's everything with your clearance level. There are forty-seven more entries locked above Level 5, and Ikora's the only one with the key, and she's been saying 'soon' for three weeks. My read: whatever's in those files changes things significantly. The way she's been looking at the Pyramid data lately&hellip; I don't think she likes what she's seeing. I'm trying to decide if that should worry me more than if she were calm about it. I think it probably should.&rdquo;</div>
+    <div class="ghost-callout-text">&ldquo;That's everything with your clearance level. There are more entries locked above Level 5, and Ikora's the only one with the key, and she's been saying 'soon' for three weeks. My read: whatever's in those files changes things significantly. I'm trying to decide if the silence should worry me more than an explanation would. I think it probably should.&rdquo;</div>
     <div class="ghost-callout-source">&mdash; Ghost Shell, Post-Archive Summary Transmission</div>
   </div>
 </div>
