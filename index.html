@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="/destiny-playground/css/styles.css">
 </head>
 <body>
-
+  
 <div id="nav-placeholder"></div>
 
 <!-- HERO -->
@@ -206,11 +206,20 @@
 <div id="footer-placeholder"></div>
   
 <script>
+  function loadNav() {
   fetch('/destiny-playground/nav.html')
-  .then(res => res.text())
-  .then(data => {
-    document.getElementById('nav-placeholder').innerHTML = data;
-  });
+    .then(r => r.text())
+    .then(html => {
+      const placeholder = document.getElementById('nav-placeholder');
+      placeholder.innerHTML = html;
+      placeholder.querySelectorAll('script').forEach(oldScript => {
+        const newScript = document.createElement('script');
+        newScript.textContent = oldScript.textContent;
+        document.body.appendChild(newScript);
+      });
+    });
+  }
+  loadNav();
   
   async function loadNews() {
     const grid = document.getElementById('news-grid');
