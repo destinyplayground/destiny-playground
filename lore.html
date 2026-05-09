@@ -940,6 +940,12 @@
 <div id="footer-placeholder"></div>
 
 <script>
+   fetch('/destiny-playground/nav.html')
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById('nav-placeholder').innerHTML = data;
+  });
+   
 function navPill(btn, id) {
   document.querySelectorAll('.lore-nav-pill').forEach(p => p.classList.remove('active'));
   btn.classList.add('active');
