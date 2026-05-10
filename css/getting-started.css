@@ -314,3 +314,69 @@
   .gs-hero-steps { display: none; }
   .gs-info-label { width: 90px; }
 }
+
+/* ── NEW TO MINECRAFT LINKS ── */
+.gs-new-to-mc {
+  margin-top: 1.8rem;
+  border: .5px solid rgba(201,168,76,.12);
+  background: rgba(201,168,76,.02);
+}
+.gs-new-to-mc-label {
+  font-size: .6rem; letter-spacing: .3em; text-transform: uppercase;
+  color: var(--gold); padding: .7rem 1.4rem;
+  border-bottom: .5px solid rgba(201,168,76,.08);
+}
+.gs-new-to-mc-links {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1.5px;
+  background: rgba(201,168,76,.08);
+}
+.gs-mc-link {
+  display: flex; align-items: flex-start; gap: 1rem;
+  padding: 1.2rem 1.4rem; background: var(--dark);
+  text-decoration: none; color: inherit;
+  transition: background .2s;
+}
+.gs-mc-link:hover { background: rgba(201,168,76,.04); }
+.gs-mc-link-icon {
+  font-size: 1rem; color: var(--gold-dim); flex-shrink: 0;
+  width: 28px; height: 28px; border: .5px solid rgba(201,168,76,.2);
+  display: flex; align-items: center; justify-content: center;
+  margin-top: .1rem;
+}
+.gs-mc-link-title {
+  font-family: 'Rajdhani', sans-serif; font-size: .82rem;
+  font-weight: 600; letter-spacing: .08em; color: var(--white);
+  margin-bottom: .25rem;
+}
+.gs-mc-link-desc {
+  font-size: .72rem; color: var(--muted); letter-spacing: .04em;
+}
+@media (max-width: 600px) {
+  .gs-new-to-mc-links { grid-template-columns: 1fr; }
+}
+
+/* ── MODPACK CTA ── */
+.gs-modpack-cta {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1.5rem; flex-wrap: wrap;
+  margin-top: 1.5rem; padding: 1.2rem 1.4rem;
+  border: .5px solid rgba(201,168,76,.18);
+  background: rgba(201,168,76,.03);
+}
+.gs-modpack-cta-text {
+  font-size: .85rem; color: var(--body-text);
+  font-weight: 300; line-height: 1.6;
+}
+.gs-modpack-cta-btn {
+  display: inline-flex; align-items: center; gap: .5rem;
+  padding: .6rem 1.6rem; flex-shrink: 0;
+  font-family: 'Rajdhani', sans-serif; font-size: .72rem;
+  font-weight: 600; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--gold); border: .5px solid var(--gold-dim);
+  text-decoration: none; background: none;
+  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  transition: all .2s;
+}
+.gs-modpack-cta-btn:hover {
+  background: rgba(201,168,76,.08); border-color: var(--gold);
+}
