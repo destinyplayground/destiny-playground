@@ -196,3 +196,127 @@ html.a11y-motion .hero-divider,
 html.a11y-motion .hero-desc,
 html.a11y-motion .hero-ctas,
 html.a11y-motion .scroll-hint { opacity: 1 !important; transform: none !important; }
+
+/* ═══════════════════════════════════════════════════════
+   ARTICLE PAGE OVERRIDES (article.css classes)
+   ═══════════════════════════════════════════════════════ */
+
+/* ── ARTICLE: LIGHT MODE ── */
+html.a11y-light .banner-overlay {
+  background: linear-gradient(to bottom, rgba(245,240,232,.15) 0%, rgba(245,240,232,0) 35%, rgba(245,240,232,.55) 75%, rgba(245,240,232,1) 100%);
+}
+html.a11y-light .banner-placeholder {
+  background: linear-gradient(135deg, rgba(120,90,0,.08) 0%, rgba(120,90,0,.02) 50%, rgba(120,90,0,.05) 100%);
+}
+html.a11y-light .banner-tag { background: rgba(245,240,232,.85); color: var(--gold); }
+html.a11y-light .article-body p,
+html.a11y-light .article-body ul li { color: var(--body-text); }
+html.a11y-light .article-body h2 { color: var(--white); border-bottom-color: var(--border); }
+html.a11y-light .article-body h3 { color: var(--gold); }
+html.a11y-light .callout { background: rgba(120,90,0,.04); border-left-color: var(--gold-dim); }
+html.a11y-light .callout p { color: var(--muted); }
+html.a11y-light .dev-notice { background: rgba(120,90,0,.02); border-color: var(--border); }
+html.a11y-light .dev-notice p { color: var(--muted); }
+html.a11y-light .survey-box { background: rgba(120,90,0,.03); border-color: var(--gold-dim); }
+html.a11y-light .survey-box p { color: var(--muted); }
+html.a11y-light .hiatus-box { background: rgba(120,90,0,.04); border-color: rgba(120,90,0,.35); }
+html.a11y-light .hiatus-box p { color: var(--body-text); }
+html.a11y-light .teaser-box { background: rgba(0,0,0,.01); border-color: var(--border); }
+html.a11y-light .teaser-box p { color: var(--muted); }
+html.a11y-light .closing-note { background: rgba(0,0,0,.01); border-color: var(--border); color: var(--muted); }
+html.a11y-light .section-banner { background-color: rgba(120,90,0,.03); border-color: var(--border); }
+html.a11y-light .section-banner::before {
+  background: linear-gradient(to right, rgba(245,240,232,.8) 0%, rgba(245,240,232,.4) 50%, rgba(245,240,232,.8) 100%);
+}
+html.a11y-light .article-image img { border-color: var(--border); }
+html.a11y-light .image-caption,
+html.a11y-light .video-caption { border-left-color: var(--border); color: var(--muted); }
+html.a11y-light .article-footer { border-top-color: var(--border); color: var(--muted); }
+html.a11y-light .btn-back { color: var(--muted); border-color: var(--border); }
+html.a11y-light .btn-back:hover { color: var(--gold); border-color: var(--gold-dim); }
+html.a11y-light .meta-tag { color: #f5f0e8; }
+
+/* ── ARTICLE: SIMPLE FONT ── */
+html.a11y-font .article-title,
+html.a11y-font .article-body h2,
+html.a11y-font .section-banner-title,
+html.a11y-font .teaser-box-title,
+html.a11y-font .survey-box-title,
+html.a11y-font .socials-title {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif !important;
+  letter-spacing: .01em !important;
+}
+html.a11y-font .article-body h3,
+html.a11y-font .article-body p,
+html.a11y-font .article-body ul li,
+html.a11y-font .callout p,
+html.a11y-font .dev-notice p,
+html.a11y-font .survey-box p,
+html.a11y-font .hiatus-box p,
+html.a11y-font .teaser-box p,
+html.a11y-font .closing-note,
+html.a11y-font .banner-tag,
+html.a11y-font .meta-date,
+html.a11y-font .meta-author,
+html.a11y-font .btn-back,
+html.a11y-font .survey-btn {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif !important;
+  letter-spacing: .02em !important;
+}
+
+/* ── ARTICLE: LARGER TEXT ── */
+html.a11y-size .article-title  { font-size: clamp(2rem, 4.5vw, 3.4rem); }
+html.a11y-size .article-body p,
+html.a11y-size .article-body ul li { font-size: 1.1rem; line-height: 2; }
+html.a11y-size .article-body h2 { font-size: 1.4rem; }
+html.a11y-size .article-body h3 { font-size: 1.1rem; }
+html.a11y-size .callout p,
+html.a11y-size .dev-notice p,
+html.a11y-size .survey-box p,
+html.a11y-size .hiatus-box p,
+html.a11y-size .teaser-box p,
+html.a11y-size .closing-note  { font-size: 1rem; line-height: 1.9; }
+
+/* ── ARTICLE: HIGH CONTRAST ── */
+html.a11y-contrast .banner-overlay {
+  background: linear-gradient(to bottom, rgba(0,0,0,.2) 0%, rgba(0,0,0,0) 35%, rgba(0,0,0,.7) 75%, #000 100%);
+}
+html.a11y-contrast .article-body p,
+html.a11y-contrast .article-body ul li { color: #e8e8e8; }
+html.a11y-contrast .article-body h2 { color: #fff; border-bottom-color: var(--gold); }
+html.a11y-contrast .callout { border-left-color: var(--gold); background: rgba(255,210,77,.04); }
+html.a11y-contrast .dev-notice,
+html.a11y-contrast .survey-box,
+html.a11y-contrast .hiatus-box,
+html.a11y-contrast .teaser-box { border-color: rgba(255,210,77,.3); background: rgba(255,210,77,.03); }
+html.a11y-contrast .article-image img { border-color: rgba(255,210,77,.3); }
+html.a11y-contrast .image-caption,
+html.a11y-contrast .video-caption { border-left-color: var(--gold); }
+html.a11y-contrast .article-footer { border-top-color: rgba(255,210,77,.25); }
+html.a11y-contrast .closing-note { border-color: rgba(255,210,77,.2); }
+html.a11y-contrast .video-wrapper { border-color: rgba(255,210,77,.3); }
+
+/* ── ARTICLE: DYSLEXIA FRIENDLY ── */
+html.a11y-dyslexia .article-title,
+html.a11y-dyslexia .article-body h2,
+html.a11y-dyslexia .article-body h3 {
+  font-family: 'OpenDyslexic', Arial, sans-serif !important;
+  letter-spacing: .04em !important; line-height: 1.4 !important;
+}
+html.a11y-dyslexia .article-body p,
+html.a11y-dyslexia .article-body ul li,
+html.a11y-dyslexia .callout p,
+html.a11y-dyslexia .dev-notice p,
+html.a11y-dyslexia .survey-box p,
+html.a11y-dyslexia .hiatus-box p,
+html.a11y-dyslexia .teaser-box p,
+html.a11y-dyslexia .closing-note {
+  font-family: 'OpenDyslexic', Arial, sans-serif !important;
+  line-height: 2.1 !important; letter-spacing: .04em !important; word-spacing: .16em !important;
+}
+
+/* ── ARTICLE: REDUCE MOTION ── */
+html.a11y-motion .article-image img,
+html.a11y-motion .btn-back,
+html.a11y-motion .survey-btn,
+html.a11y-motion .banner-img { transition: none !important; }
