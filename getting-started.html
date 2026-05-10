@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Getting Started — Destiny Playground</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/destiny-playground/css/styles.css">
+<link rel="stylesheet" href="/destiny-playground/css/nav.css">
+<link rel="stylesheet" href="/destiny-playground/css/getting-started.css">
+<link rel="stylesheet" href="/destiny-playground/css/a11y-overrides.css">
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+
+<!-- HERO -->
+<div class="gs-hero">
+  <div class="gs-hero-bg"></div>
+  <div class="gs-hero-grid"></div>
+  <div class="gs-hero-inner">
+    <div class="gs-hero-eyebrow">New Guardian Guide</div>
+    <h1 class="gs-hero-title">Getting<br><span>Started</span></h1>
+    <p class="gs-hero-desc">Everything you need to go from zero to Guardian. Read through before you join &mdash; it'll save you time and make sure you don't miss anything on your first session.</p>
+    <div class="gs-hero-steps">
+      <div class="gs-step-pill"><div class="gs-step-pill-num">1</div>Join the Server</div>
+      <div class="gs-step-arrow">&#9656;</div>
+      <div class="gs-step-pill"><div class="gs-step-pill-num">2</div>Accept Resource Pack</div>
+      <div class="gs-step-arrow">&#9656;</div>
+      <div class="gs-step-pill"><div class="gs-step-pill-num">3</div>Adjust Settings</div>
+      <div class="gs-step-arrow">&#9656;</div>
+      <div class="gs-step-pill"><div class="gs-step-pill-num">4</div>Create Your Guardian</div>
+      <div class="gs-step-arrow">&#9656;</div>
+      <div class="gs-step-pill"><div class="gs-step-pill-num">5</div>Wake Up</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="gs-layout">
+  <div class="gs-blocks-wrap">
+
+    <!-- BLOCK 1: JOIN THE SERVER -->
+    <div class="gs-block">
+      <div class="gs-block-inner">
+        <div class="gs-block-header">
+          <div class="gs-block-num">01</div>
+          <div class="gs-block-head-text">
+            <div class="gs-block-label">First Steps</div>
+            <div class="gs-block-title">Joining the Server</div>
+          </div>
+        </div>
+        <div class="gs-block-body">
+          <p>Open Minecraft Java Edition, head to Multiplayer, and add the server using the IP below. That's it. You're in.</p>
+
+          <div class="gs-info-box">
+            <div class="gs-info-row">
+              <div class="gs-info-label">Server IP</div>
+              <div class="gs-info-value mono" id="server-ip">play.destinyplayground.net</div>
+              <button class="gs-copy-btn" id="copy-ip-btn" onclick="copyIP()">Copy</button>
+            </div>
+            <div class="gs-info-row">
+              <div class="gs-info-label">Recommended</div>
+              <div class="gs-info-value">Minecraft Java Edition 1.21.8</div>
+            </div>
+            <div class="gs-info-row">
+              <div class="gs-info-label">Also Supported</div>
+              <div class="gs-info-value">1.21.8 and above</div>
+            </div>
+            <div class="gs-info-row">
+              <div class="gs-info-label">Server Info</div>
+              <div class="gs-info-value">
+                <a href="/destiny-playground/server-info.html" style="color:var(--gold-dim);text-decoration:none;font-size:.82rem;letter-spacing:.1em;">
+                  Full server info &amp; rules &#8594;
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="gs-warn">
+            <div class="gs-warn-icon">&#9650;</div>
+            <p><strong>Version note:</strong> We recommend playing on <strong>1.21.8</strong> &mdash; the same version the server runs on. You can join on any later version, but you may encounter visual glitches or minor issues. Playing on an older version is not supported.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BLOCK 2: RESOURCE PACK -->
+    <div class="gs-block">
+      <div class="gs-block-inner">
+        <div class="gs-block-header">
+          <div class="gs-block-num">02</div>
+          <div class="gs-block-head-text">
+            <div class="gs-block-label">Required</div>
+            <div class="gs-block-title">Resource Pack</div>
+          </div>
+        </div>
+        <div class="gs-block-body">
+          <p>Destiny Playground uses a custom resource pack that handles the visuals, sounds, custom music, and dialogue that make the server what it is. <strong>You need it.</strong> Fortunately, installation is automatic.</p>
+
+          <div class="gs-steps-list">
+            <div class="gs-step">
+              <div class="gs-step-dot">1</div>
+              <div class="gs-step-text">When you first connect, Minecraft will prompt you to <strong>accept the server resource pack</strong>. Click Accept.</div>
+            </div>
+            <div class="gs-step">
+              <div class="gs-step-dot">2</div>
+              <div class="gs-step-text">The pack will download and apply automatically. This may take a moment on your first join.</div>
+            </div>
+            <div class="gs-step">
+              <div class="gs-step-dot">3</div>
+              <div class="gs-step-text">Once loaded, you're good to go. The pack stays cached so subsequent joins are faster.</div>
+            </div>
+          </div>
+
+          <div class="gs-note">
+            <div class="gs-note-icon">&#9432;</div>
+            <p><strong>If the pack doesn't apply:</strong> head to the <strong>#server-resources</strong> channel in our Discord for the latest manual download link. The Discord is always the most up-to-date source for pack files.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BLOCK 3: RECOMMENDED MODS -->
+    <div class="gs-block">
+      <div class="gs-block-inner">
+        <div class="gs-block-header">
+          <div class="gs-block-num">03</div>
+          <div class="gs-block-head-text">
+            <div class="gs-block-label">Optional</div>
+            <div class="gs-block-title">Mods &amp; Modpacks</div>
+          </div>
+        </div>
+        <div class="gs-block-body">
+          <p>Everything that makes Destiny Playground run is handled server-side. You don't need any mods to play &mdash; vanilla Minecraft works perfectly. That said, we maintain a few official modpacks if you want a smoother or more visually rich experience.</p>
+
+          <div class="gs-modpack-grid">
+            <div class="gs-modpack-card" style="--card-color:#5dca8a;">
+              <div class="gs-modpack-icon">&#9654;</div>
+              <div class="gs-modpack-name">Performance Pack</div>
+              <div class="gs-modpack-type">Optimisation</div>
+              <div class="gs-modpack-desc">Better frame rates, faster chunk loading, reduced stuttering. Recommended for lower-end machines or anyone who wants a cleaner experience.</div>
+              <div class="gs-modpack-note">No visual changes &mdash; purely under the hood.</div>
+            </div>
+            <div class="gs-modpack-card" style="--card-color:#88c4e8;">
+              <div class="gs-modpack-icon">&#9670;</div>
+              <div class="gs-modpack-name">Aesthetic Pack</div>
+              <div class="gs-modpack-type">Visuals &amp; Immersion</div>
+              <div class="gs-modpack-desc">Enhanced lighting, improved animations, shader-adjacent effects, and quality-of-life visual upgrades that complement the server's art direction.</div>
+              <div class="gs-modpack-note">Pairs well with the server resource pack.</div>
+            </div>
+            <div class="gs-modpack-card" style="--card-color:#c9a84c;">
+              <div class="gs-modpack-icon">&#9733;</div>
+              <div class="gs-modpack-name">Full Pack</div>
+              <div class="gs-modpack-type">Performance + Visuals</div>
+              <div class="gs-modpack-desc">Everything from both packs in one. If you're not sure which to grab, this is the one. Best overall experience for most players.</div>
+              <div class="gs-modpack-note">Recommended for most players.</div>
+            </div>
+          </div>
+
+          <div class="gs-warn">
+            <div class="gs-warn-icon">&#9650;</div>
+            <p><strong>Heads up:</strong> Official modpacks are not updated frequently. If you're on a newer version of Minecraft, some mods may not have been updated yet. Check the download page for compatibility notes before installing.</p>
+          </div>
+
+          <p>You can find all modpack downloads on the <a href="/destiny-playground/mods.html" style="color:var(--gold-dim);">Mods page</a> under Community in the nav.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- BLOCK 4: RECOMMENDED SETTINGS -->
+    <div class="gs-block">
+      <div class="gs-block-inner">
+        <div class="gs-block-header">
+          <div class="gs-block-num">04</div>
+          <div class="gs-block-head-text">
+            <div class="gs-block-label">Before You Play</div>
+            <div class="gs-block-title">Recommended Settings</div>
+          </div>
+        </div>
+        <div class="gs-block-body">
+          <p>When you first join you'll be shown these in-game, but it's worth setting them up before you spawn in. A few of these make a significant difference to the experience.</p>
+
+          <div class="gs-settings-grid">
+            <div class="gs-setting-row">
+              <div class="gs-setting-name header">Setting</div>
+              <div class="gs-setting-val header">Value</div>
+              <div class="gs-setting-reason header">Why</div>
+            </div>
+            <div class="gs-setting-row">
+              <div class="gs-setting-name">Master Volume</div>
+              <div class="gs-setting-val">100%</div>
+              <div class="gs-setting-reason">Custom music and ambient audio are a core part of the experience. Turn it up.</div>
+            </div>
+            <div class="gs-setting-row">
+              <div class="gs-setting-name">Music Volume</div>
+              <div class="gs-setting-val">100%</div>
+              <div class="gs-setting-reason">Original soundtrack plays throughout the world and missions. Don't miss it.</div>
+            </div>
+            <div class="gs-setting-row">
+              <div class="gs-setting-name">Voice / Dialogue</div>
+              <div class="gs-setting-val">100%</div>
+              <div class="gs-setting-reason">NPCs have voiced dialogue. Required to follow the story properly.</div>
+            </div>
+            <div class="gs-setting-row">
+              <div class="gs-setting-name">Render Distance</div>
+              <div class="gs-setting-val">12+</div>
+              <div class="gs-setting-reason">Some areas are designed with long sightlines in mind. Higher is better where your machine allows.</div>
+            </div>
+            <div class="gs-setting-row">
+              <div class="gs-setting-name">GUI Scale</div>
+              <div class="gs-setting-val">Auto</div>
+              <div class="gs-setting-reason">Custom HUD elements are designed for Auto scale. Other values may cause layout issues.</div>
+            </div>
+            <div class="gs-setting-row">
+              <div class="gs-setting-name">Subtitles</div>
+              <div class="gs-setting-val">On</div>
+              <div class="gs-setting-reason">Recommended for accessibility and for catching ambient audio cues during missions.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BLOCK 5: FIRST SESSION -->
+    <div class="gs-block">
+      <div class="gs-block-inner">
+        <div class="gs-block-header">
+          <div class="gs-block-num">05</div>
+          <div class="gs-block-head-text">
+            <div class="gs-block-label">Your First Session</div>
+            <div class="gs-block-title">What Happens When You Join</div>
+          </div>
+        </div>
+        <div class="gs-block-body">
+          <p>Once you're in, the server handles the rest. Here's roughly what to expect so nothing catches you off guard.</p>
+
+          <div class="gs-steps-list">
+            <div class="gs-step">
+              <div class="gs-step-dot">1</div>
+              <div class="gs-step-text"><strong>Onboarding information</strong> will appear in chat and on-screen &mdash; quick links to the Discord, a summary of what Destiny Playground is, and where to find help if you need it.</div>
+            </div>
+            <div class="gs-step">
+              <div class="gs-step-dot">2</div>
+              <div class="gs-step-text"><strong>Recommended settings</strong> are shown in-game. These are the same ones listed above &mdash; primarily sound settings.</div>
+            </div>
+            <div class="gs-step">
+              <div class="gs-step-dot">3</div>
+              <div class="gs-step-text"><strong>Character creation</strong> &mdash; you'll be guided through making your Guardian, including choosing your class: Hunter, Warlock, or Titan.</div>
+            </div>
+            <div class="gs-step">
+              <div class="gs-step-dot">4</div>
+              <div class="gs-step-text"><strong>The tutorial</strong> begins. Follow the in-game prompts. It will teach you the core mechanics, introduce your Ghost, and get you up to speed before the story proper starts.</div>
+            </div>
+            <div class="gs-step">
+              <div class="gs-step-dot">5</div>
+              <div class="gs-step-text"><strong>A Guardian rises.</strong> The story begins in the Northreach. From here, it's yours.</div>
+            </div>
+          </div>
+
+          <div class="gs-note">
+            <div class="gs-note-icon">&#9432;</div>
+            <p>You can view the <strong>server rules</strong> at any time in-game, or on the <a href="/destiny-playground/server-info.html" style="color:var(--gold-dim);">Server Info page</a>. Please read them &mdash; they exist to keep the experience good for everyone.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /gs-blocks-wrap -->
+
+  <!-- DISCORD CTA -->
+  <div class="gs-discord-cta">
+    <div class="gs-discord-cta-text">
+      <div class="gs-discord-label">Stay Connected</div>
+      <div class="gs-discord-title">Join the Discord</div>
+      <p class="gs-discord-desc">The Discord is the number one source for everything Destiny Playground &mdash; announcements, update news, bug reporting, support, feedback, suggestions, and the community itself. If something's happening, it's in there first.</p>
+    </div>
+    <a class="gs-discord-cta-btn" href="https://discord.gg/Ah6Jt5KVPH" target="_blank">
+      Join Discord &#8599;
+    </a>
+  </div>
+
+</div><!-- /gs-layout -->
+
+<div id="footer-placeholder"></div>
+<script src="/destiny-playground/js/shared.js"></script>
+
+<script>
+function copyIP() {
+  const ip = document.getElementById('server-ip').textContent.trim();
+  const btn = document.getElementById('copy-ip-btn');
+  navigator.clipboard.writeText(ip).then(function() {
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(function() {
+      btn.textContent = 'Copy';
+      btn.classList.remove('copied');
+    }, 2000);
+  }).catch(function() {
+    btn.textContent = 'Failed';
+    setTimeout(function() { btn.textContent = 'Copy'; }, 2000);
+  });
+}
+</script>
+
+</body>
+</html>
