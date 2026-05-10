@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Server Info — Destiny Playground</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/destiny-playground/css/styles.css">
+<link rel="stylesheet" href="/destiny-playground/css/nav.css">
+<link rel="stylesheet" href="/destiny-playground/css/server-info.css">
+<link rel="stylesheet" href="/destiny-playground/css/a11y-overrides.css">
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+
+<!-- HERO -->
+<div class="si-hero">
+  <div class="si-hero-bg"></div>
+  <div class="si-hero-grid"></div>
+  <div class="si-hero-inner">
+    <div class="si-hero-eyebrow">Everything You Need to Know</div>
+    <h1 class="si-hero-title">Server<br><span>Info</span></h1>
+    <p class="si-hero-desc">Quick reference for connection details, server rules, and general information. Bookmark this page &mdash; it's the most reliable source outside of the Discord.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="si-layout">
+
+  <!-- QUICK STATS BAR -->
+  <div class="si-stats-bar">
+    <div class="si-stat" style="--stat-color:#5dca8a;">
+      <div class="si-stat-label">Server Status</div>
+      <div class="si-stat-value">
+        <span class="si-status-dot unknown" id="status-dot"></span>
+        <span id="status-text">Not Yet Open</span>
+      </div>
+      <div class="si-stat-sub">Opens at launch</div>
+    </div>
+    <div class="si-stat" style="--stat-color:#c9a84c;">
+      <div class="si-stat-label">Server Version</div>
+      <div class="si-stat-value">1.21.8</div>
+      <div class="si-stat-sub">Java Edition</div>
+    </div>
+    <div class="si-stat" style="--stat-color:#88c4e8;">
+      <div class="si-stat-label">Supports</div>
+      <div class="si-stat-value">1.21.8+</div>
+      <div class="si-stat-sub">Native version recommended</div>
+    </div>
+    <div class="si-stat" style="--stat-color:#8060b8;">
+      <div class="si-stat-label">Server Type</div>
+      <div class="si-stat-value">Spigot</div>
+      <div class="si-stat-sub">Fan-made &mdash; Java only</div>
+    </div>
+  </div>
+
+  <div class="si-blocks">
+
+    <!-- CONNECTION -->
+    <div class="si-block">
+      <div class="si-block-header">
+        <div class="si-block-icon">&#9654;</div>
+        <div>
+          <div class="si-block-label">How to Connect</div>
+          <div class="si-block-title">Connection Details</div>
+        </div>
+      </div>
+      <div class="si-block-body">
+        <p>Add the server in Minecraft's Multiplayer menu using the details below. New to this? Head to the <a href="/destiny-playground/getting-started.html" style="color:var(--gold-dim);">Getting Started</a> page for a full walkthrough.</p>
+
+        <div class="si-info-table">
+          <div class="si-info-row">
+            <div class="si-info-label">Server IP</div>
+            <div class="si-info-value mono" id="server-ip">To be announced at launch</div>
+            <button class="si-copy-btn" id="copy-ip-btn" onclick="copyIP()">Copy</button>
+          </div>
+          <div class="si-info-row">
+            <div class="si-info-label">Game</div>
+            <div class="si-info-value">Minecraft Java Edition</div>
+          </div>
+          <div class="si-info-row">
+            <div class="si-info-label">Native Version</div>
+            <div class="si-info-value">1.21.8 &mdash; recommended</div>
+          </div>
+          <div class="si-info-row">
+            <div class="si-info-label">Also Supported</div>
+            <div class="si-info-value">1.21.8 and above (minor issues possible)</div>
+          </div>
+          <div class="si-info-row">
+            <div class="si-info-label">Bedrock / PE</div>
+            <div class="si-info-value" style="color:var(--muted);">Not supported</div>
+          </div>
+        </div>
+
+        <div class="si-note">
+          <div class="si-note-icon">&#9432;</div>
+          <p>Playing on a version above 1.21.8 is supported but may cause minor visual or behaviour issues. If you run into something, please report it in <strong>#bug-reports</strong> on the <a href="https://discord.gg/Ah6Jt5KVPH" target="_blank">Discord</a>.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- RESOURCE PACK -->
+    <div class="si-block">
+      <div class="si-block-header">
+        <div class="si-block-icon">&#9670;</div>
+        <div>
+          <div class="si-block-label">Required</div>
+          <div class="si-block-title">Resource Pack</div>
+        </div>
+      </div>
+      <div class="si-block-body">
+        <p>A custom resource pack is required to play. It handles visuals, custom sounds, music, and NPC dialogue. When you join the server, Minecraft will prompt you to accept it &mdash; click Accept and it will download automatically.</p>
+
+        <div class="si-info-table">
+          <div class="si-info-row">
+            <div class="si-info-label">Installation</div>
+            <div class="si-info-value">Automatic on join &mdash; accept the prompt</div>
+          </div>
+          <div class="si-info-row">
+            <div class="si-info-label">Manual Download</div>
+            <div class="si-info-value">
+              <a href="https://discord.gg/Ah6Jt5KVPH" target="_blank" style="color:var(--gold-dim);text-decoration:none;">
+                #server-resources on Discord &#8599;
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="si-note">
+          <div class="si-note-icon">&#9432;</div>
+          <p>If the pack fails to apply on join, the Discord's <strong>#server-resources</strong> channel always has the most up-to-date manual download link.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- RULES -->
+    <div class="si-block">
+      <div class="si-block-header">
+        <div class="si-block-icon">&#9632;</div>
+        <div>
+          <div class="si-block-label">Expected Conduct</div>
+          <div class="si-block-title">Server Rules</div>
+        </div>
+      </div>
+      <div class="si-block-body">
+        <p>These rules apply to all players at all times, both in-game and in the Discord. They exist to keep Destiny Playground a good place to play. Breaking them results in warnings, temporary bans, or permanent removal depending on severity.</p>
+        <p>You can view the rules in-game at any time. Ignorance of the rules is not an excuse.</p>
+
+        <div class="si-rules-list">
+
+          <div class="si-rule">
+            <div class="si-rule-num">01</div>
+            <div class="si-rule-content">
+              <div class="si-rule-title">Respect Everyone</div>
+              <div class="si-rule-desc">Treat all players, staff, and community members with basic respect. Harassment, hate speech, targeted abuse, and discrimination of any kind will not be tolerated. Disagreements happen &mdash; handle them like an adult.</div>
+            </div>
+            <div class="si-rule-severity high">Zero Tolerance</div>
+          </div>
+
+          <div class="si-rule">
+            <div class="si-rule-num">02</div>
+            <div class="si-rule-content">
+              <div class="si-rule-title">No Griefing or Theft</div>
+              <div class="si-rule-desc">Do not destroy, modify, or steal from other players' builds or belongings without explicit permission. This includes anything in the world that doesn't belong to you. The server has logging. We will know.</div>
+            </div>
+            <div class="si-rule-severity high">Bannable</div>
+          </div>
+
+          <div class="si-rule">
+            <div class="si-rule-num">03</div>
+            <div class="si-rule-content">
+              <div class="si-rule-title">No Cheating or Exploiting</div>
+              <div class="si-rule-desc">Hacked clients, cheat software, and deliberate exploitation of bugs or glitches to gain an unfair advantage are not allowed. If you find a bug, report it in <strong>#bug-reports</strong> &mdash; don't use it.</div>
+            </div>
+            <div class="si-rule-severity high">Bannable</div>
+          </div>
+
+          <div class="si-rule">
+            <div class="si-rule-num">04</div>
+            <div class="si-rule-content">
+              <div class="si-rule-title">No Story Spoilers</div>
+              <div class="si-rule-desc">Destiny Playground has an original story. Do not spoil story events, mission outcomes, lore reveals, or character fates for players who haven't experienced them yet. Use spoiler tags in Discord when in doubt.</div>
+            </div>
+            <div class="si-rule-severity med">Warning / Mute</div>
+          </div>
+
+          <div class="si-rule">
+            <div class="si-rule-num">05</div>
+            <div class="si-rule-content">
+              <div class="si-rule-title">Keep Chat Clean</div>
+              <div class="si-rule-desc">Excessive profanity, spamming, flooding chat, or using the in-game chat for advertisements is not welcome. Keep it readable and on-topic. This is a community space.</div>
+            </div>
+            <div class="si-rule-severity med">Warning / Mute</div>
+          </div>
+
+          <div class="si-rule">
+            <div class="si-rule-num">06</div>
+            <div class="si-rule-content">
+              <div class="si-rule-title">No Impersonation</div>
+              <div class="si-rule-desc">Do not impersonate staff members, other players, or the Destiny Playground team in any context. This includes usernames, skins, or behaviour designed to mislead others.</div>
+            </div>
+            <div class="si-rule-severity high">Bannable</div>
+          </div>
+
+          <div class="si-rule">
+            <div class="si-rule-num">07</div>
+            <div class="si-rule-content">
+              <div class="si-rule-title">Respect the Experience</div>
+              <div class="si-rule-desc">Don't intentionally ruin the experience for others &mdash; this includes blocking paths, trapping players, repeatedly killing new players without cause, or otherwise being a nuisance in ways not covered above.</div>
+            </div>
+            <div class="si-rule-severity med">Warning / Kick</div>
+          </div>
+
+          <div class="si-rule">
+            <div class="si-rule-num">08</div>
+            <div class="si-rule-content">
+              <div class="si-rule-title">Follow Staff Instructions</div>
+              <div class="si-rule-desc">Staff decisions are final in the moment. If you disagree with a decision, raise it calmly through the proper channels &mdash; not by arguing in chat, ignoring instructions, or escalating. Staff are volunteers doing their best.</div>
+            </div>
+            <div class="si-rule-severity low">Required</div>
+          </div>
+
+        </div>
+
+        <div class="si-note">
+          <div class="si-note-icon">&#9432;</div>
+          <p>These rules are subject to change. Significant updates will be announced in the Discord. Staff reserve the right to take action against behaviour that violates the spirit of these rules even if not explicitly listed.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- GOOD TO KNOW -->
+    <div class="si-block">
+      <div class="si-block-header">
+        <div class="si-block-icon">&#9651;</div>
+        <div>
+          <div class="si-block-label">Useful Info</div>
+          <div class="si-block-title">Good to Know</div>
+        </div>
+      </div>
+      <div class="si-block-body">
+        <div class="si-tips-grid">
+          <div class="si-tip">
+            <div class="si-tip-icon">&#9632;</div>
+            <div>
+              <div class="si-tip-title">This is a Fan Project</div>
+              <div class="si-tip-desc">Destiny Playground is an independent fan-made server. It is not affiliated with, endorsed by, or connected to Bungie, Inc. in any way. Destiny and all related names are the property of Bungie.</div>
+            </div>
+          </div>
+          <div class="si-tip">
+            <div class="si-tip-icon">&#9670;</div>
+            <div>
+              <div class="si-tip-title">Progress is Saved Per Player</div>
+              <div class="si-tip-desc">Your character, inventory, quest progress, and lore unlocks are saved server-side and tied to your Minecraft account. Switching accounts means starting over.</div>
+            </div>
+          </div>
+          <div class="si-tip">
+            <div class="si-tip-icon">&#9651;</div>
+            <div>
+              <div class="si-tip-title">Discord is the Source of Truth</div>
+              <div class="si-tip-desc">For the most up-to-date announcements, patch notes, downtime warnings, and community news, the Discord is always first. The website follows but the Discord is faster.</div>
+            </div>
+          </div>
+          <div class="si-tip">
+            <div class="si-tip-icon">&#9654;</div>
+            <div>
+              <div class="si-tip-title">Staff are Volunteers</div>
+              <div class="si-tip-desc">The team behind Destiny Playground are unpaid volunteers building this in their spare time. Be patient, be kind, and consider supporting the project on <a href="https://ko-fi.com/destinyplayground" target="_blank" style="color:var(--gold-dim);">Ko-fi</a> if you enjoy it.</div>
+            </div>
+          </div>
+          <div class="si-tip">
+            <div class="si-tip-icon">&#9633;</div>
+            <div>
+              <div class="si-tip-title">Seasons &amp; Updates</div>
+              <div class="si-tip-desc">Content is released in seasons, each bringing new story missions, destinations, and features. Season schedules are announced in the Discord and tracked on the <a href="/destiny-playground/roadmap.html" style="color:var(--gold-dim);">Roadmap</a>.</div>
+            </div>
+          </div>
+          <div class="si-tip">
+            <div class="si-tip-icon">&#9670;</div>
+            <div>
+              <div class="si-tip-title">Mods are Optional</div>
+              <div class="si-tip-desc">The server runs entirely on plugins &mdash; you can play vanilla with zero mods installed. Official modpacks are available for performance and visual improvements. See the <a href="/destiny-playground/getting-started.html" style="color:var(--gold-dim);">Getting Started</a> page.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /si-blocks -->
+
+  <!-- HELP ROW -->
+  <div class="si-help-row">
+    <a class="si-help-card" href="https://discord.gg/Ah6Jt5KVPH" target="_blank">
+      <div class="si-help-card-label">Community &amp; Support</div>
+      <div class="si-help-card-title">Join the Discord</div>
+      <div class="si-help-card-desc">The Discord is the primary support channel. Whether you need help joining, have a question about the server, or want to report a player &mdash; it starts there. Staff are active and the community is welcoming.</div>
+      <div class="si-help-card-link">Join Discord &#8599;</div>
+    </a>
+    <a class="si-help-card" href="/destiny-playground/bug-reports.html">
+      <div class="si-help-card-label">Something Broken?</div>
+      <div class="si-help-card-title">Report a Bug</div>
+      <div class="si-help-card-desc">Found a bug, glitch, or something behaving unexpectedly? Please report it so we can fix it. Include as much detail as you can &mdash; what you were doing, what happened, and whether it's reproducible.</div>
+      <div class="si-help-card-link">Report a Bug</div>
+    </a>
+  </div>
+
+</div><!-- /si-layout -->
+
+<div id="footer-placeholder"></div>
+<script src="/destiny-playground/js/shared.js"></script>
+
+<script>
+function copyIP() {
+  const ip = document.getElementById('server-ip').textContent.trim();
+  const btn = document.getElementById('copy-ip-btn');
+  if (ip.toLowerCase().includes('announce')) {
+    btn.textContent = 'Not yet!';
+    setTimeout(function() { btn.textContent = 'Copy'; }, 2000);
+    return;
+  }
+  navigator.clipboard.writeText(ip).then(function() {
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(function() {
+      btn.textContent = 'Copy';
+      btn.classList.remove('copied');
+    }, 2000);
+  }).catch(function() {
+    btn.textContent = 'Failed';
+    setTimeout(function() { btn.textContent = 'Copy'; }, 2000);
+  });
+}
+</script>
+
+</body>
+</html>
