@@ -40,7 +40,7 @@ nav {
 /* ── DESKTOP LINKS ── */
 .nav-links {
   display: flex; align-items: center; gap: .25rem;
-  flex: 1;
+  margin-left: auto;
 }
 
 /* standalone + category trigger share base style */
@@ -127,15 +127,10 @@ nav {
   opacity: .45; vertical-align: .1em;
 }
 
-/* ── SUPPORT CATEGORY — right-aligned ── */
-.nav-links-right {
-  display: flex; margin-left: auto;
-}
-
 /* ── MOBILE TOGGLE ── */
 .nav-mobile-toggle {
   display: none; flex-direction: column; gap: 5px;
-  cursor: pointer; padding: .5rem; margin-left: auto;
+  cursor: pointer; padding: .5rem; margin-left: .5rem;
 }
 .nav-mobile-toggle span {
   display: block; width: 22px; height: 1.5px; background: var(--nav-text);
@@ -307,81 +302,20 @@ nav {
 }
 .a11y-reset:hover { border-color: var(--gold-dim); color: var(--gold); background: var(--gold-faint); }
 
-/* ── RESPONSIVE: hide a11y label on small screens but keep button ── */
 @media (max-width: 900px) {
-  .nav-a11y { margin-left: .5rem; }
-  .nav-a11y-panel { right: 0; }
-}
   nav { padding: 0 1.5rem; }
   .nav-links { display: none; }
-  .nav-links-right { display: none; }
   .nav-mobile-toggle { display: flex; }
   .mobile-menu { display: block; }
+  .nav-a11y { margin-left: .5rem; }
+  .nav-a11y-panel { right: 0; }
 }
 </style>
 
 <nav id="mainNav">
   <a class="nav-logo" href="/destiny-playground/index.html">Destiny Playground</a>
 
-  <div class="nav-links">
-
-    <!-- Standalone: Home -->
-    <a class="nav-link" href="/destiny-playground/index.html">Home</a>
-
-    <!-- Standalone: News -->
-    <a class="nav-link" href="/destiny-playground/news.html">News</a>
-
-    <!-- Category: Play -->
-    <div class="nav-category" id="cat-play">
-      Play <span class="nav-chevron" aria-hidden="true"></span>
-      <div class="nav-dropdown">
-        <a href="/destiny-playground/getting-started.html">Getting Started</a>
-        <a href="/destiny-playground/server-info.html">Server Info</a>
-        <a href="/destiny-playground/bug-reports.html">Bug Reports</a>
-      </div>
-    </div>
-
-    <!-- Category: World -->
-    <div class="nav-category" id="cat-world">
-      World <span class="nav-chevron" aria-hidden="true"></span>
-      <div class="nav-dropdown">
-        <a href="/destiny-playground/lore.html">Lore</a>
-        <a href="/destiny-playground/destinations.html">Destinations</a>
-        <a href="/destiny-playground/seasons.html">Seasons</a>
-        <a href="/destiny-playground/gallery.html">Gallery</a>
-      </div>
-    </div>
-
-    <!-- Category: Community -->
-    <div class="nav-category" id="cat-community">
-      Community <span class="nav-chevron" aria-hidden="true"></span>
-      <div class="nav-dropdown">
-        <a href="/destiny-playground/about.html">About the Project</a>
-        <a href="/destiny-playground/team.html">Team &amp; Credits</a>
-        <a href="/destiny-playground/faq.html">FAQ</a>
-        <a href="/destiny-playground/roadmap.html">Roadmap</a>
-        <div class="nav-dropdown-divider"></div>
-        <a href="https://wiki.example.com" target="_blank">Fan Wiki</a>
-      </div>
-    </div>
-
-  </div><!-- /nav-links -->
-
-  <!-- Right side: Support -->
-  <div class="nav-links-right">
-    <div class="nav-category" id="cat-support">
-      Support <span class="nav-chevron" aria-hidden="true"></span>
-      <div class="nav-dropdown" style="right:0;left:auto;">
-        <a href="https://ko-fi.com/destinyplayground" target="_blank">Ko-fi</a>
-        <a href="https://discord.gg/Ah6Jt5KVPH" target="_blank">Discord</a>
-        <a href="https://www.youtube.com/@cntdarthgaming" target="_blank">YouTube</a>
-        <a href="https://x.com/destinyplaygrnd" target="_blank">Twitter / X</a>
-        <a href="https://bsky.app/profile/thedestinyplayground.bsky.social" target="_blank">Bluesky</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Accessibility dropdown -->
+  <!-- Accessibility button — sits right of logo -->
   <div class="nav-a11y" id="navA11y">
     <button class="nav-a11y-btn" id="a11yToggle" aria-label="Accessibility options" aria-expanded="false" aria-haspopup="true">
       <svg class="nav-a11y-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -425,6 +359,54 @@ nav {
       <button class="a11y-reset" onclick="resetA11y()">Reset all</button>
     </div>
   </div>
+
+  <!-- All nav links on the right -->
+  <div class="nav-links">
+    <a class="nav-link" href="/destiny-playground/index.html">Home</a>
+    <a class="nav-link" href="/destiny-playground/news.html">News</a>
+
+    <div class="nav-category" id="cat-play">
+      Play <span class="nav-chevron" aria-hidden="true"></span>
+      <div class="nav-dropdown">
+        <a href="/destiny-playground/getting-started.html">Getting Started</a>
+        <a href="/destiny-playground/server-info.html">Server Info</a>
+        <a href="/destiny-playground/bug-reports.html">Bug Reports</a>
+      </div>
+    </div>
+
+    <div class="nav-category" id="cat-world">
+      World <span class="nav-chevron" aria-hidden="true"></span>
+      <div class="nav-dropdown">
+        <a href="/destiny-playground/lore.html">Lore</a>
+        <a href="/destiny-playground/destinations.html">Destinations</a>
+        <a href="/destiny-playground/seasons.html">Seasons</a>
+        <a href="/destiny-playground/gallery.html">Gallery</a>
+      </div>
+    </div>
+
+    <div class="nav-category" id="cat-community">
+      Community <span class="nav-chevron" aria-hidden="true"></span>
+      <div class="nav-dropdown">
+        <a href="/destiny-playground/about.html">About the Project</a>
+        <a href="/destiny-playground/team.html">Team &amp; Credits</a>
+        <a href="/destiny-playground/faq.html">FAQ</a>
+        <a href="/destiny-playground/roadmap.html">Roadmap</a>
+        <div class="nav-dropdown-divider"></div>
+        <a href="https://wiki.example.com" target="_blank">Fan Wiki</a>
+      </div>
+    </div>
+
+    <div class="nav-category" id="cat-support">
+      Support <span class="nav-chevron" aria-hidden="true"></span>
+      <div class="nav-dropdown" style="right:0;left:auto;">
+        <a href="https://ko-fi.com/destinyplayground" target="_blank">Ko-fi</a>
+        <a href="https://discord.gg/Ah6Jt5KVPH" target="_blank">Discord</a>
+        <a href="https://www.youtube.com/@cntdarthgaming" target="_blank">YouTube</a>
+        <a href="https://x.com/destinyplaygrnd" target="_blank">Twitter / X</a>
+        <a href="https://bsky.app/profile/thedestinyplayground.bsky.social" target="_blank">Bluesky</a>
+      </div>
+    </div>
+  </div><!-- /nav-links -->
 
   <button class="nav-mobile-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
     <span></span><span></span><span></span>
