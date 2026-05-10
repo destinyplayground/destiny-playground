@@ -52,12 +52,12 @@
           </div>
         </div>
         <div class="gs-block-body">
-          <p>Open Minecraft Java Edition, head to Multiplayer, and add the server using the IP below. That's it. You're in.</p>
+          <p>Open Minecraft Java Edition, head to Multiplayer, click Add Server and add the server address using the IP below. That's it, now you can join!</p>
 
           <div class="gs-info-box">
             <div class="gs-info-row">
               <div class="gs-info-label">Server IP</div>
-              <div class="gs-info-value mono" id="server-ip">play.destinyplayground.net</div>
+              <div class="gs-info-value mono" id="server-ip">server ip to release when server opens</div>
               <button class="gs-copy-btn" id="copy-ip-btn" onclick="copyIP()">Copy</button>
             </div>
             <div class="gs-info-row">
@@ -80,8 +80,30 @@
 
           <div class="gs-warn">
             <div class="gs-warn-icon">&#9650;</div>
-            <p><strong>Version note:</strong> We recommend playing on <strong>1.21.8</strong> &mdash; the same version the server runs on. You can join on any later version, but you may encounter visual glitches or minor issues. Playing on an older version is not supported.</p>
+            <p><strong>Version note:</strong> We recommend playing on <strong>1.21.8</strong> &mdash; the same version the server runs on. You can join on any later version, but you may encounter visual glitches or minor issues &mdash; please report these to our Discord. Playing on an older version is not supported.</p>
           </div>
+
+          <!-- New to Minecraft links -->
+          <div class="gs-new-to-mc">
+            <div class="gs-new-to-mc-label">New to Minecraft?</div>
+            <div class="gs-new-to-mc-links">
+              <a class="gs-mc-link" href="https://www.minecraft.net/en-us/download" target="_blank">
+                <span class="gs-mc-link-icon">&#8599;</span>
+                <div>
+                  <div class="gs-mc-link-title">Download &amp; Set Up Minecraft</div>
+                  <div class="gs-mc-link-desc">Official Minecraft.net download page</div>
+                </div>
+              </a>
+              <a class="gs-mc-link" href="https://www.youtube.com/results?search_query=how+to+change+minecraft+java+version" target="_blank">
+                <span class="gs-mc-link-icon">&#9654;</span>
+                <div>
+                  <div class="gs-mc-link-title">How to Change Your Game Version</div>
+                  <div class="gs-mc-link-desc">Video guide &mdash; switching to 1.21.8 in the launcher</div>
+                </div>
+              </a>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -97,7 +119,7 @@
           </div>
         </div>
         <div class="gs-block-body">
-          <p>Destiny Playground uses a custom resource pack that handles the visuals, sounds, custom music, and dialogue that make the server what it is. <strong>You need it.</strong> Fortunately, installation is automatic.</p>
+          <p>Destiny Playground uses a custom resource pack that handles the visuals, sounds, custom music, and dialogue. <strong>You need it.</strong> Fortunately, installation is automatic.</p>
 
           <div class="gs-steps-list">
             <div class="gs-step">
@@ -147,7 +169,7 @@
               <div class="gs-modpack-icon">&#9670;</div>
               <div class="gs-modpack-name">Aesthetic Pack</div>
               <div class="gs-modpack-type">Visuals &amp; Immersion</div>
-              <div class="gs-modpack-desc">Enhanced lighting, improved animations, shader-adjacent effects, and quality-of-life visual upgrades that complement the server's art direction.</div>
+              <div class="gs-modpack-desc">Enhanced lighting, improved animations, visual effects, and quality-of-life visual upgrades. Recommended for anyone who wants an enhanced experience.</div>
               <div class="gs-modpack-note">Pairs well with the server resource pack.</div>
             </div>
             <div class="gs-modpack-card" style="--card-color:#c9a84c;">
@@ -161,10 +183,16 @@
 
           <div class="gs-warn">
             <div class="gs-warn-icon">&#9650;</div>
-            <p><strong>Heads up:</strong> Official modpacks are not updated frequently. If you're on a newer version of Minecraft, some mods may not have been updated yet. Check the download page for compatibility notes before installing.</p>
+            <p><strong>Version note:</strong> All official modpacks are built for <strong>1.21.8</strong> only and are available on both <strong>Modrinth</strong> (preferred) and <strong>CurseForge</strong>. They are not updated frequently &mdash; if you're on a newer version, some mods may not be compatible yet. Check the download page for compatibility notes before installing.</p>
           </div>
 
-          <p>You can find all modpack downloads on the <a href="/destiny-playground/mods.html" style="color:var(--gold-dim);">Mods page</a> under Community in the nav.</p>
+          <div class="gs-modpack-cta">
+            <div class="gs-modpack-cta-text">Find all modpack downloads on the Mods page, under Community in the nav.</div>
+            <a class="gs-modpack-cta-btn" href="/destiny-playground/mods.html">
+              View Modpacks &#8594;
+            </a>
+          </div>
+
         </div>
       </div>
     </div>
@@ -180,7 +208,7 @@
           </div>
         </div>
         <div class="gs-block-body">
-          <p>When you first join you'll be shown these in-game, but it's worth setting them up before you spawn in. A few of these make a significant difference to the experience.</p>
+          <p>When you first join you'll be shown these in-game too, but it's worth setting them up before you spawn in. A few of these make a significant difference to the experience.</p>
 
           <div class="gs-settings-grid">
             <div class="gs-setting-row">
@@ -189,9 +217,34 @@
               <div class="gs-setting-reason header">Why</div>
             </div>
             <div class="gs-setting-row">
+              <div class="gs-setting-name">Render Distance</div>
+              <div class="gs-setting-val">12+</div>
+              <div class="gs-setting-reason">Areas are designed with long sightlines. Use the <strong>Distant Horizons</strong> mod for even further views and the full environment experience.</div>
+            </div>
+            <div class="gs-setting-row">
+              <div class="gs-setting-name">GUI Scale</div>
+              <div class="gs-setting-val">3x</div>
+              <div class="gs-setting-reason">Custom HUD elements are designed for 3x scale. Other values may cause layout issues.</div>
+            </div>
+            <div class="gs-setting-row">
+              <div class="gs-setting-name">Leaves Quality</div>
+              <div class="gs-setting-val">Fancy</div>
+              <div class="gs-setting-reason">The EDZ forests look significantly better with Fancy leaves. Worth the small performance cost.</div>
+            </div>
+            <div class="gs-setting-row">
+              <div class="gs-setting-name">Particles</div>
+              <div class="gs-setting-val">Decreased+</div>
+              <div class="gs-setting-reason">Decreased or higher &mdash; abilities and environments use custom particles. Minimal may cause you to miss visual cues.</div>
+            </div>
+            <div class="gs-setting-row">
+              <div class="gs-setting-name">Brightness</div>
+              <div class="gs-setting-val">100%</div>
+              <div class="gs-setting-reason">Lighting is intentional. Some areas are meant to be dark. Moody builds atmosphere.</div>
+            </div>
+            <div class="gs-setting-row">
               <div class="gs-setting-name">Master Volume</div>
               <div class="gs-setting-val">100%</div>
-              <div class="gs-setting-reason">Custom music and ambient audio are a core part of the experience. Turn it up.</div>
+              <div class="gs-setting-reason">All sound volumes up to start &mdash; you can tweak individual sliders later once you're in.</div>
             </div>
             <div class="gs-setting-row">
               <div class="gs-setting-name">Music Volume</div>
@@ -201,17 +254,7 @@
             <div class="gs-setting-row">
               <div class="gs-setting-name">Voice / Dialogue</div>
               <div class="gs-setting-val">100%</div>
-              <div class="gs-setting-reason">NPCs have voiced dialogue. Required to follow the story properly.</div>
-            </div>
-            <div class="gs-setting-row">
-              <div class="gs-setting-name">Render Distance</div>
-              <div class="gs-setting-val">12+</div>
-              <div class="gs-setting-reason">Some areas are designed with long sightlines in mind. Higher is better where your machine allows.</div>
-            </div>
-            <div class="gs-setting-row">
-              <div class="gs-setting-name">GUI Scale</div>
-              <div class="gs-setting-val">Auto</div>
-              <div class="gs-setting-reason">Custom HUD elements are designed for Auto scale. Other values may cause layout issues.</div>
+              <div class="gs-setting-reason">NPCs have voiced dialogue. Essential for following the story.</div>
             </div>
             <div class="gs-setting-row">
               <div class="gs-setting-name">Subtitles</div>
@@ -243,7 +286,7 @@
             </div>
             <div class="gs-step">
               <div class="gs-step-dot">2</div>
-              <div class="gs-step-text"><strong>Recommended settings</strong> are shown in-game. These are the same ones listed above &mdash; primarily sound settings.</div>
+              <div class="gs-step-text"><strong>Recommended settings</strong> are shown in-game &mdash; the same ones listed above, primarily sound and visual settings.</div>
             </div>
             <div class="gs-step">
               <div class="gs-step-dot">3</div>
@@ -251,11 +294,11 @@
             </div>
             <div class="gs-step">
               <div class="gs-step-dot">4</div>
-              <div class="gs-step-text"><strong>The tutorial</strong> begins. Follow the in-game prompts. It will teach you the core mechanics, introduce your Ghost, and get you up to speed before the story proper starts.</div>
+              <div class="gs-step-text"><strong>The tutorial</strong> begins. Follow the in-game prompts. It will teach you the core mechanics, introduce your Ghost, and get you up to speed before the story proper starts. Even if you've played Destiny and/or Minecraft before, we <strong>strongly recommend</strong> reading through everything &mdash; the server mechanics may be unlike anything you're used to.</div>
             </div>
             <div class="gs-step">
               <div class="gs-step-dot">5</div>
-              <div class="gs-step-text"><strong>A Guardian rises.</strong> The story begins in the Northreach. From here, it's yours.</div>
+              <div class="gs-step-text"><strong>A Guardian rises.</strong> The story begins in the Northreach. From here, it's your Destiny.</div>
             </div>
           </div>
 
