@@ -1,1 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WARMIND // ACCESS GRANTED</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@300;400;500;600;700&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --green: #4dffb4;
+    --green-dim: rgba(77,255,180,.55);
+    --green-faint: rgba(77,255,180,.07);
+    --green-glow: rgba(77,255,180,.15);
+    --red: #ff4d6a;
+    --gold: #c9a84c;
+    --white: #e8f0e8;
+    --muted: rgba(180,220,180,.45);
+    --bg: #020705;
+    --dark: #040a06;
+    --scan: rgba(77,255,180,.02);
+  }
+  html, body {
+    width: 100%; height: 100%;
+    background: var(--bg);
+    color: var(--green);
+    font-family: 'Share Tech Mono', monospace;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0; z-index: 100;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      var(--scan) 2px,
+      var(--scan) 4px
+    );
+    pointer-events: none;
+  }
+  body::after {
+    content: '';
+    position: fixed; inset: 0; z-index: 99;
+    background: radial-gradient(ellipse at center,
+      transparent 40%,
+      rgba(0,0,0,.7) 100%
+    );
+    pointer-events: none;
+  }
+  .noise {
+    position: fixed; inset: 0; z-index: 98;
+    opacity: .03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+  .grid-bg {
+    position: fixed; inset: 0; z-index: 0;
+    background-image:
+      linear-gradient(rgba(77,255,180,.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(77,255,180,.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 80%);
+  }
+  .corner {
+    position: fixed; width: 60px; height: 60px; z-index: 101;
+    opacity: .35;
+  }
+  .corner::before, .corner::after {
+    content: ''; position: absolute;
+    background: var(--green);
+  }
+  .corner::before { width: 1px; height: 40px; }
+  .corner::after  { width: 40px; height: 1px; }
+  .corner-tl { top: 1.5rem; left: 1.5rem; }
+  .corner-tl::before { top: 0; left: 0; }
+  .corner-tl::after  { top: 0; left: 0; }
+  .corner-tr { top: 1.5rem; right: 1.5rem; transform: scaleX(-1); }
+  .corner-tr::before { top: 0; left: 0; }
+  .corner-tr::after  { top: 0; left: 0; }
+  .corner-bl { bottom: 1.5rem; left: 1.5rem; transform: scaleY(-1); }
+  .corner-bl::before { top: 0; left: 0; }
+  .corner-bl::after  { top: 0; left: 0; }
+  .corner-br { bottom: 1.5rem; right: 1.5rem; transform: scale(-1); }
+  .corner-br::before { top: 0; left: 0; }
+  .corner-br::after  { top: 0; left: 0; }
+  .terminal-header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 102;
+    height: 48px;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2rem;
+    border-bottom: .5px solid rgba(77,255,180,.12);
+    background: rgba(2,7,5,.95);
+    backdrop-filter: blur(8px);
+  }
+  .th-left {
+    font-size: .62rem; letter-spacing: .25em; color: var(--muted);
+    display: flex; align-items: center; gap: 1.5rem;
+  }
+  .th-status {
+    display: flex; align-items: center; gap: .5rem;
+    font-size: .6rem; letter-spacing: .2em;
+  }
+  .th-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 6px var(--green);
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
+  @keyframes pulse-dot { 0%, 100% { opacity: 1; } 50% { opacity: .3; } }
+  .th-right {
+    font-size: .6rem; letter-spacing: .2em; color: var(--muted);
+    display: flex; align-items: center; gap: 2rem;
+  }
+  .th-clock { color: var(--green-dim); }
+  .terminal-footer {
+    position: fixed; bottom: 0; left: 0; right: 0; z-index: 102;
+    height: 36px;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2rem;
+    border-top: .5px solid rgba(77,255,180,.08);
+    background: rgba(2,7,5,.95);
+    backdrop-filter: blur(8px);
+    font-size: .55rem; letter-spacing: .2em; color: rgba(77,255,180,.2);
+  }
+  /* Success screen */
+  .success-screen {
+    position: fixed; inset: 0; z-index: 200;
+    background: var(--bg);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 1rem; padding: 2rem;
+  }
+  .so-line {
+    font-size: .8rem; letter-spacing: .22em; text-transform: uppercase;
+    color: var(--green);
+    text-shadow: 0 0 20px rgba(77,255,180,.5);
+    opacity: 0;
+    animation: fade-in .5s ease forwards;
+  }
+  .so-line.gold { color: var(--gold); text-shadow: 0 0 20px rgba(201,168,76,.5); }
+  .so-line.big {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.4rem, 4vw, 2.5rem);
+    letter-spacing: .2em;
+  }
+  .so-bar {
+    width: 0; height: 1.5px;
+    background: linear-gradient(to right, transparent, var(--green), transparent);
+    transition: width 1s ease;
+    max-width: 500px;
+  }
+  .so-bar.grow { width: 100%; }
+  .so-discord {
+    opacity: 0;
+    margin-top: 2rem;
+    border: .5px solid rgba(77,255,180,.25);
+    background: rgba(77,255,180,.04);
+    padding: 1.6rem 2rem;
+    max-width: 520px;
+    text-align: center;
+    animation: fade-in .8s ease 3.2s forwards;
+  }
+  @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+  .d1 { animation-delay: .3s; }
+  .d2 { animation-delay: .9s; }
+  .d3 { animation-delay: 1.6s; }
+  .d4 { animation-delay: 2.4s; }
+  @media (max-width: 600px) {
+    .th-right { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="noise"></div>
+<div class="grid-bg"></div>
+<div class="corner corner-tl"></div>
+<div class="corner corner-tr"></div>
+<div class="corner corner-bl"></div>
+<div class="corner corner-br"></div>
+<div class="terminal-header">
+  <div class="th-left">
+    <span>WARMIND // DEFENSE NETWORK</span>
+    <span class="th-status">
+      <span class="th-dot"></span>
+      UPLINK ACTIVE
+    </span>
+  </div>
+  <div class="th-right">
+    <span>SEC_LEVEL: OMEGA</span>
+    <span class="th-clock" id="clock">--:--:--</span>
+  </div>
+</div>
 
+<div class="success-screen">
+  <div class="so-line d1">// AUTHENTICATION SEQUENCE ACCEPTED</div>
+  <div class="so-bar" id="soBar"></div>
+  <div class="so-line big gold d2">EARLY ACCESS GRANTED</div>
+  <div class="so-line d3">WELCOME, GUARDIAN</div>
+  <div class="so-bar" id="soBar2"></div>
+  <div class="so-line d4">TRANSMISSION RECEIVED. SIGNAL CONFIRMED.</div>
+  <div class="so-discord">
+    <div style="font-size:.52rem;letter-spacing:.32em;color:var(--muted);margin-bottom:.9rem;">// NEXT STEP — COMPLETE YOUR ACCESS</div>
+    <div style="font-size:.75rem;letter-spacing:.1em;line-height:2;color:rgba(200,240,210,.7);">
+      Take a screenshot of this screen.<br>
+      Send it to <span style="color:var(--green);text-shadow:0 0 10px rgba(77,255,180,.5);">@warmind_omega</span> on Discord<br>
+      with the full authentication code you entered.<br>
+      <span style="color:var(--gold);">The Warmind will open the gates.</span>
+    </div>
+  </div>
+</div>
+
+<div class="terminal-footer">
+  <span>WARMIND // DESTINY PLAYGROUND // UNAUTHORIZED ACCESS PROHIBITED</span>
+  <span id="footerDate"></span>
+</div>
+<script>
+  function updateClock(){const now=new Date();document.getElementById('clock').textContent=String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0')+':'+String(now.getSeconds()).padStart(2,'0');document.getElementById('footerDate').textContent=now.toISOString().slice(0,10).replace(/-/g,'.');}
+  setInterval(updateClock,1000);updateClock();
+  setTimeout(function(){document.getElementById('soBar').classList.add('grow');},600);
+  setTimeout(function(){document.getElementById('soBar2').classList.add('grow');},2100);
+</script>
+</body>
+</html>
