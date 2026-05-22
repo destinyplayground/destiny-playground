@@ -11,6 +11,164 @@
   .trailer-embed { position:relative; padding-bottom:56.25%; height:0; overflow:hidden; }
   .trailer-embed iframe { position:absolute; top:0; left:0; width:100%; height:100%; border:none; }
   .btn-primary { display:inline-flex; align-items:center; justify-content:center; text-decoration:none; }
+
+  /* ── FULL-WIDTH BANNER ── */
+  .site-banner {
+    position: relative;
+    width: 100%;
+    height: 380px;
+    overflow: hidden;
+    margin-top: 64px; /* nav height */
+  }
+  .site-banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+  .site-banner-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(10,9,6,0.15) 0%, rgba(10,9,6,0.0) 40%, rgba(10,9,6,0.7) 85%, rgba(10,9,6,1) 100%);
+    pointer-events: none;
+  }
+
+  /* ── D2 TRIBUTE ── */
+  .tribute-section {
+    position: relative;
+    padding: 5rem 2rem;
+    overflow: hidden;
+    text-align: center;
+  }
+  .tribute-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 50%, rgba(201,168,76,0.04) 0%, transparent 70%),
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 60px,
+        rgba(201,168,76,0.02) 60px,
+        rgba(201,168,76,0.02) 61px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 60px,
+        rgba(201,168,76,0.02) 60px,
+        rgba(201,168,76,0.02) 61px
+      );
+    pointer-events: none;
+  }
+  .tribute-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+  .tribute-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--white, #e8e0d0);
+    margin: 0 0 1.2rem;
+  }
+  .tribute-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+  .tribute-line {
+    flex: 1;
+    max-width: 120px;
+    height: 0.5px;
+    background: linear-gradient(to right, transparent, rgba(201,168,76,0.4));
+  }
+  .tribute-divider .tribute-line:last-child {
+    background: linear-gradient(to left, transparent, rgba(201,168,76,0.4));
+  }
+  .tribute-diamond {
+    font-size: 0.6rem;
+    color: var(--gold, #c9a84c);
+    opacity: 0.7;
+  }
+  .tribute-desc {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 300;
+    line-height: 1.8;
+    letter-spacing: 0.03em;
+    color: rgba(200,185,155,0.75);
+    margin: 0 auto 1.2rem;
+    max-width: 680px;
+  }
+  .tribute-cta-row {
+    margin: 2rem 0 3rem;
+  }
+  .tribute-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold, #c9a84c);
+    border: 0.5px solid rgba(201,168,76,0.35);
+    padding: 0.75rem 2rem;
+    text-decoration: none;
+    background: rgba(201,168,76,0.04);
+    transition: background 0.2s, border-color 0.2s;
+    clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+  }
+  .tribute-btn:hover {
+    background: rgba(201,168,76,0.1);
+    border-color: rgba(201,168,76,0.6);
+  }
+  .tribute-stats {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    padding-top: 2.5rem;
+    border-top: 0.5px solid rgba(201,168,76,0.1);
+  }
+  .tribute-stat {
+    text-align: center;
+  }
+  .tribute-stat-value {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 700;
+    color: var(--gold, #c9a84c);
+    letter-spacing: 0.05em;
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+  .tribute-stat-label {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(180,160,120,0.45);
+  }
+  .tribute-stat-sep {
+    font-size: 0.5rem;
+    color: rgba(201,168,76,0.25);
+  }
+  @media (max-width: 600px) {
+    .site-banner { height: 220px; }
+    .tribute-stat-sep { display: none; }
+    .tribute-stats { gap: 1.5rem; }
+  }
 </style>
   
 <title>Destiny Playground</title>
@@ -19,6 +177,54 @@
 <body>
   
 <div id="nav-placeholder"></div>
+
+<!-- FULL-WIDTH BANNER -->
+<div class="site-banner">
+  <img class="site-banner-img" src="/destiny-playground/images/destiny2triumph.png" alt="Destiny Playground Banner">
+  <div class="site-banner-overlay"></div>
+</div>
+
+<!-- DESTINY 2 TRIBUTE -->
+<div class="tribute-section" id="d2-tribute">
+  <div class="tribute-bg"></div>
+  <div class="tribute-inner">
+    <div class="section-label" style="justify-content:center;margin:0 auto 0.8rem;">2014 - 2026</div>
+    <h2 class="tribute-title">Thank You, Destiny 2</h2>
+    <div class="tribute-divider">
+      <span class="tribute-line"></span>
+      <span class="tribute-diamond">&#9670;</span>
+      <span class="tribute-line"></span>
+    </div>
+    <p class="tribute-desc">On June 7th, 2026, Destiny 2 receives its final update. After twelve years, the lights go down on one of the most extraordinary universes ever built in gaming. The worlds, the lore, the feeling of running a Raid with your Fireteam at midnight - none of that disappears. It lives on in everyone who was ever a Guardian.</p>
+    <p class="tribute-desc">Destiny Playground exists because of what Bungie built. This is our way of carrying it forward.</p>
+    <div class="tribute-cta-row">
+      <a class="tribute-btn" href="/destiny-playground/articles/announcement-22-05-2026.html">Read Our Full Statement &#8594;</a>
+    </div>
+    <div class="tribute-stats">
+      <div class="tribute-stat">
+        <div class="tribute-stat-value">2014</div>
+        <div class="tribute-stat-label">Destiny 1 Launch</div>
+      </div>
+      <div class="tribute-stat-sep">&#9670;</div>
+      <div class="tribute-stat">
+        <div class="tribute-stat-value">2017</div>
+        <div class="tribute-stat-label">Destiny 2 Launch</div>
+      </div>
+      <div class="tribute-stat-sep">&#9670;</div>
+      <div class="tribute-stat">
+        <div class="tribute-stat-value">12</div>
+        <div class="tribute-stat-label">Years of Guardians</div>
+      </div>
+      <div class="tribute-stat-sep">&#9670;</div>
+      <div class="tribute-stat">
+        <div class="tribute-stat-value">&#8734;</div>
+        <div class="tribute-stat-label">The Legacy</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
 
 <!-- HERO -->
 <div class="hero">
@@ -249,6 +455,14 @@
   }
 
   loadNews();
+</script>
+
+<script>
+  // Scroll to top on page load - prevents browser restoring mid-page position
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+  window.scrollTo(0, 0);
 </script>
 
 </body>
