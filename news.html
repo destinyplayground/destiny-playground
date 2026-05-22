@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>News - Destiny Playground</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/destiny-playground/css/styles.css">
+<link rel="stylesheet" href="/destiny-playground/css/nav.css">
+<link rel="stylesheet" href="/destiny-playground/css/news.css">
+<link rel="stylesheet" href="/destiny-playground/css/a11y-overrides.css">
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+
+<div class="page-header">
+  <div class="section-label">All Transmissions</div>
+  <h1>News</h1>
+</div>
+
+<div class="divider"></div>
+
+<div class="featured-section">
+  <div class="featured-label">Featured</div>
+  <div id="featured-grid"></div>
+</div>
+
+<div class="divider" style="margin-top: 3rem;"></div>
+
+<div class="controls-section">
+  <div class="controls-row">
+    <div class="search-wrap">
+      <svg class="search-svg" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="6.5" cy="6.5" r="5" stroke="#8a8070" stroke-width="1.2"/>
+        <line x1="10.5" y1="10.5" x2="14.5" y2="14.5" stroke="#8a8070" stroke-width="1.2" stroke-linecap="square"/>
+      </svg>
+      <input class="search-input" id="searchInput" type="text" placeholder="Search transmissions...">
+    </div>
+    <select class="sort-select" id="sortSelect">
+      <option value="newest">Newest First</option>
+      <option value="oldest">Oldest First</option>
+    </select>
+    <span class="results-count" id="resultsCount"></span>
+  </div>
+  <div class="filter-tabs" id="filterTabs">
+    <button class="filter-tab active" data-tag="All">All</button>
+    <button class="filter-tab" data-tag="Dev Update">Dev Update</button>
+    <button class="filter-tab" data-tag="Announcement">Announcement</button>
+    <button class="filter-tab" data-tag="Behind the Scenes">Behind the Scenes</button>
+    <button class="filter-tab" data-tag="Lore">Lore</button>
+    <button class="filter-tab" data-tag="Patch Notes">Patch Notes</button>
+  </div>
+</div>
+
+<div class="articles-section">
+  <div class="articles-list" id="articles-list">
+    <div class="no-results"><div class="no-results-title">Loading transmissions...</div></div>
+  </div>
+  <div class="pagination" id="pagination"></div>
+</div>
+
+<!-- LEGACY ARCHIVE NOTE -->
+<div class="legacy-section">
+  <div class="legacy-inner">
+    <div class="legacy-icon">&#9670;</div>
+    <div class="legacy-text">
+      <div class="legacy-title">Looking for older transmissions?</div>
+      <p>All developer updates from <strong>21 November 2025 and earlier</strong> are archived exclusively on our Discord in the <strong>#Dev-Updates</strong> channel, and as videos on our YouTube channel.</p>
+    </div>
+    <div class="legacy-links">
+      <a class="legacy-btn" href="https://discord.gg/Ah6Jt5KVPH" target="_blank">&#9671; Discord Archive</a>
+      <a class="legacy-btn" href="https://youtube.com/@cntdarthgaming" target="_blank">&#9654; YouTube</a>
+    </div>
+  </div>
+</div>
+
+<div id="footer-placeholder"></div>
+
+<script>
+const PAGE_SIZE = 8;
+
+async function loadNews() {
+  try {
+    const res = await fetch('/destiny-playground/articles.json');
+    if (!res.ok) throw new Error('Failed to load');
+    const articles = await res.json();
+    initPage(articles);
+  } catch(err) {
+    document.getElementById('articles-list').innerHTML =
+      `<div class="no-results"><div class="no-results-title">Transmissions offline.</div>Make sure articles.json is in your repo root.</div>`;
+  }
+}
+
+function initPage(articles) {
+  let currentTag = 'All', currentSort = 'newest', currentSearch = '', currentPage = 1;
+
+  function buildFeatured() {
+    const featured = articles.filter(a => a.featured);
+    const grid = document.getElementById('featured-grid');
+    if (!featured.length) { grid.parentElement.style.display = 'none'; return; }
+    const cls = featured.length === 1 ? 'featured-grid-1' : featured.length === 2 ? 'featured-grid-2' : 'featured-grid-3';
+    grid.className = cls;
+    grid.innerHTML = featured.map((a, i) => `
+      <a class="feat-card" href="/destiny-playground/${a.file}">
+        ${a.image ? `<img class="feat-card-img" src="${a.image}" alt="${a.title}">` : '<div class="feat-card-bg"></div>'}
+        <div class="feat-card-overlay"></div>
+        <div class="feat-card-corner-tl"></div>
+        <div class="feat-card-corner-br"></div>
+        <div class="feat-card-body">
+          <div class="feat-card-tag">${a.tag}</div>
+          <div class="feat-card-title ${i === 0 ? 'large' : 'small'}">${a.title}</div>
+          <div class="feat-card-date">${a.date}</div>
+          <div class="feat-card-read">Read More</div>
+        </div>
+      </a>
+    `).join('');
+  }
+
+  function getFiltered() {
+    let list = articles.filter(a => !a.featured);
+    if (currentTag !== 'All') list = list.filter(a => a.tag === currentTag);
+    if (currentSearch.trim()) {
+      const q = currentSearch.toLowerCase();
+      list = list.filter(a =>
+        a.title.toLowerCase().includes(q) ||
+        a.excerpt.toLowerCase().includes(q) ||
+        a.tag.toLowerCase().includes(q)
+      );
+    }
+    list = list.slice().sort((a, b) =>
+      currentSort === 'newest' ? b.dateSort - a.dateSort : a.dateSort - b.dateSort
+    );
+    return list;
+  }
+
+  function renderPagination(total) {
+    const totalPages = Math.ceil(total / PAGE_SIZE);
+    const pag = document.getElementById('pagination');
+    if (totalPages <= 1) { pag.innerHTML = ''; return; }
+
+    let html = '';
+
+    // Prev
+    html += `<button class="pag-btn pag-prev ${currentPage === 1 ? 'disabled' : ''}"
+      ${currentPage === 1 ? 'disabled' : ''}
+      onclick="window._pagGo(${currentPage - 1})">&#8592; Prev</button>`;
+
+    // Page numbers - show up to 5 around current
+    const range = [];
+    for (let p = 1; p <= totalPages; p++) {
+      if (p === 1 || p === totalPages || (p >= currentPage - 2 && p <= currentPage + 2)) {
+        range.push(p);
+      }
+    }
+    let prev = null;
+    for (const p of range) {
+      if (prev !== null && p - prev > 1) {
+        html += `<span class="pag-ellipsis">...</span>`;
+      }
+      html += `<button class="pag-btn pag-num ${p === currentPage ? 'active' : ''}"
+        onclick="window._pagGo(${p})">${p}</button>`;
+      prev = p;
+    }
+
+    // Next
+    html += `<button class="pag-btn pag-next ${currentPage === totalPages ? 'disabled' : ''}"
+      ${currentPage === totalPages ? 'disabled' : ''}
+      onclick="window._pagGo(${currentPage + 1})">Next &#8594;</button>`;
+
+    pag.innerHTML = html;
+  }
+
+  window._pagGo = function(p) {
+    currentPage = p;
+    renderList();
+    // Scroll to top of list smoothly
+    document.getElementById('articles-list').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  function renderList() {
+    const list = getFiltered();
+    const total = list.length;
+    const totalPages = Math.ceil(total / PAGE_SIZE);
+    if (currentPage > totalPages) currentPage = 1;
+
+    document.getElementById('resultsCount').textContent =
+      total + ' article' + (total !== 1 ? 's' : '');
+
+    const container = document.getElementById('articles-list');
+
+    if (!list.length) {
+      container.innerHTML = `<div class="no-results"><div class="no-results-title">No transmissions found.</div>Try a different search or filter.</div>`;
+      document.getElementById('pagination').innerHTML = '';
+      return;
+    }
+
+    const start = (currentPage - 1) * PAGE_SIZE;
+    const page = list.slice(start, start + PAGE_SIZE);
+
+    container.innerHTML = page.map(a => `
+      <a class="article-row fade-in" href="/destiny-playground/${a.file}">
+        ${a.image
+          ? `<img class="article-row-img" src="${a.image}" alt="${a.title}">`
+          : `<div class="article-row-img-placeholder"><span>No image yet</span></div>`}
+        <div class="article-row-body">
+          <div class="article-row-tag">${a.tag}</div>
+          <div class="article-row-title">${a.title}</div>
+          <div class="article-row-excerpt">${a.excerpt}</div>
+          <div class="article-row-date">${a.date}</div>
+        </div>
+      </a>
+    `).join('');
+
+    renderPagination(total);
+  }
+
+  function resetPage() { currentPage = 1; }
+
+  document.getElementById('filterTabs').addEventListener('click', e => {
+    if (!e.target.matches('.filter-tab')) return;
+    document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+    e.target.classList.add('active');
+    currentTag = e.target.dataset.tag;
+    resetPage(); renderList();
+  });
+
+  document.getElementById('sortSelect').addEventListener('change', e => {
+    currentSort = e.target.value;
+    resetPage(); renderList();
+  });
+
+  let searchTimer;
+  document.getElementById('searchInput').addEventListener('input', e => {
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(() => {
+      currentSearch = e.target.value;
+      resetPage(); renderList();
+    }, 200);
+  });
+
+  buildFeatured();
+  renderList();
+}
+
+loadNews();
+</script>
+<script src="/destiny-playground/js/shared.js"></script>
+</body>
+</html>

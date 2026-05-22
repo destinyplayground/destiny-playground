@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="/destiny-playground/css/styles.css">
+<link rel="stylesheet" href="/destiny-playground/css/nav.css">
+<link rel="stylesheet" href="/destiny-playground/css/a11y-overrides.css">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<title>FAQ - Destiny Playground</title>
+
+<style>
+
+/* - PAGE HERO - */
+.page-hero {
+  position: relative;
+  padding: 10rem 3rem 5rem;
+  text-align: center;
+  overflow: hidden;
+}
+.page-hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 30%, rgba(201,168,76,0.07) 0%, transparent 65%),
+    linear-gradient(180deg, #0a0906 0%, #0f0d08 60%, #0a0906 100%);
+}
+.page-hero-grid {
+  position: absolute; inset: 0; opacity: 0.04;
+  background-image:
+    linear-gradient(rgba(201,168,76,0.6) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,168,76,0.6) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 20%, black 20%, transparent 75%);
+}
+.page-hero-badge {
+  position: relative; display: inline-block;
+  font-size: 0.62rem; letter-spacing: 0.35em; text-transform: uppercase;
+  color: var(--dark); background: var(--gold-dim); padding: 3px 16px;
+  margin-bottom: 1.4rem;
+  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  opacity: 0; animation: fadeUp 0.9s ease forwards 0.1s;
+}
+.page-hero-eyebrow {
+  position: relative;
+  font-size: 0.72rem; letter-spacing: 0.35em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 1.2rem;
+  display: flex; align-items: center; justify-content: center; gap: 1rem;
+  opacity: 0; animation: fadeUp 0.9s ease forwards 0.3s;
+}
+.eyebrow-line { flex: none; width: 40px; height: 0.5px; background: var(--gold-dim); }
+.page-hero-title {
+  position: relative;
+  font-family: 'Cinzel', serif;
+  font-size: clamp(2rem, 5vw, 3.6rem);
+  font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--white); margin-bottom: 1.4rem;
+  opacity: 0; animation: fadeUp 0.9s ease forwards 0.55s;
+}
+.page-hero-title span { color: var(--gold); }
+.page-hero-desc {
+  position: relative;
+  max-width: 520px; margin: 0 auto 2.5rem;
+  font-size: 0.95rem; line-height: 1.8; color: var(--body-text); font-weight: 300;
+  opacity: 0; animation: fadeUp 0.9s ease forwards 0.75s;
+}
+
+/* Search bar */
+.faq-search-wrap {
+  position: relative;
+  max-width: 480px; margin: 0 auto;
+  opacity: 0; animation: fadeUp 0.9s ease forwards 0.9s;
+}
+.faq-search {
+  width: 100%;
+  background: rgba(201,168,76,0.04);
+  border: 0.5px solid var(--border);
+  border-top: 1.5px solid var(--gold-dim);
+  padding: 0.9rem 3rem 0.9rem 1.4rem;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.82rem; letter-spacing: 0.12em;
+  color: var(--white);
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+.faq-search::placeholder { color: var(--muted); }
+.faq-search:focus {
+  border-color: var(--gold-dim);
+  background: rgba(201,168,76,0.06);
+}
+.faq-search-icon {
+  position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
+  color: var(--muted); pointer-events: none;
+  font-size: 0.9rem;
+}
+.faq-search-count {
+  font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--muted); text-align: center; margin-top: 0.7rem;
+  min-height: 1em;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* - SHARED SECTION WRAPPER - */
+.page-section {
+  padding: 5rem 3rem;
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+/* - FEATURED CATEGORY - */
+.featured-faq {
+  padding: 5rem 3rem 4rem;
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+.featured-faq-inner {
+  position: relative;
+  border: 0.5px solid var(--border);
+  border-top: 2px solid var(--gold);
+  background: rgba(201,168,76,0.025);
+  padding: 3rem;
+  overflow: hidden;
+}
+.featured-faq-inner::before {
+  content: '';
+  position: absolute; top: 0; right: 0;
+  width: 300px; height: 300px;
+  background: radial-gradient(ellipse at top right, rgba(201,168,76,0.05) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+/* corner brackets */
+.faq-corner {
+  position: absolute; width: 14px; height: 14px;
+  border-color: var(--gold-dim); border-style: solid;
+}
+.faq-corner.tl { top: 12px; left: 12px; border-width: 1px 0 0 1px; }
+.faq-corner.tr { top: 12px; right: 12px; border-width: 1px 1px 0 0; }
+.faq-corner.bl { bottom: 12px; left: 12px; border-width: 0 0 1px 1px; }
+.faq-corner.br { bottom: 12px; right: 12px; border-width: 0 1px 1px 0; }
+
+.featured-faq-tag {
+  font-size: 0.62rem; letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 0.5rem;
+  display: flex; align-items: center; gap: 0.6rem;
+}
+.featured-faq-tag::before { content: '◆'; font-size: 0.45rem; }
+
+.featured-faq-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.2rem, 2.5vw, 1.7rem);
+  font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--white); margin-bottom: 0.6rem;
+}
+
+.featured-faq-desc {
+  font-size: 0.88rem; line-height: 1.75; color: var(--body-text); font-weight: 300;
+  max-width: 600px; margin-bottom: 2.5rem;
+}
+
+/* FAQ accordion inside featured */
+.faq-list { display: flex; flex-direction: column; gap: 1.5px; }
+
+.faq-item {
+  background: rgba(10,9,6,0.6);
+  border: 0.5px solid rgba(201,168,76,0.08);
+}
+.faq-item.hidden { display: none; }
+
+.faq-question {
+  width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
+  padding: 1.1rem 1.4rem;
+  background: none; border: none; cursor: pointer; text-align: left;
+  transition: background 0.18s;
+}
+.faq-question:hover { background: rgba(201,168,76,0.03); }
+.faq-question-text {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.88rem; font-weight: 600; letter-spacing: 0.08em;
+  color: var(--white); line-height: 1.45;
+}
+.faq-chevron {
+  flex-shrink: 0; width: 9px; height: 9px;
+  border-right: 1.5px solid var(--muted);
+  border-bottom: 1.5px solid var(--muted);
+  transform: rotate(45deg) translateY(-2px);
+  transition: transform 0.22s, border-color 0.2s;
+}
+.faq-item.open .faq-chevron {
+  transform: rotate(225deg) translateY(-2px);
+  border-color: var(--gold);
+}
+
+.faq-answer {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+.faq-item.open .faq-answer { max-height: 2000px; }
+
+.faq-answer-inner {
+  padding: 0 1.4rem 1.4rem;
+  border-top: 0.5px solid rgba(201,168,76,0.07);
+  padding-top: 1rem;
+}
+.faq-answer-inner p {
+  font-size: 0.85rem; line-height: 1.8; color: var(--body-text); font-weight: 300;
+  margin-bottom: 0.7rem;
+}
+.faq-answer-inner p:last-child { margin-bottom: 0; }
+.faq-answer-inner ul, .faq-answer-inner ol {
+  margin: 0.5rem 0 0.7rem 0;
+  padding-left: 0;
+  list-style: none;
+  display: flex; flex-direction: column; gap: 0.35rem;
+}
+.faq-answer-inner li {
+  font-size: 0.83rem; line-height: 1.7; color: var(--body-text); font-weight: 300;
+  padding-left: 1.2rem; position: relative;
+}
+.faq-answer-inner li::before {
+  content: '◆';
+  position: absolute; left: 0; top: 0.2em;
+  font-size: 0.4rem; color: var(--gold-dim);
+}
+.faq-answer-inner strong { color: var(--white); font-weight: 500; }
+.faq-answer-inner a {
+  color: var(--gold); text-decoration: none;
+  border-bottom: 0.5px solid rgba(201,168,76,0.3);
+  transition: border-color 0.2s;
+}
+.faq-answer-inner a:hover { border-color: var(--gold); }
+.faq-answer-inner .note {
+  margin-top: 0.8rem; padding: 0.8rem 1rem;
+  border-left: 1.5px solid var(--gold-dim);
+  background: rgba(201,168,76,0.03);
+  font-size: 0.8rem; color: var(--muted);
+}
+
+/* - CATEGORIES GRID - */
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.5px;
+  margin-top: 3rem;
+  background: var(--border);
+}
+
+.faq-category-card {
+  background: var(--dark);
+}
+.faq-category-card.hidden { display: none; }
+
+.faq-category-header {
+  padding: 2rem 2rem 1.5rem;
+  border-left: 1.5px solid transparent;
+  transition: border-color 0.2s, background 0.2s;
+  cursor: pointer;
+}
+.faq-category-card:hover .faq-category-header,
+.faq-category-card.active .faq-category-header {
+  border-left-color: var(--gold-dim);
+  background: rgba(201,168,76,0.025);
+}
+
+.faq-cat-icon {
+  font-size: 1.1rem; color: var(--gold-dim);
+  margin-bottom: 0.8rem; display: block;
+  transition: color 0.2s;
+}
+.faq-category-card:hover .faq-cat-icon { color: var(--gold); }
+
+.faq-cat-title {
+  font-family: 'Cinzel', serif;
+  font-size: 0.95rem; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase;
+  color: var(--white); margin-bottom: 0.4rem;
+}
+.faq-cat-count {
+  font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--muted);
+}
+.faq-cat-desc {
+  font-size: 0.82rem; line-height: 1.65; color: var(--muted); font-weight: 300;
+  margin-top: 0.6rem;
+}
+
+/* inline faq list within card */
+.faq-category-body {
+  border-top: 0.5px solid rgba(201,168,76,0.07);
+}
+.faq-category-body .faq-item {
+  background: transparent;
+  border: none;
+  border-bottom: 0.5px solid rgba(201,168,76,0.06);
+}
+.faq-category-body .faq-item:last-child { border-bottom: none; }
+.faq-category-body .faq-question { padding: 0.9rem 1.4rem; }
+.faq-category-body .faq-question-text { font-size: 0.82rem; }
+.faq-category-body .faq-answer-inner { padding: 0 1.4rem 1.2rem; padding-top: 0.8rem; }
+
+/* - NO RESULTS - */
+.faq-no-results {
+  display: none;
+  grid-column: 1 / -1;
+  text-align: center; padding: 4rem 2rem;
+  background: var(--dark);
+}
+.faq-no-results.visible { display: block; }
+.faq-no-results p {
+  font-size: 0.88rem; color: var(--muted); letter-spacing: 0.1em; line-height: 1.8;
+}
+.faq-no-results strong { color: var(--body-text); font-weight: 500; }
+
+/* - DISCORD CTA - */
+.faq-cta {
+  margin: 5rem 3rem;
+  max-width: 1160px;
+  margin-left: auto; margin-right: auto;
+  padding: 3rem;
+  border: 0.5px solid var(--border);
+  text-align: center;
+  background: rgba(201,168,76,0.02);
+  position: relative;
+}
+.faq-cta::before, .faq-cta::after {
+  content: '';
+  position: absolute;
+  width: 30px; height: 30px;
+  border-color: var(--gold-dim); border-style: solid;
+}
+.faq-cta::before { top: -1px; left: -1px; border-width: 1px 0 0 1px; }
+.faq-cta::after  { bottom: -1px; right: -1px; border-width: 0 1px 1px 0; }
+.faq-cta-label {
+  font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 0.8rem;
+}
+.faq-cta h3 {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.1rem, 2vw, 1.5rem); font-weight: 600; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--white); margin-bottom: 0.8rem;
+}
+.faq-cta p {
+  font-size: 0.88rem; color: var(--body-text); font-weight: 300;
+  line-height: 1.75; margin-bottom: 1.8rem; max-width: 460px; margin-left: auto; margin-right: auto;
+}
+
+/* - RESPONSIVE - */
+@media (max-width: 768px) {
+  .page-hero { padding: 8rem 1.5rem 4rem; }
+  .featured-faq { padding: 4rem 1.5rem 3rem; }
+  .featured-faq-inner { padding: 2rem 1.5rem; }
+  .page-section { padding: 4rem 1.5rem; }
+  .faq-grid { grid-template-columns: 1fr; }
+  .faq-cta { margin: 3rem 1.5rem; padding: 2rem 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-grid"></div>
+
+  <div class="page-hero-badge">Knowledge Base</div>
+  <div class="page-hero-eyebrow">
+    <span class="eyebrow-line"></span>
+    Frequently Asked Questions
+    <span class="eyebrow-line"></span>
+  </div>
+  <h1 class="page-hero-title">Got <span>Questions?</span></h1>
+  <p class="page-hero-desc">Everything you need to know about Destiny Playground, organised by topic. Can't find your answer? Ask us on Discord.</p>
+
+  <div class="faq-search-wrap">
+    <input class="faq-search" id="faqSearch" type="text" placeholder="Search questions..." autocomplete="off" spellcheck="false">
+    <span class="faq-search-icon">&#9906;</span>
+    <div class="faq-search-count" id="faqSearchCount"></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ---══
+     FEATURED - FOUNDERS
+     ---══ -->
+<div class="featured-faq" id="featuredSection">
+  <div class="section-label">Start Here</div>
+  <div class="featured-faq-inner">
+    <div class="faq-corner tl"></div>
+    <div class="faq-corner tr"></div>
+    <div class="faq-corner bl"></div>
+    <div class="faq-corner br"></div>
+
+    <div class="featured-faq-tag">Featured</div>
+    <div class="featured-faq-title">Founders</div>
+    <p class="featured-faq-desc">Joining early? Here's everything you need to know about Founder status - what it is, how to qualify, and what you get for being part of the project from the start.</p>
+
+    <div class="faq-list" id="feat-founders">
+
+      <div class="faq-item" data-q="How do you qualify as a founder?">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-question-text">How do you qualify as a Founder?</span>
+          <span class="faq-chevron"></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>To qualify as a Founder, simply join the Discord server. That's it.</p>
+          <p>Founder access will close when either of the following happens:</p>
+          <ul>
+            <li>The Discord server reaches 50 members</li>
+            <li>The server's Early Access period begins</li>
+          </ul>
+          <p><a href="https://discord.gg/Ah6Jt5KVPH" target="_blank">Join the Discord here ↗</a></p>
+        </div></div>
+      </div>
+
+      <div class="faq-item" data-q="What benefits does being a founder provide?">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-question-text">What do Founders actually get?</span>
+          <span class="faq-chevron"></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Being a Founder rewards you with:</p>
+          <ul>
+            <li><strong>Founder Title</strong> - a permanent prestige identifier</li>
+            <li><strong>Founder Memento</strong> - an exclusive cosmetic item</li>
+            <li><strong>Season 2 Season Pass</strong> - free access (details below)</li>
+          </ul>
+          <p>Season 2 will be a shorter season lasting just 4 weeks, directly following the Season 1 launch. All Founders will receive free access to this pass. Non-founders can purchase it at a price adjusted for the reduced length.</p>
+        </div></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ---══
+     ALL CATEGORIES
+     ---══ -->
+<section class="page-section">
+  <div class="section-label">All Topics</div>
+  <h2 class="section-title">Browse by Category</h2>
+
+  <div class="faq-grid" id="faqGrid">
+
+    <!-- NO RESULTS -->
+    <div class="faq-no-results" id="faqNoResults">
+      <p>No questions match <strong id="faqNoResultsTerm"></strong>.<br>Try a different search, or ask us on <a href="https://discord.gg/Ah6Jt5KVPH" target="_blank">Discord</a>.</p>
+    </div>
+
+    <!-- - SEASONAL PASS & PROGRESSION - -->
+    <div class="faq-category-card" data-category="Seasonal Pass & Progression">
+      <div class="faq-category-header">
+        <span class="faq-cat-icon">&#9670;</span>
+        <div class="faq-cat-title">Seasonal Pass and Progression</div>
+        <div class="faq-cat-count">10 questions</div>
+        <div class="faq-cat-desc">How seasons work, what the premium pass includes, and what you can expect each season.</div>
+      </div>
+      <div class="faq-category-body faq-list">
+
+        <div class="faq-item" data-q="Why introduce a paid season pass at all?">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-question-text">Why introduce a paid season pass at all?</span>
+            <span class="faq-chevron"></span>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>The server will always be <strong>completely free to access</strong>. A premium season pass exists to cover ongoing server hosting, development tools, and updates - without locking core gameplay behind a paywall.</p>
+            <p>Think of it as a way to support the project, not a requirement to enjoy it.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item" data-q="Does the premium season pass give gameplay advantages?">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-question-text">Does the premium pass give any gameplay advantages?</span>
+            <span class="faq-chevron"></span>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>No. Season pass rewards - free or premium - will not provide direct gameplay power that creates an unfair advantage. All major systems, activities, and core gameplay remain fully accessible to everyone.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item" data-q="Can I play without ever buying a season pass?">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-question-text">Can I play without ever buying a season pass?</span>
+            <span class="faq-chevron"></span>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Yes - the server is designed to be fully enjoyable without a premium pass. The free track provides meaningful rewards each season.</p>
+            <p>That said, some seasonal weapons may be easier to obtain via the pass, and seasonal exotic items may be significantly harder to obtain without it.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item" data-q="What happens if I join late in a season?">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-question-text">What happens if I join late in a season?</span>
+            <span class="faq-chevron"></span>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>You can still progress the season pass at your own pace while the season is active. Depending on how late you join, some rewards may require dedicated playtime to reach - but the Season Archive exists to reduce long-term loss of access to key items.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item" data-q="What exactly is the Season Archive?">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-question-text">What is the Season Archive?</span>
+            <span class="faq-chevron"></span>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>The Season Archive is a system that makes key rewards from past seasons available after a season ends. Through it:</p>
+            <ul>
+              <li>Players may purchase access to past season passes at a reduced cost, then buy key returning items</li>
+              <li>Players who already owned the pass may purchase returning key items directly</li>
+            </ul>
+            <p>Not every reward is guaranteed to return, and there's no fixed schedule for archived items.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item" data-q="Are season pass rewards exclusive forever?">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-question-text">Are season pass rewards exclusive forever?</span>
+            <span class="faq-chevron"></span>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>There's no single rule that applies to everything. Some rewards may remain exclusive to their season, others may return via the Season Archive, and some may reappear through other gameplay avenues in the future.</p>
+            <p>The season pass is always the most direct and reliable way to earn seasonal rewards while they're available.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item" data-q="Why is the season pass locked behind campaign completion?">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-question-text">Why is the season pass locked behind campaign completion?</span>
+            <span class="faq-chevron"></span>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>The main campaign is designed to introduce core systems, the world, and your progression foundations. Gating season pass access behind it ensures:</p>
+            <ul>
+              <li>A smoother onboarding experience</li>
+              <li>Narrative consistency - seasons feel like a continuation, not a replacement</li>
+            </ul>
+          </div></div>
+        </div>
+
+        <div class="faq-item" data-q="Will every season include new story content?">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-question-text">Will every season include new story content?</span>
+            <span class="faq-chevron"></span>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Not necessarily. Narrative content takes significant time to design, implement, and test. While future campaigns and story content are planned post-release, some seasons may focus more on gameplay systems, activities, balance, or experimental features - or simply introduce new items to chase.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item" data-q="Will seasons always be the same length?">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-question-text">Will seasons always be the same length?</span>
+            <span class="faq-chevron"></span>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Season length is still being finalised, but the current plan is for seasons to be similar in length to Destiny 2's. Pricing for the premium pass may adjust based on season duration to keep value consistent.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item" data-q="Can content release outside of season launches?">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-question-text">Can content release outside of season launches?</span>
+            <span class="faq-chevron"></span>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Yes. Seasons provide structure for updates, but content is not locked to season start dates. Updates can and will release whenever they're ready.</p>
+          </div></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- - TRIUMPHS - -->
+    <div class="faq-category-card" data-category="Triumphs">
+      <div class="faq-category-header">
+        <span class="faq-cat-icon">&#9651;</span>
+        <div class="faq-cat-title">Triumphs</div>
+        <div class="faq-cat-count">9 questions</div>
+        <div class="faq-cat-desc">The achievement and progression system that tracks your journey across every corner of the server.</div>
+      </div>
+      <div class="faq-category-body faq-list">
+
+        <div class="faq-item" data-q="What are Triumphs?">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-question-text">What are Triumphs?</span>
+            <span class="faq-chevron"></span>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Triumphs are a progression and achievement system inspired by Destiny 2's Triumphs and Medals. They let you track your progress across all aspects of the server and earn rewards for completing objectives.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item" data-q="What types of Triumphs exist?">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-question-text">What types of Triumphs are there?</span>
+            <span class="faq-chevron"></span>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <ul>
+              <li><strong>Challenge Triumphs</strong> - one-time objectives, often specific and more rewarding</li>
+              <li><strong>Tiered Triumphs</strong> - multi-stage with several tiers, each granting rewards; higher tiers represent long-term dedication</li>
+            </ul>
+          </div></div>
+        </div>
+
+        <div class="faq-item" data-q="Are Triumphs account-wide or character-based?">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-question-text">Are Triumphs account-wide or character-based?</span>
+            <span class="faq-chevron"></span>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Account-wide. Progress and completions carry across all your characters, so you're always working toward the same overall Triumph score.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item" data-q="Do Triumphs give rewards?">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-question-text">Do Triumphs give rewards?</span>
+            <span class="faq-chevron"></span>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Yes. All Triumphs grant <strong>Triumph Points</strong>, and some also reward items or bonuses on completion. Points feed into your Triumph Rewards Track, which unlocks increasingly valuable rewards as you progress.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item" data-q="Are Triumph Points spent or permanent?">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-question-text">Are Triumph Points spent, or do they stay permanently?</span>
+            <span class="faq-chevron"></span>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Permanent. Once earned, Triumph Points always count toward your total and can never be lost or spent.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item" data-q="Can I miss Triumphs or get locked out?">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-question-text">Can I miss Triumphs or get locked out of them?</span>
+            <span class="faq-chevron"></span>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Almost never. Triumphs are designed to be permanently obtainable. If something is time-limited or event-based, it will be clearly marked as such.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item" data-q="Can Triumphs be hidden?">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-question-text">Can Triumphs be hidden?</span>
+            <span class="faq-chevron"></span>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Yes. Some Triumphs won't appear until unlocked - but your progress toward them is still tracked in the background.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item" data-q="Do Triumphs show completion statistics?">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-question-text">Do Triumphs show how many players have completed them?</span>
+            <span class="faq-chevron"></span>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Yes. Each Triumph displays the global player completion percentage, so you can see at a glance how rare or common any given Triumph is across the server.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item" data-q="Can new tiers be added to Triumphs?">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-question-text">Can new tiers be added to existing Triumphs?</span>
+            <span class="faq-chevron"></span>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Yes. Tiered Triumphs are designed to be expandable - new tiers can be added in future updates without resetting any progress you've already made.</p>
+          </div></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- - TITLES - -->
+    <div class="faq-category-card" data-category="Titles">
+      <div class="faq-category-header">
+        <span class="faq-cat-icon">&#9670;</span>
+        <div class="faq-cat-title">Titles</div>
+        <div class="faq-cat-count">8 questions</div>
+        <div class="faq-cat-desc">Prestige identifiers earned through mastery. Harder to get than Triumphs, and worth every bit of the grind.</div>
+      </div>
+      <div class="faq-category-body faq-list">
+
+        <div class="faq-item" data-q="What are Titles?">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-question-text">What are Titles?</span>
+            <span class="faq-chevron"></span>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Titles are prestige identifiers that represent mastery in a specific area of the server. Once earned, a Title can be equipped and displayed to other players as proof of your achievements. They are designed to reflect focus, commitment, and skill - not just general progress.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item" data-q="How are Titles different from Triumphs?">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-question-text">How are Titles different from Triumphs?</span>
+            <span class="faq-chevron"></span>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <ul>
+              <li><strong>Triumphs</strong> track everything you do and reward broad, steady progress</li>
+              <li><strong>Titles</strong> represent mastery in a specific area - they are harder to earn, more targeted, and carry more prestige</li>
+            </ul>
+          </div></div>
+        </div>
+
+        <div class="faq-item" data-q="How do I earn a Title?">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-question-text">How do I earn a Title?</span>
+            <span class="faq-chevron"></span>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Each Title has its own unique set of objectives, which may include:</p>
+            <ul>
+              <li>Completing specific activities under certain conditions</li>
+              <li>Difficult or skill-based challenges</li>
+              <li>Long-term commitment to an activity or system</li>
+              <li>Milestones that test knowledge, consistency, or mastery</li>
+            </ul>
+            <p>Some objectives may be hidden and only reveal themselves as you progress.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item" data-q="Are Titles permanent?">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-question-text">Are Titles permanent once earned?</span>
+            <span class="faq-chevron"></span>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Yes. Once earned, a Title is permanently unlocked on your account - it can never be lost, reset, or expired. If you see someone wearing a Title from an earlier era of the server, they earned it when it was available.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item" data-q="Are Titles seasonal?">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-question-text">Are Titles seasonal?</span>
+            <span class="faq-chevron"></span>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>No. Titles do not reset with seasons and are not designed around temporary progression. New Titles may be introduced alongside new systems or content, but previously earned Titles will always remain valid.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item" data-q="Do I need to earn every Title?">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-question-text">Do I need to earn every Title?</span>
+            <span class="faq-chevron"></span>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Not at all. Titles are intentionally diverse in difficulty and focus - some are combat-heavy, some reward exploration, some require long-term dedication, and others reward mastery of a specific activity. Different playstyles are equally valid paths to earning Titles.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item" data-q="How many Titles will be available at launch?">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-question-text">How many Titles will be available at launch?</span>
+            <span class="faq-chevron"></span>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>At launch, Titles will be limited in number, focused on core gameplay systems, and designed to introduce players to how the system works. Variety and complexity will expand as the server grows.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item" data-q="Will more Titles be added in the future?">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-question-text">Will more Titles be added in the future?</span>
+            <span class="faq-chevron"></span>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Yes. The system is built to scale over time, with new Titles tied to new systems or activities, variants of existing Titles, and increasingly challenging options as the server evolves.</p>
+          </div></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- - FISHING - -->
+    <div class="faq-category-card" data-category="Fishing">
+      <div class="faq-category-header">
+        <span class="faq-cat-icon">&#9670;</span>
+        <div class="faq-cat-title">Fishing</div>
+        <div class="faq-cat-count">15 questions</div>
+        <div class="faq-cat-desc">A fully custom system with progression, rarity tiers, tournaments, and more - fishing here is nothing like vanilla Minecraft.</div>
+      </div>
+      <div class="faq-category-body faq-list">
+
+        <div class="faq-item" data-q="What makes fishing different on Destiny Playground?">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-question-text">What makes fishing different here?</span>
+            <span class="faq-chevron"></span>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Fishing is a fully custom system - not vanilla Minecraft fishing. It includes progression, locations, equipment, events, and strategy that make it a long-term activity rather than a passive one. Instead of just casting and waiting, you'll deal with:</p>
+            <ul>
+              <li>Location-based fish pools</li>
+              <li>Mini-game mechanics</li>
+              <li>Custom rods, bait, and upgrades</li>
+              <li>Rare, legendary, and mythic catches</li>
+              <li>Events, tournaments, and leaderboards</li>
+            </ul>
+          </div></div>
+        </div>
+
+        <div class="faq-item" data-q="How do I unlock fishing?">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-question-text">How do I unlock fishing?</span>
+            <span class="faq-chevron"></span>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Fishing is unlocked through a quest during Act II of the main campaign. It walks you through how the system works, how to use rods effectively, and where to fish. You'll receive a standard fishing rod during the quest - enough to get started.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item" data-q="Can I fish anywhere?">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-question-text">Can I fish anywhere?</span>
+            <span class="faq-chevron"></span>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>You can fish in any body of water, but for the best results you'll want to find <strong>fishing spots</strong> - distinct bubble patterns in the water. These spots increase your chances of catching fish, may have rarity modifiers, and are sometimes tied to specific fish or rewards. Different locations and biomes also have unique fish pools, encouraging exploration.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item" data-q="Are there different fish rarities?">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-question-text">Are there different fish rarities?</span>
+            <span class="faq-chevron"></span>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Yes. Fish have rarity tiers - <strong>Common, Uncommon, Rare, Legendary, Exotic, and Mythic</strong> - as well as quality levels shown by a coloured star on the fish's icon. Higher-quality fish are more valuable and harder to obtain, even within the same species.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item" data-q="How do fishing rods work?">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-question-text">How do fishing rods work?</span>
+            <span class="faq-chevron"></span>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Rods are fully custom with stats including Durability, Luck (affects rare catches), Speed, and Rarity. You can upgrade rods, craft and apply enchantments (up to 2 per rod), and obtain better rods through gameplay, vendors, or special sources. Only a limited number of enchantments can be active at once, encouraging thoughtful build choices.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item" data-q="What is bait and do I need it?">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-question-text">What is bait, and do I need it?</span>
+            <span class="faq-chevron"></span>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Bait is optional but strongly recommended. It improves your chances of rare fish, has its own durability, and can be stacked up to 5 at a time on a rod. You can fish without bait, but certain fish and locations will be significantly harder. Post-release, specialised bait for specific fish or locations is also planned.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item" data-q="What is the Fish Evaluator?">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-question-text">What is the Fish Evaluator?</span>
+            <span class="faq-chevron"></span>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>When you catch a fish, its full details are initially hidden. To reveal its quality, stats, and value, you'll need to visit the Fish Evaluator. A way to unlock remote access to this functionality is also planned for later on.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item" data-q="What rewards can I get from fishing?">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-question-text">What rewards can I get from fishing?</span>
+            <span class="faq-chevron"></span>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Fishing rewards go well beyond just fish:</p>
+            <ul>
+              <li>Fish (for selling, crafting, quests, or collections)</li>
+              <li>Treasure chests with currencies, materials, engrams, or unique items</li>
+              <li>Fishing Tokens, exchangeable with fishing vendors</li>
+              <li>Rare or mythic fish worth significant value</li>
+              <li>Hidden collectibles and lore-related items</li>
+            </ul>
+          </div></div>
+        </div>
+
+        <div class="faq-item" data-q="Are there fishing events or competitions?">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-question-text">Are there fishing events or competitions?</span>
+            <span class="faq-chevron"></span>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Yes - fishing is designed as a live, ongoing activity:</p>
+            <ul>
+              <li><strong>Weekly Tournaments</strong> - server-wide competitions running for a few hours, with challenges like most fish caught, biggest catch, or most valuable haul. Top performers earn exclusive rewards.</li>
+              <li><strong>Iron Banner-style Events</strong> - occasional week-long events (roughly once or twice a season) with changing daily goals, unique fish, and daily and weekly reward tracks.</li>
+              <li><strong>Random Events</strong> - spontaneous events that temporarily modify fishing conditions, such as boosted rarity or special fish availability.</li>
+            </ul>
+          </div></div>
+        </div>
+
+        <div class="faq-item" data-q="Can I AFK fish?">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-question-text">Can I AFK fish?</span>
+            <span class="faq-chevron"></span>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>No. The system includes built-in anti-AFK mechanics - random interactions may occur while fishing that require your attention, ensuring the system rewards active play.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item" data-q="Is there a fishing leaderboard?">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-question-text">Is there a fishing leaderboard?</span>
+            <span class="faq-chevron"></span>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Yes - there are weekly leaderboards that reward top players each week, and a lifetime leaderboard for long-term bragging rights.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item" data-q="Is fishing competitive or casual?">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-question-text">Is fishing competitive or casual?</span>
+            <span class="faq-chevron"></span>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Both. Fishing supports casual players who want a relaxing activity, completionists collecting every fish, competitive players chasing tournaments and leaderboards, and players treating fishing as an in-game profession or trading focus. You choose how deep you want to go.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item" data-q="Can fish and fishing items be traded?">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-question-text">Can fish and fishing items be traded?</span>
+            <span class="faq-chevron"></span>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Yes. Fish are not trade-locked and trading is encouraged - players can trade rare fish, sell fishing items, and even specialise in fishing as an in-game role. A dedicated trading solution is planned to keep trading fair and safe.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item" data-q="Is there a fishing collection or tracker?">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-question-text">Is there a fishing collection or tracker?</span>
+            <span class="faq-chevron"></span>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Yes. A fishing collection system tracks all fish you've discovered and displays the best-quality version of each species you've caught - especially useful for completionists.</p>
+          </div></div>
+        </div>
+
+        <div class="faq-item" data-q="Will fishing have quests and bounties?">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-question-text">Will fishing have quests and bounties?</span>
+            <span class="faq-chevron"></span>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <p>Yes, though both systems are still in early development. Current plans include fishing bounties from vendors (catch specific fish, quantities, or fish in certain locations), as well as exotic-style multi-step bounties with high difficulty and significant rewards. Fishing quests will also be used to introduce deeper mechanics over time.</p>
+            <div class="note">The fishing system is still in active development - mechanics, rewards, and features may evolve based on testing and feedback.</div>
+          </div></div>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- /faq-grid -->
+</section>
+
+<div class="divider"></div>
+
+<!-- DISCORD CTA -->
+<div class="faq-cta">
+  <div class="faq-cta-label">Still have questions?</div>
+  <h3>Ask the Community</h3>
+  <p>Head over to the Discord server - the team and community are active and happy to help. You can also submit feature suggestions and feedback in the suggestions channel.</p>
+  <a class="btn-primary" href="https://discord.gg/Ah6Jt5KVPH" target="_blank" style="display:inline-flex;align-items:center;text-decoration:none;">Join the Discord</a>
+</div>
+
+<div class="divider"></div>
+
+<!-- FOOTER -->
+<div id="footer-placeholder"></div>
+<script src="/destiny-playground/js/shared.js"></script>
+
+<script>
+/* - FAQ ACCORDION - */
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  // close siblings in same list
+  const siblings = item.parentElement.querySelectorAll('.faq-item');
+  siblings.forEach(function(s) { s.classList.remove('open'); });
+  if (!isOpen) item.classList.add('open');
+}
+
+/* - SEARCH - */
+(function() {
+  const input  = document.getElementById('faqSearch');
+  const count  = document.getElementById('faqSearchCount');
+  const noRes  = document.getElementById('faqNoResults');
+  const featured = document.getElementById('featuredSection');
+
+  input.addEventListener('input', function() {
+    const term = input.value.trim().toLowerCase();
+
+    if (!term) {
+      // reset everything
+      document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('hidden'); });
+      document.querySelectorAll('.faq-category-card').forEach(function(c) { c.classList.remove('hidden'); });
+      featured.style.display = '';
+      noRes.classList.remove('visible');
+      count.textContent = '';
+      return;
+    }
+
+    // hide featured section during search
+    featured.style.display = 'none';
+
+    let total = 0;
+    document.querySelectorAll('.faq-category-card').forEach(function(card) {
+      let cardHasMatch = false;
+      card.querySelectorAll('.faq-item').forEach(function(item) {
+        const q = (item.dataset.q || '').toLowerCase();
+        const a = item.querySelector('.faq-answer-inner') ? item.querySelector('.faq-answer-inner').textContent.toLowerCase() : '';
+        const matches = q.includes(term) || a.includes(term);
+        item.classList.toggle('hidden', !matches);
+        if (matches) { cardHasMatch = true; total++; }
+      });
+      card.classList.toggle('hidden', !cardHasMatch);
+    });
+
+    if (total === 0) {
+      noRes.classList.add('visible');
+      document.getElementById('faqNoResultsTerm').textContent = '"' + input.value.trim() + '"';
+      count.textContent = '';
+    } else {
+      noRes.classList.remove('visible');
+      count.textContent = total + ' result' + (total === 1 ? '' : 's');
+    }
+  });
+})();
+</script>
+
+</body>
+</html>

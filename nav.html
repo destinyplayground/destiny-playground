@@ -1,0 +1,322 @@
+<!-- NAV - DESTINY PLAYGROUND
+     CSS lives in: /destiny-playground/css/nav.css
+     Link that file in the <head> of every page. -->
+
+<nav id="mainNav">
+  <a class="nav-logo" href="/destiny-playground/index.html">Destiny Playground</a>
+
+  <!-- Accessibility button - sits right of logo -->
+  <div class="nav-a11y" id="navA11y">
+    <button class="nav-a11y-btn" id="a11yToggle" aria-label="Accessibility options" aria-expanded="false" aria-haspopup="true">
+      <svg class="nav-a11y-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="5" r="1.5"/>
+        <path d="M12 8v4m0 0l-3 5m3-5l3 5"/>
+        <path d="M8.5 10.5S10 10 12 10s3.5.5 3.5.5"/>
+      </svg>
+    </button>
+    <div class="nav-a11y-panel" id="a11yPanel" role="menu" aria-label="Accessibility options">
+      <div class="a11y-panel-label">Accessibility</div>
+      <button class="a11y-option" id="a11y-light" role="menuitem" onclick="toggleA11y('light')">
+        <span class="a11y-option-icon">&#9788;</span>
+        <div><div class="a11y-option-name">Light Mode</div><div class="a11y-option-desc">Full theme, light background</div></div>
+        <span class="a11y-check" aria-hidden="true">&#10003;</span>
+      </button>
+      <button class="a11y-option" id="a11y-font" role="menuitem" onclick="toggleA11y('font')">
+        <span class="a11y-option-icon">Aa</span>
+        <div><div class="a11y-option-name">Simple Font</div><div class="a11y-option-desc">Switches to a plain sans-serif</div></div>
+        <span class="a11y-check" aria-hidden="true">&#10003;</span>
+      </button>
+      <button class="a11y-option" id="a11y-size" role="menuitem" onclick="toggleA11y('size')">
+        <span class="a11y-option-icon">A+</span>
+        <div><div class="a11y-option-name">Larger Text</div><div class="a11y-option-desc">Increases base font size</div></div>
+        <span class="a11y-check" aria-hidden="true">&#10003;</span>
+      </button>
+      <button class="a11y-option" id="a11y-contrast" role="menuitem" onclick="toggleA11y('contrast')">
+        <span class="a11y-option-icon">&#9680;</span>
+        <div><div class="a11y-option-name">High Contrast</div><div class="a11y-option-desc">Bold colours, clear borders</div></div>
+        <span class="a11y-check" aria-hidden="true">&#10003;</span>
+      </button>
+      <button class="a11y-option" id="a11y-dyslexia" role="menuitem" onclick="toggleA11y('dyslexia')">
+        <span class="a11y-option-icon">&#9638;</span>
+        <div><div class="a11y-option-name">Dyslexia Friendly</div><div class="a11y-option-desc">Spaced, readable font</div></div>
+        <span class="a11y-check" aria-hidden="true">&#10003;</span>
+      </button>
+      <button class="a11y-option" id="a11y-motion" role="menuitem" onclick="toggleA11y('motion')">
+        <span class="a11y-option-icon">&#9632;</span>
+        <div><div class="a11y-option-name">Reduce Motion</div><div class="a11y-option-desc">Turns off animations</div></div>
+        <span class="a11y-check" aria-hidden="true">&#10003;</span>
+      </button>
+      <button class="a11y-reset" onclick="resetA11y()">Reset all</button>
+    </div>
+  </div>
+
+  <!-- All nav links on the right -->
+  <div class="nav-links">
+    <a class="nav-link" href="/destiny-playground/index.html">Home</a>
+    <a class="nav-link" href="/destiny-playground/news.html">News</a>
+
+    <div class="nav-category" id="cat-play">
+      Play <span class="nav-chevron" aria-hidden="true"></span>
+      <div class="nav-dropdown">
+        <a href="/destiny-playground/getting-started.html">Getting Started</a>
+        <a href="/destiny-playground/server-info.html">Server Info</a>
+        <a href="/destiny-playground/bug-reports.html">Bug Reports</a>
+      </div>
+    </div>
+
+    <div class="nav-category" id="cat-world">
+      World <span class="nav-chevron" aria-hidden="true"></span>
+      <div class="nav-dropdown">
+        <a href="/destiny-playground/lore.html">Lore</a>
+        <a href="/destiny-playground/destinations.html">Destinations</a>
+        <a href="/destiny-playground/seasons.html">Seasons</a>
+        <a href="/destiny-playground/gallery.html">Gallery</a>
+      </div>
+    </div>
+
+    <div class="nav-category" id="cat-community">
+      Community <span class="nav-chevron" aria-hidden="true"></span>
+      <div class="nav-dropdown">
+        <a href="/destiny-playground/about.html">About the Project</a>
+        <a href="/destiny-playground/team.html">Team and Credits</a>
+        <a href="/destiny-playground/faq.html">FAQ</a>
+        <a href="/destiny-playground/roadmap.html">Roadmap</a>
+        <div class="nav-dropdown-divider"></div>
+        <a href="/destiny-playground/mods.html">Official Modpacks</a>
+        <!-- <a href="https://wiki.example.com" target="_blank">Fan Wiki</a> -->
+      </div>
+    </div>
+
+    <div class="nav-category" id="cat-support">
+      Support <span class="nav-chevron" aria-hidden="true"></span>
+      <div class="nav-dropdown" style="right:0;left:auto;">
+        <a href="https://ko-fi.com/destinyplayground" target="_blank">Ko-fi</a>
+        <a href="https://discord.gg/Ah6Jt5KVPH" target="_blank">Discord</a>
+        <a href="https://www.youtube.com/@cntdarthgaming" target="_blank">YouTube</a>
+        <a href="https://x.com/destinyplaygrnd" target="_blank">Twitter / X</a>
+        <a href="https://bsky.app/profile/thedestinyplayground.bsky.social" target="_blank">Bluesky</a>
+      </div>
+    </div>
+  </div><!-- /nav-links -->
+
+  <button class="nav-mobile-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+
+  <a href="/destiny-playground/index.html">Home</a>
+  <a href="/destiny-playground/news.html">News</a>
+
+  <div class="mobile-category">
+    <button class="mobile-category-trigger" data-target="mob-play">
+      Play <span class="mobile-chevron" aria-hidden="true"></span>
+    </button>
+    <div class="mobile-category-links" id="mob-play">
+      <a href="/destiny-playground/getting-started.html">Getting Started</a>
+      <a href="/destiny-playground/server-info.html">Server Info</a>
+      <a href="/destiny-playground/bug-reports.html">Bug Reports</a>
+    </div>
+  </div>
+
+  <div class="mobile-category">
+    <button class="mobile-category-trigger" data-target="mob-world">
+      World <span class="mobile-chevron" aria-hidden="true"></span>
+    </button>
+    <div class="mobile-category-links" id="mob-world">
+      <a href="/destiny-playground/lore.html">Lore</a>
+      <a href="/destiny-playground/destinations.html">Destinations</a>
+      <a href="/destiny-playground/seasons.html">Seasons</a>
+      <a href="/destiny-playground/gallery.html">Gallery</a>
+    </div>
+  </div>
+
+  <div class="mobile-category">
+    <button class="mobile-category-trigger" data-target="mob-community">
+      Community <span class="mobile-chevron" aria-hidden="true"></span>
+    </button>
+    <div class="mobile-category-links" id="mob-community">
+      <a href="/destiny-playground/about.html">About the Project</a>
+      <a href="/destiny-playground/team.html">Team and Credits</a>
+      <a href="/destiny-playground/faq.html">FAQ</a>
+      <a href="/destiny-playground/roadmap.html">Roadmap</a>
+      <a href="/destiny-playground/mods.html">Official Modpacks</a>
+      <!-- <a href="https://wiki.example.com" target="_blank">Fan Wiki</a> -->
+    </div>
+  </div>
+
+  <div class="mobile-category">
+    <button class="mobile-category-trigger" data-target="mob-support">
+      Support <span class="mobile-chevron" aria-hidden="true"></span>
+    </button>
+    <div class="mobile-category-links" id="mob-support">
+      <a href="https://ko-fi.com/destinyplayground" target="_blank">Ko-fi</a>
+      <a href="https://discord.gg/Ah6Jt5KVPH" target="_blank">Discord</a>
+      <a href="https://www.youtube.com/@cntdarthgaming" target="_blank">YouTube</a>
+      <a href="https://x.com/destinyplaygrnd" target="_blank">Twitter / X</a>
+      <a href="https://bsky.app/profile/thedestinyplayground.bsky.social" target="_blank">Bluesky</a>
+    </div>
+  </div>
+
+</div><!-- /mobile-menu -->
+
+<script>
+(function() {
+  const toggle = document.getElementById('navToggle');
+  const menu = document.getElementById('mobileMenu');
+
+  /* - MOBILE TOGGLE - */
+  toggle.addEventListener('click', function() {
+    const open = menu.classList.toggle('open');
+    toggle.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', open);
+    menu.setAttribute('aria-hidden', !open);
+  });
+
+  /* - MOBILE ACCORDION - */
+  document.querySelectorAll('.mobile-category-trigger').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      const targetId = btn.getAttribute('data-target');
+      const links = document.getElementById(targetId);
+      const isOpen = links.classList.contains('open');
+      document.querySelectorAll('.mobile-category-links').forEach(function(el) {
+        el.classList.remove('open');
+      });
+      document.querySelectorAll('.mobile-category-trigger').forEach(function(el) {
+        el.classList.remove('open');
+      });
+      if (!isOpen) {
+        links.classList.add('open');
+        btn.classList.add('open');
+      }
+    });
+  });
+
+  /* - DESKTOP DROPDOWNS - */
+  document.querySelectorAll('.nav-category').forEach(function(cat) {
+    cat.addEventListener('click', function(e) {
+      const isOpen = cat.classList.contains('open');
+      document.querySelectorAll('.nav-category').forEach(function(c) {
+        c.classList.remove('open');
+      });
+      if (!isOpen) cat.classList.add('open');
+      e.stopPropagation();
+    });
+  });
+
+  document.addEventListener('click', function() {
+    document.querySelectorAll('.nav-category').forEach(function(c) {
+      c.classList.remove('open');
+    });
+  });
+
+  /* - ACTIVE PAGE HIGHLIGHT - */
+  const path = window.location.pathname;
+  document.querySelectorAll('.nav-link, .nav-dropdown a').forEach(function(a) {
+    if (a.getAttribute('href') && path.endsWith(a.getAttribute('href').split('/').pop())) {
+      a.classList.add('active');
+      const parent = a.closest('.nav-category');
+      if (parent) parent.classList.add('active');
+    }
+  });
+
+  /* - ACCESSIBILITY PANEL - */
+  const a11yBtn   = document.getElementById('a11yToggle');
+  const a11yPanel = document.getElementById('a11yPanel');
+
+  a11yBtn.addEventListener('click', function(e) {
+    const open = a11yPanel.classList.toggle('open');
+    a11yBtn.setAttribute('aria-expanded', open);
+    e.stopPropagation();
+    // close nav dropdowns when a11y opens
+    document.querySelectorAll('.nav-category').forEach(function(c) { c.classList.remove('open'); });
+  });
+
+  // close a11y panel when clicking elsewhere
+  document.addEventListener('click', function(e) {
+    if (!document.getElementById('navA11y').contains(e.target)) {
+      a11yPanel.classList.remove('open');
+      a11yBtn.setAttribute('aria-expanded', false);
+    }
+  });
+
+  // also close nav dropdowns when a11y panel is open
+  document.querySelectorAll('.nav-category').forEach(function(cat) {
+    cat.addEventListener('click', function() {
+      a11yPanel.classList.remove('open');
+      a11yBtn.setAttribute('aria-expanded', false);
+    });
+  });
+})();
+
+/* - ACCESSIBILITY MODE LOGIC - */
+// modes and the html class they toggle
+var A11Y_MODES = {
+  light:    'a11y-light',
+  font:     'a11y-font',
+  size:     'a11y-size',
+  contrast: 'a11y-contrast',
+  dyslexia: 'a11y-dyslexia',
+  motion:   'a11y-motion'
+};
+
+// mutually exclusive pairs - turning one off turns the other off
+var A11Y_EXCLUSIVE = [
+  ['light', 'contrast']  // light mode and contrast mode don't mix
+];
+
+function applyA11yFromStorage() {
+  Object.keys(A11Y_MODES).forEach(function(key) {
+    var stored = localStorage.getItem('a11y-' + key);
+    if (stored === 'true') {
+      document.documentElement.classList.add(A11Y_MODES[key]);
+      var btn = document.getElementById('a11y-' + key);
+      if (btn) btn.classList.add('active');
+    }
+  });
+}
+
+function toggleA11y(mode) {
+  var htmlClass = A11Y_MODES[mode];
+  var isActive  = document.documentElement.classList.contains(htmlClass);
+  var btn       = document.getElementById('a11y-' + mode);
+
+  if (isActive) {
+    // turn off
+    document.documentElement.classList.remove(htmlClass);
+    localStorage.setItem('a11y-' + mode, 'false');
+    if (btn) btn.classList.remove('active');
+  } else {
+    // turn on - first handle exclusives
+    A11Y_EXCLUSIVE.forEach(function(pair) {
+      if (pair.indexOf(mode) !== -1) {
+        pair.forEach(function(other) {
+          if (other !== mode) {
+            document.documentElement.classList.remove(A11Y_MODES[other]);
+            localStorage.setItem('a11y-' + other, 'false');
+            var otherBtn = document.getElementById('a11y-' + other);
+            if (otherBtn) otherBtn.classList.remove('active');
+          }
+        });
+      }
+    });
+    document.documentElement.classList.add(htmlClass);
+    localStorage.setItem('a11y-' + mode, 'true');
+    if (btn) btn.classList.add('active');
+  }
+}
+
+function resetA11y() {
+  Object.keys(A11Y_MODES).forEach(function(key) {
+    document.documentElement.classList.remove(A11Y_MODES[key]);
+    localStorage.setItem('a11y-' + key, 'false');
+    var btn = document.getElementById('a11y-' + key);
+    if (btn) btn.classList.remove('active');
+  });
+}
+
+// apply saved prefs immediately on load
+applyA11yFromStorage();
+</script>

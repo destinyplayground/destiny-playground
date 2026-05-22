@@ -1,0 +1,178 @@
+[
+  {
+    "title": "The New Website Is Live",
+    "tag": "Announcement",
+    "date": "18 May, 2026",
+    "dateSort": 20260518,
+    "author": "CNT Darthgaming",
+    "excerpt": "Congrats to those that worked together on the ARG to get here! The WARMIND OMEGA is watching...",
+    "file": "articles/announcement-18-05-2026.html",
+    "image": "/destiny-playground/images/dev-update-banners/banner_16.png",
+    "featured": true
+  },
+  {
+    "title": "Weapon Systems Update",
+    "tag": "Dev Update",
+    "date": "13 May, 2026",
+    "dateSort": 20260513,
+    "author": "CNT Darthgaming",
+    "excerpt": "Weapons are changing again - random roll perks are in, Power Level has been reworked into ranges, and the new website launches May 22nd.",
+    "file": "articles/dev-update-13-05-2026.html",
+    "image": "/destiny-playground/images/dev-update-banners/banner_15.png",
+    "featured": false
+  },
+  {
+    "title": "Planet 4 Reveal - Mars",
+    "tag": "Dev Update",
+    "date": "6 May, 2026",
+    "dateSort": 20260506,
+    "author": "CNT Darthgaming",
+    "excerpt": "The fourth and final launch destination is revealed - Mars, Meridian Bay. A world scarred by war, collapse, & time.",
+    "file": "articles/dev-update-06-05-2026.html",
+    "image": "/destiny-playground/images/dev-update-banners/banner_14.png",
+    "featured": false
+  },
+  {
+    "title": "Planet 3 Reveal - The Moon",
+    "tag": "Dev Update",
+    "date": "1 Apr, 2026",
+    "dateSort": 20260401,
+    "author": "CNT Darthgaming",
+    "excerpt": "After weeks of teasers - and four very deliberate red herrings - Planet 3 is officially revealed. Happy April Fools, Guardian.",
+    "file": "articles/dev-update-01-04-2026.html",
+    "image": "/destiny-playground/images/dev-update-banners/banner_13.png",
+    "featured": false
+  },
+  {
+    "title": "Abilities & Subclasses - Using, Unlocking & Upgrading",
+    "tag": "Dev Update",
+    "date": "25 Mar, 2026",
+    "dateSort": 20260325,
+    "author": "CNT Darthgaming",
+    "excerpt": "This week's update covers the ability system - subclasses, ability selection, unlocking, & the rarity progression system.",
+    "file": "articles/dev-update-25-03-2026.html",
+    "image": "/destiny-playground/images/dev-update-banners/banner_12.png",
+    "featured": false
+  },
+  {
+    "title": "Character & Class Systems",
+    "tag": "Dev Update",
+    "date": "11 Mar, 2026",
+    "dateSort": 20260311,
+    "author": "CNT Darthgaming",
+    "excerpt": "Character profiles, the three core classes, the six-stat armour system, class identity modifiers, and a first look at subclasses & grenades.",
+    "file": "articles/dev-update-11-03-2026.html",
+    "image": "/destiny-playground/images/dev-update-banners/banner_11.png",
+    "featured": false
+  },
+  {
+    "title": "Stats Menu, Timeline, & Planet 2 Reveal",
+    "tag": "Dev Update",
+    "date": "4 Mar, 2026",
+    "dateSort": 20260304,
+    "author": "CNT Darthgaming",
+    "excerpt": "The Stats Menu, Timeline system, and the official reveal of Planet 2 - Europa. Plus a new staff member and the final update of the current roadmap cycle.",
+    "file": "articles/dev-update-04-03-2026.html",
+    "image": "/destiny-playground/images/dev-update-banners/banner_10.png",
+    "featured": false
+  },
+  {
+    "title": "Weapon Showcase & Roadmap Reveal",
+    "tag": "Dev Update",
+    "date": "25 Feb, 2026",
+    "dateSort": 20260225,
+    "author": "CNT Darthgaming",
+    "excerpt": "The first fully completed weapon is revealed - Halfdan-D, a High-Impact Legendary Auto Rifle. Plus the new dev update roadmap and branding updates.",
+    "file": "articles/dev-update-25-02-2026.html",
+    "image": "/destiny-playground/images/dev-update-banners/banner_9.png",
+    "featured": false
+  },
+  {
+    "title": "Community Participation Opportunities",
+    "tag": "Announcement",
+    "date": "20 Feb, 2026",
+    "dateSort": 20260220,
+    "author": "CNT Darthgaming",
+    "excerpt": "Builder & Modeller applications are now open, and the Community Bounty System is live. Here's how you can get involved.",
+    "file": "articles/announcement-20-02-2026.html",
+    "image": "/destiny-playground/images/dev-update-banners/banner_8.png",
+    "featured": false
+  },
+  {
+    "title": "The Director & Planet 1 Reveal",
+    "tag": "Dev Update",
+    "date": "9 Feb, 2026",
+    "dateSort": 20260209,
+    "author": "CNT Darthgaming",
+    "excerpt": "The Director system is revealed alongside the first destination - Earth, including the EDZ and Northreach. Plus a gallery of early screenshots.",
+    "file": "articles/dev-update-09-02-2026.html",
+    "image": "/destiny-playground/images/dev-update-banners/banner_7.png",
+    "featured": false
+  },
+  {
+    "title": "Vendors, The Guide, & The Guidebook",
+    "tag": "Dev Update",
+    "date": "3 Feb, 2026",
+    "dateSort": 20260203,
+    "author": "CNT Darthgaming",
+    "excerpt": "A look at the vendor system, The Guide NPC, and the Guidebook - your central hub for server information. Plus Ko-Fi updates and new FAQs.",
+    "file": "articles/dev-update-03-02-2026.html",
+    "image": "/destiny-playground/images/dev-update-banners/banner_6.png",
+    "featured": false
+  },
+  {
+    "title": "Title System",
+    "tag": "Dev Update",
+    "date": "28 Jan, 2026",
+    "dateSort": 20260128,
+    "author": "CNT Darthgaming",
+    "excerpt": "Titles are mastery identifiers earned through focus & commitment. Here's how they work, how they differ from Triumphs, and how the system scales.",
+    "file": "articles/dev-update-28-01-2026.html",
+    "image": "/destiny-playground/images/dev-update-banners/banner_5.png",
+    "featured": false
+  },
+  {
+    "title": "Season Pass & Seasonal Progression",
+    "tag": "Dev Update",
+    "date": "21 Jan, 2026",
+    "dateSort": 20260121,
+    "author": "CNT Darthgaming",
+    "excerpt": "A deep dive into the Season Pass system - free vs premium tracks, how seasonal XP works, the Season Archive, and a full Q&A.",
+    "file": "articles/dev-update-21-01-2026.html",
+    "image": "/destiny-playground/images/dev-update-banners/banner_4.png",
+    "featured": false
+  },
+  {
+    "title": "Fishing System",
+    "tag": "Dev Update",
+    "date": "14 Jan, 2026",
+    "dateSort": 20260114,
+    "author": "CNT Darthgaming",
+    "excerpt": "The custom fishing system - locations, rods, bait, the Fish Evaluator, tournaments, leaderboards, and everything in between.",
+    "file": "articles/dev-update-14-01-2026.html",
+    "image": "/destiny-playground/images/dev-update-banners/banner_3.png",
+    "featured": false
+  },
+  {
+    "title": "The Lost D2MC Story: Season of Dissonance",
+    "tag": "Behind the Scenes",
+    "date": "11 Jan, 2026",
+    "dateSort": 20260111,
+    "author": "CNT Darthgaming",
+    "excerpt": "A surprise archive drop - the full design document for the cancelled D2MC Season of Dissonance, including plot, characters, missions, and the Chronopass.",
+    "file": "articles/behind-the-scenes-11-01-2026.html",
+    "image": "/destiny-playground/images/dev-update-banners/banner_2.png",
+    "featured": false
+  },
+  {
+    "title": "Triumph System",
+    "tag": "Dev Update",
+    "date": "7 Jan, 2026",
+    "dateSort": 20260107,
+    "author": "CNT Darthgaming",
+    "excerpt": "The Triumph system tracks everything you do across the server - challenge triumphs, tiered triumphs, the rewards track, and a first look at Titles.",
+    "file": "articles/dev-update-07-01-2026.html",
+    "image": "/destiny-playground/images/dev-update-banners/banner_1.png",
+    "featured": false
+  }
+]

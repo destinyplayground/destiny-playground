@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Official Modpacks - Destiny Playground</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/destiny-playground/css/styles.css">
+<link rel="stylesheet" href="/destiny-playground/css/nav.css">
+<link rel="stylesheet" href="/destiny-playground/css/a11y-overrides.css">
+
+<style>
+
+/* ----
+   PAGE HERO
+   ---- */
+.mods-hero {
+  position: relative;
+  padding: 10rem 3rem 6rem;
+  overflow: hidden;
+}
+.mods-hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 0%, rgba(201,168,76,.06) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 40% at 15% 60%, rgba(201,168,76,.03) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 85% 60%, rgba(201,168,76,.03) 0%, transparent 60%),
+    linear-gradient(180deg, #0a0906 0%, #0d0b07 50%, #0a0906 100%);
+}
+.mods-hero-grid {
+  position: absolute; inset: 0; opacity: .03;
+  background-image:
+    linear-gradient(rgba(201,168,76,.6) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,168,76,.6) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, black 20%, transparent 80%);
+}
+
+.mods-hero-inner {
+  position: relative;
+  max-width: 1100px; margin: 0 auto;
+  text-align: center;
+}
+.mods-hero-eyebrow {
+  font-size: .65rem; letter-spacing: .4em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 1.2rem;
+  display: flex; align-items: center; justify-content: center; gap: 1.2rem;
+  opacity: 0; animation: fadeUp .9s ease forwards .1s;
+}
+.mods-hero-eyebrow span { width: 40px; height: .5px; background: rgba(201,168,76,.4); }
+
+.mods-hero-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(2.4rem, 6vw, 4.5rem);
+  font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--white); line-height: 1.05; margin-bottom: 1.5rem;
+  opacity: 0; animation: fadeUp .9s ease forwards .3s;
+}
+.mods-hero-title span { color: var(--gold); }
+
+.mods-hero-desc {
+  font-size: .95rem; line-height: 1.9; color: var(--body-text);
+  font-weight: 300; max-width: 560px; margin: 0 auto 2.5rem;
+  opacity: 0; animation: fadeUp .9s ease forwards .5s;
+}
+
+/* pack type pills */
+.mods-hero-packs {
+  display: flex; align-items: center; justify-content: center;
+  gap: .5rem; flex-wrap: wrap;
+  opacity: 0; animation: fadeUp .9s ease forwards .7s;
+}
+.mods-pack-pill {
+  display: flex; align-items: center; gap: .6rem;
+  padding: .5rem 1.1rem .5rem .7rem;
+  border: .5px solid rgba(201,168,76,.2);
+  font-size: .65rem; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--muted); cursor: pointer;
+  transition: all .2s; background: none;
+}
+.mods-pack-pill-dot {
+  width: 8px; height: 8px; transform: rotate(45deg);
+  flex-shrink: 0; transition: background .2s;
+}
+.mods-pack-pill[data-pack="performance"] .mods-pack-pill-dot { background: #5dca8a; }
+.mods-pack-pill[data-pack="aesthetic"]   .mods-pack-pill-dot { background: #88c4e8; }
+.mods-pack-pill[data-pack="full"]        .mods-pack-pill-dot { background: var(--gold); }
+
+.mods-pack-pill:hover,
+.mods-pack-pill.active { border-color: rgba(201,168,76,.45); color: var(--white); }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ----
+   MAIN LAYOUT
+   ---- */
+.mods-layout {
+  max-width: 1100px; margin: 0 auto; padding: 0 3rem 8rem;
+}
+
+/* notice bar */
+.mods-notice {
+  display: flex; align-items: flex-start; gap: 1rem;
+  padding: 1rem 1.5rem;
+  border: .5px solid rgba(235,160,80,.3);
+  border-left: 2px solid rgba(235,160,80,.6);
+  background: rgba(235,160,80,.03);
+  margin-bottom: 3rem;
+}
+.mods-notice-icon { font-size: .7rem; color: #eba050; flex-shrink: 0; margin-top: .1rem; }
+.mods-notice p {
+  font-size: .85rem; line-height: 1.75; color: var(--muted);
+  font-weight: 300; margin: 0;
+}
+.mods-notice p strong { color: #eba050; font-weight: 600; }
+.mods-notice p a { color: rgba(201,168,76,.7); text-decoration: none; }
+.mods-notice p a:hover { color: var(--gold); }
+
+/* section label above packs */
+.mods-section-head {
+  margin-bottom: 2rem;
+}
+
+
+/* ----
+   PACK CARDS
+   ---- */
+.mods-pack-grid {
+  display: flex; flex-direction: column; gap: 1.5px;
+  background: var(--border);
+  margin-bottom: 4rem;
+}
+
+.mods-pack-card {
+  background: var(--dark);
+  position: relative; overflow: hidden;
+  transition: background .25s;
+}
+.mods-pack-card:hover { background: rgba(14,12,9,.98); }
+
+/* accent bar on left */
+.mods-pack-card::before {
+  content: '';
+  position: absolute; left: 0; top: 0; bottom: 0; width: 2px;
+  transition: opacity .25s;
+}
+.mods-pack-card[data-pack="performance"]::before { background: #5dca8a; opacity: .6; }
+.mods-pack-card[data-pack="aesthetic"]::before   { background: #88c4e8; opacity: .6; }
+.mods-pack-card[data-pack="full"]::before        { background: var(--gold); opacity: .7; }
+.mods-pack-card:hover::before { opacity: 1; }
+
+/* spotlight glow behind icon */
+.mods-pack-card[data-pack="performance"] .mods-pack-glow { background: radial-gradient(ellipse 60% 80% at 30px 50%, rgba(93,202,138,.05) 0%, transparent 70%); }
+.mods-pack-card[data-pack="aesthetic"]   .mods-pack-glow { background: radial-gradient(ellipse 60% 80% at 30px 50%, rgba(136,196,232,.05) 0%, transparent 70%); }
+.mods-pack-card[data-pack="full"]        .mods-pack-glow { background: radial-gradient(ellipse 60% 80% at 30px 50%, rgba(201,168,76,.05) 0%, transparent 70%); }
+
+.mods-pack-glow {
+  position: absolute; inset: 0; pointer-events: none;
+  transition: opacity .3s; opacity: 0;
+}
+.mods-pack-card:hover .mods-pack-glow { opacity: 1; }
+
+.mods-pack-inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 0;
+}
+
+/* left column - identity */
+.mods-pack-identity {
+  padding: 2.5rem 2.5rem 2.5rem 3rem;
+  border-right: .5px solid rgba(201,168,76,.06);
+  display: flex; flex-direction: column; gap: 0;
+}
+
+.mods-pack-icon-wrap {
+  margin-bottom: 1.5rem;
+}
+.mods-pack-icon {
+  width: 44px; height: 44px;
+  display: flex; align-items: center; justify-content: center;
+  border: .5px solid;
+  font-size: 1.1rem; position: relative;
+}
+.mods-pack-card[data-pack="performance"] .mods-pack-icon { border-color: rgba(93,202,138,.3); color: #5dca8a; }
+.mods-pack-card[data-pack="aesthetic"]   .mods-pack-icon { border-color: rgba(136,196,232,.3); color: #88c4e8; }
+.mods-pack-card[data-pack="full"]        .mods-pack-icon { border-color: rgba(201,168,76,.35); color: var(--gold); }
+
+/* corner accent on icon */
+.mods-pack-icon::before,
+.mods-pack-icon::after {
+  content: ''; position: absolute; width: 5px; height: 5px; border-style: solid;
+}
+.mods-pack-icon::before { top: -3px; right: -3px; border-width: 1px 1px 0 0; border-color: inherit; }
+.mods-pack-icon::after  { bottom: -3px; left: -3px; border-width: 0 0 1px 1px; border-color: inherit; }
+
+.mods-pack-type {
+  font-size: .58rem; letter-spacing: .32em; text-transform: uppercase;
+  margin-bottom: .5rem;
+}
+.mods-pack-card[data-pack="performance"] .mods-pack-type { color: #5dca8a; }
+.mods-pack-card[data-pack="aesthetic"]   .mods-pack-type { color: #88c4e8; }
+.mods-pack-card[data-pack="full"]        .mods-pack-type { color: var(--gold); }
+
+.mods-pack-name {
+  font-family: 'Cinzel', serif;
+  font-size: 1.25rem; font-weight: 700; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--white);
+  margin-bottom: .6rem; line-height: 1.2;
+}
+
+.mods-pack-tagline {
+  font-size: .8rem; line-height: 1.7; color: var(--body-text);
+  font-weight: 300; margin-bottom: 1.5rem;
+}
+
+/* version badge */
+.mods-pack-version {
+  display: inline-flex; align-items: center; gap: .5rem;
+  padding: .3rem .7rem;
+  border: .5px solid rgba(201,168,76,.18);
+  font-size: .62rem; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--muted); background: rgba(201,168,76,.02);
+  margin-bottom: .8rem;
+}
+.mods-pack-version span { color: var(--white); font-weight: 600; }
+
+/* recommended badge */
+.mods-pack-badge {
+  display: inline-flex; align-items: center; gap: .4rem;
+  font-size: .58rem; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--dark);
+  padding: .25rem .7rem;
+  clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+  margin-bottom: 1rem;
+}
+.mods-pack-badge--recommended { background: var(--gold); }
+.mods-pack-badge--performance  { background: #5dca8a; }
+.mods-pack-badge--aesthetic    { background: #88c4e8; }
+
+/* download buttons */
+.mods-pack-downloads {
+  margin-top: auto;
+  display: flex; flex-direction: column; gap: .6rem;
+}
+.mods-dl-btn {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: .7rem 1rem;
+  text-decoration: none;
+  border: .5px solid rgba(201,168,76,.2);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: .72rem; font-weight: 600; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--white);
+  background: none;
+  transition: all .2s; position: relative;
+  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+}
+.mods-dl-btn:hover {
+  border-color: rgba(201,168,76,.5);
+  background: rgba(201,168,76,.06);
+}
+.mods-dl-btn--primary {
+  background: rgba(201,168,76,.08);
+  border-color: rgba(201,168,76,.35);
+}
+.mods-dl-btn--primary:hover {
+  background: rgba(201,168,76,.15);
+  border-color: rgba(201,168,76,.6);
+}
+.mods-dl-btn-platform {
+  font-size: .62rem; color: var(--muted); font-weight: 400; letter-spacing: .1em;
+}
+.mods-dl-btn-arrow { font-size: .7rem; color: var(--gold); opacity: .7; }
+
+/* right column - contents */
+.mods-pack-contents {
+  padding: 2.5rem 2.5rem 2.5rem 3rem;
+}
+
+.mods-contents-label {
+  font-size: .6rem; letter-spacing: .3em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 1.2rem;
+  display: flex; align-items: center; gap: .8rem;
+}
+.mods-contents-label::after { content: ''; flex: 1; height: .5px; background: rgba(201,168,76,.1); }
+
+/* mod list */
+.mods-mod-list {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1.5px; background: rgba(201,168,76,.05);
+  border: .5px solid rgba(201,168,76,.08);
+  margin-bottom: 1.5rem;
+}
+.mods-mod-item {
+  background: var(--dark);
+  padding: .85rem 1.1rem;
+  display: flex; flex-direction: column; gap: .25rem;
+  transition: background .15s;
+}
+.mods-mod-item:hover { background: rgba(201,168,76,.025); }
+.mods-mod-item-name {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: .82rem; font-weight: 600; letter-spacing: .06em;
+  color: var(--white);
+}
+.mods-mod-item-desc {
+  font-size: .72rem; color: var(--muted); font-weight: 300;
+  line-height: 1.5; letter-spacing: .02em;
+}
+
+/* compatibility note */
+.mods-compat {
+  display: flex; gap: .8rem; align-items: flex-start;
+  padding: .85rem 1.1rem;
+  background: rgba(201,168,76,.02);
+  border: .5px solid rgba(201,168,76,.1);
+  margin-top: 1rem;
+}
+.mods-compat-icon { font-size: .65rem; color: var(--gold-dim); flex-shrink: 0; margin-top: .1rem; }
+.mods-compat p {
+  font-size: .78rem; line-height: 1.7; color: var(--muted);
+  font-weight: 300; margin: 0;
+}
+.mods-compat p strong { color: var(--white); font-weight: 600; }
+
+/* "all in one" visual for Full pack */
+.mods-combined-wrap {
+  display: flex; flex-direction: column; gap: 1.5rem;
+}
+.mods-combined-group {}
+.mods-combined-group-label {
+  font-size: .6rem; letter-spacing: .28em; text-transform: uppercase;
+  margin-bottom: .8rem; display: flex; align-items: center; gap: .7rem;
+}
+.mods-combined-group-label::after { content: ''; flex: 1; height: .5px; }
+.mods-combined-group--perf  .mods-combined-group-label { color: #5dca8a; }
+.mods-combined-group--perf  .mods-combined-group-label::after { background: rgba(93,202,138,.15); }
+.mods-combined-group--aest  .mods-combined-group-label { color: #88c4e8; }
+.mods-combined-group--aest  .mods-combined-group-label::after { background: rgba(136,196,232,.15); }
+
+
+/* ----
+   BOTTOM INFO SECTION
+   ---- */
+.mods-footer-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1.5px; background: var(--border);
+  margin-bottom: 3rem;
+}
+.mods-info-card {
+  background: var(--dark);
+  padding: 2rem 2.2rem;
+}
+.mods-info-card-label {
+  font-size: .58rem; letter-spacing: .32em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: .7rem;
+}
+.mods-info-card-title {
+  font-family: 'Cinzel', serif; font-size: 1rem; font-weight: 700;
+  letter-spacing: .07em; text-transform: uppercase; color: var(--white);
+  margin-bottom: .8rem;
+}
+.mods-info-card-body {
+  font-size: .83rem; line-height: 1.8; color: var(--body-text); font-weight: 300;
+}
+.mods-info-card-body a { color: rgba(201,168,76,.7); text-decoration: none; }
+.mods-info-card-body a:hover { color: var(--gold); }
+
+/* FAQ-style entries */
+.mods-faq-list { display: flex; flex-direction: column; gap: 1rem; }
+.mods-faq-item {}
+.mods-faq-q {
+  font-size: .78rem; font-weight: 600; letter-spacing: .06em;
+  color: var(--white); margin-bottom: .3rem;
+}
+.mods-faq-a {
+  font-size: .78rem; line-height: 1.7; color: var(--muted); font-weight: 300;
+}
+
+/* discord CTA (reuse from getting-started feel) */
+.mods-discord-cta {
+  border: .5px solid rgba(201,168,76,.2);
+  background: rgba(201,168,76,.02);
+  padding: 2.5rem 3rem;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 2rem; flex-wrap: wrap;
+}
+.mods-discord-label {
+  font-size: .6rem; letter-spacing: .32em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: .5rem;
+}
+.mods-discord-title {
+  font-family: 'Cinzel', serif; font-size: 1.2rem; font-weight: 700;
+  letter-spacing: .07em; text-transform: uppercase; color: var(--white);
+  margin-bottom: .5rem;
+}
+.mods-discord-desc {
+  font-size: .87rem; line-height: 1.75; color: var(--body-text);
+  font-weight: 300; max-width: 460px;
+}
+.mods-discord-btn {
+  display: inline-flex; align-items: center; gap: .7rem;
+  padding: .85rem 2rem; flex-shrink: 0;
+  font-family: 'Rajdhani', sans-serif; font-size: .75rem;
+  font-weight: 600; letter-spacing: .22em; text-transform: uppercase;
+  background: var(--gold); color: #0a0906; text-decoration: none;
+  clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+  transition: background .2s;
+}
+.mods-discord-btn:hover { background: #e0bb5c; }
+
+
+/* - RESPONSIVE - */
+@media (max-width: 860px) {
+  .mods-hero { padding: 8rem 1.5rem 4rem; }
+  .mods-layout { padding: 0 1.5rem 5rem; }
+
+  .mods-pack-inner { grid-template-columns: 1fr; }
+  .mods-pack-identity {
+    padding: 2rem 1.5rem;
+    border-right: none;
+    border-bottom: .5px solid rgba(201,168,76,.06);
+  }
+  .mods-pack-contents { padding: 2rem 1.5rem; }
+  .mods-mod-list { grid-template-columns: 1fr; }
+
+  .mods-footer-grid { grid-template-columns: 1fr; }
+  .mods-discord-cta { flex-direction: column; }
+}
+@media (max-width: 480px) {
+  .mods-hero-packs { flex-direction: column; align-items: center; }
+}
+
+</style>
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+
+<!-- ----
+     HERO
+     ---- -->
+<div class="mods-hero">
+  <div class="mods-hero-bg"></div>
+  <div class="mods-hero-grid"></div>
+  <div class="mods-hero-inner">
+
+    <div class="mods-hero-eyebrow">
+      <span></span>
+      Equipment Requisition
+      <span></span>
+    </div>
+
+    <h1 class="mods-hero-title">Official<br><span>Modpacks</span></h1>
+
+    <p class="mods-hero-desc">
+      You don't need mods to play - vanilla Minecraft works fine. But if you want a smoother, sharper, or more immersive experience, we maintain three official packs.
+    </p>
+
+    <div class="mods-hero-packs">
+      <div class="mods-pack-pill" data-pack="performance">
+        <div class="mods-pack-pill-dot"></div>
+        Performance Pack
+      </div>
+      <div class="mods-pack-pill" data-pack="aesthetic">
+        <div class="mods-pack-pill-dot"></div>
+        Aesthetic Pack
+      </div>
+      <div class="mods-pack-pill" data-pack="full">
+        <div class="mods-pack-pill-dot"></div>
+        Full Pack
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ----
+     MAIN LAYOUT
+     ---- -->
+<div class="mods-layout">
+
+  <div class="mods-notice">
+    <div class="mods-notice-icon">&#9650;</div>
+    <p><strong>Version note:</strong> All official modpacks are built for <strong>Minecraft Java Edition 1.21.8</strong> on <strong>Fabric</strong>. <strong>Modrinth is the primary platform</strong> - packs are fully available there. CurseForge versions are coming soon and may have slightly different mod selections due to availability differences between platforms. When in doubt, grab from Modrinth.</p>
+  </div>
+
+  <div class="mods-section-head">
+    <div class="section-label">Official Releases</div>
+    <h2 class="section-title">Modpacks</h2>
+  </div>
+
+  <div class="mods-pack-grid">
+
+    <!-- - PERFORMANCE PACK - -->
+    <div class="mods-pack-card" data-pack="performance" id="pack-performance">
+      <div class="mods-pack-glow"></div>
+      <div class="mods-pack-inner">
+
+        <div class="mods-pack-identity">
+          <div class="mods-pack-icon-wrap">
+            <div class="mods-pack-icon">&#9654;</div>
+          </div>
+          <div class="mods-pack-type">Optimisation</div>
+          <div class="mods-pack-name">Performance Pack</div>
+          <p class="mods-pack-tagline">Better frame rates, faster chunk loading, and reduced stuttering - with zero visual changes. The server still looks the same; it just runs better.</p>
+          <div class="mods-pack-version">For MC &nbsp;<span>1.21.8</span></div>
+          <span class="mods-pack-badge mods-pack-badge--performance">&#9654;&nbsp; Recommended for lower-end PCs</span>
+          <div class="mods-pack-downloads">
+            <a class="mods-dl-btn mods-dl-btn--primary" href="https://modrinth.com/modpack/destiny-playground-performance/versions" target="_blank">
+              <span>Download on Modrinth</span>
+              <span class="mods-dl-btn-arrow">&#8599;</span>
+            </a>
+            <a class="mods-dl-btn mods-dl-btn--soon" href="#" style="opacity:.5;cursor:not-allowed;pointer-events:none;">
+              <span>CurseForge - Coming Soon</span>
+              <span class="mods-dl-btn-arrow" style="opacity:.4;">&#8943;</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="mods-pack-contents">
+          <div class="mods-contents-label">Included Mods</div>
+          <div class="mods-mod-list">
+            <div class="mods-mod-item">
+              <div class="mods-mod-item-name">Sodium</div>
+              <div class="mods-mod-item-desc">Core rendering engine rewrite. The biggest single FPS uplift in the pack.</div>
+            </div>
+            <div class="mods-mod-item">
+              <div class="mods-mod-item-name">Sodium Extra</div>
+              <div class="mods-mod-item-desc">Extra settings and toggles for Sodium not included in the base mod.</div>
+            </div>
+            <div class="mods-mod-item">
+              <div class="mods-mod-item-name">Lithium</div>
+              <div class="mods-mod-item-desc">Game logic and server-side performance optimisations.</div>
+            </div>
+            <div class="mods-mod-item">
+              <div class="mods-mod-item-name">FerriteCore</div>
+              <div class="mods-mod-item-desc">Reduces memory usage - noticeably so on larger servers.</div>
+            </div>
+            <div class="mods-mod-item">
+              <div class="mods-mod-item-name">Entity Culling</div>
+              <div class="mods-mod-item-desc">Stops rendering entities you can't see. Helps in populated areas.</div>
+            </div>
+            <div class="mods-mod-item">
+              <div class="mods-mod-item-name">More Culling</div>
+              <div class="mods-mod-item-desc">Extends culling to additional block faces and geometry for extra gains.</div>
+            </div>
+            <div class="mods-mod-item">
+              <div class="mods-mod-item-name">ImmediatelyFast</div>
+              <div class="mods-mod-item-desc">Optimises immediate mode rendering, reducing HUD and GUI overhead.</div>
+            </div>
+            <div class="mods-mod-item">
+              <div class="mods-mod-item-name">Krypton</div>
+              <div class="mods-mod-item-desc">Optimises the Minecraft networking stack. Reduces lag on busy servers.</div>
+            </div>
+            <div class="mods-mod-item">
+              <div class="mods-mod-item-name">Dynamic FPS</div>
+              <div class="mods-mod-item-desc">Reduces frame rate when the game is in the background, saving resources.</div>
+            </div>
+            <div class="mods-mod-item">
+              <div class="mods-mod-item-name">Clumps</div>
+              <div class="mods-mod-item-desc">Groups XP orbs into a single entity to reduce lag in XP-heavy moments.</div>
+            </div>
+            <div class="mods-mod-item">
+              <div class="mods-mod-item-name">Debugify</div>
+              <div class="mods-mod-item-desc">Fixes a collection of known Minecraft bugs, including some that affect performance.</div>
+            </div>
+            <div class="mods-mod-item">
+              <div class="mods-mod-item-name">FastQuit</div>
+              <div class="mods-mod-item-desc">Lets you return to the menu instantly while the world saves in the background.</div>
+            </div>
+            <div class="mods-mod-item">
+              <div class="mods-mod-item-name">Remove Reloading Screen</div>
+              <div class="mods-mod-item-desc">Skips the resource pack reload screen - the pack applies in the background.</div>
+            </div>
+            <div class="mods-mod-item">
+              <div class="mods-mod-item-name">Language Reload</div>
+              <div class="mods-mod-item-desc">Makes language loading asynchronous so it doesn't freeze the game.</div>
+            </div>
+            <div class="mods-mod-item">
+              <div class="mods-mod-item-name">Packet Fixer</div>
+              <div class="mods-mod-item-desc">Fixes oversized packet issues that can cause disconnects on servers with large data.</div>
+            </div>
+          </div>
+          <div class="mods-compat">
+            <div class="mods-compat-icon">&#9432;</div>
+            <p>Also includes required libraries: <strong>Fabric API</strong>, <strong>YACL</strong>, and <strong>Forge Config API Port</strong>. Purely client-side - no visual changes, no gameplay changes.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- - AESTHETIC PACK - -->
+    <div class="mods-pack-card" data-pack="aesthetic" id="pack-aesthetic">
+      <div class="mods-pack-glow"></div>
+      <div class="mods-pack-inner">
+
+        <div class="mods-pack-identity">
+          <div class="mods-pack-icon-wrap">
+            <div class="mods-pack-icon">&#9670;</div>
+          </div>
+          <div class="mods-pack-type">Visuals and Immersion</div>
+          <div class="mods-pack-name">Aesthetic Pack</div>
+          <p class="mods-pack-tagline">Enhanced lighting, improved animations, and quality-of-life visual upgrades. Designed to pair with the server resource pack and make the world feel that bit more alive.</p>
+          <div class="mods-pack-version">For MC &nbsp;<span>1.21.8</span></div>
+          <span class="mods-pack-badge mods-pack-badge--aesthetic">&#9670;&nbsp; Recommended for immersion</span>
+          <div class="mods-pack-downloads">
+            <a class="mods-dl-btn mods-dl-btn--primary" href="https://modrinth.com/modpack/destiny-playground-aesthetic/versions" target="_blank">
+              <span>Download on Modrinth</span>
+              <span class="mods-dl-btn-arrow">&#8599;</span>
+            </a>
+            <a class="mods-dl-btn mods-dl-btn--soon" href="#" style="opacity:.5;cursor:not-allowed;pointer-events:none;">
+              <span>CurseForge - Coming Soon</span>
+              <span class="mods-dl-btn-arrow" style="opacity:.4;">&#8943;</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="mods-pack-contents">
+          <div class="mods-contents-label">Included Mods</div>
+          <div class="mods-mod-list">
+            <div class="mods-mod-item">
+              <div class="mods-mod-item-name">Sodium</div>
+              <div class="mods-mod-item-desc">Required rendering base - also a solid FPS boost alongside the visual mods.</div>
+            </div>
+            <div class="mods-mod-item">
+              <div class="mods-mod-item-name">Iris Shaders</div>
+              <div class="mods-mod-item-desc">Shader support built on Sodium - plug in any compatible shader pack.</div>
+            </div>
+            <div class="mods-mod-item">
+              <div class="mods-mod-item-name">Distant Horizons</div>
+              <div class="mods-mod-item-desc">LOD rendering that extends your view distance far beyond vanilla limits.</div>
+            </div>
+            <div class="mods-mod-item">
+              <div class="mods-mod-item-name">Continuity</div>
+              <div class="mods-mod-item-desc">Enables connected textures so glass, bookshelf, and other blocks tile seamlessly.</div>
+            </div>
+            <div class="mods-mod-item">
+              <div class="mods-mod-item-name">3D Skin Layers</div>
+              <div class="mods-mod-item-desc">Renders player skin layers (hat, jacket, etc.) as actual 3D geometry.</div>
+            </div>
+            <div class="mods-mod-item">
+              <div class="mods-mod-item-name">Sound Physics Remastered</div>
+              <div class="mods-mod-item-desc">Realistic audio propagation - reverb, echo, and environmental muffling.</div>
+            </div>
+            <div class="mods-mod-item">
+              <div class="mods-mod-item-name">Visuality</div>
+              <div class="mods-mod-item-desc">Subtle environmental particle effects that add life and texture to the world.</div>
+            </div>
+            <div class="mods-mod-item">
+              <div class="mods-mod-item-name">Particle Rain</div>
+              <div class="mods-mod-item-desc">Replaces vanilla rain and snow with improved particle-based weather effects.</div>
+            </div>
+            <div class="mods-mod-item">
+              <div class="mods-mod-item-name">Immersive UI</div>
+              <div class="mods-mod-item-desc">Tilts and animates the HUD based on your view for a more cinematic feel.</div>
+            </div>
+            <div class="mods-mod-item">
+              <div class="mods-mod-item-name">Dynamic Crosshair</div>
+              <div class="mods-mod-item-desc">Changes the crosshair based on what you're looking at or doing.</div>
+            </div>
+            <div class="mods-mod-item">
+              <div class="mods-mod-item-name">Enhanced Attack Indicator</div>
+              <div class="mods-mod-item-desc">Improves the attack cooldown indicator so it's more readable at a glance.</div>
+            </div>
+            <div class="mods-mod-item">
+              <div class="mods-mod-item-name">Chat Heads</div>
+              <div class="mods-mod-item-desc">Shows player head avatars next to their messages in chat.</div>
+            </div>
+            <div class="mods-mod-item">
+              <div class="mods-mod-item-name">Chat Animation</div>
+              <div class="mods-mod-item-desc">Smoothly animates chat messages as they appear instead of snapping in.</div>
+            </div>
+            <div class="mods-mod-item">
+              <div class="mods-mod-item-name">Better Mount HUD</div>
+              <div class="mods-mod-item-desc">Shows both your health and your mount's health and jump bar simultaneously.</div>
+            </div>
+            <div class="mods-mod-item">
+              <div class="mods-mod-item-name">AppleSkin</div>
+              <div class="mods-mod-item-desc">Shows hunger and saturation info on food items and the HUD.</div>
+            </div>
+            <div class="mods-mod-item">
+              <div class="mods-mod-item-name">Cut Through</div>
+              <div class="mods-mod-item-desc">Lets you see through tall grass and other plants instead of them blocking your view.</div>
+            </div>
+            <div class="mods-mod-item">
+              <div class="mods-mod-item-name">Model Gap Fix</div>
+              <div class="mods-mod-item-desc">Fixes the gap between block and item models in first-person and inventory views.</div>
+            </div>
+            <div class="mods-mod-item">
+              <div class="mods-mod-item-name">JourneyMap</div>
+              <div class="mods-mod-item-desc">Full-featured minimap and world map - tracks where you've been and waypoints.</div>
+            </div>
+            <div class="mods-mod-item">
+              <div class="mods-mod-item-name">Controlify</div>
+              <div class="mods-mod-item-desc">Full controller support - play with a gamepad if that's your thing.</div>
+            </div>
+            <div class="mods-mod-item">
+              <div class="mods-mod-item-name">Auth Me</div>
+              <div class="mods-mod-item-desc">Re-authenticates your session without restarting - handy for long play sessions.</div>
+            </div>
+            <div class="mods-mod-item">
+              <div class="mods-mod-item-name">Inventory Profiles Next</div>
+              <div class="mods-mod-item-desc">Sort and auto-refill inventory, with configurable profiles for different loadouts.</div>
+            </div>
+            <div class="mods-mod-item">
+              <div class="mods-mod-item-name">Mouse Tweaks</div>
+              <div class="mods-mod-item-desc">Drag to fill, scroll to move stacks - smarter mouse behaviour in inventories.</div>
+            </div>
+            <div class="mods-mod-item">
+              <div class="mods-mod-item-name">Shulker Box Tooltip</div>
+              <div class="mods-mod-item-desc">Shows the contents of a Shulker Box on hover - no need to place it down.</div>
+            </div>
+            <div class="mods-mod-item">
+              <div class="mods-mod-item-name">Pick Up Notifier</div>
+              <div class="mods-mod-item-desc">Shows a notification when you pick up items - cleaner than watching chat scroll.</div>
+            </div>
+            <div class="mods-mod-item">
+              <div class="mods-mod-item-name">Controlling</div>
+              <div class="mods-mod-item-desc">Adds a search bar to keybinds so you can actually find things in the controls menu.</div>
+            </div>
+            <div class="mods-mod-item">
+              <div class="mods-mod-item-name">Cherished Worlds</div>
+              <div class="mods-mod-item-desc">Pin favourite worlds and servers to the top of their respective lists.</div>
+            </div>
+            <div class="mods-mod-item">
+              <div class="mods-mod-item-name">Mod Menu</div>
+              <div class="mods-mod-item-desc">Adds a mods list screen in-game so you can see what's installed and access settings.</div>
+            </div>
+            <div class="mods-mod-item">
+              <div class="mods-mod-item-name">Main Menu Credits</div>
+              <div class="mods-mod-item-desc">Displays pack info in the main menu - cosmetic polish for a more curated feel.</div>
+            </div>
+            <div class="mods-mod-item">
+              <div class="mods-mod-item-name">No Resource Pack Warnings</div>
+              <div class="mods-mod-item-desc">Suppresses version mismatch warnings for resource packs. Keeps things clean.</div>
+            </div>
+            <div class="mods-mod-item">
+              <div class="mods-mod-item-name">Remove Reloading Screen</div>
+              <div class="mods-mod-item-desc">Resource packs apply in the background - no freeze screen on reload.</div>
+            </div>
+            <div class="mods-mod-item">
+              <div class="mods-mod-item-name">FastQuit</div>
+              <div class="mods-mod-item-desc">Return to the menu instantly while the world saves in the background.</div>
+            </div>
+          </div>
+          <div class="mods-compat">
+            <div class="mods-compat-icon">&#9432;</div>
+            <p>Also includes required libraries: <strong>Fabric API</strong>, <strong>Fabric Language Kotlin</strong>, <strong>Architectury API</strong>, <strong>Cloth Config</strong>, <strong>YACL</strong>, <strong>Forge Config API Port</strong>, <strong>Puzzles Lib</strong>, <strong>ShatterLib / OctoLib</strong>, <strong>Text Placeholder API</strong>, <strong>Searchables</strong>, and <strong>libIPN</strong>.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- - FULL PACK - -->
+    <div class="mods-pack-card" data-pack="full" id="pack-full">
+      <div class="mods-pack-glow"></div>
+      <div class="mods-pack-inner">
+
+        <div class="mods-pack-identity">
+          <div class="mods-pack-icon-wrap">
+            <div class="mods-pack-icon">&#9733;</div>
+          </div>
+          <div class="mods-pack-type">Performance + Visuals</div>
+          <div class="mods-pack-name">Full Pack</div>
+          <p class="mods-pack-tagline">Everything from both packs in one. If you're not sure which to grab, this is the one - the best overall experience for most players on modern hardware.</p>
+          <div class="mods-pack-version">For MC &nbsp;<span>1.21.8</span></div>
+          <span class="mods-pack-badge mods-pack-badge--recommended">&#9733;&nbsp; Recommended for most players</span>
+          <div class="mods-pack-downloads">
+            <a class="mods-dl-btn mods-dl-btn--primary" href="https://modrinth.com/modpack/destiny-playground-full/versions" target="_blank">
+              <span>Download on Modrinth</span>
+              <span class="mods-dl-btn-arrow">&#8599;</span>
+            </a>
+            <a class="mods-dl-btn mods-dl-btn--soon" href="#" style="opacity:.5;cursor:not-allowed;pointer-events:none;">
+              <span>CurseForge - Coming Soon</span>
+              <span class="mods-dl-btn-arrow" style="opacity:.4;">&#8943;</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="mods-pack-contents">
+          <div class="mods-contents-label">Included Mods</div>
+          <div class="mods-combined-wrap">
+
+            <div class="mods-combined-group mods-combined-group--perf">
+              <div class="mods-combined-group-label">Performance</div>
+              <div class="mods-mod-list">
+                <div class="mods-mod-item">
+                  <div class="mods-mod-item-name">Sodium + Sodium Extra</div>
+                  <div class="mods-mod-item-desc">Rendering engine rewrite for major FPS gains, with extended settings.</div>
+                </div>
+                <div class="mods-mod-item">
+                  <div class="mods-mod-item-name">Lithium + Krypton</div>
+                  <div class="mods-mod-item-desc">Game logic and networking optimisations.</div>
+                </div>
+                <div class="mods-mod-item">
+                  <div class="mods-mod-item-name">FerriteCore</div>
+                  <div class="mods-mod-item-desc">Memory usage reduction - especially noticeable on larger servers.</div>
+                </div>
+                <div class="mods-mod-item">
+                  <div class="mods-mod-item-name">Entity Culling + More Culling</div>
+                  <div class="mods-mod-item-desc">Stops rendering geometry you can't see.</div>
+                </div>
+                <div class="mods-mod-item">
+                  <div class="mods-mod-item-name">ImmediatelyFast + Dynamic FPS</div>
+                  <div class="mods-mod-item-desc">UI rendering and background frame rate optimisations.</div>
+                </div>
+                <div class="mods-mod-item">
+                  <div class="mods-mod-item-name">Clumps + Debugify + FastQuit</div>
+                  <div class="mods-mod-item-desc">XP lag fixes, bug fixes, and faster world exit.</div>
+                </div>
+                <div class="mods-mod-item">
+                  <div class="mods-mod-item-name">Packet Fixer + Language Reload</div>
+                  <div class="mods-mod-item-desc">Network stability and async language loading.</div>
+                </div>
+                <div class="mods-mod-item">
+                  <div class="mods-mod-item-name">Remove Reloading Screen</div>
+                  <div class="mods-mod-item-desc">Resource packs apply in the background - no freeze screen on reload.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mods-combined-group mods-combined-group--aest">
+              <div class="mods-combined-group-label">Visuals and Immersion</div>
+              <div class="mods-mod-list">
+                <div class="mods-mod-item">
+                  <div class="mods-mod-item-name">Iris Shaders + Distant Horizons</div>
+                  <div class="mods-mod-item-desc">Shader support and extended LOD view distance.</div>
+                </div>
+                <div class="mods-mod-item">
+                  <div class="mods-mod-item-name">Sound Physics Remastered</div>
+                  <div class="mods-mod-item-desc">Realistic sound propagation - reverb, echo, and environmental audio.</div>
+                </div>
+                <div class="mods-mod-item">
+                  <div class="mods-mod-item-name">Visuality + Particle Rain</div>
+                  <div class="mods-mod-item-desc">Environmental particle effects and improved weather.</div>
+                </div>
+                <div class="mods-mod-item">
+                  <div class="mods-mod-item-name">3D Skin Layers + Model Gap Fix</div>
+                  <div class="mods-mod-item-desc">3D player skins and visual model polish.</div>
+                </div>
+                <div class="mods-mod-item">
+                  <div class="mods-mod-item-name">Continuity</div>
+                  <div class="mods-mod-item-desc">Connected textures for glass, bookshelves, and more.</div>
+                </div>
+                <div class="mods-mod-item">
+                  <div class="mods-mod-item-name">Immersive UI + Dynamic Crosshair</div>
+                  <div class="mods-mod-item-desc">HUD tilt animation and context-sensitive crosshair.</div>
+                </div>
+                <div class="mods-mod-item">
+                  <div class="mods-mod-item-name">Chat Heads + Chat Animation</div>
+                  <div class="mods-mod-item-desc">Player avatars in chat and smooth message animations.</div>
+                </div>
+                <div class="mods-mod-item">
+                  <div class="mods-mod-item-name">AppleSkin + Better Mount HUD</div>
+                  <div class="mods-mod-item-desc">Hunger / saturation info and improved mount status display.</div>
+                </div>
+                <div class="mods-mod-item">
+                  <div class="mods-mod-item-name">Enhanced Attack Indicator</div>
+                  <div class="mods-mod-item-desc">More readable attack cooldown indicator.</div>
+                </div>
+                <div class="mods-mod-item">
+                  <div class="mods-mod-item-name">JourneyMap</div>
+                  <div class="mods-mod-item-desc">Full-featured minimap and world map with waypoints.</div>
+                </div>
+                <div class="mods-mod-item">
+                  <div class="mods-mod-item-name">Inventory Profiles Next + Mouse Tweaks</div>
+                  <div class="mods-mod-item-desc">Sort, auto-refill, and smarter mouse inventory controls.</div>
+                </div>
+                <div class="mods-mod-item">
+                  <div class="mods-mod-item-name">Shulker Box Tooltip + Pick Up Notifier</div>
+                  <div class="mods-mod-item-desc">Hover previews for shulkers and item pickup notifications.</div>
+                </div>
+                <div class="mods-mod-item">
+                  <div class="mods-mod-item-name">Cut Through + No Pack Warnings</div>
+                  <div class="mods-mod-item-desc">See through foliage, and suppress resource pack warnings.</div>
+                </div>
+                <div class="mods-mod-item">
+                  <div class="mods-mod-item-name">Auth Me + Cherished Worlds</div>
+                  <div class="mods-mod-item-desc">Session re-auth and pinned favourite worlds/servers.</div>
+                </div>
+                <div class="mods-mod-item">
+                  <div class="mods-mod-item-name">Controlify + Controlling</div>
+                  <div class="mods-mod-item-desc">Controller support and a searchable keybinds menu.</div>
+                </div>
+                <div class="mods-mod-item">
+                  <div class="mods-mod-item-name">Mod Menu + Main Menu Credits</div>
+                  <div class="mods-mod-item-desc">In-game mod list and pack branding on the main menu.</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="mods-compat">
+            <div class="mods-compat-icon">&#9432;</div>
+            <p>Also includes all required libraries from both packs. Shaders are bundled but <strong>disabled by default</strong> - enable them in the shader settings and choose a compatible pack.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- /mods-pack-grid -->
+
+
+  <!-- - BOTTOM INFO SECTION - -->
+  <div class="mods-footer-grid">
+
+    <div class="mods-info-card">
+      <div class="mods-info-card-label">Setup and Installation</div>
+      <div class="mods-info-card-title">How to Install</div>
+      <div class="mods-info-card-body">
+        <div class="mods-faq-list">
+          <div class="mods-faq-item">
+            <div class="mods-faq-q">What launcher do I need?</div>
+            <div class="mods-faq-a">These packs are built for <strong style="color:var(--white)">Fabric</strong>. Use a launcher with Fabric support - <a href="https://modrinth.com/app" target="_blank">Modrinth App</a>, <a href="https://atlauncher.com" target="_blank">ATLauncher</a>, or <a href="https://prismlauncher.org" target="_blank">Prism Launcher</a> are all good options. The Modrinth App handles installs in one click.</div>
+          </div>
+          <div class="mods-faq-item">
+            <div class="mods-faq-q">Will mods affect my vanilla server?</div>
+            <div class="mods-faq-a">No. All mods in these packs are strictly client-side. They don't change any server behaviour or affect other players in any way.</div>
+          </div>
+          <div class="mods-faq-item">
+            <div class="mods-faq-q">What if something breaks?</div>
+            <div class="mods-faq-a">Head to <strong style="color:var(--white)">#mod-support</strong> in the Discord and describe the issue. Include your pack version, Minecraft version, and what happened.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mods-info-card">
+      <div class="mods-info-card-label">Community</div>
+      <div class="mods-info-card-title">Questions and Suggestions</div>
+      <div class="mods-info-card-body">
+        <div class="mods-faq-list">
+          <div class="mods-faq-item">
+            <div class="mods-faq-q">Can I suggest a mod to include?</div>
+            <div class="mods-faq-a">Yes - post in <strong style="color:var(--white)">#suggestions</strong> on Discord. The packs are updated periodically and community suggestions do get reviewed.</div>
+          </div>
+          <div class="mods-faq-item">
+            <div class="mods-faq-q">Are mods allowed that aren't in these packs?</div>
+            <div class="mods-faq-a">Client-side performance or visual mods are generally fine. Anything that provides a gameplay advantage, automates actions, or modifies server interactions is not permitted. When in doubt, ask in Discord before using it.</div>
+          </div>
+          <div class="mods-faq-item">
+            <div class="mods-faq-q">How often are packs updated?</div>
+            <div class="mods-faq-a">Packs aren't updated on a fixed schedule - updates happen when Minecraft versions or included mods require it. Check the download pages for the latest versions.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /mods-footer-grid -->
+
+  <!-- DISCORD CTA -->
+  <div class="mods-discord-cta">
+    <div>
+      <div class="mods-discord-label">Need Help?</div>
+      <div class="mods-discord-title">Join the Discord</div>
+      <p class="mods-discord-desc">Mod support, compatibility questions, and suggestions all live in the Discord. It's also the best place to stay up to date when packs are updated.</p>
+    </div>
+    <a class="mods-discord-btn" href="https://discord.gg/Ah6Jt5KVPH" target="_blank">
+      Join Discord &#8599;
+    </a>
+  </div>
+
+</div><!-- /mods-layout -->
+
+<div class="divider"></div>
+<div id="footer-placeholder"></div>
+<script src="/destiny-playground/js/shared.js"></script>
+
+<script>
+  /* - smooth scroll pill anchors - */
+  document.querySelectorAll('.mods-pack-pill[data-pack]').forEach(function(pill) {
+    pill.addEventListener('click', function() {
+      var packId = 'pack-' + pill.getAttribute('data-pack');
+      var target = document.getElementById(packId);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        /* brief highlight */
+        target.style.outline = '.5px solid rgba(201,168,76,.4)';
+        setTimeout(function() { target.style.outline = ''; }, 1200);
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

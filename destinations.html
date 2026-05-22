@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Destinations - Destiny Playground</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/destiny-playground/css/styles.css">
+<link rel="stylesheet" href="/destiny-playground/css/nav.css">
+<link rel="stylesheet" href="/destiny-playground/css/destinations.css">
+<link rel="stylesheet" href="/destiny-playground/css/a11y-overrides.css">
+</head>
+<body>
+<div id="nav-placeholder"></div>
+
+<!-- HERO -->
+<div class="dest-hero">
+  <div class="dest-hero-bg"></div>
+  <div class="dest-hero-grid"></div>
+  <div class="dest-hero-inner">
+    <div class="dest-hero-eyebrow">Navigation Atlas - Active Theatres</div>
+    <h1 class="dest-hero-title">Known <span>Destinations</span></h1>
+    <p class="dest-hero-desc">Confirmed patrol zones and social spaces in the Destiny Playground solar system. Select a destination to explore its worlds, zones, and available activities.</p>
+    <div class="dest-hero-orbs">
+      <div class="dest-hero-orb"><div class="dest-hero-orb-dot" style="background:#5a9a50;"></div><div class="dest-hero-orb-label">Earth</div></div>
+      <div class="dest-hero-orb"><div class="dest-hero-orb-dot" style="background:#88c4e8;"></div><div class="dest-hero-orb-label">Europa</div></div>
+      <div class="dest-hero-orb"><div class="dest-hero-orb-dot" style="background:#9a8e80;"></div><div class="dest-hero-orb-label">The Moon</div></div>
+      <div class="dest-hero-orb"><div class="dest-hero-orb-dot" style="background:#d47a3a;"></div><div class="dest-hero-orb-label">Mars</div></div>
+      <div class="dest-hero-orb"><div class="dest-hero-orb-dot" style="background:#c9a84c;"></div><div class="dest-hero-orb-label">Social Spaces</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- MOBILE SIDEBAR TOGGLE -->
+<button class="dest-mobile-sidebar-toggle" id="mobileSidebarToggle" onclick="toggleMobileSidebar()">
+  &#9776; &nbsp; Select Destination
+</button>
+
+<!-- MAIN LAYOUT -->
+<div class="dest-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="dest-sidebar" id="destSidebar">
+
+    <div class="dest-sidebar-section">
+      <div class="dest-sidebar-label">Patrol Destinations</div>
+
+      <!-- EARTH - accordion, reveals worlds -->
+      <button class="dest-sidebar-btn" onclick="toggleEarth()" id="btn-earth">
+        <div class="dest-sidebar-planet-dot" style="background:#5a9a50;"></div>
+        <span class="dest-sidebar-planet-name">Earth</span>
+        <span class="dest-sidebar-chevron" id="chevron-earth">&#9654;</span>
+      </button>
+      <div class="dest-sidebar-sub" id="sub-earth">
+
+        <!-- EDZ world -->
+        <button class="dest-sidebar-world-btn" onclick="showDest('edz')" id="btn-edz">
+          <div class="dest-sidebar-world-dot" style="background:#5a9a50;"></div>
+          <span class="dest-sidebar-world-name">European Dead Zone</span>
+        </button>
+        <div class="dest-sidebar-zone-ref-list">
+          <div class="dest-sidebar-zone-item">Trostland</div>
+          <div class="dest-sidebar-zone-item">Outskirts</div>
+          <div class="dest-sidebar-zone-item">Winding Cove</div>
+          <div class="dest-sidebar-zone-item">The Sludge</div>
+          <div class="dest-sidebar-zone-item">The Gulch</div>
+          <div class="dest-sidebar-zone-item">Firebase Hades</div>
+          <div class="dest-sidebar-zone-item">Sunken Isles</div>
+        </div>
+
+        <!-- Northreach world -->
+        <button class="dest-sidebar-world-btn" onclick="showDest('northreach')" id="btn-northreach">
+          <div class="dest-sidebar-world-dot" style="background:#3a7a30;"></div>
+          <span class="dest-sidebar-world-name">The Northreach</span>
+        </button>
+        <div class="dest-sidebar-zone-ref-list">
+          <div class="dest-sidebar-zone-item">The Northreach</div>
+        </div>
+
+      </div>
+
+      <!-- EUROPA -->
+      <button class="dest-sidebar-btn" onclick="showDest('europa')" id="btn-europa">
+        <div class="dest-sidebar-planet-dot" style="background:#88c4e8;"></div>
+        <span class="dest-sidebar-planet-name">Europa</span>
+        <span class="dest-sidebar-chevron">&#9654;</span>
+      </button>
+      <div class="dest-sidebar-sub" id="sub-europa">
+        <div class="dest-sidebar-zone-ref-list">
+          <div class="dest-sidebar-zone-item">Eventide Ruins</div>
+          <div class="dest-sidebar-zone-item">Cadmus Ridge</div>
+          <div class="dest-sidebar-zone-item">Asterion Abyss</div>
+          <div class="dest-sidebar-zone-item">Beyond</div>
+        </div>
+      </div>
+
+      <!-- MOON -->
+      <button class="dest-sidebar-btn" onclick="showDest('moon')" id="btn-moon">
+        <div class="dest-sidebar-planet-dot" style="background:#9a8e80;"></div>
+        <span class="dest-sidebar-planet-name">The Moon</span>
+        <span class="dest-sidebar-chevron">&#9654;</span>
+      </button>
+      <div class="dest-sidebar-sub" id="sub-moon">
+        <div class="dest-sidebar-zone-ref-list">
+          <div class="dest-sidebar-zone-item">Archer's Line</div>
+          <div class="dest-sidebar-zone-item">The Hellmouth</div>
+          <div class="dest-sidebar-zone-item">Anchor of Light</div>
+          <div class="dest-sidebar-zone-item">Shrine of Oryx</div>
+        </div>
+      </div>
+
+      <!-- MARS -->
+      <button class="dest-sidebar-btn" onclick="showDest('mars')" id="btn-mars">
+        <div class="dest-sidebar-planet-dot" style="background:#d47a3a;"></div>
+        <span class="dest-sidebar-planet-name">Mars</span>
+        <span class="dest-sidebar-chevron">&#9654;</span>
+      </button>
+      <div class="dest-sidebar-sub" id="sub-mars">
+        <div class="dest-sidebar-zone-ref-list">
+          <div class="dest-sidebar-zone-item">Scablands</div>
+          <div class="dest-sidebar-zone-item">The Barrens</div>
+          <div class="dest-sidebar-zone-item">Buried City</div>
+          <div class="dest-sidebar-zone-item">Tharsis Junction</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dest-sidebar-section">
+      <div class="dest-sidebar-label">Social Spaces</div>
+      <button class="dest-sidebar-btn" onclick="showDest('farm')" id="btn-farm">
+        <div class="dest-sidebar-planet-dot" style="background:#c9a84c;"></div>
+        <span class="dest-sidebar-planet-name">The Farm</span>
+        <span class="dest-sidebar-chevron">&#9654;</span>
+      </button>
+      <button class="dest-sidebar-btn" onclick="showDest('lastcity')" id="btn-lastcity">
+        <div class="dest-sidebar-planet-dot" style="background:#b0b8c8;"></div>
+        <span class="dest-sidebar-planet-name">The Last City</span>
+        <span class="dest-sidebar-chevron">&#9654;</span>
+      </button>
+    </div>
+
+  </aside>
+
+  <!-- MAIN PANEL -->
+  <main class="dest-main" id="destMain">
+
+    <!-- WELCOME -->
+    <div class="dest-panel active" id="panel-welcome">
+      <div class="dest-welcome">
+        <div class="dest-welcome-icon">&#9670;</div>
+        <div class="dest-welcome-title">Select a Destination</div>
+        <p class="dest-welcome-desc">Choose a patrol zone or social space from the sidebar to explore its worlds, zones, and available activities.</p>
+      </div>
+    </div>
+
+    <!-- - EARTH - EDZ - -->
+    <div class="dest-panel" id="panel-edz">
+      <div class="dest-banner">
+        <div class="dest-banner-bg" style="background:radial-gradient(ellipse 80% 100% at 60% 50%,rgba(90,154,80,.18) 0%,transparent 65%),linear-gradient(135deg,#060a06 0%,#0d1a0a 50%,#060a06 100%);"></div>
+        <div class="dest-banner-planet">
+          <div class="dest-banner-planet-sphere" style="width:180px;height:180px;background:radial-gradient(ellipse at 30% 28%,#4a8a40 0%,#2a6020 30%,#1a4010 60%,#0a1a06 100%);box-shadow:0 0 60px rgba(90,154,80,.3),inset -15px -15px 40px rgba(0,0,0,.6);"></div>
+          <div class="dest-banner-planet-ring" style="width:230px;height:230px;"></div>
+          <div class="dest-banner-planet-ring" style="width:290px;height:290px;opacity:.5;"></div>
+        </div>
+        <div class="dest-banner-overlay"></div>
+        <div class="dest-banner-content">
+          <div class="dest-banner-eyebrow" style="color:#5a9a50;">Earth - Patrol World</div>
+          <div class="dest-banner-name">European Dead Zone</div>
+          <div class="dest-banner-subtitle">Northern Europe &middot; 7 Zones</div>
+          <div class="dest-banner-tags">
+            <span class="dest-banner-tag" style="color:#5a9a50;border-color:rgba(90,154,80,.3);">Fallen</span>
+            <span class="dest-banner-tag" style="color:#c87050;border-color:rgba(200,112,80,.3);">Cabal</span>
+          </div>
+        </div>
+      </div>
+      <div class="dest-content">
+        <div class="dest-ghost-quote">
+          <div class="dest-ghost-dot"></div>
+          <div>
+            <div class="dest-ghost-text">&ldquo;This is where it all started. <em>Right here.</em> Some of the oldest Fallen fortifications on Earth are in that valley below us. They were here before we woke you up.&rdquo;</div>
+            <div class="dest-ghost-attr">- Ghost, on approach to the EDZ</div>
+          </div>
+        </div>
+        <div class="dest-facts-strip" style="grid-template-columns:repeat(3,1fr);">
+          <div class="dest-fact"><div class="dest-fact-label">Planet</div><div class="dest-fact-value" style="color:#5a9a50;">Earth</div></div>
+          <div class="dest-fact"><div class="dest-fact-label">Primary Factions</div><div class="dest-fact-value">Fallen and Cabal</div></div>
+          <div class="dest-fact"><div class="dest-fact-label">Zones</div><div class="dest-fact-value">7</div><div class="dest-fact-sub">Open patrol</div></div>
+        </div>
+        <div class="dest-section dest-animate">
+          <div class="dest-section-header"><div class="dest-section-icon" style="color:#5a9a50;">&#9670;</div><div class="dest-section-title">Overview</div></div>
+          <p class="dest-section-prose">The European Dead Zone occupies the former industrial heartland of northern Europe - a vast sweep of forest, ruin, and contested ground. The Fallen arrived in the decades after the Traveler went silent and made it their own. The Cabal of the Red Legion have since established firebase operations in the western reaches, representing a heavier threat further in.</p>
+        </div>
+        <div class="dest-section dest-animate">
+          <div class="dest-section-header"><div class="dest-section-icon" style="color:#5a9a50;">&#9650;</div><div class="dest-section-title">Enemy Factions</div></div>
+          <div class="dest-faction-list">
+            <div class="dest-faction-row">
+              <div class="dest-faction-dot" style="background:#9ab8e8;"></div>
+              <div><div class="dest-faction-name" style="color:#9ab8e8;">The Fallen</div><div class="dest-faction-desc">Multiple Fallen houses have a presence on Earth. Expect infantry, captains, and heavier support units deeper into their territory.</div></div>
+            </div>
+            <div class="dest-faction-row">
+              <div class="dest-faction-dot" style="background:#c87050;"></div>
+              <div><div class="dest-faction-name" style="color:#c87050;">The Cabal</div><div class="dest-faction-desc">Red Legion firebase operations occupy the western EDZ. Heavy armour, aerial support, and fortified positions. Higher threat than the Fallen presence.</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="dest-section dest-animate">
+          <div class="dest-section-header"><div class="dest-section-icon" style="color:#5a9a50;">&#9632;</div><div class="dest-section-title">Zones and Areas</div></div>
+
+          <div class="dest-zone-expanded" style="--zc:#5a9a50;">
+            <div class="dest-zone-expanded-header"><div class="dest-zone-expanded-name">Trostland</div><div class="dest-zone-expanded-type">Patrol Zone</div></div>
+            <p class="dest-zone-expanded-desc">A collapsed European township. Fallen have fortified the old church district. Dense urban terrain with multiple entry points and tight sightlines.</p>
+            <div class="dest-zone-activities">
+              <div class="dest-zone-act-header">Zone Activities</div>
+              <div class="dest-zone-act-grid">
+                <div class="dest-zone-act-item"><span class="dest-act-type">Patrols</span><span class="dest-act-val">Available</span></div>
+                <div class="dest-zone-act-item"><span class="dest-act-type">Public Events</span><span class="dest-act-val">Available</span></div>
+                <div class="dest-zone-act-item"><span class="dest-act-type">Lost Sectors</span><span class="dest-act-val">2</span></div>
+              </div>
+              <div class="dest-zone-rewards"><div class="dest-zone-reward-tag">&#9670; XP</div><div class="dest-zone-reward-tag">&#9670; Glimmer</div><div class="dest-zone-reward-tag">&#9670; Tokens</div></div>
+              <div class="dest-ls-list">
+                <div class="dest-ls-compact"><span class="dest-ls-diamond">&#9674;</span><span class="dest-ls-cname">Atrium</span><span class="dest-ls-cloc">Trostland</span><span class="dest-ls-cboss">Boss: Classified</span></div>
+                <div class="dest-ls-compact"><span class="dest-ls-diamond">&#9674;</span><span class="dest-ls-cname">Widow's Walk</span><span class="dest-ls-cloc">Trostland</span><span class="dest-ls-cboss">Boss: Classified</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dest-zone-expanded" style="--zc:#4a8a40;">
+            <div class="dest-zone-expanded-header"><div class="dest-zone-expanded-name">Outskirts</div><div class="dest-zone-expanded-type">Patrol Zone</div></div>
+            <p class="dest-zone-expanded-desc">Industrial outskirts of the old settlement. Rail yards and collapsed warehouses. Fallen patrols are heavier here, pushing toward the Sludge.</p>
+            <div class="dest-zone-activities">
+              <div class="dest-zone-act-header">Zone Activities</div>
+              <div class="dest-zone-act-grid">
+                <div class="dest-zone-act-item"><span class="dest-act-type">Patrols</span><span class="dest-act-val">Available</span></div>
+                <div class="dest-zone-act-item"><span class="dest-act-type">Public Events</span><span class="dest-act-val">Available</span></div>
+                <div class="dest-zone-act-item"><span class="dest-act-type">Lost Sectors</span><span class="dest-act-val">1</span></div>
+              </div>
+              <div class="dest-zone-rewards"><div class="dest-zone-reward-tag">&#9670; XP</div><div class="dest-zone-reward-tag">&#9670; Glimmer</div><div class="dest-zone-reward-tag">&#9670; Tokens</div></div>
+              <div class="dest-ls-list">
+                <div class="dest-ls-compact"><span class="dest-ls-diamond">&#9674;</span><span class="dest-ls-cname">Terminus East</span><span class="dest-ls-cloc">Outskirts</span><span class="dest-ls-cboss">Boss: Classified</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dest-zone-expanded" style="--zc:#3a7a30;">
+            <div class="dest-zone-expanded-header"><div class="dest-zone-expanded-name">Winding Cove</div><div class="dest-zone-expanded-type">Patrol Zone</div></div>
+            <p class="dest-zone-expanded-desc">A coastal ravine with dense forest cover. Fallen have caches hidden in the cliffsides. Good ambush terrain - watch the high ground.</p>
+            <div class="dest-zone-activities">
+              <div class="dest-zone-act-header">Zone Activities</div>
+              <div class="dest-zone-act-grid">
+                <div class="dest-zone-act-item"><span class="dest-act-type">Patrols</span><span class="dest-act-val">Available</span></div>
+                <div class="dest-zone-act-item"><span class="dest-act-type">Public Events</span><span class="dest-act-val">Available</span></div>
+                <div class="dest-zone-act-item"><span class="dest-act-type">Lost Sectors</span><span class="dest-act-val">2</span></div>
+              </div>
+              <div class="dest-zone-rewards"><div class="dest-zone-reward-tag">&#9670; XP</div><div class="dest-zone-reward-tag">&#9670; Glimmer</div><div class="dest-zone-reward-tag">&#9670; Tokens</div></div>
+              <div class="dest-ls-list">
+                <div class="dest-ls-compact"><span class="dest-ls-diamond">&#9674;</span><span class="dest-ls-cname">The Drain</span><span class="dest-ls-cloc">Winding Cove</span><span class="dest-ls-cboss">Boss: Classified</span></div>
+                <div class="dest-ls-compact"><span class="dest-ls-diamond">&#9674;</span><span class="dest-ls-cname">Whispered Falls</span><span class="dest-ls-cloc">Winding Cove</span><span class="dest-ls-cboss">Boss: Classified</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dest-zone-expanded" style="--zc:#2a6a20;">
+            <div class="dest-zone-expanded-header"><div class="dest-zone-expanded-name">The Sludge</div><div class="dest-zone-expanded-type">Patrol Zone</div></div>
+            <p class="dest-zone-expanded-desc">Swampy lowlands and collapsed industrial runoff channels. Heavy Fallen presence. Dense terrain that rewards careful navigation.</p>
+            <div class="dest-zone-activities">
+              <div class="dest-zone-act-header">Zone Activities</div>
+              <div class="dest-zone-act-grid">
+                <div class="dest-zone-act-item"><span class="dest-act-type">Patrols</span><span class="dest-act-val">Available</span></div>
+                <div class="dest-zone-act-item"><span class="dest-act-type">Public Events</span><span class="dest-act-val">Available</span></div>
+                <div class="dest-zone-act-item"><span class="dest-act-type">Lost Sectors</span><span class="dest-act-val">1</span></div>
+              </div>
+              <div class="dest-zone-rewards"><div class="dest-zone-reward-tag">&#9670; XP</div><div class="dest-zone-reward-tag">&#9670; Glimmer</div><div class="dest-zone-reward-tag">&#9670; Tokens</div></div>
+              <div class="dest-ls-list">
+                <div class="dest-ls-compact"><span class="dest-ls-diamond">&#9674;</span><span class="dest-ls-cname">Hallowed Grove</span><span class="dest-ls-cloc">The Sludge</span><span class="dest-ls-cboss">Boss: Classified</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dest-zone-expanded" style="--zc:#5a9a50;">
+            <div class="dest-zone-expanded-header"><div class="dest-zone-expanded-name">The Gulch</div><div class="dest-zone-expanded-type">Patrol Zone</div></div>
+            <p class="dest-zone-expanded-desc">A wide open transit corridor through the EDZ. Fallen and Cabal both push into this area, making it a frequent flashpoint between the two factions.</p>
+            <div class="dest-zone-activities">
+              <div class="dest-zone-act-header">Zone Activities</div>
+              <div class="dest-zone-act-grid">
+                <div class="dest-zone-act-item"><span class="dest-act-type">Patrols</span><span class="dest-act-val">Available</span></div>
+                <div class="dest-zone-act-item"><span class="dest-act-type">Public Events</span><span class="dest-act-val">Available</span></div>
+                <div class="dest-zone-act-item"><span class="dest-act-type">Lost Sectors</span><span class="dest-act-val">1</span></div>
+              </div>
+              <div class="dest-zone-rewards"><div class="dest-zone-reward-tag">&#9670; XP</div><div class="dest-zone-reward-tag">&#9670; Glimmer</div><div class="dest-zone-reward-tag">&#9670; Tokens</div></div>
+              <div class="dest-ls-list">
+                <div class="dest-ls-compact"><span class="dest-ls-diamond">&#9674;</span><span class="dest-ls-cname">Pathfinder's Crash</span><span class="dest-ls-cloc">The Gulch</span><span class="dest-ls-cboss">Boss: Classified</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dest-zone-expanded" style="--zc:#c87050;">
+            <div class="dest-zone-expanded-header"><div class="dest-zone-expanded-name">Firebase Hades</div><div class="dest-zone-expanded-type">Patrol Zone</div></div>
+            <p class="dest-zone-expanded-desc">A heavily fortified Red Legion firebase. Cabal dominate this area entirely. Expect heavier units, vehicle support, and coordinated resistance.</p>
+            <div class="dest-zone-activities">
+              <div class="dest-zone-act-header">Zone Activities</div>
+              <div class="dest-zone-act-grid">
+                <div class="dest-zone-act-item"><span class="dest-act-type">Patrols</span><span class="dest-act-val">Available</span></div>
+                <div class="dest-zone-act-item"><span class="dest-act-type">Public Events</span><span class="dest-act-val">Available</span></div>
+                <div class="dest-zone-act-item"><span class="dest-act-type">Lost Sectors</span><span class="dest-act-val">1</span></div>
+              </div>
+              <div class="dest-zone-rewards"><div class="dest-zone-reward-tag">&#9670; XP</div><div class="dest-zone-reward-tag">&#9670; Glimmer</div><div class="dest-zone-reward-tag">&#9670; Tokens</div></div>
+              <div class="dest-ls-list">
+                <div class="dest-ls-compact"><span class="dest-ls-diamond">&#9674;</span><span class="dest-ls-cname">Excavation Site XII</span><span class="dest-ls-cloc">Firebase Hades</span><span class="dest-ls-cboss">Boss: Classified</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dest-zone-expanded" style="--zc:#b06040;">
+            <div class="dest-zone-expanded-header"><div class="dest-zone-expanded-name">Sunken Isles</div><div class="dest-zone-expanded-type">Patrol Zone</div></div>
+            <p class="dest-zone-expanded-desc">Flooded lowlands on the western fringe of the EDZ. The Cabal have converted the high ground into a landing operation. Fallen scavengers work the waterline below.</p>
+            <div class="dest-zone-activities">
+              <div class="dest-zone-act-header">Zone Activities</div>
+              <div class="dest-zone-act-grid">
+                <div class="dest-zone-act-item"><span class="dest-act-type">Patrols</span><span class="dest-act-val">Available</span></div>
+                <div class="dest-zone-act-item"><span class="dest-act-type">Public Events</span><span class="dest-act-val">Available</span></div>
+                <div class="dest-zone-act-item"><span class="dest-act-type">Lost Sectors</span><span class="dest-act-val">1</span></div>
+              </div>
+              <div class="dest-zone-rewards"><div class="dest-zone-reward-tag">&#9670; XP</div><div class="dest-zone-reward-tag">&#9670; Glimmer</div><div class="dest-zone-reward-tag">&#9670; Tokens</div></div>
+              <div class="dest-ls-list">
+                <div class="dest-ls-compact"><span class="dest-ls-diamond">&#9674;</span><span class="dest-ls-cname">The Quarry</span><span class="dest-ls-cloc">Sunken Isles</span><span class="dest-ls-cboss">Boss: Classified</span></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="dest-section dest-animate">
+          <div class="dest-section-header"><div class="dest-section-icon" style="color:#5a9a50;">&#9651;</div><div class="dest-section-title">World Activities</div></div>
+          <p class="dest-section-prose" style="margin-bottom:1.2rem;opacity:.6;font-size:.82rem;">The following activities are tied to the European Dead Zone as a world. Details will be revealed closer to launch.</p>
+          <div class="dest-locked-grid">
+            <div class="dest-locked-card"><div class="dest-locked-label">Strikes</div><div class="dest-locked-val">&#9632; Details to be revealed</div></div>
+            <div class="dest-locked-card"><div class="dest-locked-label">Main Missions</div><div class="dest-locked-val">&#9632; Details to be revealed</div></div>
+            <div class="dest-locked-card"><div class="dest-locked-label">Side Missions</div><div class="dest-locked-val">&#9632; Details to be revealed</div></div>
+            <div class="dest-locked-card"><div class="dest-locked-label">World Bosses</div><div class="dest-locked-val">&#9632; Details to be revealed</div></div>
+            <div class="dest-locked-card"><div class="dest-locked-label">Vendor NPC</div><div class="dest-locked-val">&#9632; Details to be revealed</div></div>
+            <div class="dest-locked-card"><div class="dest-locked-label">Bounties</div><div class="dest-locked-val">&#9632; Details to be revealed</div></div>
+            <div class="dest-locked-card"><div class="dest-locked-label">Gear and Rewards</div><div class="dest-locked-val">&#9632; Details to be revealed</div></div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /panel-edz -->
+
+
+    <!-- - EARTH - NORTHREACH - -->
+    <div class="dest-panel" id="panel-northreach">
+      <div class="dest-banner">
+        <div class="dest-banner-bg" style="background:radial-gradient(ellipse 80% 100% at 60% 50%,rgba(58,122,48,.15) 0%,transparent 65%),linear-gradient(135deg,#040a04 0%,#081408 50%,#040a04 100%);"></div>
+        <div class="dest-banner-planet">
+          <div class="dest-banner-planet-sphere" style="width:180px;height:180px;background:radial-gradient(ellipse at 30% 28%,#c8dcc8 0%,#88a888 30%,#485848 60%,#181c18 100%);box-shadow:0 0 60px rgba(58,122,48,.2),inset -15px -15px 40px rgba(0,0,0,.7);"></div>
+          <div class="dest-banner-planet-ring" style="width:230px;height:230px;"></div>
+        </div>
+        <div class="dest-banner-overlay"></div>
+        <div class="dest-banner-content">
+          <div class="dest-banner-eyebrow" style="color:#3a7a30;">Earth - Story World</div>
+          <div class="dest-banner-name">The Northreach</div>
+          <div class="dest-banner-subtitle">Northern Wastes &middot; 1 Zone</div>
+          <div class="dest-banner-tags">
+            <span class="dest-banner-tag" style="color:#9ab8e8;border-color:rgba(154,184,232,.3);">Fallen</span>
+            <span class="dest-banner-tag" style="color:#a8c8a0;border-color:rgba(168,200,160,.3);">Story Zone</span>
+          </div>
+        </div>
+      </div>
+      <div class="dest-content">
+        <div class="dest-ghost-quote">
+          <div class="dest-ghost-dot"></div>
+          <div>
+            <div class="dest-ghost-text">&ldquo;You've been gone a long time, Guardian. The world's changed. But you're here now - that's what matters. Let's start moving before anything finds us.&rdquo;</div>
+            <div class="dest-ghost-attr">- Ghost, first contact</div>
+          </div>
+        </div>
+        <div class="dest-facts-strip" style="grid-template-columns:repeat(3,1fr);">
+          <div class="dest-fact"><div class="dest-fact-label">Planet</div><div class="dest-fact-value" style="color:#3a7a30;">Earth</div></div>
+          <div class="dest-fact"><div class="dest-fact-label">Type</div><div class="dest-fact-value">Story World</div><div class="dest-fact-sub">Not open patrol</div></div>
+          <div class="dest-fact"><div class="dest-fact-label">Zones</div><div class="dest-fact-value">1</div></div>
+        </div>
+        <div class="dest-section dest-animate">
+          <div class="dest-section-header"><div class="dest-section-icon" style="color:#3a7a30;">&#9670;</div><div class="dest-section-title">Overview</div></div>
+          <p class="dest-section-prose">Frozen wastes far north of the EDZ. Pre-Collapse military infrastructure lies buried under the ice. This is where newly-risen Guardians first encounter the world - a contained story environment, not accessible as open patrol.</p>
+        </div>
+        <div class="dest-section dest-animate">
+          <div class="dest-section-header"><div class="dest-section-icon" style="color:#3a7a30;">&#9632;</div><div class="dest-section-title">Zones and Areas</div></div>
+          <div class="dest-zone-expanded" style="--zc:#3a7a30;">
+            <div class="dest-zone-expanded-header"><div class="dest-zone-expanded-name">The Northreach</div><div class="dest-zone-expanded-type">Story Zone</div></div>
+            <p class="dest-zone-expanded-desc">Frozen tundra and buried Golden Age structures. The starting point for every Guardian's journey. Accessible during the tutorial and early campaign only.</p>
+            <div class="dest-zone-activities">
+              <div class="dest-zone-act-header">Zone Activities</div>
+              <div class="dest-zone-act-grid">
+                <div class="dest-zone-act-item"><span class="dest-act-type">Patrols</span><span class="dest-act-val" style="color:var(--muted);">Story Only</span></div>
+                <div class="dest-zone-act-item"><span class="dest-act-type">Tutorial</span><span class="dest-act-val">Available</span></div>
+              </div>
+              <div class="dest-zone-rewards"><div class="dest-zone-reward-tag">&#9670; XP</div><div class="dest-zone-reward-tag">&#9670; Glimmer</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="dest-section dest-animate">
+          <div class="dest-section-header"><div class="dest-section-icon" style="color:#3a7a30;">&#9651;</div><div class="dest-section-title">World Activities</div></div>
+          <p class="dest-section-prose" style="margin-bottom:1.2rem;opacity:.6;font-size:.82rem;">The following activities are tied to the Northreach as a world. Details will be revealed closer to launch.</p>
+          <div class="dest-locked-grid">
+            <div class="dest-locked-card"><div class="dest-locked-label">Main Missions</div><div class="dest-locked-val">&#9632; Details to be revealed</div></div>
+            <div class="dest-locked-card"><div class="dest-locked-label">Side Missions</div><div class="dest-locked-val">&#9632; Details to be revealed</div></div>
+            <div class="dest-locked-card"><div class="dest-locked-label">Bounties</div><div class="dest-locked-val">&#9632; Details to be revealed</div></div>
+            <div class="dest-locked-card"><div class="dest-locked-label">Gear and Rewards</div><div class="dest-locked-val">&#9632; Details to be revealed</div></div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /panel-northreach -->
+
+
+    <!-- - EUROPA - -->
+    <div class="dest-panel" id="panel-europa">
+      <div class="dest-banner">
+        <div class="dest-banner-bg" style="background:radial-gradient(ellipse 80% 100% at 60% 50%,rgba(136,196,232,.12) 0%,transparent 65%),linear-gradient(135deg,#04080c 0%,#080f18 50%,#04080c 100%);"></div>
+        <div class="dest-banner-planet">
+          <div class="dest-banner-planet-sphere" style="width:180px;height:180px;background:radial-gradient(ellipse at 30% 28%,#b0d4f0 0%,#7090b8 30%,#404870 60%,#141828 100%);box-shadow:0 0 60px rgba(136,196,232,.25),inset -15px -15px 40px rgba(0,0,0,.7);"></div>
+          <div class="dest-banner-planet-ring" style="width:230px;height:230px;"></div>
+        </div>
+        <div class="dest-banner-overlay"></div>
+        <div class="dest-banner-content">
+          <div class="dest-banner-eyebrow" style="color:#88c4e8;">Patrol Destination</div>
+          <div class="dest-banner-name">Europa</div>
+          <div class="dest-banner-subtitle">Moon of Jupiter &middot; 4 Zones</div>
+          <div class="dest-banner-tags">
+            <span class="dest-banner-tag" style="color:#9ab8e8;border-color:rgba(154,184,232,.3);">Fallen</span>
+            <span class="dest-banner-tag" style="color:#80c8a8;border-color:rgba(128,200,168,.3);">Vex</span>
+          </div>
+        </div>
+      </div>
+      <div class="dest-content">
+        <div class="dest-ghost-quote">
+          <div class="dest-ghost-dot"></div>
+          <div>
+            <div class="dest-ghost-text">&ldquo;Jupiter's right there. I keep expecting it to do something. It just... sits there. Enormous and silent. Very on-brand for this moon.&rdquo;</div>
+            <div class="dest-ghost-attr">- Ghost, Europa landing approach</div>
+          </div>
+        </div>
+        <div class="dest-facts-strip" style="grid-template-columns:repeat(3,1fr);">
+          <div class="dest-fact"><div class="dest-fact-label">Primary Factions</div><div class="dest-fact-value" style="color:#88c4e8;">Fallen and Vex</div></div>
+          <div class="dest-fact"><div class="dest-fact-label">Zones</div><div class="dest-fact-value">4</div></div>
+          <div class="dest-fact"><div class="dest-fact-label">Environment</div><div class="dest-fact-value">Frozen</div><div class="dest-fact-sub">Jupiter's ice moon</div></div>
+        </div>
+        <div class="dest-section dest-animate">
+          <div class="dest-section-header"><div class="dest-section-icon" style="color:#88c4e8;">&#9670;</div><div class="dest-section-title">Overview</div></div>
+          <p class="dest-section-prose">Jupiter's frozen moon conceals an ocean beneath ancient ice - and beneath that, things the Bray Corporation studied and never fully explained. The Fallen have established a significant presence near the ruins of the Bray Exoscience facility. The Vex have constructed gate networks across the surface. Whatever Bray was doing here, both factions seem interested in it.</p>
+        </div>
+        <div class="dest-section dest-animate">
+          <div class="dest-section-header"><div class="dest-section-icon" style="color:#88c4e8;">&#9650;</div><div class="dest-section-title">Enemy Factions</div></div>
+          <div class="dest-faction-list">
+            <div class="dest-faction-row">
+              <div class="dest-faction-dot" style="background:#9ab8e8;"></div>
+              <div><div class="dest-faction-name" style="color:#9ab8e8;">The Fallen</div><div class="dest-faction-desc">A Fallen house has taken up residence near the Bray facility. Well-equipped and entrenched - they've been here long enough to be comfortable.</div></div>
+            </div>
+            <div class="dest-faction-row">
+              <div class="dest-faction-dot" style="background:#80c8a8;"></div>
+              <div><div class="dest-faction-name" style="color:#80c8a8;">The Vex</div><div class="dest-faction-desc">Vex constructs and gate networks are spread across the surface ridges. Their presence intensifies in the deeper glacial zones.</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="dest-section dest-animate">
+          <div class="dest-section-header"><div class="dest-section-icon" style="color:#88c4e8;">&#9632;</div><div class="dest-section-title">Zones and Areas</div></div>
+
+          <div class="dest-zone-expanded" style="--zc:#88c4e8;">
+            <div class="dest-zone-expanded-header"><div class="dest-zone-expanded-name">Eventide Ruins</div><div class="dest-zone-expanded-type">Patrol Zone</div></div>
+            <p class="dest-zone-expanded-desc">The collapsed remains of the Eventide colony - a pre-Collapse settlement that served the Bray facility. Fallen have built a significant fortification here.</p>
+            <div class="dest-zone-activities">
+              <div class="dest-zone-act-header">Zone Activities</div>
+              <div class="dest-zone-act-grid">
+                <div class="dest-zone-act-item"><span class="dest-act-type">Patrols</span><span class="dest-act-val">Available</span></div>
+                <div class="dest-zone-act-item"><span class="dest-act-type">Public Events</span><span class="dest-act-val">Available</span></div>
+                <div class="dest-zone-act-item"><span class="dest-act-type">Lost Sectors</span><span class="dest-act-val">1</span></div>
+              </div>
+              <div class="dest-zone-rewards"><div class="dest-zone-reward-tag">&#9670; XP</div><div class="dest-zone-reward-tag">&#9670; Glimmer</div><div class="dest-zone-reward-tag">&#9670; Tokens</div></div>
+              <div class="dest-ls-list">
+                <div class="dest-ls-compact"><span class="dest-ls-diamond">&#9674;</span><span class="dest-ls-cname">Bunker E15</span><span class="dest-ls-cloc">Eventide Ruins</span><span class="dest-ls-cboss">Boss: Classified</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dest-zone-expanded" style="--zc:#6aaac8;">
+            <div class="dest-zone-expanded-header"><div class="dest-zone-expanded-name">Cadmus Ridge</div><div class="dest-zone-expanded-type">Patrol Zone</div></div>
+            <p class="dest-zone-expanded-desc">Open tundra above the main facility. Wind-scoured and exposed. Vex constructs and teleporter networks span the ridge. Excellent sightlines - but you're visible too.</p>
+            <div class="dest-zone-activities">
+              <div class="dest-zone-act-header">Zone Activities</div>
+              <div class="dest-zone-act-grid">
+                <div class="dest-zone-act-item"><span class="dest-act-type">Patrols</span><span class="dest-act-val">Available</span></div>
+                <div class="dest-zone-act-item"><span class="dest-act-type">Public Events</span><span class="dest-act-val">Available</span></div>
+                <div class="dest-zone-act-item"><span class="dest-act-type">Lost Sectors</span><span class="dest-act-val">1</span></div>
+              </div>
+              <div class="dest-zone-rewards"><div class="dest-zone-reward-tag">&#9670; XP</div><div class="dest-zone-reward-tag">&#9670; Glimmer</div><div class="dest-zone-reward-tag">&#9670; Tokens</div></div>
+              <div class="dest-ls-list">
+                <div class="dest-ls-compact"><span class="dest-ls-diamond">&#9674;</span><span class="dest-ls-cname">Perdition</span><span class="dest-ls-cloc">Cadmus Ridge</span><span class="dest-ls-cboss">Boss: Classified</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dest-zone-expanded" style="--zc:#4a8aaa;">
+            <div class="dest-zone-expanded-header"><div class="dest-zone-expanded-name">Asterion Abyss</div><div class="dest-zone-expanded-type">Patrol Zone</div></div>
+            <p class="dest-zone-expanded-desc">A deep glacial rift dominated by Vex. Gate portals connect sections of the abyss to simulation spaces. The deepest areas border the Vex conflux network.</p>
+            <div class="dest-zone-activities">
+              <div class="dest-zone-act-header">Zone Activities</div>
+              <div class="dest-zone-act-grid">
+                <div class="dest-zone-act-item"><span class="dest-act-type">Patrols</span><span class="dest-act-val">Available</span></div>
+                <div class="dest-zone-act-item"><span class="dest-act-type">Public Events</span><span class="dest-act-val">Available</span></div>
+                <div class="dest-zone-act-item"><span class="dest-act-type">Lost Sectors</span><span class="dest-act-val">1</span></div>
+              </div>
+              <div class="dest-zone-rewards"><div class="dest-zone-reward-tag">&#9670; XP</div><div class="dest-zone-reward-tag">&#9670; Glimmer</div><div class="dest-zone-reward-tag">&#9670; Tokens</div></div>
+              <div class="dest-ls-list">
+                <div class="dest-ls-compact"><span class="dest-ls-diamond">&#9674;</span><span class="dest-ls-cname">Concealed Void</span><span class="dest-ls-cloc">Asterion Abyss</span><span class="dest-ls-cboss">Boss: Classified</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dest-zone-expanded" style="--zc:#2a6a8a;">
+            <div class="dest-zone-expanded-header"><div class="dest-zone-expanded-name">Beyond</div><div class="dest-zone-expanded-type">Patrol Zone</div></div>
+            <p class="dest-zone-expanded-desc">The furthest accessible region of Europa - past the Vex gate network into something older. Details are classified.</p>
+            <div class="dest-zone-activities">
+              <div class="dest-zone-act-header">Zone Activities</div>
+              <div class="dest-zone-act-grid">
+                <div class="dest-zone-act-item"><span class="dest-act-type">Patrols</span><span class="dest-act-val">Available</span></div>
+                <div class="dest-zone-act-item"><span class="dest-act-type">Public Events</span><span class="dest-act-val">Available</span></div>
+                <div class="dest-zone-act-item"><span class="dest-act-type">Lost Sectors</span><span class="dest-act-val">&#9632; Classified</span></div>
+              </div>
+              <div class="dest-zone-rewards"><div class="dest-zone-reward-tag">&#9670; XP</div><div class="dest-zone-reward-tag">&#9670; Glimmer</div><div class="dest-zone-reward-tag">&#9670; Tokens</div></div>
+            </div>
+          </div>
+
+        </div>
+        <div class="dest-section dest-animate">
+          <div class="dest-section-header"><div class="dest-section-icon" style="color:#88c4e8;">&#9651;</div><div class="dest-section-title">World Activities</div></div>
+          <p class="dest-section-prose" style="margin-bottom:1.2rem;opacity:.6;font-size:.82rem;">The following activities are tied to Europa as a world. Details will be revealed closer to launch.</p>
+          <div class="dest-locked-grid">
+            <div class="dest-locked-card"><div class="dest-locked-label">Strikes</div><div class="dest-locked-val">&#9632; Details to be revealed</div></div>
+            <div class="dest-locked-card"><div class="dest-locked-label">Main Missions</div><div class="dest-locked-val">&#9632; Details to be revealed</div></div>
+            <div class="dest-locked-card"><div class="dest-locked-label">Side Missions</div><div class="dest-locked-val">&#9632; Details to be revealed</div></div>
+            <div class="dest-locked-card"><div class="dest-locked-label">World Bosses</div><div class="dest-locked-val">&#9632; Details to be revealed</div></div>
+            <div class="dest-locked-card"><div class="dest-locked-label">Vendor NPC</div><div class="dest-locked-val">&#9632; Details to be revealed</div></div>
+            <div class="dest-locked-card"><div class="dest-locked-label">Bounties</div><div class="dest-locked-val">&#9632; Details to be revealed</div></div>
+            <div class="dest-locked-card"><div class="dest-locked-label">Gear and Rewards</div><div class="dest-locked-val">&#9632; Details to be revealed</div></div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /panel-europa -->
+
+
+    <!-- - THE MOON - -->
+    <div class="dest-panel" id="panel-moon">
+      <div class="dest-banner">
+        <div class="dest-banner-bg" style="background:radial-gradient(ellipse 80% 100% at 60% 50%,rgba(154,142,128,.12) 0%,transparent 65%),linear-gradient(135deg,#08070a 0%,#0f0d12 50%,#08070a 100%);"></div>
+        <div class="dest-banner-planet">
+          <div class="dest-banner-planet-sphere" style="width:180px;height:180px;background:radial-gradient(ellipse at 32% 30%,#c0b0a0 0%,#8a7a6a 30%,#5a4a3a 60%,#2a1a0a 100%);box-shadow:0 0 60px rgba(154,142,128,.2),inset -15px -15px 40px rgba(0,0,0,.7);"></div>
+          <div class="dest-banner-planet-ring" style="width:230px;height:230px;"></div>
+        </div>
+        <div class="dest-banner-overlay"></div>
+        <div class="dest-banner-content">
+          <div class="dest-banner-eyebrow" style="color:#9a8e80;">Patrol Destination</div>
+          <div class="dest-banner-name">The Moon</div>
+          <div class="dest-banner-subtitle">Luna &middot; 4 Zones</div>
+          <div class="dest-banner-tags">
+            <span class="dest-banner-tag" style="color:#c8a878;border-color:rgba(200,168,120,.3);">Hive</span>
+            <span class="dest-banner-tag" style="color:#9ab8e8;border-color:rgba(154,184,232,.3);">Fallen</span>
+          </div>
+        </div>
+      </div>
+      <div class="dest-content">
+        <div class="dest-ghost-quote">
+          <div class="dest-ghost-dot"></div>
+          <div>
+            <div class="dest-ghost-text">&ldquo;The Hive have been here for centuries. <em>Centuries.</em> They didn't arrive after the Collapse - they were already digging when we still had a civilisation to lose.&rdquo;</div>
+            <div class="dest-ghost-attr">- Ghost, Archer's Line landing zone</div>
+          </div>
+        </div>
+        <div class="dest-facts-strip" style="grid-template-columns:repeat(3,1fr);">
+          <div class="dest-fact"><div class="dest-fact-label">Primary Factions</div><div class="dest-fact-value" style="color:#9a8e80;">Hive and Fallen</div></div>
+          <div class="dest-fact"><div class="dest-fact-label">Zones</div><div class="dest-fact-value">4</div></div>
+          <div class="dest-fact"><div class="dest-fact-label">Danger Level</div><div class="dest-fact-value" style="color:#ca5d5d;">High</div><div class="dest-fact-sub">Extreme underground</div></div>
+        </div>
+        <div class="dest-section dest-animate">
+          <div class="dest-section-header"><div class="dest-section-icon" style="color:#9a8e80;">&#9670;</div><div class="dest-section-title">Overview</div></div>
+          <p class="dest-section-prose">The Moon belongs to the Hive. Centuries before the Collapse, Hive broods tunnelled into the lunar crust, carving out their domain in a network of tunnels that extends for hundreds of kilometres. The surface is contested. Below the Hellmouth's lip, things are considerably worse. House of Exile Fallen have also established footholds on the surface - they avoid the Hive tunnels entirely.</p>
+        </div>
+        <div class="dest-section dest-animate">
+          <div class="dest-section-header"><div class="dest-section-icon" style="color:#9a8e80;">&#9650;</div><div class="dest-section-title">Enemy Factions</div></div>
+          <div class="dest-faction-list">
+            <div class="dest-faction-row">
+              <div class="dest-faction-dot" style="background:#c8a878;"></div>
+              <div><div class="dest-faction-name" style="color:#c8a878;">The Hive</div><div class="dest-faction-desc">Ancient and deeply entrenched. The surface offers their lighter forces; the deeper you go, the more powerful the enemies become.</div></div>
+            </div>
+            <div class="dest-faction-row">
+              <div class="dest-faction-dot" style="background:#9ab8e8;"></div>
+              <div><div class="dest-faction-name" style="color:#9ab8e8;">The Fallen</div><div class="dest-faction-desc">House of Exile survivors occupy parts of the surface. They stay well away from Hive territory and have claimed a few Golden Age structures as their own.</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="dest-section dest-animate">
+          <div class="dest-section-header"><div class="dest-section-icon" style="color:#9a8e80;">&#9632;</div><div class="dest-section-title">Zones and Areas</div></div>
+
+          <div class="dest-zone-expanded" style="--zc:#9a8e80;">
+            <div class="dest-zone-expanded-header"><div class="dest-zone-expanded-name">Archer's Line</div><div class="dest-zone-expanded-type">Patrol Zone</div></div>
+            <p class="dest-zone-expanded-desc">The main landing zone. Remains of Golden Age lunar infrastructure now patrolled by Hive and scavenged by Fallen. Relatively open terrain with solid cover options.</p>
+            <div class="dest-zone-activities">
+              <div class="dest-zone-act-header">Zone Activities</div>
+              <div class="dest-zone-act-grid">
+                <div class="dest-zone-act-item"><span class="dest-act-type">Patrols</span><span class="dest-act-val">Available</span></div>
+                <div class="dest-zone-act-item"><span class="dest-act-type">Public Events</span><span class="dest-act-val">Available</span></div>
+              </div>
+              <div class="dest-zone-rewards"><div class="dest-zone-reward-tag">&#9670; XP</div><div class="dest-zone-reward-tag">&#9670; Glimmer</div><div class="dest-zone-reward-tag">&#9670; Tokens</div></div>
+            </div>
+          </div>
+
+          <div class="dest-zone-expanded" style="--zc:#7a6e62;">
+            <div class="dest-zone-expanded-header"><div class="dest-zone-expanded-name">The Hellmouth</div><div class="dest-zone-expanded-type">Patrol Zone</div></div>
+            <p class="dest-zone-expanded-desc">A vast crater descending into the Hive's subterranean structure. The surface entrance is already dangerous - the lower you go, the worse it becomes.</p>
+            <div class="dest-zone-activities">
+              <div class="dest-zone-act-header">Zone Activities</div>
+              <div class="dest-zone-act-grid">
+                <div class="dest-zone-act-item"><span class="dest-act-type">Patrols</span><span class="dest-act-val">Available</span></div>
+                <div class="dest-zone-act-item"><span class="dest-act-type">Public Events</span><span class="dest-act-val">Available</span></div>
+                <div class="dest-zone-act-item"><span class="dest-act-type">Lost Sectors</span><span class="dest-act-val">Available</span></div>
+              </div>
+              <div class="dest-zone-rewards"><div class="dest-zone-reward-tag">&#9670; XP</div><div class="dest-zone-reward-tag">&#9670; Glimmer</div><div class="dest-zone-reward-tag">&#9670; Tokens</div></div>
+              <div class="dest-ls-list">
+                <div class="dest-ls-compact"><span class="dest-ls-diamond">&#9674;</span><span class="dest-ls-cname">Lost Sector</span><span class="dest-ls-cloc">The Hellmouth</span><span class="dest-ls-cboss">Boss: Classified</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dest-zone-expanded" style="--zc:#8a8078;">
+            <div class="dest-zone-expanded-header"><div class="dest-zone-expanded-name">Anchor of Light</div><div class="dest-zone-expanded-type">Patrol Zone</div></div>
+            <p class="dest-zone-expanded-desc">A surviving Golden Age comm relay station. The Fallen have claimed it as a base - one of the few areas on the Moon where Hive presence is minimal.</p>
+            <div class="dest-zone-activities">
+              <div class="dest-zone-act-header">Zone Activities</div>
+              <div class="dest-zone-act-grid">
+                <div class="dest-zone-act-item"><span class="dest-act-type">Patrols</span><span class="dest-act-val">Available</span></div>
+                <div class="dest-zone-act-item"><span class="dest-act-type">Public Events</span><span class="dest-act-val">Available</span></div>
+              </div>
+              <div class="dest-zone-rewards"><div class="dest-zone-reward-tag">&#9670; XP</div><div class="dest-zone-reward-tag">&#9670; Glimmer</div><div class="dest-zone-reward-tag">&#9670; Tokens</div></div>
+            </div>
+          </div>
+
+          <div class="dest-zone-expanded" style="--zc:#6a5e58;">
+            <div class="dest-zone-expanded-header"><div class="dest-zone-expanded-name">Shrine of Oryx</div><div class="dest-zone-expanded-type">Patrol Zone</div></div>
+            <p class="dest-zone-expanded-desc">Deep within the Hive's underground network. A place of significant Hive ritual importance. High danger - not recommended for solo Guardians.</p>
+            <div class="dest-zone-activities">
+              <div class="dest-zone-act-header">Zone Activities</div>
+              <div class="dest-zone-act-grid">
+                <div class="dest-zone-act-item"><span class="dest-act-type">Patrols</span><span class="dest-act-val">Available</span></div>
+                <div class="dest-zone-act-item"><span class="dest-act-type">Lost Sectors</span><span class="dest-act-val">Available</span></div>
+              </div>
+              <div class="dest-zone-rewards"><div class="dest-zone-reward-tag">&#9670; XP</div><div class="dest-zone-reward-tag">&#9670; Glimmer</div><div class="dest-zone-reward-tag">&#9670; Tokens</div></div>
+              <div class="dest-ls-list">
+                <div class="dest-ls-compact"><span class="dest-ls-diamond">&#9674;</span><span class="dest-ls-cname">Lost Sector</span><span class="dest-ls-cloc">Shrine of Oryx</span><span class="dest-ls-cboss">Boss: Classified</span></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="dest-section dest-animate">
+          <div class="dest-section-header"><div class="dest-section-icon" style="color:#9a8e80;">&#9651;</div><div class="dest-section-title">World Activities</div></div>
+          <p class="dest-section-prose" style="margin-bottom:1.2rem;opacity:.6;font-size:.82rem;">The following activities are tied to the Moon as a world. Details will be revealed closer to launch.</p>
+          <div class="dest-locked-grid">
+            <div class="dest-locked-card"><div class="dest-locked-label">Strikes</div><div class="dest-locked-val">&#9632; Details to be revealed</div></div>
+            <div class="dest-locked-card"><div class="dest-locked-label">Main Missions</div><div class="dest-locked-val">&#9632; Details to be revealed</div></div>
+            <div class="dest-locked-card"><div class="dest-locked-label">Side Missions</div><div class="dest-locked-val">&#9632; Details to be revealed</div></div>
+            <div class="dest-locked-card"><div class="dest-locked-label">World Bosses</div><div class="dest-locked-val">&#9632; Details to be revealed</div></div>
+            <div class="dest-locked-card"><div class="dest-locked-label">Vendor NPC</div><div class="dest-locked-val">&#9632; Details to be revealed</div></div>
+            <div class="dest-locked-card"><div class="dest-locked-label">Bounties</div><div class="dest-locked-val">&#9632; Details to be revealed</div></div>
+            <div class="dest-locked-card"><div class="dest-locked-label">Gear and Rewards</div><div class="dest-locked-val">&#9632; Details to be revealed</div></div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /panel-moon -->
+
+
+    <!-- - MARS - -->
+    <div class="dest-panel" id="panel-mars">
+      <div class="dest-banner">
+        <div class="dest-banner-bg" style="background:radial-gradient(ellipse 80% 100% at 60% 50%,rgba(212,122,58,.18) 0%,transparent 65%),linear-gradient(135deg,#0c0704 0%,#1a0e04 50%,#0c0704 100%);"></div>
+        <div class="dest-banner-planet">
+          <div class="dest-banner-planet-sphere" style="width:180px;height:180px;background:radial-gradient(ellipse at 30% 28%,#e8905a 0%,#c06030 30%,#8a3010 60%,#3a1004 100%);box-shadow:0 0 60px rgba(212,122,58,.3),inset -15px -15px 40px rgba(0,0,0,.6);"></div>
+          <div class="dest-banner-planet-ring" style="width:230px;height:230px;"></div>
+        </div>
+        <div class="dest-banner-overlay"></div>
+        <div class="dest-banner-content">
+          <div class="dest-banner-eyebrow" style="color:#d47a3a;">Patrol Destination</div>
+          <div class="dest-banner-name">Mars</div>
+          <div class="dest-banner-subtitle">Meridian Bay &middot; 4 Zones</div>
+          <div class="dest-banner-tags">
+            <span class="dest-banner-tag" style="color:#c87050;border-color:rgba(200,112,80,.3);">Cabal</span>
+            <span class="dest-banner-tag" style="color:#80c8a8;border-color:rgba(128,200,168,.3);">Vex</span>
+          </div>
+        </div>
+      </div>
+      <div class="dest-content">
+        <div class="dest-ghost-quote">
+          <div class="dest-ghost-dot"></div>
+          <div>
+            <div class="dest-ghost-text">&ldquo;The Cabal have been here longer than anyone. They didn't come here for the Collapse - they were already established on Mars when the Darkness hit Earth. That's interesting. That's <em>very</em> interesting.&rdquo;</div>
+            <div class="dest-ghost-attr">- Ghost, Scablands patrol briefing</div>
+          </div>
+        </div>
+        <div class="dest-facts-strip" style="grid-template-columns:repeat(3,1fr);">
+          <div class="dest-fact"><div class="dest-fact-label">Primary Factions</div><div class="dest-fact-value" style="color:#d47a3a;">Cabal and Vex</div></div>
+          <div class="dest-fact"><div class="dest-fact-label">Zones</div><div class="dest-fact-value">4</div></div>
+          <div class="dest-fact"><div class="dest-fact-label">Region</div><div class="dest-fact-value">Meridian Bay</div><div class="dest-fact-sub">The Red Planet</div></div>
+        </div>
+        <div class="dest-section dest-animate">
+          <div class="dest-section-header"><div class="dest-section-icon" style="color:#d47a3a;">&#9670;</div><div class="dest-section-title">Overview</div></div>
+          <p class="dest-section-prose">Mars was the most active Golden Age colony before the Collapse. The Cabal arrived shortly after and methodically established control across the Meridian Bay. Two Cabal legions have a significant presence here. The Vex operate in parallel - their gate network runs beneath Cabal territory, and in the Buried City the two factions are in active conflict.</p>
+        </div>
+        <div class="dest-section dest-animate">
+          <div class="dest-section-header"><div class="dest-section-icon" style="color:#d47a3a;">&#9650;</div><div class="dest-section-title">Enemy Factions</div></div>
+          <div class="dest-faction-list">
+            <div class="dest-faction-row">
+              <div class="dest-faction-dot" style="background:#c87050;"></div>
+              <div><div class="dest-faction-name" style="color:#c87050;">The Cabal</div><div class="dest-faction-desc">Two Cabal legions hold Mars. They've been here long enough to fortify, dig in, and establish command hierarchies. Expect heavy armour and coordinated patrols.</div></div>
+            </div>
+            <div class="dest-faction-row">
+              <div class="dest-faction-dot" style="background:#80c8a8;"></div>
+              <div><div class="dest-faction-name" style="color:#80c8a8;">The Vex</div><div class="dest-faction-desc">The Vex gate network runs beneath Cabal territory. Conflict between the two factions is active in several zones. Neither is your ally.</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="dest-section dest-animate">
+          <div class="dest-section-header"><div class="dest-section-icon" style="color:#d47a3a;">&#9632;</div><div class="dest-section-title">Zones and Areas</div></div>
+
+          <div class="dest-zone-expanded" style="--zc:#d47a3a;">
+            <div class="dest-zone-expanded-header"><div class="dest-zone-expanded-name">Scablands</div><div class="dest-zone-expanded-type">Patrol Zone</div></div>
+            <p class="dest-zone-expanded-desc">Vast, wind-scoured plains of red rock. Cabal infantry and vehicle patrols operate here in force. Long sight lines, sparse cover.</p>
+            <div class="dest-zone-activities">
+              <div class="dest-zone-act-header">Zone Activities</div>
+              <div class="dest-zone-act-grid">
+                <div class="dest-zone-act-item"><span class="dest-act-type">Patrols</span><span class="dest-act-val">Available</span></div>
+                <div class="dest-zone-act-item"><span class="dest-act-type">Public Events</span><span class="dest-act-val">Available</span></div>
+              </div>
+              <div class="dest-zone-rewards"><div class="dest-zone-reward-tag">&#9670; XP</div><div class="dest-zone-reward-tag">&#9670; Glimmer</div><div class="dest-zone-reward-tag">&#9670; Tokens</div></div>
+            </div>
+          </div>
+
+          <div class="dest-zone-expanded" style="--zc:#b05828;">
+            <div class="dest-zone-expanded-header"><div class="dest-zone-expanded-name">The Barrens</div><div class="dest-zone-expanded-type">Patrol Zone</div></div>
+            <p class="dest-zone-expanded-desc">A transitional zone between the open Scablands and the Meridian Bay. Mixed Cabal and Vex presence begins toward the eastern border.</p>
+            <div class="dest-zone-activities">
+              <div class="dest-zone-act-header">Zone Activities</div>
+              <div class="dest-zone-act-grid">
+                <div class="dest-zone-act-item"><span class="dest-act-type">Patrols</span><span class="dest-act-val">Available</span></div>
+                <div class="dest-zone-act-item"><span class="dest-act-type">Public Events</span><span class="dest-act-val">Available</span></div>
+                <div class="dest-zone-act-item"><span class="dest-act-type">Lost Sectors</span><span class="dest-act-val">Available</span></div>
+              </div>
+              <div class="dest-zone-rewards"><div class="dest-zone-reward-tag">&#9670; XP</div><div class="dest-zone-reward-tag">&#9670; Glimmer</div><div class="dest-zone-reward-tag">&#9670; Tokens</div></div>
+              <div class="dest-ls-list">
+                <div class="dest-ls-compact"><span class="dest-ls-diamond">&#9674;</span><span class="dest-ls-cname">Lost Sector</span><span class="dest-ls-cloc">The Barrens</span><span class="dest-ls-cboss">Boss: Classified</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dest-zone-expanded" style="--zc:#904a20;">
+            <div class="dest-zone-expanded-header"><div class="dest-zone-expanded-name">Buried City</div><div class="dest-zone-expanded-type">Patrol Zone</div></div>
+            <p class="dest-zone-expanded-desc">The remains of the Martian Meridian Bay colony - the largest Golden Age settlement off-Earth. Now buried under centuries of sand and Cabal construction. Active Vex-Cabal conflict makes this one of the most chaotic patrol zones.</p>
+            <div class="dest-zone-activities">
+              <div class="dest-zone-act-header">Zone Activities</div>
+              <div class="dest-zone-act-grid">
+                <div class="dest-zone-act-item"><span class="dest-act-type">Patrols</span><span class="dest-act-val">Available</span></div>
+                <div class="dest-zone-act-item"><span class="dest-act-type">Public Events</span><span class="dest-act-val">Available</span></div>
+                <div class="dest-zone-act-item"><span class="dest-act-type">Lost Sectors</span><span class="dest-act-val">Available</span></div>
+              </div>
+              <div class="dest-zone-rewards"><div class="dest-zone-reward-tag">&#9670; XP</div><div class="dest-zone-reward-tag">&#9670; Glimmer</div><div class="dest-zone-reward-tag">&#9670; Tokens</div></div>
+              <div class="dest-ls-list">
+                <div class="dest-ls-compact"><span class="dest-ls-diamond">&#9674;</span><span class="dest-ls-cname">Lost Sector</span><span class="dest-ls-cloc">Buried City</span><span class="dest-ls-cboss">Boss: Classified</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dest-zone-expanded" style="--zc:#703010;">
+            <div class="dest-zone-expanded-header"><div class="dest-zone-expanded-name">Tharsis Junction</div><div class="dest-zone-expanded-type">Patrol Zone</div></div>
+            <p class="dest-zone-expanded-desc">A massive Golden Age transit hub - now completely Cabal-controlled and heavily fortified by their elite forces. High-danger patrol content.</p>
+            <div class="dest-zone-activities">
+              <div class="dest-zone-act-header">Zone Activities</div>
+              <div class="dest-zone-act-grid">
+                <div class="dest-zone-act-item"><span class="dest-act-type">Patrols</span><span class="dest-act-val">Available</span></div>
+                <div class="dest-zone-act-item"><span class="dest-act-type">Public Events</span><span class="dest-act-val">Available</span></div>
+                <div class="dest-zone-act-item"><span class="dest-act-type">Lost Sectors</span><span class="dest-act-val">Available</span></div>
+              </div>
+              <div class="dest-zone-rewards"><div class="dest-zone-reward-tag">&#9670; XP</div><div class="dest-zone-reward-tag">&#9670; Glimmer</div><div class="dest-zone-reward-tag">&#9670; Tokens</div></div>
+              <div class="dest-ls-list">
+                <div class="dest-ls-compact"><span class="dest-ls-diamond">&#9674;</span><span class="dest-ls-cname">Lost Sector</span><span class="dest-ls-cloc">Tharsis Junction</span><span class="dest-ls-cboss">Boss: Classified</span></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="dest-section dest-animate">
+          <div class="dest-section-header"><div class="dest-section-icon" style="color:#d47a3a;">&#9651;</div><div class="dest-section-title">World Activities</div></div>
+          <p class="dest-section-prose" style="margin-bottom:1.2rem;opacity:.6;font-size:.82rem;">The following activities are tied to Mars as a world. Details will be revealed closer to launch.</p>
+          <div class="dest-locked-grid">
+            <div class="dest-locked-card"><div class="dest-locked-label">Strikes</div><div class="dest-locked-val">&#9632; Details to be revealed</div></div>
+            <div class="dest-locked-card"><div class="dest-locked-label">Main Missions</div><div class="dest-locked-val">&#9632; Details to be revealed</div></div>
+            <div class="dest-locked-card"><div class="dest-locked-label">Side Missions</div><div class="dest-locked-val">&#9632; Details to be revealed</div></div>
+            <div class="dest-locked-card"><div class="dest-locked-label">World Bosses</div><div class="dest-locked-val">&#9632; Details to be revealed</div></div>
+            <div class="dest-locked-card"><div class="dest-locked-label">Vendor NPC</div><div class="dest-locked-val">&#9632; Details to be revealed</div></div>
+            <div class="dest-locked-card"><div class="dest-locked-label">Bounties</div><div class="dest-locked-val">&#9632; Details to be revealed</div></div>
+            <div class="dest-locked-card"><div class="dest-locked-label">Gear and Rewards</div><div class="dest-locked-val">&#9632; Details to be revealed</div></div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /panel-mars -->
+
+
+    <!-- - THE FARM - -->
+    <div class="dest-panel" id="panel-farm">
+      <div class="dest-banner dest-social-banner">
+        <div class="dest-banner-bg" style="background:radial-gradient(ellipse 80% 100% at 50% 30%,rgba(122,184,112,.08) 0%,transparent 65%),linear-gradient(135deg,#060806 0%,#0c120a 50%,#060806 100%);"></div>
+        <div class="dest-banner-overlay" style="background:linear-gradient(to right,rgba(6,8,6,.95) 40%,rgba(6,8,6,.5) 100%);"></div>
+        <div class="dest-banner-content dest-social-content">
+          <div class="dest-banner-eyebrow" style="color:#7ab870;">Social Space</div>
+          <div class="dest-banner-name">The Farm</div>
+          <div class="dest-banner-subtitle">European Dead Zone &middot; Guardian Hub</div>
+          <div class="dest-banner-tags">
+            <span class="dest-banner-tag" style="color:#7ab870;border-color:rgba(122,184,112,.3);">Safe Zone</span>
+            <span class="dest-banner-tag" style="color:var(--muted);border-color:rgba(255,255,255,.1);">Social Hub</span>
+          </div>
+        </div>
+      </div>
+      <div class="dest-content">
+        <div class="dest-facts-strip" style="grid-template-columns:repeat(2,1fr);">
+          <div class="dest-fact"><div class="dest-fact-label">Type</div><div class="dest-fact-value" style="color:#7ab870;">Social Space</div></div>
+          <div class="dest-fact"><div class="dest-fact-label">Location</div><div class="dest-fact-value">European Dead Zone</div><div class="dest-fact-sub">Earth</div></div>
+        </div>
+        <div class="dest-section dest-animate">
+          <div class="dest-section-header"><div class="dest-section-icon" style="color:#7ab870;">&#9670;</div><div class="dest-section-title">Overview</div></div>
+          <p class="dest-section-prose">Hidden in a dense stretch of the European Dead Zone, the Farm is a social hub for Guardians - a place to meet, resupply, and connect with Vanguard contacts. More details will be shared at launch.</p>
+        </div>
+        <div class="dest-section dest-animate">
+          <div class="dest-section-header"><div class="dest-section-icon" style="color:#7ab870;">&#9651;</div><div class="dest-section-title">Vendors and Services</div></div>
+          <div class="dest-locked-grid">
+            <div class="dest-locked-card"><div class="dest-locked-label">Vendors</div><div class="dest-locked-val">&#9632; Details to be revealed</div></div>
+            <div class="dest-locked-card"><div class="dest-locked-label">Services</div><div class="dest-locked-val">&#9632; Details to be revealed</div></div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /panel-farm -->
+
+
+    <!-- - THE LAST CITY - -->
+    <div class="dest-panel" id="panel-lastcity">
+      <div class="dest-banner dest-social-banner">
+        <div class="dest-banner-bg" style="background:radial-gradient(ellipse 80% 100% at 50% 30%,rgba(176,184,200,.08) 0%,transparent 65%),linear-gradient(135deg,#060608 0%,#0c0c14 50%,#060608 100%);"></div>
+        <div class="dest-banner-overlay" style="background:linear-gradient(to right,rgba(6,6,8,.95) 40%,rgba(6,6,8,.5) 100%);"></div>
+        <div class="dest-banner-content dest-social-content">
+          <div class="dest-banner-eyebrow" style="color:#b0b8c8;">Social Space</div>
+          <div class="dest-banner-name">The Last City</div>
+          <div class="dest-banner-subtitle">Earth &middot; Guardian District &middot; Traveler's Shadow</div>
+          <div class="dest-banner-tags">
+            <span class="dest-banner-tag" style="color:#b0b8c8;border-color:rgba(176,184,200,.3);">Safe Zone</span>
+            <span class="dest-banner-tag" style="color:var(--muted);border-color:rgba(255,255,255,.1);">Social Hub</span>
+          </div>
+        </div>
+      </div>
+      <div class="dest-content">
+        <div class="dest-facts-strip" style="grid-template-columns:repeat(2,1fr);">
+          <div class="dest-fact"><div class="dest-fact-label">Type</div><div class="dest-fact-value" style="color:#b0b8c8;">Social Space</div></div>
+          <div class="dest-fact"><div class="dest-fact-label">Location</div><div class="dest-fact-value">Earth</div><div class="dest-fact-sub">Guardian District</div></div>
+        </div>
+        <div class="dest-section dest-animate">
+          <div class="dest-section-header"><div class="dest-section-icon" style="color:#b0b8c8;">&#9670;</div><div class="dest-section-title">Overview</div></div>
+          <p class="dest-section-prose">The Last City is humanity's final standing urban settlement, built in the shadow of the Traveler. The Guardian District serves as a social hub for Guardians - a central point for operations, vendors, and community. More details will be shared at launch.</p>
+        </div>
+        <div class="dest-section dest-animate">
+          <div class="dest-section-header"><div class="dest-section-icon" style="color:#b0b8c8;">&#9651;</div><div class="dest-section-title">Vendors and Services</div></div>
+          <div class="dest-locked-grid">
+            <div class="dest-locked-card"><div class="dest-locked-label">Vendors</div><div class="dest-locked-val">&#9632; Details to be revealed</div></div>
+            <div class="dest-locked-card"><div class="dest-locked-label">Services</div><div class="dest-locked-val">&#9632; Details to be revealed</div></div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /panel-lastcity -->
+
+  </main>
+</div><!-- /dest-layout -->
+
+<div class="divider"></div>
+<div id="footer-placeholder"></div>
+<script src="/destiny-playground/js/shared.js"></script>
+
+<script>
+var earthOpen = false;
+
+function toggleEarth() {
+  earthOpen = !earthOpen;
+  var sub = document.getElementById('sub-earth');
+  var chevron = document.getElementById('chevron-earth');
+  var btn = document.getElementById('btn-earth');
+  sub.classList.toggle('open', earthOpen);
+  btn.classList.toggle('active', earthOpen);
+  chevron.style.transform = earthOpen ? 'rotate(90deg)' : '';
+}
+
+function showDest(id) {
+  // Hide all panels
+  document.querySelectorAll('.dest-panel').forEach(function(p) { p.classList.remove('active'); });
+  // Deactivate all sidebar buttons except Earth (handled separately)
+  document.querySelectorAll('.dest-sidebar-btn').forEach(function(b) {
+    if (b.id !== 'btn-earth') b.classList.remove('active');
+  });
+  document.querySelectorAll('.dest-sidebar-world-btn').forEach(function(b) { b.classList.remove('active'); });
+  // Close all subs except earth (earth stays open if it was open)
+  document.querySelectorAll('.dest-sidebar-sub').forEach(function(s) {
+    if (s.id !== 'sub-earth') s.classList.remove('open');
+  });
+
+  // Show target panel
+  var panel = document.getElementById('panel-' + id);
+  if (panel) panel.classList.add('active');
+
+  // Activate the right sidebar element
+  if (id === 'edz' || id === 'northreach') {
+    // Earth world - activate world btn, keep earth sub open
+    var wb = document.getElementById('btn-' + id);
+    if (wb) wb.classList.add('active');
+    if (!earthOpen) {
+      earthOpen = true;
+      document.getElementById('sub-earth').classList.add('open');
+      document.getElementById('btn-earth').classList.add('active');
+      document.getElementById('chevron-earth').style.transform = 'rotate(90deg)';
+    }
+  } else {
+    // Standard planet
+    var btn = document.getElementById('btn-' + id);
+    if (btn) btn.classList.add('active');
+    var sub = document.getElementById('sub-' + id);
+    if (sub) sub.classList.add('open');
+  }
+
+  setTimeout(animateVisible, 80);
+  if (window.innerWidth <= 768) document.getElementById('destSidebar').classList.remove('mobile-open');
+  document.getElementById('destMain').scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function toggleMobileSidebar() {
+  document.getElementById('destSidebar').classList.toggle('mobile-open');
+}
+
+function animateVisible() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+    });
+  }, { threshold: 0.05 });
+  document.querySelectorAll('.dest-panel.active .dest-animate').forEach(function(el) {
+    el.classList.remove('visible');
+    observer.observe(el);
+  });
+}
+animateVisible();
+</script>
+</body>
+</html>

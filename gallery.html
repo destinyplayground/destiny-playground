@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery - Destiny Playground</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/destiny-playground/css/styles.css">
+<link rel="stylesheet" href="/destiny-playground/css/nav.css">
+<link rel="stylesheet" href="/destiny-playground/css/gallery.css">
+<link rel="stylesheet" href="/destiny-playground/css/a11y-overrides.css">
+</head>
+<body>
+<div id="nav-placeholder"></div>
+
+<!-- HERO -->
+<div class="gal-hero">
+  <div class="gal-hero-bg"></div>
+  <div class="gal-hero-grid"></div>
+  <div class="gal-hero-inner">
+    <div class="gal-hero-eyebrow">Visual Archive - From the Field</div>
+    <h1 class="gal-hero-title">Gallery</h1>
+    <p class="gal-hero-desc">Screenshots, builds, and moments captured across the Destiny Playground solar system. Updated as the project grows.</p>
+    <div class="gal-hero-count" id="galCount">
+      <span class="gal-count-num" id="countNum">0</span>
+      <span class="gal-count-label">Entries</span>
+    </div>
+  </div>
+</div>
+
+<!-- GRID -->
+<section class="gal-section">
+  <!-- <div class="gal-grid" id="galGrid"> -->
+    <!-- <div class="gal-item" data-index="0" data-caption="Screenshot 01" data-sub="Destiny Playground">
+      <div class="gal-item-inner">
+        <div class="gal-placeholder"><span>&#9670;</span><span class="gal-placeholder-label">Screenshot 01</span></div> -->
+        <!-- <img src="/destiny-playground/img/gallery/01.jpg" alt="Screenshot 01"> -->
+      <!-- </div>
+      <div class="gal-item-overlay">
+        <div class="gal-item-overlay-icon">&#9633;</div>
+        <div class="gal-item-overlay-label">View</div>
+      </div>
+    </div>
+
+    <div class="gal-item gal-item--wide" data-index="1" data-caption="Screenshot 02" data-sub="Destiny Playground">
+      <div class="gal-item-inner">
+        <div class="gal-placeholder"><span>&#9670;</span><span class="gal-placeholder-label">Screenshot 02</span></div>
+      </div>
+      <div class="gal-item-overlay">
+        <div class="gal-item-overlay-icon">&#9633;</div>
+        <div class="gal-item-overlay-label">View</div>
+      </div>
+    </div>
+
+    <div class="gal-item" data-index="2" data-caption="Screenshot 03" data-sub="Destiny Playground">
+      <div class="gal-item-inner">
+        <div class="gal-placeholder"><span>&#9670;</span><span class="gal-placeholder-label">Screenshot 03</span></div>
+      </div>
+      <div class="gal-item-overlay">
+        <div class="gal-item-overlay-icon">&#9633;</div>
+        <div class="gal-item-overlay-label">View</div>
+      </div>
+    </div>
+
+    <div class="gal-item" data-index="3" data-caption="Screenshot 04" data-sub="Destiny Playground">
+      <div class="gal-item-inner">
+        <div class="gal-placeholder"><span>&#9670;</span><span class="gal-placeholder-label">Screenshot 04</span></div>
+      </div>
+      <div class="gal-item-overlay">
+        <div class="gal-item-overlay-icon">&#9633;</div>
+        <div class="gal-item-overlay-label">View</div>
+      </div>
+    </div>
+
+    <div class="gal-item" data-index="4" data-caption="Screenshot 05" data-sub="Destiny Playground">
+      <div class="gal-item-inner">
+        <div class="gal-placeholder"><span>&#9670;</span><span class="gal-placeholder-label">Screenshot 05</span></div>
+      </div>
+      <div class="gal-item-overlay">
+        <div class="gal-item-overlay-icon">&#9633;</div>
+        <div class="gal-item-overlay-label">View</div>
+      </div>
+    </div>
+
+    <div class="gal-item gal-item--tall" data-index="5" data-caption="Screenshot 06" data-sub="Destiny Playground">
+      <div class="gal-item-inner">
+        <div class="gal-placeholder"><span>&#9670;</span><span class="gal-placeholder-label">Screenshot 06</span></div>
+      </div>
+      <div class="gal-item-overlay">
+        <div class="gal-item-overlay-icon">&#9633;</div>
+        <div class="gal-item-overlay-label">View</div>
+      </div>
+    </div>
+
+    <div class="gal-item" data-index="6" data-caption="Screenshot 07" data-sub="Destiny Playground">
+      <div class="gal-item-inner">
+        <div class="gal-placeholder"><span>&#9670;</span><span class="gal-placeholder-label">Screenshot 07</span></div>
+      </div>
+      <div class="gal-item-overlay">
+        <div class="gal-item-overlay-icon">&#9633;</div>
+        <div class="gal-item-overlay-label">View</div>
+      </div>
+    </div>
+
+    <div class="gal-item" data-index="7" data-caption="Screenshot 08" data-sub="Destiny Playground">
+      <div class="gal-item-inner">
+        <div class="gal-placeholder"><span>&#9670;</span><span class="gal-placeholder-label">Screenshot 08</span></div>
+      </div>
+      <div class="gal-item-overlay">
+        <div class="gal-item-overlay-icon">&#9633;</div>
+        <div class="gal-item-overlay-label">View</div>
+      </div>
+    </div>
+
+    <div class="gal-item gal-item--wide" data-index="8" data-caption="Screenshot 09" data-sub="Destiny Playground">
+      <div class="gal-item-inner">
+        <div class="gal-placeholder"><span>&#9670;</span><span class="gal-placeholder-label">Screenshot 09</span></div>
+      </div>
+      <div class="gal-item-overlay">
+        <div class="gal-item-overlay-icon">&#9633;</div>
+        <div class="gal-item-overlay-label">View</div>
+      </div>
+    </div>
+
+    <div class="gal-item" data-index="9" data-caption="Screenshot 10" data-sub="Destiny Playground">
+      <div class="gal-item-inner">
+        <div class="gal-placeholder"><span>&#9670;</span><span class="gal-placeholder-label">Screenshot 10</span></div>
+      </div>
+      <div class="gal-item-overlay">
+        <div class="gal-item-overlay-icon">&#9633;</div>
+        <div class="gal-item-overlay-label">View</div>
+      </div>
+    </div>
+
+  </div> -->
+
+  <!-- Empty state (shown when grid is empty) -->
+  <div class="gal-empty" id="galEmpty" style="display">
+    <div class="gal-empty-icon">&#9670;</div>
+    <div class="gal-empty-title">No Screenshots Yet</div>
+    <div class="gal-empty-desc">The archive is empty. Check back soon.</div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="gal-lightbox" id="galLightbox" aria-modal="true" aria-label="Image viewer" role="dialog" aria-hidden="true">
+  <div class="gal-lightbox-backdrop" id="galBackdrop"></div>
+  <button class="gal-lb-close" id="galLbClose" aria-label="Close">&#10005;</button>
+  <button class="gal-lb-prev" id="galLbPrev" aria-label="Previous image">&#10094;</button>
+  <button class="gal-lb-next" id="galLbNext" aria-label="Next image">&#10095;</button>
+  <div class="gal-lb-frame">
+    <div class="gal-lb-img-wrap" id="galLbImgWrap">
+      <!-- image or placeholder rendered here -->
+    </div>
+    <div class="gal-lb-meta">
+      <div class="gal-lb-caption" id="galLbCaption"></div>
+      <div class="gal-lb-sub" id="galLbSub"></div>
+      <div class="gal-lb-counter" id="galLbCounter"></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+<div id="footer-placeholder"></div>
+<script src="/destiny-playground/js/shared.js"></script>
+<script>
+(function () {
+  var items = Array.from(document.querySelectorAll('.gal-item'));
+  var lightbox  = document.getElementById('galLightbox');
+  var backdrop  = document.getElementById('galBackdrop');
+  var imgWrap   = document.getElementById('galLbImgWrap');
+  var caption   = document.getElementById('galLbCaption');
+  var sub       = document.getElementById('galLbSub');
+  var counter   = document.getElementById('galLbCounter');
+  var btnClose  = document.getElementById('galLbClose');
+  var btnPrev   = document.getElementById('galLbPrev');
+  var btnNext   = document.getElementById('galLbNext');
+  var current   = 0;
+
+  // Update count in hero
+  var countEl = document.getElementById('countNum');
+  if (countEl) countEl.textContent = items.length;
+
+  function openLightbox(index) {
+    current = ((index % items.length) + items.length) % items.length;
+    renderLightbox();
+    lightbox.classList.add('open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('gal-lb-open');
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('gal-lb-open');
+  }
+
+  function renderLightbox() {
+    var item = items[current];
+    var img  = item.querySelector('img');
+    var cap  = item.getAttribute('data-caption') || '';
+    var sb   = item.getAttribute('data-sub') || '';
+
+    imgWrap.innerHTML = '';
+    imgWrap.classList.remove('loaded');
+
+    if (img) {
+      var el = document.createElement('img');
+      el.src = img.src;
+      el.alt = cap;
+      el.onload = function () { imgWrap.classList.add('loaded'); };
+      imgWrap.appendChild(el);
+    } else {
+      // placeholder
+      var ph = document.createElement('div');
+      ph.className = 'gal-lb-placeholder';
+      ph.innerHTML = '<span>&#9670;</span><span class="gal-lb-ph-label">' + (cap || 'No Image') + '</span>';
+      imgWrap.appendChild(ph);
+      imgWrap.classList.add('loaded');
+    }
+
+    caption.textContent = cap;
+    sub.textContent = sb;
+    counter.textContent = (current + 1) + ' / ' + items.length;
+  }
+
+  // Open on item click
+  items.forEach(function (item, i) {
+    item.addEventListener('click', function () { openLightbox(i); });
+    item.setAttribute('tabindex', '0');
+    item.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(i); }
+    });
+  });
+
+  btnClose.addEventListener('click', closeLightbox);
+  backdrop.addEventListener('click', closeLightbox);
+
+  btnPrev.addEventListener('click', function () { openLightbox(current - 1); });
+  btnNext.addEventListener('click', function () { openLightbox(current + 1); });
+
+  // Keyboard nav
+  document.addEventListener('keydown', function (e) {
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'Escape')      closeLightbox();
+    if (e.key === 'ArrowLeft')   openLightbox(current - 1);
+    if (e.key === 'ArrowRight')  openLightbox(current + 1);
+  });
+
+  // Swipe support
+  var touchStartX = 0;
+  lightbox.addEventListener('touchstart', function (e) { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+  lightbox.addEventListener('touchend', function (e) {
+    var dx = e.changedTouches[0].screenX - touchStartX;
+    if (Math.abs(dx) > 50) dx < 0 ? openLightbox(current + 1) : openLightbox(current - 1);
+  });
+})();
+</script>
+</body>
+</html>
