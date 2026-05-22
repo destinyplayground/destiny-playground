@@ -462,7 +462,13 @@
   if ('scrollRestoration' in history) {
     history.scrollRestoration = 'manual';
   }
-  window.scrollTo(0, 0);
+  // Must run after shared.js finishes injecting nav/footer, as layout shifts
+  // caused by async injection can push the page down after an early scrollTo
+  document.addEventListener('DOMContentLoaded', function() {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    // Belt-and-braces: also scroll once nav partial has loaded and re-run its scripts
+    setTimeout(function() { window.scrollTo({ top: 0, left: 0, behavior: 'instant' }); }, 150);
+  });
 </script>
 
 </body>
