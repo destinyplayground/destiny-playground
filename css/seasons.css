@@ -1,0 +1,550 @@
+/* ═══════════════════════════════════════
+   SEASONS — DESTINY PLAYGROUND
+   seasons.css — linked on seasons.html only
+   ═══════════════════════════════════════ */
+
+/* ── PAGE HERO ── */
+.seas-hero {
+  position: relative; padding: 10rem 3rem 5rem; overflow: hidden;
+}
+.seas-hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 55% 65% at 15% 60%, rgba(201,168,76,.05) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 50% at 85% 30%, rgba(154,184,232,.03) 0%, transparent 50%),
+    linear-gradient(180deg, #090806 0%, #0c0a07 60%, #090806 100%);
+}
+.seas-hero-grid {
+  position: absolute; inset: 0; opacity: .03;
+  background-image:
+    linear-gradient(rgba(201,168,76,.5) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,168,76,.5) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+.seas-hero-scan {
+  position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(201,168,76,.015) 50%,
+    transparent 100%
+  );
+  background-size: 100% 8px;
+  animation: seas-scanlines 12s linear infinite;
+  opacity: .4;
+}
+@keyframes seas-scanlines {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 100vh; }
+}
+.seas-hero-inner { position: relative; max-width: 1200px; margin: 0 auto; }
+.seas-hero-eyebrow {
+  font-size: .68rem; letter-spacing: .38em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 1.2rem;
+  display: flex; align-items: center; gap: 1rem;
+}
+.seas-hero-eyebrow::before { content: ''; width: 32px; height: .5px; background: var(--gold-dim); }
+.seas-hero-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(2.4rem, 5.5vw, 4.5rem);
+  font-weight: 700; letter-spacing: .05em; text-transform: uppercase;
+  color: var(--white); line-height: 1.05; margin-bottom: 1.5rem;
+}
+.seas-hero-title span { color: var(--gold); }
+.seas-hero-desc {
+  font-size: 1rem; line-height: 1.9; color: var(--body-text);
+  font-weight: 300; max-width: 600px; margin-bottom: 2rem;
+}
+.seas-hero-status {
+  display: flex; align-items: center; gap: .75rem;
+}
+.seas-status-pip {
+  width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+}
+.seas-status-pip--pre {
+  background: rgba(201,168,76,.4);
+  box-shadow: 0 0 8px rgba(201,168,76,.3);
+  animation: pip-breathe 3s ease-in-out infinite;
+}
+.seas-status-pip--active {
+  background: #5dca8a;
+  box-shadow: 0 0 10px rgba(93,202,138,.5);
+  animation: pip-breathe 2s ease-in-out infinite;
+}
+@keyframes pip-breathe { 0%,100%{opacity:1;} 50%{opacity:.35;} }
+.seas-status-label {
+  font-size: .65rem; letter-spacing: .22em; text-transform: uppercase; color: var(--muted);
+}
+
+/* ── CURRENT SEASON LABEL BAR ── */
+.seas-current-wrap { max-width: 1400px; margin: 0 auto; padding: 0 3rem 0; }
+.seas-current-label-bar {
+  display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem;
+}
+.seas-current-label-line {
+  flex: 1; height: .5px; background: rgba(201,168,76,.12);
+}
+.seas-current-label-text {
+  font-size: .6rem; letter-spacing: .38em; text-transform: uppercase;
+  color: var(--gold); white-space: nowrap; flex-shrink: 0;
+}
+
+/* ── CINEMATIC BANNER ── */
+.seas-current { margin-bottom: 6rem; }
+.seas-cin-banner {
+  position: relative; height: 380px; overflow: hidden;
+  display: flex; align-items: flex-end;
+  margin-bottom: 1.5px;
+}
+.seas-cin-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 70% 90% at 60% 40%, rgba(201,168,76,.07) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 60% at 20% 70%, rgba(90,154,80,.04) 0%, transparent 55%),
+    linear-gradient(135deg, #07060a 0%, #100e08 40%, #0a0806 70%, #07060a 100%);
+}
+.seas-cin-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(7,6,10,.97) 0%,
+    rgba(7,6,10,.85) 40%,
+    rgba(7,6,10,.4) 75%,
+    rgba(7,6,10,.15) 100%
+  );
+}
+.seas-cin-noise {
+  position: absolute; inset: 0; opacity: .025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+.seas-cin-content {
+  position: relative; z-index: 2; padding: 2.5rem 3rem; flex: 1;
+}
+.seas-cin-season-num {
+  font-family: 'Cinzel', serif; font-size: .65rem; font-weight: 700;
+  letter-spacing: .45em; text-transform: uppercase;
+  color: rgba(201,168,76,.45); margin-bottom: .5rem;
+}
+.seas-cin-eyebrow {
+  font-size: .62rem; letter-spacing: .32em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: .7rem; opacity: .8;
+}
+.seas-cin-title {
+  font-family: 'Cinzel', serif; font-size: clamp(2rem, 4.5vw, 3.5rem);
+  font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--white); line-height: 1; margin-bottom: .7rem;
+}
+.seas-cin-subtitle {
+  font-size: .9rem; line-height: 1.75; color: var(--body-text);
+  font-weight: 300; max-width: 520px; margin-bottom: 1.4rem;
+}
+.seas-cin-tags { display: flex; gap: .5rem; flex-wrap: wrap; margin-bottom: 1.8rem; }
+.seas-cin-tag {
+  font-size: .6rem; letter-spacing: .2em; text-transform: uppercase;
+  padding: .25rem .75rem; border: .5px solid rgba(201,168,76,.2); color: var(--muted);
+}
+.seas-cin-tag--pending { color: rgba(201,168,76,.6); border-color: rgba(201,168,76,.3); }
+.seas-cin-tag--active  { color: #5dca8a; border-color: rgba(93,202,138,.3); }
+
+.seas-cin-dates {
+  display: flex; align-items: center; gap: 0;
+}
+.seas-cin-date-item { padding: 0 1.4rem; }
+.seas-cin-date-item:first-child { padding-left: 0; }
+.seas-cin-date-label {
+  font-size: .52rem; letter-spacing: .28em; text-transform: uppercase; color: var(--muted);
+  margin-bottom: .3rem;
+}
+.seas-cin-date-val {
+  font-family: 'Cinzel', serif; font-size: .88rem; font-weight: 700;
+  letter-spacing: .06em; color: var(--white);
+}
+.seas-cin-date-divider {
+  width: .5px; height: 32px; background: rgba(201,168,76,.15);
+}
+
+/* Emblem decoration */
+.seas-cin-season-emblem {
+  position: absolute; right: 4rem; top: 50%;
+  transform: translateY(-50%);
+  display: flex; align-items: center; justify-content: center;
+  width: 180px; height: 180px;
+}
+.seas-cin-emblem-ring {
+  position: absolute; border-radius: 50%;
+  border: .5px solid rgba(201,168,76,.08);
+  animation: emblem-spin 40s linear infinite;
+}
+.seas-cin-emblem-ring--1 { width: 120px; height: 120px; animation-duration: 60s; }
+.seas-cin-emblem-ring--2 { width: 155px; height: 155px; animation-direction: reverse; animation-duration: 45s; }
+.seas-cin-emblem-ring--3 { width: 185px; height: 185px; animation-duration: 80s; }
+@keyframes emblem-spin { to { transform: rotate(360deg); } }
+.seas-cin-emblem-core {
+  font-size: 2rem; color: rgba(201,168,76,.12);
+  animation: pip-breathe 4s ease-in-out infinite;
+}
+
+/* ── DETAIL GRID ── */
+.seas-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5px;
+  background: var(--border);
+}
+.seas-detail-section {
+  background: #0a0906; padding: 2rem 2.4rem;
+}
+.seas-detail-section--full {
+  grid-column: 1 / -1;
+}
+.seas-detail-header {
+  display: flex; align-items: center; gap: 1rem;
+  padding-bottom: .8rem; margin-bottom: 1.5rem;
+  border-bottom: .5px solid rgba(201,168,76,.1);
+}
+.seas-detail-icon {
+  width: 28px; height: 28px; border: .5px solid rgba(201,168,76,.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: .7rem; color: var(--gold-dim); flex-shrink: 0;
+}
+.seas-detail-title {
+  font-family: 'Cinzel', serif; font-size: 1rem; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase; color: var(--white);
+}
+.seas-detail-prose {
+  font-size: .88rem; line-height: 1.85; color: var(--body-text);
+  font-weight: 300; margin-bottom: 1.2rem;
+}
+
+/* ── CLASSIFIED BAR ── */
+.seas-classified-bar {
+  display: flex; align-items: center; gap: .75rem;
+  padding: .7rem 1rem;
+  border: .5px solid rgba(201,168,76,.1);
+  background: rgba(201,168,76,.02);
+}
+.seas-classified-dot {
+  width: 6px; height: 6px; border-radius: 50%; background: rgba(201,168,76,.4);
+  flex-shrink: 0; animation: pip-breathe 3s ease-in-out infinite;
+}
+.seas-classified-text {
+  font-size: .62rem; letter-spacing: .2em; text-transform: uppercase;
+  color: rgba(201,168,76,.35);
+}
+
+/* ── LOCKED GRID (reuse destinations pattern) ── */
+.seas-locked-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1.5px; background: var(--border); margin: .5rem 0;
+}
+.seas-locked-card {
+  background: #0d0b08; padding: 1.2rem 1.4rem;
+  display: flex; flex-direction: column; gap: .5rem;
+  opacity: .65; transition: opacity .2s;
+}
+.seas-locked-card:hover { opacity: .85; }
+.seas-locked-label {
+  font-size: .55rem; letter-spacing: .28em; text-transform: uppercase; color: var(--muted);
+}
+.seas-locked-val {
+  font-size: .78rem; letter-spacing: .1em; color: rgba(201,168,76,.3);
+  font-style: italic;
+}
+
+/* ── GEAR TABLE ── */
+.seas-gear-table {
+  display: flex; flex-direction: column; gap: 1.5px;
+  background: var(--border); margin: .5rem 0;
+}
+.seas-gear-row {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 1rem; background: #0d0b08;
+  padding: .7rem 1.2rem; align-items: center;
+}
+.seas-gear-row--head {
+  background: rgba(201,168,76,.03);
+  padding: .5rem 1.2rem;
+}
+.seas-gear-row--head .seas-gear-col {
+  font-size: .52rem; letter-spacing: .28em; text-transform: uppercase; color: var(--muted);
+}
+.seas-gear-row--locked {
+  opacity: .5; transition: opacity .2s;
+}
+.seas-gear-row--locked:hover { opacity: .75; }
+.seas-gear-col {
+  font-size: .78rem; letter-spacing: .06em; color: var(--body-text);
+}
+.seas-gear-col--name {
+  font-family: 'Rajdhani', sans-serif; font-weight: 600;
+  letter-spacing: .08em; color: rgba(201,168,76,.3); font-style: italic;
+}
+.seas-gear-note {
+  font-size: .72rem; letter-spacing: .05em; color: var(--muted);
+  font-weight: 300; margin-top: .8rem; opacity: .6;
+}
+
+/* ── VENDOR CARD ── */
+.seas-vendor-card {
+  display: flex; align-items: flex-start; gap: 1.3rem;
+  background: #0d0b08; padding: 1.4rem 1.6rem;
+  border-left: 2px solid rgba(201,168,76,.15);
+  margin-bottom: 1.5px;
+}
+.seas-vendor-icon {
+  width: 44px; height: 44px; border: .5px solid rgba(201,168,76,.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; color: rgba(201,168,76,.3); flex-shrink: 0;
+}
+.seas-vendor-name {
+  font-family: 'Cinzel', serif; font-size: .95rem; font-weight: 700;
+  letter-spacing: .07em; text-transform: uppercase; color: var(--white);
+  margin-bottom: .25rem;
+}
+.seas-vendor-role {
+  font-size: .62rem; letter-spacing: .15em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: .6rem;
+}
+.seas-vendor-desc {
+  font-size: .82rem; line-height: 1.72; color: var(--body-text); font-weight: 300;
+}
+
+/* ── BOUNTY LIST ── */
+.seas-bounty-list {
+  display: flex; flex-direction: column; gap: 1.5px; background: var(--border); margin-top: 1.5px;
+}
+.seas-bounty-row {
+  display: flex; align-items: center; gap: 1.2rem;
+  background: #0d0b08; padding: .85rem 1.4rem;
+  transition: background .2s;
+}
+.seas-bounty-row:hover { background: rgba(201,168,76,.025); }
+.seas-bounty-type {
+  font-size: .54rem; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--gold); padding: .18rem .55rem; border: .5px solid rgba(201,168,76,.25);
+  white-space: nowrap; flex-shrink: 0;
+}
+.seas-bounty-name {
+  font-family: 'Rajdhani', sans-serif; font-size: .82rem;
+  font-weight: 600; letter-spacing: .08em; color: rgba(201,168,76,.3);
+  font-style: italic; flex: 1;
+}
+.seas-bounty-reward {
+  font-size: .65rem; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--muted); white-space: nowrap;
+}
+
+/* ── SEASON PASS TRACK ── */
+.seas-pass-strip {
+  display: flex; align-items: stretch; gap: 0;
+  background: var(--border); margin-bottom: 1.5px;
+}
+.seas-pass-info {
+  flex: 1; background: #0d0b08; padding: 1.3rem 1.8rem;
+}
+.seas-pass-divider { width: 1.5px; background: var(--border); flex-shrink: 0; }
+.seas-pass-label {
+  font-size: .58rem; letter-spacing: .28em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: .5rem;
+}
+.seas-pass-label--premium { color: var(--gold); }
+.seas-pass-desc {
+  font-size: .82rem; line-height: 1.72; color: var(--body-text); font-weight: 300;
+}
+.seas-track {
+  position: relative; padding: 2rem 0 1rem; margin-top: 1.5px;
+  background: #0d0b08;
+}
+.seas-track-rail {
+  position: absolute; top: 50%; left: 3rem; right: 3rem; height: .5px;
+  background: rgba(201,168,76,.1); transform: translateY(-50%);
+}
+.seas-track-nodes {
+  display: flex; justify-content: space-between;
+  padding: 0 3rem; position: relative; z-index: 1;
+}
+.seas-track-node {
+  display: flex; flex-direction: column; align-items: center; gap: .5rem;
+}
+.seas-track-node-num {
+  width: 36px; height: 36px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cinzel', serif; font-size: .68rem; font-weight: 700;
+  letter-spacing: .04em;
+}
+.seas-track-node--locked .seas-track-node-num {
+  background: #0d0b08; border: .5px solid rgba(201,168,76,.2);
+  color: rgba(201,168,76,.3);
+}
+.seas-track-node--final .seas-track-node-num {
+  background: rgba(201,168,76,.06); border: .5px solid rgba(201,168,76,.4);
+  color: var(--gold);
+}
+.seas-track-node--earned .seas-track-node-num {
+  background: rgba(201,168,76,.15); border: .5px solid rgba(201,168,76,.5);
+  color: var(--gold); box-shadow: 0 0 10px rgba(201,168,76,.2);
+}
+.seas-track-node-lbl {
+  font-size: .54rem; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--muted); text-align: center; max-width: 60px;
+}
+.seas-pass-note {
+  font-size: .72rem; letter-spacing: .05em; color: var(--muted);
+  font-weight: 300; margin-top: 1rem; opacity: .6; padding: 0 .2rem;
+}
+
+/* ── LORE CARDS ── */
+.seas-lore-list {
+  display: flex; flex-direction: column; gap: 1.5px; background: var(--border);
+}
+.seas-lore-card {
+  background: #0d0b08; padding: 1.2rem 1.6rem;
+  display: flex; flex-direction: column; gap: .4rem;
+  transition: background .2s;
+}
+.seas-lore-card:hover { background: rgba(201,168,76,.025); }
+.seas-lore-tag {
+  font-size: .54rem; letter-spacing: .25em; text-transform: uppercase;
+  color: var(--gold); display: inline-block;
+  padding: .15rem .5rem; border: .5px solid rgba(201,168,76,.25);
+  align-self: flex-start; margin-bottom: .2rem;
+}
+.seas-lore-name {
+  font-family: 'Rajdhani', sans-serif; font-size: .88rem;
+  font-weight: 600; letter-spacing: .08em; color: rgba(201,168,76,.3);
+  font-style: italic;
+}
+.seas-lore-desc {
+  font-size: .8rem; line-height: 1.68; color: var(--body-text); font-weight: 300;
+}
+
+/* ── ARCHIVE SECTION ── */
+.seas-archive-wrap {
+  max-width: 1400px; margin: 0 auto 6rem;
+  padding: 0 3rem;
+}
+.seas-archive-header {
+  border-left: 2px solid rgba(201,168,76,.2);
+  padding-left: 1.5rem; margin-bottom: 2.5rem;
+}
+.seas-archive-eyebrow {
+  font-size: .6rem; letter-spacing: .35em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: .5rem; opacity: .7;
+}
+.seas-archive-title {
+  font-family: 'Cinzel', serif; font-size: 1.6rem; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase; color: var(--white);
+  margin-bottom: .6rem;
+}
+.seas-archive-desc {
+  font-size: .88rem; line-height: 1.8; color: var(--body-text); font-weight: 300;
+  max-width: 560px;
+}
+
+/* empty state */
+.seas-archive-empty {
+  display: flex; flex-direction: column; align-items: center;
+  padding: 5rem 3rem; text-align: center;
+  border: .5px solid rgba(201,168,76,.08);
+  background: #0a0906;
+}
+.seas-archive-empty-icon {
+  font-size: 1.4rem; color: rgba(201,168,76,.15);
+  margin-bottom: 1.4rem;
+  animation: pip-breathe 4s ease-in-out infinite;
+}
+.seas-archive-empty-title {
+  font-family: 'Cinzel', serif; font-size: 1.1rem; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase; color: var(--white);
+  margin-bottom: .6rem;
+}
+.seas-archive-empty-desc {
+  font-size: .85rem; line-height: 1.8; color: var(--muted);
+  font-weight: 300; max-width: 400px;
+}
+
+/* archive card grid (for future use when seasons conclude) */
+.seas-archive-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5px; background: var(--border);
+}
+.seas-archive-card {
+  background: #0a0906; display: flex; flex-direction: column;
+  transition: background .2s;
+}
+.seas-archive-card:hover { background: rgba(201,168,76,.02); }
+.seas-archive-card-banner {
+  padding: 1.8rem 1.8rem 1.4rem;
+  background: var(--sac, rgba(201,168,76,.05));
+  border-bottom: .5px solid rgba(201,168,76,.1);
+}
+.seas-archive-card-num {
+  font-family: 'Cinzel', serif; font-size: .6rem; font-weight: 700;
+  letter-spacing: .4em; text-transform: uppercase;
+  color: rgba(201,168,76,.4); margin-bottom: .4rem;
+}
+.seas-archive-card-name {
+  font-family: 'Cinzel', serif; font-size: 1.1rem; font-weight: 700;
+  letter-spacing: .07em; text-transform: uppercase; color: var(--white);
+  margin-bottom: .35rem;
+}
+.seas-archive-card-dates {
+  font-size: .65rem; letter-spacing: .12em; color: var(--muted);
+}
+.seas-archive-card-body { padding: 1.4rem 1.8rem; flex: 1; display: flex; flex-direction: column; gap: .8rem; }
+.seas-archive-card-tags { display: flex; gap: .4rem; flex-wrap: wrap; }
+.seas-archive-tag {
+  font-size: .56rem; letter-spacing: .18em; text-transform: uppercase;
+  padding: .18rem .55rem; border: .5px solid rgba(201,168,76,.15); color: var(--muted);
+}
+.seas-archive-card-desc {
+  font-size: .83rem; line-height: 1.72; color: var(--body-text); font-weight: 300; flex: 1;
+}
+.seas-archive-card-btn {
+  background: none; border: .5px solid rgba(201,168,76,.2); cursor: pointer;
+  padding: .6rem 1.2rem; font-family: 'Rajdhani', sans-serif;
+  font-size: .68rem; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--muted); transition: all .2s; align-self: flex-start;
+}
+.seas-archive-card-btn:hover { color: var(--gold); border-color: rgba(201,168,76,.4); }
+
+/* ── SCROLL ANIMATION ── */
+.seas-animate {
+  opacity: 0; transform: translateY(12px);
+  transition: opacity .55s ease, transform .55s ease;
+}
+.seas-animate.visible { opacity: 1; transform: translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .seas-detail-grid { grid-template-columns: 1fr; }
+  .seas-detail-section--full { grid-column: 1; }
+  .seas-cin-season-emblem { display: none; }
+  .seas-track-nodes { padding: 0 1.5rem; }
+  .seas-track-rail { left: 1.5rem; right: 1.5rem; }
+}
+
+@media (max-width: 768px) {
+  .seas-hero { padding: 8rem 1.5rem 3rem; }
+  .seas-current-wrap { padding: 0 1.5rem; }
+  .seas-archive-wrap { padding: 0 1.5rem; }
+  .seas-cin-banner { height: auto; min-height: 260px; }
+  .seas-cin-content { padding: 2rem 1.5rem; }
+  .seas-cin-dates { flex-wrap: wrap; gap: 1rem; }
+  .seas-cin-date-divider { display: none; }
+  .seas-cin-date-item { padding: 0; }
+  .seas-detail-section { padding: 1.5rem; }
+  .seas-gear-row { grid-template-columns: 1fr 1fr; gap: .5rem; }
+  .seas-gear-row--head .seas-gear-col:nth-child(n+3) { display: none; }
+  .seas-gear-row .seas-gear-col:nth-child(n+3) { display: none; }
+  .seas-track-nodes { gap: .5rem; }
+  .seas-track-node-num { width: 28px; height: 28px; font-size: .58rem; }
+  .seas-pass-strip { flex-direction: column; }
+}
+
+@media (max-width: 480px) {
+  .seas-track-nodes { padding: 0 .5rem; }
+  .seas-track-rail { left: .5rem; right: .5rem; }
+  .seas-bounty-row { flex-wrap: wrap; gap: .5rem; }
+}
