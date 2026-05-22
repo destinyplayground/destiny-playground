@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Character and Class Systems - Dev Update - Destiny Playground</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/destiny-playground/css/styles.css">
+<link rel="stylesheet" href="/destiny-playground/css/article.css">
+<link rel="stylesheet" href="/destiny-playground/css/nav.css">
+<link rel="stylesheet" href="/destiny-playground/css/a11y-overrides.css">
+
+<style>
+/* - CLASS IDENTITY CARDS - */
+.class-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+  margin: 1.5rem 0 2rem;
+}
+@media (max-width: 768px) { .class-grid { grid-template-columns: 1fr; } }
+.class-card {
+  border: 0.5px solid var(--border);
+  background: rgba(201,168,76,0.02);
+  padding: 1.4rem 1.4rem 1.2rem;
+}
+.class-card-name {
+  font-family: 'Cinzel', serif;
+  font-size: 0.9rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--white); margin-bottom: 1rem;
+  padding-bottom: 0.6rem; border-bottom: 0.5px solid var(--border);
+}
+.class-stat { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.4rem; font-family: 'Rajdhani', sans-serif; font-size: 0.85rem; letter-spacing: 0.05em; }
+.class-stat.pos { color: #5dca8a; }
+.class-stat.neg { color: #e07070; }
+.class-stat-icon { font-size: 0.9rem; width: 1rem; text-align: center; }
+
+/* - STAT TABLE - */
+.stat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 1.5rem 0 2rem; }
+@media (max-width: 600px) { .stat-grid { grid-template-columns: 1fr; } }
+.stat-block {
+  border: 0.5px solid var(--border);
+  background: rgba(201,168,76,0.015);
+  padding: 1.2rem 1.4rem;
+}
+.stat-block-name {
+  font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 0.7rem;
+}
+.stat-block ul { margin: 0; padding: 0; list-style: none; }
+.stat-block ul li {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.85rem; color: var(--body-text); font-weight: 300;
+  padding: 0.25rem 0; letter-spacing: 0.04em;
+  border-bottom: 0.5px solid rgba(201,168,76,0.06);
+}
+.stat-block ul li:last-child { border-bottom: none; }
+
+/* - GRENADE CARDS - */
+.grenade-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.5rem 0 2rem; }
+@media (max-width: 768px) { .grenade-grid { grid-template-columns: 1fr; } }
+.grenade-card {
+  border: 0.5px solid var(--border);
+  background: rgba(201,168,76,0.02);
+  padding: 1.2rem 1.4rem;
+}
+.grenade-card-class {
+  font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 0.8rem;
+}
+.grenade-card ul { margin: 0; padding: 0; list-style: none; }
+.grenade-card ul li {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.88rem; color: var(--body-text); font-weight: 300;
+  padding: 0.3rem 0; letter-spacing: 0.04em;
+  border-bottom: 0.5px solid rgba(201,168,76,0.06);
+}
+.grenade-card ul li:last-child { border-bottom: none; }
+</style>
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+<div style="height: 64px;"></div>
+
+<div class="banner">
+  <img class="banner-img" src="/destiny-playground/images/dev-update-banners/banner_11.png" alt="Banner">
+  <div class="banner-overlay"></div>
+  <div class="banner-tag">Dev Update</div>
+</div>
+
+<div class="article-header">
+  <h1 class="article-title">Character and Class Systems</h1>
+  <div class="article-meta">
+    <span class="meta-date">11 Mar, 2026</span>
+    <div class="meta-sep"></div>
+    <span class="meta-author">CNT Darthgaming</span>
+    <span class="meta-tag">Dev Update</span>
+  </div>
+</div>
+
+<div class="article-body">
+
+  <div class="dev-notice">
+    <div class="dev-notice-label">Developer Note</div>
+    <p>The purpose of these dev updates is to share systems currently in development and to give insight into the early stages of design as the project evolves. What you're seeing right now are the foundations and skeletons of systems, nowhere near their final versions.</p>
+    <p>Things like names, values, stats, and organisation are often placeholders or early iterations. My current focus is building the core structure and functionality of systems first. Refinement, balancing, and polish come later in development.</p>
+    <p>Because of this, please keep in mind that everything shown in dev updates is subject to change. Systems may be adjusted, expanded, renamed, reorganised, or even removed entirely as development continues. Feedback and suggestions are always welcome, but constructive feedback with reasoning is far more helpful than simple reactions. It's also worth remembering that seeing a system from the outside doesn't always show the full context of how it connects with other systems or the wider project.</p>
+  </div>
+
+  <p>This week's developer update is focused on three major reveals:</p>
+  <ul>
+    <li>Community Survey</li>
+    <li>Character / Profile System</li>
+    <li>Class System</li>
+    <li>Armour System</li>
+  </ul>
+
+  <div class="survey-box">
+    <div class="survey-box-label">Community Initiative</div>
+    <div class="survey-box-title">Community Survey - Still Live</div>
+    <p>The first official Destiny Playground community survey is still live! It takes on average 15 minutes, is completely anonymous, and includes context throughout - so even if you're not deeply familiar with Destiny-style systems, you can still meaningfully contribute.</p>
+    <a class="survey-btn" href="https://forms.office.com/r/gJdn0F1EZp" target="_blank">Take the Survey &#8594;</a>
+  </div>
+
+  <h2>Character Creation</h2>
+  <p>When you first join the server, you will create a <strong>Character Profile</strong> which acts as your persistent identity within Destiny Playground. Each character maintains its own progression, including:</p>
+  <ul>
+    <li>Gear and equipment</li>
+    <li>Campaign progress</li>
+    <li>Character level</li>
+    <li>Currencies</li>
+    <li>Progression systems</li>
+  </ul>
+  <p>At launch, players will be able to create up to <strong>three characters</strong>, similar to Destiny. A fourth character slot will be available for purchase.</p>
+  <p>Unlike Destiny, however, most systems in Destiny Playground are tracked <strong>per character</strong> rather than per account. This means that currencies, gear, and progression will largely remain unique to the character you are currently playing. The exact details of what does and does not transfer between characters are still being finalised.</p>
+  <p>Players will be able to switch between their characters at any time without leaving the server, making it easy to play multiple classes. Characters can also be deleted at any time, though this action is irreversible.</p>
+  <p>Each character also has its own <strong>Class Level</strong> progression. At launch we are currently aiming for <strong>Level 100</strong> as the maximum level, though this may be adjusted depending on campaign progression, experience scaling, and long-term progression goals.</p>
+
+  <h2>Classes</h2>
+  <p>Destiny Playground will feature the same three core classes found in Destiny:</p>
+  <ul>
+    <li>Titan</li>
+    <li>Hunter</li>
+    <li>Warlock</li>
+  </ul>
+  <p>Each class focuses on a distinct playstyle and set of abilities, giving players different ways to approach combat and gameplay.</p>
+  <p>One major difference from Destiny involves armour usage. In Destiny Playground, <strong>most armour is not restricted by class</strong>. All classes share the same general armour pool, allowing players far greater flexibility when building their characters. The only exception to this rule is Exotic armour, which remains class-specific.</p>
+
+  <h2>Armour System</h2>
+  <p>Armour in Destiny Playground works quite differently from Destiny's system. There are still <strong>six core armour stats</strong>, but each stat influences multiple gameplay attributes rather than a single mechanic.</p>
+  <p>The six core stats are: Strength, Intellect, Wisdom, Dexterity, Intelligence, and Mobility.</p>
+
+  <div class="stat-grid">
+    <div class="stat-block">
+      <div class="stat-block-name">Strength</div>
+      <ul>
+        <li>Physical Damage</li>
+        <li>Attack Speed</li>
+        <li>Block Rating</li>
+      </ul>
+    </div>
+    <div class="stat-block">
+      <div class="stat-block-name">Intellect</div>
+      <ul>
+        <li>Maximum Health</li>
+        <li>Health Regeneration</li>
+        <li>Knockback Resistance</li>
+      </ul>
+    </div>
+    <div class="stat-block">
+      <div class="stat-block-name">Wisdom</div>
+      <ul>
+        <li>Maximum Mana</li>
+        <li>Mana Regeneration</li>
+        <li>Skill Cooldown Reduction</li>
+      </ul>
+    </div>
+    <div class="stat-block">
+      <div class="stat-block-name">Dexterity</div>
+      <ul>
+        <li>Weapon Damage</li>
+        <li>Projectile Damage</li>
+        <li>Block Break Speed</li>
+        <li>Parry Rating</li>
+      </ul>
+    </div>
+    <div class="stat-block">
+      <div class="stat-block-name">Intelligence</div>
+      <ul>
+        <li>Critical Strike Chance</li>
+        <li>Critical Strike Power</li>
+        <li>Dodge Rating</li>
+      </ul>
+    </div>
+    <div class="stat-block">
+      <div class="stat-block-name">Mobility</div>
+      <ul>
+        <li>Movement Speed</li>
+        <li>Sneaking Speed</li>
+        <li>Jump Strength</li>
+        <li>Additional Experience Gain</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Armour Rolls</h3>
+  <p>Similar to Destiny 2, Legendary armour pieces will roll with different stat distributions. Typically, a Legendary armour piece will include one primary stat with a high number of points, one secondary stat with a moderate number of points, and two additional stats with smaller bonuses. This ensures armour pieces feel unique and encourages players to build specific stat combinations. Armour will also eventually roll with perks, similar to weapons - more details will be shared in a future update.</p>
+
+  <h2>Class Identity</h2>
+  <p>Each class will have natural strengths and weaknesses within the stat system. These act as baseline modifiers that reinforce each class's identity and playstyle, while still allowing players to customise their builds through gear, stats, and abilities.</p>
+
+  <div class="class-grid">
+    <div class="class-card">
+      <div class="class-card-name">Titan</div>
+      <div class="class-stat pos"><span class="class-stat-icon">+</span> Strength</div>
+      <div class="class-stat pos"><span class="class-stat-icon">+</span> Intelligence</div>
+      <div class="class-stat neg"><span class="class-stat-icon">-</span> Intellect</div>
+      <div class="class-stat neg"><span class="class-stat-icon">-</span> Mobility</div>
+    </div>
+    <div class="class-card">
+      <div class="class-card-name">Hunter</div>
+      <div class="class-stat pos"><span class="class-stat-icon">+</span> Intelligence</div>
+      <div class="class-stat pos"><span class="class-stat-icon">+</span> Mobility</div>
+      <div class="class-stat neg"><span class="class-stat-icon">-</span> Wisdom</div>
+      <div class="class-stat neg"><span class="class-stat-icon">-</span> Dexterity</div>
+    </div>
+    <div class="class-card">
+      <div class="class-card-name">Warlock</div>
+      <div class="class-stat pos"><span class="class-stat-icon">+</span> Intellect</div>
+      <div class="class-stat pos"><span class="class-stat-icon">+</span> Wisdom</div>
+      <div class="class-stat neg"><span class="class-stat-icon">-</span> Strength</div>
+      <div class="class-stat neg"><span class="class-stat-icon">-</span> Intelligence</div>
+    </div>
+  </div>
+
+  <h2>Subclasses and Abilities</h2>
+  <p>Destiny Playground will include an ability system inspired by Destiny's subclass structure. Each class will have access to a Grenade Ability, Melee Ability, Class Ability, and Super Ability. These can be used without occupying inventory slots, allowing players to use their abilities naturally alongside their weapons.</p>
+  <p>One difference from Destiny is that grenades are also class-specific in Destiny Playground. Each class will have access to three unique grenades:</p>
+
+  <div class="grenade-grid">
+    <div class="grenade-card">
+      <div class="grenade-card-class">Titan Grenades</div>
+      <ul>
+        <li>Incendiary Grenade</li>
+        <li>Solar Grenade</li>
+        <li>Fusion Grenade</li>
+      </ul>
+    </div>
+    <div class="grenade-card">
+      <div class="grenade-card-class">Hunter Grenades</div>
+      <ul>
+        <li>Tripmine Grenade</li>
+        <li>Thermite Grenade</li>
+        <li>Swarm Grenade</li>
+      </ul>
+    </div>
+    <div class="grenade-card">
+      <div class="grenade-card-class">Warlock Grenades</div>
+      <ul>
+        <li>Healing Grenade</li>
+        <li>Molten Grenade</li>
+        <li>Firebolt Grenade</li>
+      </ul>
+    </div>
+  </div>
+
+  <p>We will explore abilities, subclasses, and combat mechanics in much greater detail in the next development update.</p>
+
+  <div class="callout">
+    <p>"If you've made it this far, congrats! Enjoy this little bonus - the Testing Dummy and one of the Shooting Ranges we created this week to better aid us in testing."</p>
+  </div>
+
+  <div class="video-embed">
+    <div class="video-wrapper">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/0A9y_oxA1HA?si=XHi55rcvIB9lfdnY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    <div class="video-caption">Testing Dummy and Shooting Range</div>
+  </div>
+
+  <p>Advancements have also been made on the custom UI - here's the UI for the Main Menu and EDZ World Map!</p>
+
+  <div class="article-image">
+    <img src="/destiny-playground/images/dev-updates/11.03.2026/image1.webp" alt="Main Menu UI">
+    <div class="image-caption">Main Menu UI</div>
+  </div>
+  <div class="article-image">
+    <img src="/destiny-playground/images/dev-updates/11.03.2026/image2.webp" alt="EDZ World Map UI">
+    <div class="image-caption">EDZ World Map UI</div>
+  </div>
+
+  <h2>What's Next</h2>
+  <p>The next development update will focus on <strong>Abilities and Combat Systems</strong> - exploring how abilities function, how mana interacts with skills, and how combat mechanics tie into the class system.</p>
+
+  <div class="hiatus-box">
+    <div class="hiatus-box-label">&#9670; No Dev Update Next Week</div>
+    <p>Due to a university deadline coming up, there will be no development update next week. The next one will be in 2 weeks on 25th March.</p>
+  </div>
+
+  <div class="article-image">
+    <img src="/destiny-playground/images/dev-update-roadmap-2.png" alt="Developer Update Roadmap">
+    <div class="image-caption">Developer Update Roadmap</div>
+  </div>
+
+  <div class="dev-notice">
+    <div class="dev-notice-label">Website Updates</div>
+    <p>A few more additions and changes have been made to the website this week, including changes to some layouts and backgrounds, the staff team list and their roles, updates to the official credits and attributions - and maybe a small teaser for the 3rd planet reveal in 3 weeks...</p>
+  </div>
+
+</div>
+
+<div class="closing">
+  <div class="closing-note">
+    That's all for this update. As always, this project is a labour of love and every bit of support means the world. If you've got questions, thoughts, or just want to chat - find us on the socials below.
+    <div class="closing-sig">- CNT Darthgaming</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="socials-section">
+  <div class="socials-label">Find Us</div>
+  <div class="socials-title">Follow the Project</div>
+  <div class="socials-grid">
+    <a class="social-btn" href="https://discord.gg/Ah6Jt5KVPH">&#9671; Discord</a>
+    <a class="social-btn" href="https://youtube.com/@cntdarthgaming">&#9654; YouTube</a>
+    <a class="social-btn" href="https://bsky.app/profile/thedestinyplayground.bsky.social">&#9633; Bluesky</a>
+    <a class="social-btn" href="https://x.com/destinyplaygrnd">&#9632; Twitter</a>
+    <a class="social-btn" href="https://ko-fi.com/thedestinyplayground">&#9651; Ko-fi</a>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="back-section">
+  <a class="btn-back" href="/destiny-playground/news.html">&#8592; Back to News</a>
+</div>
+
+<div id="footer-placeholder"></div>
+<script src="/destiny-playground/js/shared.js"></script>
+</body>
+</html>

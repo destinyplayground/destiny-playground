@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Season Pass and Seasonal Progression - Dev Update - Destiny Playground</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/destiny-playground/css/styles.css">
+<link rel="stylesheet" href="/destiny-playground/css/article.css">
+<link rel="stylesheet" href="/destiny-playground/css/nav.css">
+<link rel="stylesheet" href="/destiny-playground/css/a11y-overrides.css">
+
+<style>
+/* - SEASON PASS TRACK - */
+.pass-track {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1.5px; background: var(--border); margin: 2rem 0;
+}
+.pass-track-col {
+  background: var(--dark); padding: 2rem 1.8rem;
+  position: relative; overflow: hidden;
+}
+.pass-track-col::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 2px;
+}
+.pass-track-col.free::before  { background: var(--gold-dim); }
+.pass-track-col.premium::before { background: var(--gold); }
+.pass-track-label {
+  font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+.pass-track-col.free .pass-track-label    { color: var(--gold-dim); }
+.pass-track-col.premium .pass-track-label { color: var(--gold); }
+.pass-track-title {
+  font-family: 'Cinzel', serif; font-size: 1.1rem; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--white); margin-bottom: 1.2rem;
+}
+.pass-track-col ul { list-style: none; padding: 0; }
+.pass-track-col ul li {
+  padding: 0.4rem 0; border-bottom: 0.5px solid rgba(201,168,76,0.08);
+  font-size: 0.9rem; color: var(--body-text); display: flex; align-items: center; gap: 0.6rem;
+}
+.pass-track-col ul li:last-child { border-bottom: none; }
+.pass-track-col ul li::before { content: '◆'; font-size: 0.4rem; color: var(--gold-dim); flex-shrink: 0; }
+
+/* - XP SOURCES - */
+.xp-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1.5px; background: var(--border); margin: 1.5rem 0;
+}
+.xp-cell {
+  background: var(--dark); padding: 1.1rem 1rem;
+  font-size: 0.85rem; color: var(--body-text); text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+}
+.xp-cell-icon { font-size: 1rem; color: var(--gold-dim); }
+.xp-cell-label { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+
+/* - FAQ SECTION - */
+.faq-list { margin: 1.5rem 0; }
+.faq-item {
+  border-bottom: 0.5px solid var(--border); padding: 1.4rem 0;
+}
+.faq-item:first-child { border-top: 0.5px solid var(--border); }
+.faq-q {
+  font-family: 'Cinzel', serif; font-size: 0.88rem; letter-spacing: 0.04em;
+  color: var(--white); margin-bottom: 0.8rem; display: flex; gap: 0.8rem;
+}
+.faq-q::before { content: 'Q'; color: var(--gold); flex-shrink: 0; }
+.faq-a {
+  font-size: 0.9rem; line-height: 1.8; color: var(--body-text);
+  padding-left: 1.5rem; font-weight: 300;
+}
+.faq-a ul { margin-top: 0.6rem; padding-left: 1rem; }
+.faq-a ul li { margin-bottom: 0.3rem; }
+
+@media (max-width: 600px) {
+  .pass-track { grid-template-columns: 1fr; }
+  .xp-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+<div style="height: 64px;"></div>
+
+<div class="banner">
+  <img class="banner-img" src="/destiny-playground/images/dev-update-banners/banner_4.png" alt="Banner">
+  <div class="banner-overlay"></div>
+  <div class="banner-tag">Dev Update</div>
+</div>
+
+<div class="article-header">
+  <h1 class="article-title">Season Pass and Seasonal Progression</h1>
+  <div class="article-meta">
+    <span class="meta-date">14 Jan, 2026</span>
+    <div class="meta-sep"></div>
+    <span class="meta-author">CNT Darthgaming</span>
+    <span class="meta-tag">Dev Update</span>
+  </div>
+</div>
+
+<div class="article-body">
+
+  <p>Hey everyone, welcome back to another Dev Update for The Destiny Playground.</p>
+  <p>Last week, we took a deep dive into the Fishing System, how it works, why it exists, and how it fits into the broader ecosystem of the server. This week, we're talking about something much bigger in scope.</p>
+  <p>Today's update is focused on the Season Pass System, currently known in development as the Destiny Playground Pass. This system plays a major role in how progression, updates, and long-term support for the server will work post-launch.</p>
+  <p>There's a lot to cover, so let's get into it.</p>
+
+  <h2>Dev Update Roadmap</h2>
+  <p>Before we do start, we have officially released a roadmap for the first 8 weeks of developer updates. We hope that this brings some excitement to look forward to see how some systems will work.</p>
+  <p>A lot of what you see here focuses on menus and systems, and we hope that the following 8 week roadmap of dev updates afterwards - to be posted during or after week 8 - will share much more on the core systems (hopefully), but for now these are HEAVILY underway in development.</p>
+  <p>Enjoy!</p>
+
+  <div class="article-image">
+    <img src="/destiny-playground/images/dev-update-roadmap-1.webp" alt="Developer Update Roadmap">
+    <div class="image-caption">Developer Update Roadmap</div>
+  </div>
+
+  <h2>Seasons</h2>
+  <p>A Season in The Destiny Playground represents a defined period of time where:</p>
+  <ul>
+    <li>Progression is refreshed</li>
+    <li>New rewards become available</li>
+    <li>The server has a clear thematic and gameplay focus</li>
+    <li>Updates and content releases</li>
+  </ul>
+  <p>Seasons aren't just cosmetic refreshes - they act to give the server added progression, with moments where new systems, activities, or changes can be added, while still allowing players to engage at their own pace. Seasons also help define eras of the server. When you look back, each season may feel distinct, both mechanically and aesthetically.</p>
+
+  <h2>The Season Pass - Core Vision</h2>
+  <p>The Season Pass exists for three main reasons:</p>
+  <ul>
+    <li><strong>Long-Term Progression.</strong> No matter how you play - combat, exploration, activities, fishing, quests - you should always feel like your time is contributing toward something meaningful.</li>
+    <li><strong>Sustainable Development.</strong> The server is free to access, but it is not free to run. A premium season pass provides a sustainable and meaningful way to support server costs and continued development without locking core gameplay behind paywalls.</li>
+    <li><strong>Structured Updates.</strong> Seasons give us clear windows to release updates, test new ideas, and evolve the server in a controlled way.</li>
+  </ul>
+
+  <h2>Free Track vs Premium Track</h2>
+  <p>Each season features a 100-tier Season Pass, split into two tracks:</p>
+
+  <div class="pass-track">
+    <div class="pass-track-col free">
+      <div class="pass-track-label">Available to All</div>
+      <div class="pass-track-title">Free Track</div>
+      <ul>
+        <li>In-game currency</li>
+        <li>Upgrade or utility materials</li>
+        <li>Select cosmetics</li>
+        <li>Meaningful rewards throughout the pass</li>
+      </ul>
+    </div>
+    <div class="pass-track-col premium">
+      <div class="pass-track-label">Paid Upgrade</div>
+      <div class="pass-track-title">Premium Track</div>
+      <ul>
+        <li>Exclusive cosmetics</li>
+        <li>Visual effects</li>
+        <li>Emotes or animations</li>
+        <li>Gear variants or themed items</li>
+        <li>Seasonal flair and progression showcase</li>
+      </ul>
+    </div>
+  </div>
+
+  <p>The free track is not filler. Progressing through a season should feel worthwhile even if you never purchase the premium track.</p>
+
+  <div class="callout">
+    <p>"We want to be upfront about this early: Yes, the premium track will be paid. The server itself will remain completely free to access, and no gameplay power will be locked behind the premium pass, other than easier access to seasonal weapons and exotics."</p>
+  </div>
+
+  <p>The price of the premium pass may vary depending on the length of a season, ensuring that no season feels less valuable than another.</p>
+
+  <h2>Earning Seasonal XP</h2>
+  <p>Season XP is earned through a wide range of activities. The goal is simple: if you're playing the game, you're progressing the pass.</p>
+
+  <div class="xp-grid">
+    <div class="xp-cell">
+      <div class="xp-cell-icon">&#9670;</div>
+      <div>Seasonal Challenges</div>
+      <div class="xp-cell-label">Larger objectives</div>
+    </div>
+    <div class="xp-cell">
+      <div class="xp-cell-icon">&#9670;</div>
+      <div>Daily Bounties</div>
+      <div class="xp-cell-label">Seasonal bounties</div>
+    </div>
+    <div class="xp-cell">
+      <div class="xp-cell-icon">&#9670;</div>
+      <div>Any Bounty</div>
+      <div class="xp-cell-label">All bounties count</div>
+    </div>
+    <div class="xp-cell">
+      <div class="xp-cell-icon">&#9670;</div>
+      <div>Quests</div>
+      <div class="xp-cell-label">Story and side quests</div>
+    </div>
+    <div class="xp-cell">
+      <div class="xp-cell-icon">&#9670;</div>
+      <div>Activities</div>
+      <div class="xp-cell-label">Any completion</div>
+    </div>
+    <div class="xp-cell">
+      <div class="xp-cell-icon">&#9670;</div>
+      <div>More to come</div>
+      <div class="xp-cell-label">System expands</div>
+    </div>
+  </div>
+
+  <p>You won't be forced into one specific activity to keep up. Different playstyles should all contribute meaningfully to seasonal progression.</p>
+
+  <h2>Seasonal Challenges</h2>
+  <p>Seasonal Challenges act as larger, structured objectives that offer significant XP rewards. While these are still being designed, they will:</p>
+  <ul>
+    <li>Cover a wide range of activities</li>
+    <li>Encourage interaction with new seasonal content</li>
+    <li>Highlight newly introduced systems or features</li>
+  </ul>
+  <p>Challenges are optional, but designed to feel rewarding rather than mandatory.</p>
+
+  <h2>Rewards</h2>
+  <p>At this stage, the exact rewards on the pass are still being finalised. However, reward categories may include cosmetics, utility items, materials, visual effects, and seasonal-themed gear or items.</p>
+  <p>On exclusivity - not all rewards will follow the same rules, as some items may:</p>
+  <ul>
+    <li>Remain exclusive to the season pass</li>
+    <li>Return later via the Season Archive</li>
+    <li>Reappear through other gameplay avenues in the future</li>
+  </ul>
+  <p>There is no universal guarantee that an item will or won't return, and likewise, no guarantee when it might. The season pass is always the most direct way to earn seasonal rewards while they're active.</p>
+
+  <h2>The Season Archive</h2>
+  <p>A newly introduced Destiny 2 feature that you may recognise! When a season ends, its pass will no longer be active. However, key rewards from that season will be added to the Season Archive.</p>
+  <p>Through the Season Archive:</p>
+  <ul>
+    <li>Players may purchase access to past season passes at a reduced cost and then purchase key items that have returned via the archive</li>
+    <li>Players who already owned the pass may purchase key items that have returned via the archive</li>
+  </ul>
+  <p>This system exists to reduce long-term FOMO while still preserving the identity of each season.</p>
+
+  <h2>Season Timing and Progression</h2>
+  <p>At server launch, no season pass will be active. This is intentional - we want players to have breathing room to experience the main campaign, learn core systems, and settle into the world without additional progression pressure.</p>
+  <p>The first season pass is currently planned to launch a few weeks to a month after server release. Once a season pass is live, access to the Season Pass UI and its rewards will be locked behind completion of the main campaign. This ensures a consistent narrative and onboarding experience.</p>
+  <p>Importantly:</p>
+  <ul>
+    <li>Season XP will not begin tracking until the season officially starts</li>
+    <li>Once the season is active but the campaign is not complete, season XP and quest completions will still be tracked - you just won't be able to access them yet</li>
+    <li>Once the season is active and the campaign is completed, full season progression becomes available</li>
+  </ul>
+
+  <div class="hiatus-box">
+    <div class="hiatus-box-label">&#9670; Development Note</div>
+    <p>Outside of this, this week has been focused on continued work on the Ability System, which is coming along nicely, as well as a few major reworks to some systems being used. This system still needs more time before it's ready to show, but expect a dedicated dev update on abilities once it's further along.</p>
+    <p>Additionally, I am now back at university, tutoring and work full time, so development will significantly slow down for a few months.</p>
+  </div>
+
+  <div class="teaser-box">
+    <div class="teaser-box-label">Community</div>
+    <div class="teaser-box-title">Reminder: Build The Last City Project</div>
+    <p>We are running a community build project to construct The Last City within Minecraft. Join the discord to apply - build has already begun and goes until February 4th, however you still have until January 26th to apply and join!</p>
+  </div>
+
+  <h2>Season Pass - Featured QandA</h2>
+  <p>We've put together a quick FAQ to act as a summary, as well as to cover any missed avenues. As always, contact us via the discord server if you have any additional queries.</p>
+
+  <div class="faq-list">
+
+    <div class="faq-item">
+      <div class="faq-q">Why introduce a paid season pass at all?</div>
+      <div class="faq-a">The Destiny Playground will be completely free to access, but running and maintaining a live server comes with ongoing costs. A paid premium season pass allows us to support server hosting, development tools, and continued updates without locking core gameplay behind paywalls. The premium pass is designed as a way to support the project, not a requirement to enjoy it.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Does the premium season pass give gameplay advantages?</div>
+      <div class="faq-a">No. Season pass rewards - free or premium - will not provide direct gameplay power that creates an unfair advantage. Progression systems, activities, and core gameplay remain accessible to all players.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Can I play the server without ever buying a season pass?</div>
+      <div class="faq-a">Yes. All major systems, activities, and content are accessible without purchasing a premium pass. The free track provides meaningful rewards each season, and the server is designed to remain enjoyable without premium participation. It just may mean that certain seasonal weapons are easier to obtain via the season pass, or seasonal exotics will be significantly harder to obtain without it.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What happens if I join late in a season?</div>
+      <div class="faq-a">You can still progress the season pass at your own pace while the season is active. Depending on timing, some rewards may require dedicated playtime to unlock, but the Season Archive exists to reduce long-term loss of access to key items.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What exactly is the Season Archive?</div>
+      <div class="faq-a">
+        The Season Archive is a system where key rewards from past seasons may become available after a season ends. Through the archive:
+        <ul>
+          <li>Players may purchase access to past season passes at a reduced cost and then purchase key items that have returned via the archive</li>
+          <li>Players who already owned the pass may purchase key items that have returned via the archive</li>
+        </ul>
+        Not every reward is guaranteed to return, and there's no fixed schedule for when archived items become available.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Are season pass rewards exclusive forever?</div>
+      <div class="faq-a">
+        There is no single rule that applies to all rewards. Some items may:
+        <ul>
+          <li>Remain exclusive to the season pass</li>
+          <li>Return later via the Season Archive</li>
+          <li>Reappear through other gameplay avenues in the future</li>
+        </ul>
+        The season pass is always the most direct and reliable way to earn seasonal rewards while they're active.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Why lock season pass access behind campaign completion?</div>
+      <div class="faq-a">The main campaign is designed to introduce core systems, world context, and player progression foundations. Locking season pass access behind campaign completion ensures a smoother onboarding experience, narrative consistency, and that seasons feel like a continuation of the journey, not a replacement for it.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Will every season include new story content?</div>
+      <div class="faq-a">Not necessarily. Narrative content takes time to design, implement, and test. While future campaigns and story content are planned post-release, not every season will feature a full narrative arc. Some seasons may focus more on gameplay systems, activities, balance updates, or experimental features - or just give you some new items to chase.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Will seasons always be the same length?</div>
+      <div class="faq-a">Season length is still being finalised, but the current plan is for seasons to be similar in length to Destiny 2's. Pricing for the premium pass may adjust based on season duration to ensure consistent value.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Can content release outside of season launches?</div>
+      <div class="faq-a">Yes. Seasons provide a strong structure for updates, but content is not locked to season start dates. Updates may release whenever ready.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What's the current development priority?</div>
+      <div class="faq-a">
+        Right now, the top priorities are:
+        <ul>
+          <li>Core systems</li>
+          <li>The main campaign</li>
+          <li>Server foundation</li>
+        </ul>
+        Other systems like this are being developed alongside these, but they are not the primary focus until launch readiness is achieved.
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<div class="closing">
+  <div class="closing-note">
+    That's all for this update. As always, this project is a labour of love and every bit of support means the world. If you've got questions, thoughts, or just want to chat &mdash; find us on the socials below.
+    <div class="closing-sig">- CNT Darthgaming</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="socials-section">
+  <div class="socials-label">Find Us</div>
+  <div class="socials-title">Follow the Project</div>
+  <div class="socials-grid">
+    <a class="social-btn" href="https://discord.gg/Ah6Jt5KVPH">&#9671; Discord</a>
+    <a class="social-btn" href="https://youtube.com/@cntdarthgaming">&#9654; YouTube</a>
+    <a class="social-btn" href="https://bsky.app/profile/thedestinyplayground.bsky.social">&#9633; Bluesky</a>
+    <a class="social-btn" href="https://x.com/destinyplaygrnd">&#9632; Twitter</a>
+    <a class="social-btn" href="https://ko-fi.com/destinyplayground">&#9651; Ko-fi</a>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="back-section">
+  <a class="btn-back" href="/destiny-playground/news.html">&#8592; Back to News</a>
+</div>
+
+<div id="footer-placeholder"></div>
+<script src="/destiny-playground/js/shared.js"></script>
+</body>
+</html>

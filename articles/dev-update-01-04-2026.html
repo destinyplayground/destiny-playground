@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Planet 3 Reveal - Dev Update - Destiny Playground</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/destiny-playground/css/styles.css">
+<link rel="stylesheet" href="/destiny-playground/css/article.css">
+<link rel="stylesheet" href="/destiny-playground/css/nav.css">
+<link rel="stylesheet" href="/destiny-playground/css/a11y-overrides.css">
+
+<style>
+/* ── APRIL FOOLS REVEAL SECTION ── */
+.af-reveal {
+  position: relative; overflow: hidden;
+  margin: 3rem 0; padding: 3rem 2.5rem;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201,168,76,0.07) 0%, transparent 70%),
+    rgba(201,168,76,0.02);
+  border: 0.5px solid rgba(201,168,76,0.2);
+  text-align: center;
+}
+.af-reveal-grid {
+  position: absolute; inset: 0; opacity: 0.04;
+  background-image:
+    linear-gradient(rgba(201,168,76,0.5) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,168,76,0.5) 1px, transparent 1px);
+  background-size: 50px 50px;
+  mask-image: radial-gradient(ellipse 90% 90% at 50% 50%, black 20%, transparent 80%);
+  pointer-events: none;
+}
+.af-stamp {
+  display: inline-block;
+  border: 1.5px solid rgba(201,168,76,0.3); padding: 0.4rem 0.9rem;
+  transform: rotate(6deg); margin-bottom: 2rem;
+  font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.2em;
+  text-transform: uppercase; color: rgba(201,168,76,0.4);
+}
+.af-wrong-label {
+  font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--muted); text-decoration: line-through; margin-bottom: 0.4rem;
+}
+.af-wrong-title {
+  font-family: 'Cinzel', serif; font-size: clamp(1.4rem, 4vw, 2.2rem);
+  font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+  color: rgba(232,228,216,0.18); text-decoration: line-through;
+  margin-bottom: 0.4rem;
+}
+.af-nope {
+  font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 1.8rem;
+}
+.af-nope::before, .af-nope::after {
+  content: ''; display: inline-block; width: 24px; height: 0.5px;
+  background: var(--gold-dim); vertical-align: middle; margin: 0 0.7rem;
+}
+.af-real-label {
+  font-size: 0.65rem; letter-spacing: 0.35em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 0.6rem;
+}
+.af-real-title {
+  position: relative;
+  font-family: 'Cinzel', serif; font-size: clamp(2.5rem, 7vw, 5rem);
+  font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
+  color: var(--white); line-height: 1; margin-bottom: 0.6rem;
+}
+.af-real-title span { color: var(--gold); }
+.af-real-subtitle {
+  font-family: 'Cinzel', serif; font-size: clamp(0.8rem, 1.8vw, 1rem);
+  letter-spacing: 0.35em; text-transform: uppercase;
+  color: var(--gold-dim); margin-bottom: 2rem;
+}
+.af-chaos {
+  font-size: 0.9rem; line-height: 1.85; color: var(--muted);
+  font-weight: 300; max-width: 520px; margin: 0 auto 2rem;
+  letter-spacing: 0.02em;
+}
+.af-chaos strong { color: var(--body-text); font-weight: 500; }
+
+/* ── TEASER CARDS ── */
+.af-cards {
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.5px; background: var(--border); margin-top: 2rem; text-align: left;
+}
+.af-card {
+  background: var(--dark); padding: 1.4rem 1.2rem;
+  position: relative; overflow: hidden; transition: background 0.2s;
+}
+.af-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 2px; background: var(--gold); transform: scaleX(0); transition: transform 0.3s;
+}
+.af-card:hover::before { transform: scaleX(1); }
+.af-card:hover { background: rgba(201,168,76,0.04); }
+.af-card-icon {
+  width: 28px; height: 28px; border: 0.5px solid var(--border);
+  transform: rotate(45deg); margin-bottom: 1rem;
+  display: flex; align-items: center; justify-content: center;
+}
+.af-card-icon span { transform: rotate(-45deg); font-size: 0.8rem; color: var(--gold-dim); }
+.af-card-title {
+  font-family: 'Cinzel', serif; font-size: 0.82rem; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--white); margin-bottom: 0.4rem;
+}
+.af-card-desc { font-size: 0.78rem; line-height: 1.6; color: var(--muted); font-weight: 300; }
+
+.af-footer-note {
+  margin-top: 2rem; font-size: 0.75rem; letter-spacing: 0.12em;
+  color: var(--muted); font-style: italic; line-height: 1.7;
+}
+
+@media (max-width: 600px) {
+  .af-cards { grid-template-columns: 1fr; }
+  .af-stamp { font-size: 0.6rem; }
+}
+</style>
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+<div style="height: 64px;"></div>
+
+<div class="banner">
+  <img class="banner-img" src="/destiny-playground/images/dev-update-banners/banner_1.png" alt="Banner">
+  <div class="banner-overlay"></div>
+  <div class="banner-tag">Dev Update</div>
+</div>
+
+<div class="article-header">
+  <h1 class="article-title">Planet 3 Reveal</h1>
+  <div class="article-meta">
+    <span class="meta-date">1 Apr, 2026</span>
+    <div class="meta-sep"></div>
+    <span class="meta-author">CNT Darthgaming</span>
+    <span class="meta-tag">Dev Update</span>
+  </div>
+</div>
+
+<div class="article-body">
+
+  <div class="dev-notice">
+    <div class="dev-notice-label">Developer Note</div>
+    <p>The purpose of these dev updates is to share systems currently in development and to give insight into the early stages of design as the project evolves. What you're seeing right now are the foundations and skeletons of systems, nowhere near their final versions.</p>
+    <p>Things like names, values, stats, and organisation are often placeholders or early iterations. My current focus is building the core structure and functionality of systems first. Refinement, balancing, and polish come later in development.</p>
+    <p>Because of this, please keep in mind that everything shown in dev updates is subject to change. Feedback and suggestions are always welcome, but constructive feedback with reasoning is far more helpful than simple reactions. It's also worth remembering that seeing a system from the outside doesn't always show the full context of how it connects with other systems or the wider project.</p>
+  </div>
+
+  <p>The wait is over.</p>
+  <p>After weeks of teasers, speculation, and a community that has somehow managed to guess almost everything except the right answer, it's time.</p>
+  <p>Planet 3 is officially revealed.</p>
+
+  <!-- FAKE OUT -->
+  <div class="af-reveal">
+    <div class="af-reveal-grid"></div>
+    <div class="af-stamp">April 1st, 2026</div>
+
+    <div class="af-wrong-label">Planet 3 is... The Pale Heart</div>
+    <div class="af-wrong-title">The Pale Heart</div>
+    <div class="af-nope">yeah no. not quite.</div>
+
+    <div class="af-real-label">Planet 3 is actually</div>
+    <h2 class="af-real-title" style="margin: 0 0 0.6rem; border: none; padding: 0;">The <span>Moon</span></h2>
+    <div class="af-real-subtitle">It was always the Moon!</div>
+
+    <p class="af-chaos">
+      Did you enjoy the four teasers today? The ones that were all <strong>completely wrong?</strong>
+      The ones that had absolutely nothing to do with what Planet 3 actually is?
+      But if you were curious they were: The Tangled Shore, Nessus, The Pale Heart, Indexed Earth.
+      <strong>Happy April Fools, Guardian.</strong>
+    </p>
+
+    <div class="af-cards">
+      <div class="af-card">
+        <div class="af-card-icon"><span>&#9670;</span></div>
+        <div class="af-card-title">Ancient Ruins</div>
+        <div class="af-card-desc">Something was here long before the Traveller arrived, and it left things behind...</div>
+      </div>
+      <div class="af-card">
+        <div class="af-card-icon"><span>&#9670;</span></div>
+        <div class="af-card-title">New Threats</div>
+        <div class="af-card-desc">The Hive have long sat with claim on The Moon, preparing for something incredibly dark...</div>
+      </div>
+      <div class="af-card">
+        <div class="af-card-icon"><span>&#9670;</span></div>
+        <div class="af-card-title">A Proper Reveal</div>
+        <div class="af-card-desc">A full Moon reveal with screenshots is coming in the future. This planet hasn't really been built in the server at all yet. Thanks to End & the TCMC team for the baseplate we currently have!</div>
+      </div>
+    </div>
+
+    <p class="af-footer-note">Congrats to those of you that correctly guessed based on the real teasers, or from the Moon footer we added to the main website three weeks ago!</p>
+  </div>
+
+  <h2>Development Update Schedule</h2>
+
+  <div class="hiatus-box">
+    <div class="hiatus-box-label">&#9670; Dev Updates on Hiatus</div>
+    <p>Due to upcoming exams and assignments, dev updates will be on hiatus from now to the end of April. Progress will be minimal during this time, response times may be slower, and the roadmap will resume in May.</p>
+    <p>The server remains online, and the staff team will continue working in the background. Thank you as always for your patience, it genuinely means a lot.</p>
+  </div>
+
+</div>
+
+<div class="closing">
+  <div class="closing-note">
+    That's all for this update. As always, this project is a labour of love and every bit of support means the world. If you've got questions, thoughts, or just want to chat - find us on the socials below.
+    <div class="closing-sig">- CNT Darthgaming</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="socials-section">
+  <div class="socials-label">Find Us</div>
+  <div class="socials-title">Follow the Project</div>
+  <div class="socials-grid">
+    <a class="social-btn" href="https://discord.gg/Ah6Jt5KVPH">&#9671; Discord</a>
+    <a class="social-btn" href="https://youtube.com/@cntdarthgaming">&#9654; YouTube</a>
+    <a class="social-btn" href="https://bsky.app/profile/thedestinyplayground.bsky.social">&#9633; Bluesky</a>
+    <a class="social-btn" href="https://x.com/destinyplaygrnd">&#9632; Twitter</a>
+    <a class="social-btn" href="https://ko-fi.com/destinyplayground">&#9651; Ko-fi</a>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="back-section">
+  <a class="btn-back" href="/destiny-playground/news.html">&#8592; Back to News</a>
+</div>
+
+<div id="footer-placeholder"></div>
+<script src="/destiny-playground/js/shared.js"></script>
+</body>
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Director and Planet 1 Reveal - Dev Update - Destiny Playground</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/destiny-playground/css/styles.css">
+<link rel="stylesheet" href="/destiny-playground/css/article.css">
+<link rel="stylesheet" href="/destiny-playground/css/nav.css">
+<link rel="stylesheet" href="/destiny-playground/css/a11y-overrides.css">
+
+<style>
+/* - GALLERY GRID - */
+.inline-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  margin: 1.5rem 0 2rem;
+  border: 0.5px solid var(--border);
+}
+.inline-gallery-item {
+  position: relative; overflow: hidden;
+  background: rgba(201,168,76,0.02);
+  aspect-ratio: 16/9;
+}
+.inline-gallery-item img {
+  width: 100%; height: 100%; object-fit: cover;
+  display: block; opacity: 0.85; transition: opacity 0.3s;
+}
+.inline-gallery-item:hover img { opacity: 1; }
+.inline-gallery-caption {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 0.5rem 0.8rem;
+  background: linear-gradient(to top, rgba(10,9,6,0.85) 0%, transparent 100%);
+  font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* - DESTINATION FEATURE BOX - */
+.destination-reveal {
+  border: 0.5px solid rgba(201,168,76,0.25);
+  background: rgba(201,168,76,0.02);
+  margin: 2rem 0;
+}
+.destination-reveal-header {
+  padding: 1.2rem 1.8rem;
+  border-bottom: 0.5px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.destination-reveal-label {
+  font-size: 0.65rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold);
+}
+.destination-reveal-title {
+  font-family: 'Cinzel', serif; font-size: 1.1rem; letter-spacing: 0.08em; color: var(--white);
+}
+.destination-zones {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  border-top: 0.5px solid var(--border);
+}
+@media (max-width: 600px) { .destination-zones { grid-template-columns: 1fr; } }
+.destination-zone {
+  padding: 1rem 1.4rem;
+  border-right: 0.5px solid var(--border);
+}
+.destination-zone:last-child { border-right: none; }
+.destination-zone-label {
+  font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 0.4rem;
+}
+.destination-zone-name {
+  font-family: 'Rajdhani', sans-serif; font-size: 0.92rem;
+  font-weight: 600; color: var(--white); letter-spacing: 0.06em;
+}
+</style>
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+<div style="height: 64px;"></div>
+
+<div class="banner">
+  <img class="banner-img" src="/destiny-playground/images/dev-update-banners/banner_7.png" alt="Banner">
+  <div class="banner-overlay"></div>
+  <div class="banner-tag">Dev Update</div>
+</div>
+
+<div class="article-header">
+  <h1 class="article-title">The Director and Planet 1 Reveal</h1>
+  <div class="article-meta">
+    <span class="meta-date">9 Feb, 2026</span>
+    <div class="meta-sep"></div>
+    <span class="meta-author">CNT Darthgaming</span>
+    <span class="meta-tag">Dev Update</span>
+  </div>
+</div>
+
+<div class="article-body">
+
+  <p>Hallo everyone! This week's developer update is a major one - we're finally ready to reveal the Director system, alongside our first destination.</p>
+  <p>The Director is one of the most important foundational systems in The Destiny Playground. It's how players understand the world, access content, and play activities. This update is about showing how that structure is taking shape. Alongside that, we'll also cover a few smaller but important updates.</p>
+
+  <h2>Dev Update Roadmap</h2>
+  <p>A quick reminder of the Dev Update roadmap, with one minor change - Week 8 now has Planet 2 Reveal instead of Planet 3. We've decided it's just easier to reveal them all in order. Additionally, the next roadmap will release alongside Week 8's dev update.</p>
+
+  <div class="article-image">
+    <img src="/destiny-playground/images/dev-update-roadmap-1.webp" alt="Developer Update Roadmap">
+    <div class="image-caption">Developer Update Roadmap</div>
+  </div>
+
+  <div class="section-banner">
+    <div class="section-banner-inner">
+      <div class="section-banner-label">First Destination Reveal</div>
+      <div class="section-banner-title">Earth</div>
+    </div>
+  </div>
+
+  <p>Today, we're revealing the first destination on the Director: <strong>Earth</strong>. Earth is a multi-location destination, meaning it contains more than one distinct playable area, including:</p>
+  <ul>
+    <li>The EDZ (European Dead Zone)</li>
+    <li>A separate location where the tutorial takes place - <strong>Northreach</strong></li>
+  </ul>
+  <p>Rather than placing both of these directly on the main Director, Earth acts as a container destination. Selecting Earth opens a sub-selection screen, allowing players to choose where on the planet they want to deploy.</p>
+
+  <div class="article-image">
+    <img src="/destiny-playground/images/dev-updates/09.02.2026/image1.webp" alt="Earth sub-selection screen on the Directorr">
+    <div class="image-caption">Earth sub-selection screen on the Director</div>
+  </div>
+
+  <div class="callout">
+    <p>"Only Earth is being revealed today. Other planets visible on the Director are intentionally obscured for now - but you're absolutely free to speculate!"</p>
+  </div>
+
+  <p>You may also notice activity nodes already present on the Director, such as Vanguard Operations and Crucible. These are not final implementations, and more information on these systems will come in future dev updates once their designs are further along.</p>
+
+  <div class="article-image">
+    <img src="/destiny-playground/images/dev-updates/09.02.2026/image1.webp" alt="The Director">
+    <div class="image-caption">The Director</div>
+  </div>
+
+  <h2>Artwork Preview</h2>
+  <p>This update also includes the first piece of artwork created by our artist, <strong>Fursia</strong> - who did an incredible job! The world-view screen is currently blank while Fursia works on the destination artwork. As more world-view art is completed, we'll be sharing it as soon as we can.</p>
+
+  <h3>Gallery</h3>
+
+  <div class="inline-gallery">
+    <div class="inline-gallery-item">
+    <img src="/destiny-playground/images/dev-updates/09.02.2026/image3.png" alt="European Dead Zone, Winding Cove">
+      <div class="inline-gallery-caption">EDZ - Winding Cove</div>
+    </div>
+    <div class="inline-gallery-item">
+    <img src="/destiny-playground/images/dev-updates/09.02.2026/image4.png" alt="European Dead Zone, Trostland">
+      <div class="inline-gallery-caption">EDZ - Trostland</div>
+    </div>
+    <div class="inline-gallery-item">
+    <img src="/destiny-playground/images/dev-updates/09.02.2026/image5.png" alt="Crucible Map, Bannerfall">
+      <div class="inline-gallery-caption">Crucible - Bannerfall</div>
+    </div>
+    <div class="inline-gallery-item">
+    <img src="/destiny-playground/images/dev-updates/09.02.2026/image6.png" alt="European Dead Zone, The Farm">
+      <div class="inline-gallery-caption">EDZ - The Farm</div>
+    </div>
+  </div>
+
+  <div class="dev-notice">
+    <div class="dev-notice-label">Note on The Farm</div>
+    <p>The Farm screenshot above is an older capture. We have just started completely remaking it from the ground up to be more accurate and suited to our needs.</p>
+  </div>
+
+  <h2>The Director</h2>
+  <p>If you're familiar with Destiny or Destiny 2, the concept of the Director should feel immediately recognisable. In The Destiny Playground, the Director serves as the primary way to access destinations and activities, acting as the connection between all major gameplay systems.</p>
+  <p>The Director allows players to:</p>
+  <ul>
+    <li>View all available destinations</li>
+    <li>Access activity playlists (such as Vanguard Operations or the Crucible)</li>
+    <li>Understand progression requirements</li>
+    <li>Navigate the game world</li>
+  </ul>
+
+  <h3>World View</h3>
+  <p>Selecting a planet in the Director does not immediately teleport you. Instead, it opens a world-view screen for that destination. From there, players choose a specific landing zone. This allows us to avoid cluttering the main Director with too many nodes, support destinations with multiple playable locations, and expand destinations over time without redesigning the UI.</p>
+  <p>Each landing zone displays whether it is a Patrol Zone or Social Space, and its level requirement.</p>
+
+  <h2>How Can I Contribute?</h2>
+  <p>With the Last City community build project now complete, here's a quick reminder of how you can contribute to the project! In our Discord server, there's a dedicated channel to submit things you've created. You're welcome to submit anything you've made for the server, including:</p>
+  <ul>
+    <li>Gun, weapon, item, or enemy models (using Blockbench)</li>
+    <li>Armour trims and custom armour</li>
+    <li>Textures (items, blocks, other)</li>
+    <li>Mechanics (MythicMobs, or other plugins in use)</li>
+  </ul>
+
+  <h2>Development Progress This Week</h2>
+  <p>This week's development has focused primarily on infrastructure and groundwork:</p>
+  <ul>
+    <li>The server has been upgraded</li>
+    <li>Systems are now in place so the builders are able to fully work on planets</li>
+    <li>Core gameplay systems have continued development behind the scenes</li>
+  </ul>
+  <p>While much of this work isn't immediately visible, it's essential for supporting everything shown in today's update.</p>
+
+  <div class="teaser-box">
+    <div class="teaser-box-label">Support the Project</div>
+    <div class="teaser-box-title">Ko-fi - Now Updated</div>
+    <p>Our Ko-fi support page has been updated. If you're interested in supporting the project directly, this is currently the best way to do so. Contributions help cover ongoing costs and allow us to continue developing Destiny Playground sustainably.</p>
+  </div>
+
+</div>
+
+<div class="closing">
+  <div class="closing-note">
+    That's all for this update. As always, this project is a labour of love and every bit of support means the world. If you've got questions, thoughts, or just want to chat - find us on the socials below.
+    <div class="closing-sig">- CNT Darthgaming</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="socials-section">
+  <div class="socials-label">Find Us</div>
+  <div class="socials-title">Follow the Project</div>
+  <div class="socials-grid">
+    <a class="social-btn" href="https://discord.gg/Ah6Jt5KVPH">&#9671; Discord</a>
+    <a class="social-btn" href="https://youtube.com/@cntdarthgaming">&#9654; YouTube</a>
+    <a class="social-btn" href="https://bsky.app/profile/thedestinyplayground.bsky.social">&#9633; Bluesky</a>
+    <a class="social-btn" href="https://x.com/destinyplaygrnd">&#9632; Twitter</a>
+    <a class="social-btn" href="https://ko-fi.com/destinyplayground">&#9651; Ko-fi</a>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="back-section">
+  <a class="btn-back" href="/destiny-playground/news.html">&#8592; Back to News</a>
+</div>
+
+<div id="footer-placeholder"></div>
+<script src="/destiny-playground/js/shared.js"></script>
+</body>
+</html>

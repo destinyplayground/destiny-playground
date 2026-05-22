@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fishing System - Dev Update - Destiny Playground</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/destiny-playground/css/styles.css">
+<link rel="stylesheet" href="/destiny-playground/css/article.css">
+<link rel="stylesheet" href="/destiny-playground/css/nav.css">
+<link rel="stylesheet" href="/destiny-playground/css/a11y-overrides.css">
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+<div style="height: 64px;"></div>
+
+<div class="banner">
+  <img class="banner-img" src="/destiny-playground/images/dev-update-banners/banner_3.png" alt="Banner">
+  <div class="banner-overlay"></div>
+  <div class="banner-tag">Dev Update</div>
+</div>
+
+<div class="article-header">
+  <h1 class="article-title">Fishing System</h1>
+  <div class="article-meta">
+    <span class="meta-date">14 Jan, 2026</span>
+    <div class="meta-sep"></div>
+    <span class="meta-author">CNT Darthgaming</span>
+    <span class="meta-tag">Dev Update</span>
+  </div>
+</div>
+
+<div class="article-body">
+
+  <div class="dev-notice">
+    <div class="dev-notice-label">Developer Note</div>
+    <p>Developer updates are now weekly every Wednesday, and will eventually transition to being fortnightly. This helps us better pace content until the server opens, especially as we have less we can share without spoiling everything for the player experience!</p>
+    <p>Please keep in mind while reading this that this is a <strong>very early outline</strong> of the system. It might and most likely will change before Beta Access. All screenshots are an early dev version - UI and design may change.</p>
+  </div>
+
+  <p>The implementation of a custom fishing system on the server offers an immersive experience for players. Fishing has always been a staple activity in various games, providing players with a relaxing way to gather resources, earn rewards, or fulfil quests - however in Minecraft it's quite a simple and sometimes stale task.</p>
+  <p>With the custom fishing system, the server has elevated this simple task into a highly engaging activity that combines strategy, variety, and progression. This article breaks down how the system works and what makes it unique.</p>
+  <p>Special props to those of you that noticed the sneaky little preview of a fish last Thursday in dev-updates :)</p>
+
+  <h2>Overview</h2>
+  <p>The custom fishing system transcends the traditional fishing mechanics found in standard gameplay. Rather than simply casting a line and reeling in random fish, the server's custom fishing introduces several layers of complexity. Players will find various fishing locations, specialised fishing rods, unique fish species, and even fishing-related events that keep the activity fresh and rewarding.</p>
+
+  <h2>Key Features</h2>
+  <ul>
+    <li><strong>Fishing Locations:</strong> Players can explore a variety of locations and water bodies across the system. Each location offers a unique set of fish, increasing the need for exploration.</li>
+    <li><strong>Custom Fishing Rods:</strong> Fishing rods come in different types and qualities, each designed with unique stats and capabilities. Players can upgrade their rods and purchase new ones to improve their fishing skills.</li>
+    <li><strong>Exclusive Rewards:</strong> Beyond catching fish, players have a chance to reel in treasure chests, rare materials, or even cosmetic items that can enhance their overall gameplay experience.</li>
+    <li><strong>Unique Fish Species:</strong> The server hosts an extensive list of custom fish species, some of which are incredibly legendary and valuable. Each species has a unique design and set of attributes, adding a collectible aspect to the system.</li>
+    <li><strong>Progression System:</strong> Players can level up their fishing skill as they catch more fish, unlocking new items, access to exclusive locations, and better fishing tools.</li>
+    <li><strong>Seasonal Events and Competitions:</strong> Special events may occur periodically, challenging players to catch specific species or compete for the biggest haul within a timeframe.</li>
+  </ul>
+
+  <h2>How to Get Started with Fishing</h2>
+  <p>For new players, getting started is simple and intuitive. Within Act II of the campaign, you will receive the introduction quest for fishing. This will walk you through all the information required to begin fishing, and provide you with a standard fishing rod. The standard rod is sufficient for beginners and allows players to experience the core mechanics.</p>
+  <p>To fish, equip your rod and use it near a water body to cast it. Pay attention to the unique mechanics, such as timing your reel to catch a fish. Unlike traditional fishing systems, the custom system incorporates mini-games to simulate the challenge of catching specific fish.</p>
+  <p>Additionally, some locations might require bait or special tools if you want to catch those rare fish, so it's always helpful to carry a variety of resources with you when fishing. On top of fish having a set rarity, fish can come in several levels of quality, indicated by a coloured star on their icon!</p>
+
+  <div class="article-image">
+    <img src="/destiny-playground/images/dev-updates/14.01.2026/image1.png" alt="Fish quality indicator - coloured star icon">
+    <div class="image-caption">Fish quality is indicated by a coloured star on their icon</div>
+  </div>
+
+  <h2>Exploring Fishing Locations</h2>
+  <p>One of the most exciting features of the custom fishing system is the diversity of fishing spots. Instead of focusing solely on one area, players are encouraged to explore different locations, each with its own unique set of fish. While players can fish in any body of water, to make the most of the system, look for shapes of bubbles in the water (not always circles!), which are fishing spots! These fishing spots boost your chances to catch fish, some even have a rarity attached to them.</p>
+
+  <div class="article-image">
+    <img src="/destiny-playground/images/dev-updates/14.01.2026/image2.webp" alt="Fishing spots - bubble shapes in water">
+    <div class="image-caption">Fishing spots appear as bubble shapes in the water - keep an eye out for them</div>
+  </div>
+
+  <p>Each location often features exclusive fish that cannot be found elsewhere, meaning that completionists or players seeking particular resources will need to travel and adapt to different conditions. Some biomes may even feature environmental hazards or challenges, such as extreme weather or hostile creatures constantly spawning in, further adding to the thrill of exploration.</p>
+  <p>And don't worry, there is also a fishing collection available, so you can track all the fish you've found, and it additionally shows the best version of that fish you've caught!</p>
+
+  <div class="article-image">
+    <img src="/destiny-playground/images/dev-updates/14.01.2026/image3.png" alt="Fishing collection screen">
+    <div class="image-caption">The fishing collection tracks every species you've caught, and shows your best version</div>
+  </div>
+
+  <h2>Fishing Rod Mechanics and Upgrades</h2>
+  <p>The fishing rods available in the custom system are far more complex than those found in standard gameplay. Each rod comes with distinct attributes:</p>
+  <ul>
+    <li><strong>Durability:</strong> Determines how long the rod can be used before needing to be re-crafted or re-purchased.</li>
+    <li><strong>Luck:</strong> Affects the chances of catching rare fishing items and rare fish species.</li>
+    <li><strong>Speed:</strong> The rate at which fish can be caught.</li>
+    <li><strong>Rarity</strong></li>
+  </ul>
+
+  <div class="article-image">
+    <img src="/destiny-playground/images/dev-updates/14.01.2026/image4.png" alt="Fishing rod stats and rarity">
+    <div class="image-caption">Each fishing rod has its own stat profile and rarity tier</div>
+  </div>
+
+  <p>Players can upgrade their fishing rods by using crafting materials earned through gameplay to create enchantments, or purchase new rods entirely (or find special rods via other means...). A select number of enchantments can then be applied to your fishing rod at once to improve fishing. Some enchantments may even reward players for fishing together!</p>
+
+  <div class="article-image">
+    <img src="/destiny-playground/images/dev-updates/14.01.2026/image5.webp" alt="Fishing rod enchantments">
+    <div class="image-caption">Enchantments can be applied to rods - some even reward cooperative fishing</div>
+  </div>
+
+  <p>Additionally, there is bait, which helps improve chances at catching rare fish. Like rods, bait also has durability. A fishing rod can hold up to 5 bait on it at a time, before you have to put more back on it. You can fish without bait, but why would you!? Looking post-release, we will add ways for you to obtain bait that is used to catch specific fish, or catch fish in certain locations.</p>
+
+  <div class="article-image">
+    <img src="/destiny-playground/images/dev-updates/14.01.2026/image6.webp" alt="Fishing bait system">
+    <div class="image-caption">Bait improves your chances at rare catches - a rod can hold up to 5 at a time</div>
+  </div>
+
+  <h2>Rewards Beyond the Catch</h2>
+  <p>Fishing on the server isn't limited to collecting fish. The custom system includes a robust rewards mechanism that ensures players feel motivated and satisfied. Some rewards include:</p>
+  <ul>
+    <li><strong>Treasure Chests:</strong> Occasionally, players may reel in treasure chests containing currencies, rare crafting materials, engrams, or unique items.</li>
+    <li><strong>Fishing Tokens:</strong> These can be exchanged with fishing NPCs for exclusive rewards, such as gear or decorative items.</li>
+    <li><strong>Special Fish:</strong> Certain Mythic species are worth significant amounts of in-game currency. And some fish may be used as crafting ingredients, or in quests.</li>
+  </ul>
+  <p>In addition, players may encounter hidden collectibles or lore-related objects while fishing...</p>
+
+  <h2>Fish Evaluator</h2>
+  <p>When you catch fish, the details about it will be unknown! In order to find out how good (or bad) your fish is, you will need to visit the Fish Evaluator, which will decode the information on your fish (don't worry, you can unlock a way to access this on the fly too!)</p>
+
+  <div class="article-image">
+    <img src="/destiny-playground/images/dev-updates/14.01.2026/image7.webp" alt="Fish Evaluator">
+    <div class="image-caption">The Fish Evaluator</div>
+  </div>
+  <div class="article-image">
+    <img src="/destiny-playground/images/dev-updates/14.01.2026/image8.webp" alt="Fish Evaluator - detail view">
+    <div class="image-caption">Fish Evaluator - detail view</div>
+  </div>
+  <div class="article-image">
+    <img src="/destiny-playground/images/dev-updates/14.01.2026/image9.png" alt="Fish Evaluator - results">
+    <div class="image-caption">Fish Evaluator - results</div>
+  </div>
+
+  <h2>Tournaments and Special Events</h2>
+  <p>To keep the fishing system engaging over time, once a week, the Fishing Tournament will be active for a few hours. These will involve unique server-wide challenges, such as:</p>
+  <ul>
+    <li>Catch the most fish</li>
+    <li>Catch the biggest fish</li>
+    <li>Catch the most valuable fish</li>
+    <li>Catch the heaviest fish</li>
+    <li>Catch the most total size of caught fish</li>
+    <li>Catch the smallest fish</li>
+  </ul>
+  <p>These tournaments will reward the top players at the end with exclusive and very good rewards! Additionally, there may occasionally be larger and longer fishing-related events, something akin to Iron Banner, but for fishing.</p>
+
+  <div class="article-image">
+    <img src="/destiny-playground/images/dev-updates/14.01.2026/image10.webp" alt="Fishing Tournament">
+    <div class="image-caption">Fishing Tournaments run weekly, with exclusive rewards for top players</div>
+  </div>
+
+  <p>Additionally, throughout gameplay, random fishing events can occur for random periods of time, bringing special changes, such as increased or decreased chances at certain fish rarities.</p>
+
+  <div class="article-image">
+    <img src="/destiny-playground/images/dev-updates/14.01.2026/image11.webp" alt="Random fishing event">
+    <div class="image-caption">Random fishing events can shift rarity chances at any time</div>
+  </div>
+
+  <p>Don't fret, we have anti-AFK systems built straight into the system! While fishing, there's a chance for fun stuff to happen that may momentarily disrupt you from fishing, so beware!</p>
+
+  <div class="article-image">
+    <img src="/destiny-playground/images/dev-updates/14.01.2026/image12.png" alt="Lifetime Leaderboard">
+    <div class="image-caption">Lifetime Leaderboard</div>
+  </div>
+
+  <p>Finally, on top of tournaments, players are also rewarded on a weekly basis. At the end of every week, the top players in fishing that week will receive exclusive and very good rewards! There is also a lifetime fishing leaderboard too! So get ready to rock the leaderboard to earn your bragging rights for the week (or lifetime)!</p>
+
+  <div class="article-image">
+    <img src="/destiny-playground/images/dev-updates/14.01.2026/image13.png" alt="Fishing leaderboard">
+    <div class="image-caption">Weekly fishing leaderboard - stake your claim</div>
+  </div>
+
+  <h2>Strategy in Fishing</h2>
+  <p>The custom fishing system is designed to reward strategic thinking. Success isn't just about trying your luck - it requires preparation, knowledge, and the right tools. For instance, certain fish species only appear during specific times of day or in particular weather conditions. Some fish may only appear in certain fishing spots or locations, or have a minimum luck required to catch them, so players must plan their fishing trips accordingly. Moreover, learning about fish behaviour, rod mechanics, and bait types can significantly improve catch rates.</p>
+
+  <h2>Community and Trading Opportunities</h2>
+  <p>We imagine that fishing will foster quite a unique sense of community among players on the server, and we encourage and help that! Many players may collaborate to share tips, trade rare catches, or participate in group events. The trading system is particularly valuable, as it allows players to exchange rare fish and fishing-related gear for resources they need. In some cases, fishing serves as a viable in-game profession, with skilled anglers making profits by selling rare items or fulfilling orders from others.</p>
+  <p>We will be looking into a viable trading plugin to ensure trading remains fair, but just know that regardless, fish will not be trade-locked. Additionally, we have no plans for an official wiki, however we will not stop players from running a community wiki that we will officially support and recommend.</p>
+  <p>We do want to make a note especially about new players - the first-time player experience is very valuable to a player's long-term sticking around, and allowing them to experience the intended progression of the system is vital. We aren't trying to be punishing or gatekeep it - we just want everyone to experience the server in the best way and retain their sense of accomplishment.</p>
+
+  <h2>Challenges and Rewards</h2>
+  <p>While the fishing system is designed to be enjoyable, it also has its challenges. Some locations are difficult to access, requiring significant resources or skill. In other cases, rare species may take an extremely large amount of attempts to catch. These challenges add layers of excitement and keep players engaged in the long term. However, the rewards for overcoming such difficulties often make the effort worthwhile. Players who dedicate themselves to fishing can unlock powerful upgrades, discover hidden secrets, and earn a place in the server's fishing history.</p>
+
+  <h2>Fishing Quests and Bounties</h2>
+  <p>We don't have much information to share on this topic currently as we are still making decisions and forming ideas on how quests and bounties will find a place within the server. There will be a weekly dev update in the future on this once it's been figured out.</p>
+  <p>Until then, our idea is that you can purchase a fishing bounty from the fishing shop vendor. The bounty may involve catching certain amounts of fish, a certain fish, or fish in certain locations, and will reward you with fishing-related items such as bait or fish themselves, as well as some currencies.</p>
+  <p>There may even be a chance for you to receive an exotic bounty (hm... this sounds familiar), that will be more difficult, have several steps, but you will be severely rewarded for your efforts...</p>
+  <p>On top of bounties, there will most likely be quests, including the starting quest already mentioned. These will be given to continue to advance players through the fishing system, and introduce them to its more in-depth features!</p>
+
+  <div class="callout">
+    <p>"Whether you're a casual player looking for relaxation, a completionist aiming to collect every species, or a competitive player seeking to dominate events, the custom fishing system offers something for everyone."</p>
+  </div>
+
+  <p>Please keep in mind this is still super early in development - things said here WILL 100% change, there might be more added, etc. If you have any ideas yourself, please send them all over to our suggestions forum channel in the discord!</p>
+
+  <h2>New Staff Members</h2>
+  <p>Please welcome <strong>Fursia</strong> to the staff team as our artist, and <strong>Emi</strong> as our Composer and QA Tester. You'll have to wait to see their works - it's top secret!</p>
+
+  <div class="teaser-box">
+    <div class="teaser-box-label">Community</div>
+    <div class="teaser-box-title">Reminder: Build The Last City Project</div>
+    <p>We are running a community build project to construct The Last City within Minecraft. Join the discord to apply - build has already begun and goes until February 4th, however you still have until January 26th to apply and join!</p>
+  </div>
+
+</div>
+
+<div class="closing">
+  <div class="closing-note">
+    That's all for this update. As always, this project is a labour of love and every bit of support means the world. If you've got questions, thoughts, or just want to chat &mdash; find us on the socials below.
+    <div class="closing-sig">- CNT Darthgaming</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="socials-section">
+  <div class="socials-label">Find Us</div>
+  <div class="socials-title">Follow the Project</div>
+  <div class="socials-grid">
+    <a class="social-btn" href="https://discord.gg/Ah6Jt5KVPH">&#9671; Discord</a>
+    <a class="social-btn" href="https://youtube.com/@cntdarthgaming">&#9654; YouTube</a>
+    <a class="social-btn" href="https://bsky.app/profile/thedestinyplayground.bsky.social">&#9633; Bluesky</a>
+    <a class="social-btn" href="https://x.com/destinyplaygrnd">&#9632; Twitter</a>
+    <a class="social-btn" href="https://ko-fi.com/destinyplayground">&#9651; Ko-fi</a>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="back-section">
+  <a class="btn-back" href="/destiny-playground/news.html">&#8592; Back to News</a>
+</div>
+
+<div id="footer-placeholder"></div>
+<script src="/destiny-playground/js/shared.js"></script>
+</body>
+</html>

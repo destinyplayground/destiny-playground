@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Lost D2MC Story: Season of Dissonance - Destiny Playground</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/destiny-playground/css/styles.css">
+<link rel="stylesheet" href="/destiny-playground/css/article.css">
+<link rel="stylesheet" href="/destiny-playground/css/nav.css">
+<link rel="stylesheet" href="/destiny-playground/css/a11y-overrides.css">
+
+<style>
+/* - DISSONANCE CHARACTER CARDS - */
+.character-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5px; background: var(--border); margin: 2rem 0;
+}
+.character-card {
+  background: var(--dark); padding: 1.6rem 1.4rem;
+  position: relative; overflow: hidden;
+}
+.character-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 2px; background: var(--gold-dim);
+}
+.character-card.allied::before { background: var(--gold); }
+.character-card-faction {
+  font-size: 0.58rem; letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 0.5rem;
+}
+.character-card.allied .character-card-faction { color: var(--gold); }
+.character-card-name {
+  font-family: 'Cinzel', serif; font-size: 1rem; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--white); margin-bottom: 0.2rem;
+}
+.character-card-role {
+  font-size: 0.75rem; letter-spacing: 0.1em; color: var(--gold-dim);
+  margin-bottom: 0.9rem; font-style: italic;
+}
+.character-card-desc {
+  font-size: 0.85rem; line-height: 1.75; color: var(--body-text); font-weight: 300;
+}
+
+/* - CHRONOPASS TABLE - */
+.chronopass-table {
+  width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.82rem;
+}
+.chronopass-table th {
+  font-family: 'Cinzel', serif; font-size: 0.68rem; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--gold); padding: 0.7rem 1rem;
+  border-bottom: 0.5px solid var(--border); text-align: left; font-weight: 400;
+  background: rgba(201,168,76,0.04);
+}
+.chronopass-table td {
+  padding: 0.6rem 1rem; border-bottom: 0.5px solid rgba(201,168,76,0.06);
+  color: var(--body-text); font-weight: 300; vertical-align: top;
+}
+.chronopass-table tr:hover td { background: rgba(201,168,76,0.02); }
+.chronopass-table .page-label {
+  font-family: 'Cinzel', serif; font-size: 0.72rem; color: var(--gold-dim);
+  white-space: nowrap;
+}
+
+/* - CURRENCY GRID - */
+.currency-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5px; background: var(--border); margin: 1.5rem 0;
+}
+.currency-cell {
+  background: var(--dark); padding: 1.2rem 1rem;
+}
+.currency-rarity {
+  font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+.currency-rarity.uncommon { color: #4caf50; }
+.currency-rarity.rare     { color: #5b8dd9; }
+.currency-rarity.legendary { color: #9b59b6; }
+.currency-rarity.exotic   { color: var(--gold); }
+.currency-name {
+  font-family: 'Cinzel', serif; font-size: 0.9rem; color: var(--white);
+  margin-bottom: 0.5rem; letter-spacing: 0.04em;
+}
+.currency-source { font-size: 0.8rem; color: var(--body-text); font-weight: 300; line-height: 1.6; }
+
+/* - MISSION CARD - */
+.mission-card {
+  border: 0.5px solid var(--border); margin: 2rem 0; overflow: hidden;
+}
+.mission-card-header {
+  background: rgba(201,168,76,0.05); padding: 1.2rem 1.5rem;
+  border-bottom: 0.5px solid var(--border); display: flex; align-items: baseline; gap: 1rem;
+}
+.mission-card-num {
+  font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.25em;
+  text-transform: uppercase; color: var(--gold-dim);
+}
+.mission-card-title {
+  font-family: 'Cinzel', serif; font-size: 1rem; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--white);
+}
+.mission-card-body { padding: 1.4rem 1.5rem; }
+.mission-card-desc { font-size: 0.9rem; color: var(--body-text); line-height: 1.75; margin-bottom: 1rem; font-weight: 300; }
+.mission-steps { list-style: none; padding: 0; }
+.mission-steps li {
+  padding: 0.5rem 0 0.5rem 1.2rem; border-bottom: 0.5px solid rgba(201,168,76,0.06);
+  font-size: 0.85rem; color: var(--body-text); font-weight: 300; line-height: 1.6;
+  position: relative;
+}
+.mission-steps li:last-child { border-bottom: none; }
+.mission-steps li::before {
+  content: '◆'; position: absolute; left: 0; top: 0.55rem;
+  font-size: 0.35rem; color: var(--gold-dim);
+}
+.mission-steps li strong { color: var(--white); font-weight: 500; display: block; margin-bottom: 0.2rem; }
+.mission-card-rewards {
+  margin-top: 1rem; padding-top: 1rem; border-top: 0.5px solid var(--border);
+  font-size: 0.78rem; color: var(--gold-dim); letter-spacing: 0.08em;
+}
+</style>
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+<div style="height: 64px;"></div>
+
+<div class="banner">
+  <img class="banner-img" src="/destiny-playground/images/dev-update-banners/banner_2.png" alt="Banner">
+  <div class="banner-overlay"></div>
+  <div class="banner-tag">Behind the Scenes</div>
+</div>
+
+<div class="article-header">
+  <h1 class="article-title">The Lost D2MC Story: Season of Dissonance</h1>
+  <div class="article-meta">
+    <span class="meta-date">11 Jan, 2026</span>
+    <div class="meta-sep"></div>
+    <span class="meta-author">CNT Darthgaming</span>
+    <span class="meta-tag">Behind the Scenes</span>
+  </div>
+</div>
+
+<div class="article-body">
+
+  <p>Hello everyone! A little surprise drop right here.</p>
+  <p>For those of you that are fans of D2MC, you may know that I was running my own storyline over there, and many of you were fans of it. As I'm sure - just like me - you were disappointed to learn that the story would be stopping, and that I would not be continuing it here in favour of starting a fresh new and improved story. Well, today is your lucky day.</p>
+  <p>The following article is taken from the 11-page document that was made (by that point) to prepare to create the next D2MC story: <strong>Season of the Dissonance</strong>.</p>
+
+  <div class="dev-notice">
+    <div class="dev-notice-label">A Few Notes</div>
+    <p>At the end of this article there is also a video released at the very start of the season - a showcase of the UI menus made for it (redacted at the time, as I didn't know about the story then).</p>
+    <p>Those of you in the D2MC community may recognise the name Dissonance. Many easter eggs were already in place - the only one I recall is them starting to spell it out at the end of Vex Network guides.</p>
+    <p>Not mentioned in this, there were plans for old D2MC events to be remade and come back here (I was 2/3 of the way done with a complete overhaul of the Convergence event). Maybe if the hype is there post-launch, we'll re-remaster it for DP?</p>
+    <p>Additionally, the space for most of the entire first mission had already been made, including changing the entire Firebase Hades for this mission, with plans to further revamp it following the season. Let me know if you want screenshots and I will find them!</p>
+    <p><em>Below is the document, copied 1-to-1, just reformatted to fit in this article.</em></p>
+  </div>
+
+  <div class="callout">
+    <p>"A year has passed since Ehkazier, Disciple of the Witness, fell. But his influence lingers. House Lost, once scattered and leaderless, now rallies under a hidden Kell - one whose name is spoken only in code."</p>
+  </div>
+
+  <h2>Main Plot</h2>
+  <p>A year has passed since Ehkazier, Disciple of the Witness, fell. But his influence lingers. House Lost, once scattered and leaderless, now rallies under a hidden Kell - one whose name is spoken only in code. With Demiks at their side, they have recovered the Stabilization Reports: Ehkazier's forbidden blueprints for a timeline where the Witness triumphed, the Traveler is gone, and the Eliksni thrive in eternal darkness.</p>
+  <p>You return to a fractured system. Mithrax, along with unexpected allies, races to stop House Lost before the Reports can be activated. The risk? A rewritten reality echoing the horrors Ehkazier once vowed to bring. Time is splintering. Will you restore the path of light - or be dragged into a future that was never meant to be?</p>
+
+  <h2>Major Players</h2>
+
+  <div class="character-grid">
+    <div class="character-card">
+      <div class="character-card-faction">Antagonist &mdash; House Lost</div>
+      <div class="character-card-name">The Hidden Kell</div>
+      <div class="character-card-role">???</div>
+      <div class="character-card-desc">"Their name is spoken only in code." A secretive leader pulling the strings behind House Lost's rise. Nothing is known of their identity or origin, but their goal is clear: uniting the dark Eliksni Houses and resurrecting a future where the Witness never fell.</div>
+    </div>
+    <div class="character-card">
+      <div class="character-card-faction">Antagonist &mdash; House Lost</div>
+      <div class="character-card-name">Demiks</div>
+      <div class="character-card-role">Baron of House Lost</div>
+      <div class="character-card-desc">Cold, precise, and always ten steps ahead. Demiks leads the operations to recover the Stabilisation Reports. While they serve the Kell, some whisper that Demiks has plans of their own...</div>
+    </div>
+    <div class="character-card">
+      <div class="character-card-faction">Antagonist &mdash; Deceased?</div>
+      <div class="character-card-name">Ehkazier</div>
+      <div class="character-card-role">Disciple of the Witness</div>
+      <div class="character-card-desc">Defeated a year ago, but his shadow still looms. His forbidden Stabilisation Reports - tools for rewriting time - have resurfaced. Echoes of his vision remain. Some things don't stay dead...</div>
+    </div>
+    <div class="character-card allied">
+      <div class="character-card-faction">Allied &mdash; House Light</div>
+      <div class="character-card-name">Mithrax</div>
+      <div class="character-card-role">Kell of Light</div>
+      <div class="character-card-desc">Leader of House Light, and a long-standing ally to the Guardians. Mithrax returns to help resist House Lost's growing power, desperate to protect Eliksni legacy from being twisted by the shadows of the past.</div>
+    </div>
+    <div class="character-card allied">
+      <div class="character-card-faction">Allied &mdash; Guardian</div>
+      <div class="character-card-name">The Guardian</div>
+      <div class="character-card-role">You</div>
+      <div class="character-card-desc">After nearly a year away, you return to a fractured system - called back into action to stop a future that should never exist. Your choices, and your alliances, may shape time itself.</div>
+    </div>
+    <div class="character-card allied">
+      <div class="character-card-faction">Allied &mdash; Status: Unknown</div>
+      <div class="character-card-name">[Redacted Ally]</div>
+      <div class="character-card-role">Later revealed as Axtrazia</div>
+      <div class="character-card-desc">Strange anomalies ripple across the system. Someone - or something - long forgotten is waking. The first mission may reveal more...</div>
+    </div>
+  </div>
+
+  <h2>The Chronopass</h2>
+  <p>The Chronopass served as the season's progression track, unlocking across ten pages tied to mission completion.</p>
+
+  <table class="chronopass-table">
+    <thead>
+      <tr><th>Page</th><th>Rewards (left to right)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="page-label">Page 1</td><td>Seasonal Exotic (Common) · Seasonal Helmet · Memory Key · Common Currency ×16 · Memory Key · Uncommon Currency ×8 · Dissonance Lore Book I</td></tr>
+      <tr><td class="page-label">Page 2</td><td>Seasonal Exotic (Uncommon) · Rare Currency ×4 · Memory Key · Legendary Currency ×2 · Legendary Seasonal Weapon I · Exotic Currency ×1 · Ehkazier Lore Book I</td></tr>
+      <tr><td class="page-label">Page 3</td><td>Fracture Key · Skeleton Key · Random World Legendary · Silver Coin · Quantised Datalattice ×6 · Random Vanguard Rewards Cache · Dissonance Lore Book II</td></tr>
+      <tr><td class="page-label">Page 4</td><td>Seasonal Exotic (Rare) · Seasonal Chestplate · Seasonal Tag I Progress Unlock · Memory Key · Random Seasonal Rewards Cache · Memory Key · Ehkazier Lore Book II</td></tr>
+      <tr><td class="page-label">Page 5</td><td>Seasonal Exotic (Legendary) · Old Waterlogged Tome · Random Seasonal Rewards Cache · Fracture Key · Random World Materials Cache · Exotic Shard · Dissonance Lore Book III</td></tr>
+      <tr><td class="page-label">Page 6</td><td>Memory Key · Seasonal Leggings · 100 LCM Customer Points · Random World Materials Cache · Seasonal Weapon II · Low-Finned Skrunklyfish · Ehkazier Lore Book III</td></tr>
+      <tr><td class="page-label">Page 7</td><td>Seasonal Exotic (Exotic) · Random Seasonal Armour · Fracture Key · Random Vanguard Weapon · Memory Key · Exotic Shard ×2 · Dissonance Lore Book IV</td></tr>
+      <tr><td class="page-label">Page 8</td><td>Memory Key · Seasonal Boots · Silver Coin · Legendary Shards ×8 · Random Seasonal Rewards Cache · Random Crucible Weapon · Ehkazier Lore Book IV</td></tr>
+      <tr><td class="page-label">Page 9</td><td>Random Seasonal Weapon · Memory Key · Random Vanguard Weapon · Legendary Shards ×16 · Seasonal Weapon III · Skeleton Key · Dissonance Lore Book V</td></tr>
+      <tr><td class="page-label">Page 10</td><td>Memory Key · Seasonal Tag 2 Progress Unlock · Fracture Key · Legendary Recipe · Ehkazier Lore Book V · Shiny Seasonal Exotic · Ehkazier Lore Book VI</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Seasonal Currencies</h2>
+
+  <div class="currency-grid">
+    <div class="currency-cell">
+      <div class="currency-rarity uncommon">Uncommon</div>
+      <div class="currency-name">Glint Shards</div>
+      <div class="currency-source">Commonly drops from Fallen killed within Dissonance activities and missions.</div>
+    </div>
+    <div class="currency-cell">
+      <div class="currency-rarity rare">Rare</div>
+      <div class="currency-name">Spliced Components</div>
+      <div class="currency-source">Drops from bosses killed within Dissonance activities and missions.</div>
+    </div>
+    <div class="currency-cell">
+      <div class="currency-rarity legendary">Legendary</div>
+      <div class="currency-name">Kellglass Fragments</div>
+      <div class="currency-source">Drops from Dissonance public event completions.</div>
+    </div>
+    <div class="currency-cell">
+      <div class="currency-rarity legendary">Legendary</div>
+      <div class="currency-name">Sable Cores</div>
+      <div class="currency-source">Drops from Dissonance activity completions.</div>
+    </div>
+    <div class="currency-cell">
+      <div class="currency-rarity exotic">Exotic</div>
+      <div class="currency-name">Stellar Myriad</div>
+      <div class="currency-source">Drops from Dissonance mission completions.</div>
+    </div>
+  </div>
+
+  <h2>Missions</h2>
+
+  <div class="mission-card">
+    <div class="mission-card-header">
+      <div class="mission-card-num">Mission I</div>
+      <div class="mission-card-title">Distortion</div>
+    </div>
+    <div class="mission-card-body">
+      <p class="mission-card-desc">An Eliksni warband from House Lost has launched a full-scale assault on Firebase Hades. The Cabal are scrambling, reports of temporal anomalies are spreading, and something deep beneath the EDZ is beginning to stir. Join Mithrax in investigating the conflict before it escalates any further.</p>
+      <ul class="mission-steps">
+        <li>
+          <strong>Intro - "Investigate Firebase Hades"</strong>
+          Player loads into a heavily reworked Firebase Hades. Fires rage, Cabal vs. Eliksni warfare all around. Dialogue plays (Ghost + Mithrax). Players fight through Cabal chaos to get past the new wall.
+        </li>
+        <li>
+          <strong>"Clear the Warzone"</strong>
+          Encounter both Cabal and House Lost Eliksni. First encounter with House Lost Baron - fight 1/3 of his health before retreat. Regular way into Firebase Hades has collapsed; must go through the overhauled "Overtaken Enclave" Lost Sector toward The Winding Cove.
+        </li>
+        <li>
+          <strong>"Push Toward the Collapse Site"</strong>
+          Scenery shifts drastically - chunks are glitched into a temporal state. Anomaly effects kick in: slowed movement, Ghost's voice distorts briefly.
+        </li>
+        <li>
+          <strong>"Scan the Temporal Distortion"</strong>
+          Ghost scans a glowing tear near the rubble. Brief flashback: ghostly silhouettes of Cabal and Eliksni fighting in reverse. Players fight through more enemies on the path to the Winding Cove.
+        </li>
+        <li>
+          <strong>"Pursue the Source into Winding Cove"</strong>
+          Players arrive in the Winding Cove - Eliksni skiffs drop in more enemies. Midway through, Ghost detects life signatures inside a sealed cave.
+        </li>
+        <li>
+          <strong>"Secure the Den" - Boss Encounter</strong>
+          Reach Axtrazia's Den (newly accessible area from Winding Cove). Several waves of House Lost Eliksni, ending with the final fight with the House Lost Baron. The door blasts open - reveal: Axtrazia, alive, cloaked in temporal distortion.
+        </li>
+      </ul>
+      <div class="mission-card-rewards">Rewards: Unlocks Chronopass Pages 1-6 &bull; Drops Personal Quest I</div>
+    </div>
+  </div>
+
+  <div class="mission-card">
+    <div class="mission-card-header">
+      <div class="mission-card-num">Mission II</div>
+      <div class="mission-card-title">Cold Reclaim</div>
+    </div>
+    <div class="mission-card-body">
+      <p class="mission-card-desc">After a lead from a defector points to a missing report on Europa, Guardians travel to the icy moon to find it. But Salvation's forces - now under the command of a ruthless Archon - are one step ahead.</p>
+      <ul class="mission-steps">
+        <li>
+          <strong>Intro - "Meet with The Defector"</strong>
+          Player meets with The Defector. Mid-conversation, they are ambushed by the Archon Priest of House Salvation, who confirms the report's existence before fleeing. Hints that Salvation is exploiting House Lost's chaos for their own gain.
+        </li>
+        <li>
+          <strong>"Pursue House Salvation"</strong>
+          Skirmishes across Europa featuring House Salvation, House Dusk, and House Lost patrols along the way.
+        </li>
+        <li>
+          <strong>"Pursue The Archon Priest through the structure"</strong>
+          Player fights through the structure until arriving at the Archon Priest's location.
+        </li>
+        <li>
+          <strong>"Defeat the lieutenants of Houses Dusk and Lost"</strong>
+          The Archon vanishes - player fights a House Dusk and House Lost lieutenant, simultaneously or one-by-one.
+        </li>
+        <li>
+          <strong>"Defeat Aksor, Archon Priest of House Salvation"</strong>
+          Player battles the Archon Priest at the site where Eramis was defeated in D2, before the Archon flees to their Ketch with the report.
+        </li>
+        <li>
+          <strong>"Sabotage The Ketch's Engines"</strong>
+          Player follows onto the Ketch, fighting through 4 rooms to disable 3 engines via terminals.
+        </li>
+        <li>
+          <strong>"Defeat Aksor - Final Encounter"</strong>
+          Final fight with enhanced attacks. Lights flickering. Report recovered.
+        </li>
+        <li>
+          <strong>"Retrieve The Report"</strong>
+          Dialogue reveals the Archon had partial insight into Ehkazier's timeline manipulation, thinking it could benefit House Salvation. Ikora and/or Mithrax remarks on how close the enemy is to weaponising the missing reports.
+        </li>
+      </ul>
+      <div class="mission-card-rewards">Rewards: Unlocks Chronopass Pages 19-24 &bull; Drops Personal Quest II</div>
+    </div>
+  </div>
+
+  <p>As mentioned at the start, this story will sadly never come to fruition - but that is not to say that elements of it, and what it stood for in terms of goals and ideas for the player experience, won't make their way into TDP. I really look forward to putting together a well-thought-out experience that you can tell has truly been cared for.</p>
+
+  <div class="video-embed">
+    <div class="video-wrapper">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/ZiQqFsrvj3A?si=Fa8hdwS_MoeSNScV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    <div class="video-caption">Season of Dissonance - WIP UI Showcase (heavily redacted at the time)</div>
+  </div>
+
+</div>
+
+<div class="closing">
+  <div class="closing-note">
+    That's all for this one. A true relic of what could have been - and a glimpse at what's still to come.
+    <div class="closing-sig">- CNT Darthgaming</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="socials-section">
+  <div class="socials-label">Find Us</div>
+  <div class="socials-title">Follow the Project</div>
+  <div class="socials-grid">
+    <a class="social-btn" href="https://discord.gg/Ah6Jt5KVPH">&#9671; Discord</a>
+    <a class="social-btn" href="https://youtube.com/@cntdarthgaming">&#9654; YouTube</a>
+    <a class="social-btn" href="https://bsky.app/profile/thedestinyplayground.bsky.social">&#9633; Bluesky</a>
+    <a class="social-btn" href="https://x.com/destinyplaygrnd">&#9632; Twitter</a>
+    <a class="social-btn" href="https://ko-fi.com/destinyplayground">&#9651; Ko-fi</a>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="back-section">
+  <a class="btn-back" href="/destiny-playground/news.html">&#8592; Back to News</a>
+</div>
+
+<div id="footer-placeholder"></div>
+<script src="/destiny-playground/js/shared.js"></script>
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weapon Systems Update - Dev Update - Destiny Playground</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/destiny-playground/css/styles.css">
+<link rel="stylesheet" href="/destiny-playground/css/article.css">
+<link rel="stylesheet" href="/destiny-playground/css/nav.css">
+<link rel="stylesheet" href="/destiny-playground/css/a11y-overrides.css">
+
+<style>
+/* - POWER LEVEL TABLE - */
+.pl-table-wrap {
+  margin: 1.5rem 0 2rem;
+  border: 0.5px solid rgba(201,168,76,0.12);
+  background: rgba(201,168,76,0.01);
+  overflow-x: auto;
+}
+.pl-table {
+  width: 100%; border-collapse: collapse;
+  font-family: 'Rajdhani', sans-serif;
+}
+.pl-table th {
+  font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--gold); font-weight: 600;
+  padding: 0.8rem 1.2rem; text-align: left;
+  border-bottom: 0.5px solid rgba(201,168,76,0.15);
+  background: rgba(201,168,76,0.04);
+}
+.pl-table td {
+  font-size: 0.88rem; color: var(--body-text); font-weight: 300;
+  padding: 0.75rem 1.2rem; letter-spacing: 0.03em;
+  border-bottom: 0.5px solid rgba(201,168,76,0.06);
+}
+.pl-table tr:last-child td { border-bottom: none; }
+.pl-table tr:hover td { background: rgba(201,168,76,0.025); }
+.pl-table td:first-child { color: var(--muted); font-size: 0.78rem; text-align: center; }
+.pl-table td.highlight { color: var(--white); font-weight: 500; }
+
+/* - WEAPON EXAMPLE BOX - */
+.weapon-example {
+  display: inline-flex; align-items: center; gap: 1rem;
+  padding: 0.6rem 1.2rem;
+  border: 0.5px solid rgba(201,168,76,0.2);
+  background: rgba(201,168,76,0.03);
+  margin: 0.5rem 0 1.5rem;
+  font-family: 'Rajdhani', sans-serif;
+}
+.weapon-example-name { font-size: 0.88rem; font-weight: 600; letter-spacing: 0.08em; color: var(--white); }
+.weapon-example-sep { width: 1px; height: 16px; background: var(--border); }
+.weapon-example-label { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+.weapon-example-range { font-size: 0.88rem; font-weight: 600; color: var(--gold); letter-spacing: 0.05em; }
+</style>
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+<div style="height: 64px;"></div>
+
+<div class="banner">
+  <img class="banner-img" src="/destiny-playground/images/dev-update-banners/banner_15.png" alt="Banner">
+  <div class="banner-overlay"></div>
+  <div class="banner-tag">Dev Update</div>
+</div>
+
+<div class="article-header">
+  <h1 class="article-title">Weapon Systems Update</h1>
+  <div class="article-meta">
+    <span class="meta-date">13 May, 2026</span>
+    <div class="meta-sep"></div>
+    <span class="meta-author">CNT Darthgaming</span>
+    <span class="meta-tag">Dev Update</span>
+  </div>
+</div>
+
+<div class="article-body">
+
+  <div class="dev-notice">
+    <div class="dev-notice-label">Developer Note</div>
+    <p>The purpose of these dev updates is to share systems currently in development and to give insight into the early stages of design as the project evolves. What you're seeing right now are the foundations and skeletons of systems, nowhere near their final versions.</p>
+    <p>Things like names, values, stats, and organisation are often placeholders or early iterations. My current focus is building the core structure and functionality of systems first. Refinement, balancing, and polish come later in development.</p>
+    <p>Because of this, please keep in mind that everything shown in dev updates is subject to change. Feedback and suggestions are always welcome, but constructive feedback with reasoning is far more helpful than simple reactions. It's also worth remembering that seeing a system from the outside doesn't always show the full context of how it connects with other systems or the wider project.</p>
+  </div>
+
+  <p>This week's dev update is a smaller one, but an exciting one - the weapon system is changing again.</p>
+
+  <p>I know weapons have gone through several iterations at this point, but that's a natural part of development. I'd far rather make these changes now than after launch, where adjustments like these could make existing gear feel redundant or force unnecessary reworks down the line.</p>
+
+  <h2>Random Roll Perks</h2>
+
+  <p>One of the biggest changes is that weapons will now use a true <strong>random roll system</strong> for perks.</p>
+
+  <p>Rather than fixed perk sets, weapons can now roll with different perk combinations each time they drop, giving far more variety and replayability when chasing gear. It also makes future expansion significantly easier - post-launch we may be able to introduce new perks into existing weapon pools and naturally refresh older loot without any major overhauls.</p>
+
+  <h2>Power Level Ranges</h2>
+
+  <p>Alongside this, <strong>Weapon Level</strong> has been renamed to <strong>Power Level</strong> and reworked entirely. Rather than static levels, weapons now have a Power Level Range assigned to them.</p>
+
+  <p>For example:</p>
+
+  <div class="weapon-example">
+    <span class="weapon-example-name">Halfdan-D</span>
+    <span class="weapon-example-sep"></span>
+    <span class="weapon-example-label">Power Level Range</span>
+    <span class="weapon-example-range">30 - 50</span>
+  </div>
+
+  <p>When a weapon drops, its Power Level is determined by your current Player Power Level, with the following rules:</p>
+
+  <ul>
+    <li>If your Power Level is <strong>below</strong> the weapon's minimum range, it clamps to the lower edge with a small variance.</li>
+    <li>If your Power Level is <strong>above</strong> the weapon's maximum range, it clamps to the upper edge with a small variance.</li>
+    <li>If your Power Level is <strong>within</strong> the range, the weapon rolls within a small variance around your current level.</li>
+  </ul>
+
+  <h3>Examples</h3>
+
+  <div class="pl-table-wrap">
+    <table class="pl-table">
+      <thead>
+        <tr>
+          <th>Scenario</th>
+          <th>Player Power Level</th>
+          <th>Weapon Drop</th>
+          <th>Reason</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td class="highlight">20</td>
+          <td class="highlight">30 - 33</td>
+          <td>Below minimum range</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td class="highlight">75</td>
+          <td class="highlight">47 - 50</td>
+          <td>Above maximum range</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td class="highlight">40</td>
+          <td class="highlight">37 - 43</td>
+          <td>Within range</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>The range itself varies between weapons, and the variance (&plusmn;3 in the examples above) can also differ depending on the weapon and its intended progression space.</p>
+
+  <div class="callout">
+    <p>"This makes weapons feel far more dynamic, relevant, and diverse throughout progression, while making loot drops more rewarding and meaningful overall."</p>
+  </div>
+
+  <p>Work is still ongoing on this iteration, and if further changes happen, we'll keep sharing them here. As always, everything shown in dev updates is still in development and subject to change.</p>
+
+  <h2>New Website - Launching May 22nd</h2>
+
+  <p>The new official Destiny Playground website is launching on <strong>May 22nd</strong>. Built from the ground up, the new site gives the project far more flexibility, better organisation, and much more room to grow - including properly structured dev updates, lore, project information, guides, and future content.</p>
+
+  <h3>Transition Timeline</h3>
+  <ul>
+    <li>The current website remains available until <strong>June 17th</strong></li>
+    <li>The new site launches <strong>May 22nd</strong></li>
+    <li>All legacy dev updates and important project information will be fully migrated before the old site closes - nothing will be lost</li>
+    <li>From May 22nd, all new dev updates will be posted on the new site only</li>
+  </ul>
+
+  <h3>What's on the New Site</h3>
+  <p>The new site isn't just a visual upgrade - it's been built as a proper home for the project. Here's a full rundown of everything it includes.</p>
+
+  <ul>
+    <li><strong>Home Page</strong> - Rebuilt from scratch, with a live news feed, trailer embed, gallery preview, and live dev roadmap all in one place.</li>
+    <li><strong>News and Dev Updates</strong> - A full news page with featured layout, complete archive, and built-in search, tag filtering, and sort options. Each article has far more formatting flexibility.</li>
+    <li><strong>Lore Archive</strong> - The definitive home for everything story-related. Still early, but the goal is something similar to the Destiny 1 Grimoire - a growing, comprehensive world reference.</li>
+    <li><strong>Destinations</strong> - A dedicated page covering every location in the game, what each offers, and what makes them unique.</li>
+    <li><strong>Seasons</strong> - A record of every season and the project's content history, growing with every update post-launch.</li>
+    <li><strong>Getting Started</strong> - A guide for new players: how to join, what to expect, and everything you need to hit the ground running.</li>
+    <li><strong>Quick Server Info</strong> - Connection details, basic rules, and essential info at a glance.</li>
+    <li><strong>Bug Reports</strong> - Guidance on reporting issues properly, with a direct redirect to the Discord bug reports channel.</li>
+    <li><strong>Gallery</strong> - Screenshots, concept art, and visual content from across the project's development, updated as it grows.</li>
+    <li><strong>About, Team and Credits, FAQ, Roadmap, Modpacks, and Community</strong> - All the supporting pages the project deserves, properly built out.</li>
+    <li><strong>Accessibility</strong> - A range of built-in accessibility features throughout the site.</li>
+  </ul>
+
+</div>
+
+<div class="closing">
+  <div class="closing-note">
+    That's all for this update. As always, this project is a labour of love and every bit of support means the world. If you've got questions, thoughts, or just want to chat - find us on the socials below.
+    <div class="closing-sig">- CNT Darthgaming</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="socials-section">
+  <div class="socials-label">Find Us</div>
+  <div class="socials-title">Follow the Project</div>
+  <div class="socials-grid">
+    <a class="social-btn" href="https://discord.gg/Ah6Jt5KVPH">&#9671; Discord</a>
+    <a class="social-btn" href="https://youtube.com/@cntdarthgaming">&#9654; YouTube</a>
+    <a class="social-btn" href="https://bsky.app/profile/thedestinyplayground.bsky.social">&#9633; Bluesky</a>
+    <a class="social-btn" href="https://x.com/destinyplaygrnd">&#9632; Twitter</a>
+    <a class="social-btn" href="https://ko-fi.com/destinyplayground">&#9651; Ko-fi</a>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="back-section">
+  <a class="btn-back" href="/destiny-playground/news.html">&#8592; Back to News</a>
+</div>
+
+<div id="footer-placeholder"></div>
+<script src="/destiny-playground/js/shared.js"></script>
+</body>
+</html>

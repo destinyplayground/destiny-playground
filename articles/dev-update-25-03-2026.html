@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abilities and Subclasses - Dev Update - Destiny Playground</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/destiny-playground/css/styles.css">
+<link rel="stylesheet" href="/destiny-playground/css/article.css">
+<link rel="stylesheet" href="/destiny-playground/css/nav.css">
+<link rel="stylesheet" href="/destiny-playground/css/a11y-overrides.css">
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+<div style="height: 64px;"></div>
+
+<div class="banner">
+  <img class="banner-img" src="/destiny-playground/images/dev-update-banners/banner_12.png" alt="Banner">
+  <div class="banner-overlay"></div>
+  <div class="banner-tag">Dev Update</div>
+</div>
+
+<div class="article-header">
+  <h1 class="article-title">Abilities and Subclasses - Using, Unlocking and Upgrading</h1>
+  <div class="article-meta">
+    <span class="meta-date">25 Mar, 2026</span>
+    <div class="meta-sep"></div>
+    <span class="meta-author">CNT Darthgaming</span>
+    <span class="meta-tag">Dev Update</span>
+  </div>
+</div>
+
+<div class="article-body">
+
+  <div class="dev-notice">
+    <div class="dev-notice-label">Developer Note</div>
+    <p>The purpose of these dev updates is to share systems currently in development and to give insight into the early stages of design as the project evolves. What you're seeing right now are the foundations and skeletons of systems, nowhere near their final versions.</p>
+    <p>Things like names, values, stats, and organisation are often placeholders or early iterations. My current focus is building the core structure and functionality of systems first. Refinement, balancing, and polish come later in development.</p>
+    <p>Because of this, please keep in mind that everything shown in dev updates is subject to change. Feedback and suggestions are always welcome, but constructive feedback with reasoning is far more helpful than simple reactions. It's also worth remembering that seeing a system from the outside doesn't always show the full context of how it connects with other systems or the wider project.</p>
+  </div>
+
+  <p>This week's dev update is focused on the Ability System, including subclasses, ability selection, and unlocking. This system is currently in the design phase, so there's no UI to show just yet - this update is focused on explaining the direction and core structure behind it.</p>
+
+  <div class="survey-box">
+    <div class="survey-box-label">Community Initiative</div>
+    <div class="survey-box-title">Community Survey - Now Live</div>
+    <p>The first Destiny Playground community survey is live! This is the first survey of our community-driven development initiative to help shape the future of the project. It takes on average 15 minutes, is completely anonymous, and includes context throughout - so even if you're not deeply familiar with Destiny-style systems, you can still meaningfully contribute.</p>
+    <a class="survey-btn" href="https://forms.office.com/r/gJdn0F1EZp" target="_blank">Take the Survey &#8594;</a>
+  </div>
+
+  <h2>Ability Structure</h2>
+  <p>Each subclass provides access to four core abilities. These can be used at any time via key binds and do not take up inventory slots.</p>
+  <ul>
+    <li>Grenade</li>
+    <li>Melee</li>
+    <li>Class Ability</li>
+    <li>Super</li>
+  </ul>
+  <p>Each class and subclass will have a selection of abilities to choose from:</p>
+  <ul>
+    <li>3 Grenades</li>
+    <li>2 Melees</li>
+    <li>2 Class Abilities</li>
+    <li>2 Supers</li>
+  </ul>
+  <p>Abilities can be freely swapped through a menu, allowing players to adjust their build at any time.</p>
+
+  <h2>Subclasses</h2>
+  <p>At launch, each class will have access to the 3 Light subclasses. Dark subclasses are not planned for launch.</p>
+  <p>Aspects and Fragments have been considered, but will not be included at launch. This may be revisited post-launch depending on how it fits. The goal is to keep subclasses clear, impactful, and easy to build around - without overcomplicating the system early on.</p>
+
+  <h2>Unlocking Subclasses and Abilities</h2>
+  <p>When starting out, players will unlock their first subclass early on at a basic level, with a limited set of abilities. Progression is structured as follows:</p>
+  <ul>
+    <li>First subclass unlocked early in the campaign</li>
+    <li>Second subclass unlocked later in the campaign</li>
+    <li>Third subclass unlocked post-campaign</li>
+    <li>Each subclass also has its own dedicated upgrade quest, which unlocks the remaining abilities for that subclass</li>
+  </ul>
+  <p>Rather than unlocking abilities individually in any order, this system is designed to be more structured and streamlined.</p>
+
+  <h2>Ability Progression - Rarity System</h2>
+  <p>Abilities will have their own rarity tiers, similar to gear progression. Each subclass starts at Common and can be upgraded through repeatable activities, quests, or tasks.</p>
+  <div class="rarity-track">
+    <span class="rarity-step common">Common</span>
+    <span class="rarity-arrow">&#8594;</span>
+    <span class="rarity-step uncommon">Uncommon</span>
+    <span class="rarity-arrow">&#8594;</span>
+    <span class="rarity-step rare">Rare</span>
+    <span class="rarity-arrow">&#8594;</span>
+    <span class="rarity-step legendary">Legendary</span>
+    <span class="rarity-arrow">&#8594;</span>
+    <span class="rarity-step exotic">Exotic</span>
+  </div>
+  <p>Upgrading a subclass increases the effectiveness of its abilities, including things like damage, effects, and cooldown. This ensures abilities scale alongside the player's progression, rather than remaining static or falling out of balance.</p>
+
+  <h2>Ability Selection</h2>
+  <p>Abilities are managed through the Character Menu. From here, players can:</p>
+  <ul>
+    <li>Equip a subclass</li>
+    <li>Inspect that subclass</li>
+    <li>Swap abilities</li>
+    <li>View ability details and rarities</li>
+  </ul>
+  <p>This system is designed to make build crafting accessible and flexible, while still allowing depth.</p>
+
+  <h2>Current State and Future Updates</h2>
+  <p>This system is still in development, and while the core direction is mostly set, details may still change as it moves into implementation. Once UI development begins, future updates will include menu designs, ability showcases, and subclass breakdowns.</p>
+
+  <div class="callout">
+    <p>We are currently aiming to share UI and ability showcases around May, if development timelines allow. Concept work will be shared on our Ko-fi before then.</p>
+  </div>
+
+  <div class="hiatus-box">
+    <div class="hiatus-box-label">&#9670; Development Update Schedule</div>
+    <p>Due to upcoming exams and assignments, development updates will be paused from early March to end of April. Development time will be extremely limited during this period - dev updates will be on hiatus, progress will be minimal, and response times may be slower. The server will remain online and the staff team will still have access to continue work. After this period I will resume work, alongside a short break before fully returning. Thank you for your patience and continued support - it genuinely means a lot.</p>
+  </div>
+
+  <div class="article-image">
+    <img src="/destiny-playground/images/dev-update-roadmap-2.png" alt="Developer Update Roadmap">
+    <div class="image-caption">Developer Update Roadmap</div>
+  </div>
+
+  <div class="teaser-box">
+    <div class="teaser-box-label">Coming Soon</div>
+    <div class="teaser-box-title">Planet 3 Reveal - Next Week</div>
+    <p>Congrats to those that have found the teaser we planted 2 weeks ago! If you haven't found it yet... guess you gotta look harder. We'll have further teasers very soon - but we'd love to hear what you think Planet 3 will be before we do!</p>
+  </div>
+
+</div>
+
+<div class="closing">
+  <div class="closing-note">
+    That's all for this update. As always, this project is a labour of love and every bit of support means the world. If you've got questions, thoughts, or just want to chat - find us on the socials below.
+    <div class="closing-sig">- CNT Darthgaming</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="socials-section">
+  <div class="socials-label">Find Us</div>
+  <div class="socials-title">Follow the Project</div>
+  <div class="socials-grid">
+    <a class="social-btn" href="https://discord.gg/Ah6Jt5KVPH">&#9671; Discord</a>
+    <a class="social-btn" href="https://youtube.com/@cntdarthgaming">&#9654; YouTube</a>
+    <a class="social-btn" href="https://bsky.app/profile/thedestinyplayground.bsky.social">&#9633; Bluesky</a>
+    <a class="social-btn" href="https://x.com/destinyplaygrnd">&#9632; Twitter</a>
+    <a class="social-btn" href="https://ko-fi.com/destinyplayground">&#9651; Ko-fi</a>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="back-section">
+  <a class="btn-back" href="/destiny-playground/news.html">&#8592; Back to News</a>
+</div>
+
+<div id="footer-placeholder"></div>
+<script src="/destiny-playground/js/shared.js"></script>
+</body>
+</html>
