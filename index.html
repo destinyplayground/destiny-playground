@@ -164,10 +164,113 @@
     font-size: 0.5rem;
     color: rgba(201,168,76,0.25);
   }
+  /* ── HOME GALLERY GRID ── */
+  .home-gal-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 220px 220px;
+    gap: 1.5px;
+    background: rgba(201,168,76,0.08);
+  }
+  .home-gal-item:first-child {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+  .home-gal-item {
+    position: relative; overflow: hidden; cursor: pointer;
+    background: rgba(201,168,76,0.02);
+  }
+  .home-gal-inner {
+    position: absolute; inset: 0;
+  }
+  .home-gal-inner img {
+    width: 100%; height: 100%; object-fit: cover;
+    opacity: 0.85; transition: opacity 0.35s, transform 0.5s; display: block;
+  }
+  .home-gal-item:hover .home-gal-inner img { opacity: 1; transform: scale(1.04); }
+  .home-gal-overlay {
+    position: absolute; inset: 0;
+    background: rgba(9,8,6,0.55);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 0.5rem; opacity: 0; transition: opacity 0.22s;
+  }
+  .home-gal-item:hover .home-gal-overlay { opacity: 1; }
+  .home-gal-overlay-icon { font-size: 1.3rem; color: rgba(201,168,76,0.6); }
+  .home-gal-overlay-label {
+    font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold, #c9a84c);
+  }
+  /* corner accents */
+  .home-gal-item::before, .home-gal-item::after {
+    content: ''; position: absolute; width: 12px; height: 12px;
+    border-color: var(--gold, #c9a84c); border-style: solid;
+    opacity: 0; transition: opacity 0.22s; z-index: 2; pointer-events: none;
+  }
+  .home-gal-item::before { top: 8px; left: 8px; border-width: 1px 0 0 1px; }
+  .home-gal-item::after  { top: 8px; right: 8px; border-width: 1px 1px 0 0; }
+  .home-gal-item:hover::before, .home-gal-item:hover::after { opacity: 1; }
+
+  /* ── HOME GALLERY LIGHTBOX ── */
+  .home-gal-lightbox {
+    position: fixed; inset: 0; z-index: 2000;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none; transition: opacity 0.25s;
+  }
+  .home-gal-lightbox.open { opacity: 1; pointer-events: all; }
+  body.home-gal-lb-open { overflow: hidden; }
+  .home-gal-backdrop {
+    position: absolute; inset: 0;
+    background: rgba(7,6,9,0.92);
+    backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+    cursor: pointer;
+  }
+  .home-gal-lb-frame {
+    position: relative; z-index: 1;
+    display: flex; flex-direction: column;
+    max-width: min(1100px, 92vw); width: 100%;
+    transform: translateY(12px); transition: transform 0.3s ease;
+  }
+  .home-gal-lightbox.open .home-gal-lb-frame { transform: translateY(0); }
+  .home-gal-lb-imgwrap {
+    position: relative;
+    background: rgba(12,10,7,0.8);
+    border: 0.5px solid rgba(201,168,76,0.15);
+    min-height: 300px; max-height: 72vh;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden; opacity: 0; transition: opacity 0.3s 0.05s;
+  }
+  .home-gal-lb-imgwrap.loaded { opacity: 1; }
+  .home-gal-lb-imgwrap img { max-width: 100%; max-height: 72vh; object-fit: contain; display: block; }
+  .home-gal-lb-meta {
+    display: flex; align-items: center; gap: 1.5rem;
+    padding: 0.9rem 1.2rem;
+    background: rgba(10,9,6,0.9);
+    border: 0.5px solid rgba(201,168,76,0.1); border-top: none;
+  }
+  .home-gal-lb-caption {
+    font-family: 'Cinzel', serif; font-size: 0.88rem; font-weight: 700;
+    letter-spacing: 0.06em; text-transform: uppercase; color: var(--white, #e8e0d0); flex: 1;
+  }
+  .home-gal-lb-counter {
+    font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: rgba(201,168,76,0.4); white-space: nowrap;
+  }
+  .home-gal-lb-close, .home-gal-lb-prev, .home-gal-lb-next {
+    position: fixed; background: none;
+    border: 0.5px solid rgba(201,168,76,0.18); cursor: pointer;
+    color: rgba(180,160,120,0.7); transition: all 0.18s;
+    display: flex; align-items: center; justify-content: center; z-index: 2;
+  }
+  .home-gal-lb-close { top: 1.5rem; right: 1.5rem; width: 40px; height: 40px; font-size: 0.9rem; }
+  .home-gal-lb-prev, .home-gal-lb-next { top: 50%; transform: translateY(-50%); width: 48px; height: 48px; font-size: 1rem; }
+  .home-gal-lb-prev { left: 1.5rem; }
+  .home-gal-lb-next { right: 1.5rem; }
+  .home-gal-lb-close:hover, .home-gal-lb-prev:hover, .home-gal-lb-next:hover {
+    color: var(--gold, #c9a84c); border-color: rgba(201,168,76,0.5); background: rgba(201,168,76,0.06);
+  }
   @media (max-width: 600px) {
-    .site-banner { height: 220px; }
-    .tribute-stat-sep { display: none; }
-    .tribute-stats { gap: 1.5rem; }
+    .home-gal-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: 160px 160px; }
+    .home-gal-lb-prev { left: 0.5rem; }
+    .home-gal-lb-next { right: 0.5rem; }
   }
 </style>
   
@@ -287,7 +390,7 @@
     <div class="trailer-corner bl"></div>
     <div class="trailer-corner br"></div>
     <div class="trailer-embed">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/A7paYH30QCw?si=k3IzMn6Zb61Z64H4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/A7paYH30QCw?si=dZAaRpf3rTd_qb_r" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </div>
     <div class="trailer-label">Destiny Playground &nbsp;-&nbsp; Official Destination Teaser Trailer 1 Coming Soon</div>
   </div>
@@ -299,26 +402,54 @@
 <div class="gallery-section" id="gallery">
   <div class="section-label">From the Field</div>
   <h2 class="section-title">Gallery</h2>
-  <div class="gallery-grid">
-    <div class="gallery-item gallery-item--large">
+  <div class="home-gal-grid" id="homeGalGrid">
+    <div class="home-gal-item" data-index="0" data-caption="Screenshot 01" data-src="/destiny-playground/images/gallery1.png">
+      <div class="home-gal-inner">
         <img src="/destiny-playground/images/gallery1.png" alt="Screenshot 01">
-      <div class="gallery-overlay">View</div>
+      </div>
+      <div class="home-gal-overlay"><div class="home-gal-overlay-icon">&#9633;</div><div class="home-gal-overlay-label">View</div></div>
     </div>
-    <div class="gallery-item">
-        <img src="/destiny-playground/images/gallery1.png" alt="Screenshot 02">
-      <div class="gallery-overlay">View</div>
+    <div class="home-gal-item" data-index="1" data-caption="Screenshot 02" data-src="/destiny-playground/images/gallery2.png">
+      <div class="home-gal-inner">
+        <img src="/destiny-playground/images/gallery2.png" alt="Screenshot 02">
+      </div>
+      <div class="home-gal-overlay"><div class="home-gal-overlay-icon">&#9633;</div><div class="home-gal-overlay-label">View</div></div>
     </div>
-    <div class="gallery-item">
-        <img src="/destiny-playground/images/gallery1.png" alt="Screenshot 03">
-      <div class="gallery-overlay">View</div>
+    <div class="home-gal-item" data-index="2" data-caption="Screenshot 03" data-src="/destiny-playground/images/gallery3.png">
+      <div class="home-gal-inner">
+        <img src="/destiny-playground/images/gallery3.png" alt="Screenshot 03">
+      </div>
+      <div class="home-gal-overlay"><div class="home-gal-overlay-icon">&#9633;</div><div class="home-gal-overlay-label">View</div></div>
     </div>
-    <div class="gallery-item">
-        <img src="/destiny-playground/images/gallery1.png" alt="Screenshot 04">
-      <div class="gallery-overlay">View</div>
+    <div class="home-gal-item" data-index="3" data-caption="Screenshot 04" data-src="/destiny-playground/images/gallery4.png">
+      <div class="home-gal-inner">
+        <img src="/destiny-playground/images/gallery4.png" alt="Screenshot 04">
+      </div>
+      <div class="home-gal-overlay"><div class="home-gal-overlay-icon">&#9633;</div><div class="home-gal-overlay-label">View</div></div>
     </div>
-    <div class="gallery-item">
-        <img src="/destiny-playground/images/gallery1.png" alt="Screenshot 05">
-      <div class="gallery-overlay">View</div>
+    <div class="home-gal-item" data-index="4" data-caption="Screenshot 05" data-src="/destiny-playground/images/gallery5.png">
+      <div class="home-gal-inner">
+        <img src="/destiny-playground/images/gallery5.png" alt="Screenshot 05">
+      </div>
+      <div class="home-gal-overlay"><div class="home-gal-overlay-icon">&#9633;</div><div class="home-gal-overlay-label">View</div></div>
+    </div>
+  </div>
+  <div class="news-footer" style="margin-top:2rem;">
+    <a href="/destiny-playground/gallery.html">Full Gallery &#8594;</a>
+  </div>
+</div>
+
+<!-- HOME GALLERY LIGHTBOX -->
+<div class="home-gal-lightbox" id="homeGalLightbox" aria-modal="true" role="dialog" aria-hidden="true">
+  <div class="home-gal-backdrop" id="homeGalBackdrop"></div>
+  <button class="home-gal-lb-close" id="homeGalClose" aria-label="Close">&#10005;</button>
+  <button class="home-gal-lb-prev" id="homeGalPrev" aria-label="Previous">&#10094;</button>
+  <button class="home-gal-lb-next" id="homeGalNext" aria-label="Next">&#10095;</button>
+  <div class="home-gal-lb-frame">
+    <div class="home-gal-lb-imgwrap" id="homeGalImgWrap"></div>
+    <div class="home-gal-lb-meta">
+      <div class="home-gal-lb-caption" id="homeGalCaption"></div>
+      <div class="home-gal-lb-counter" id="homeGalCounter"></div>
     </div>
   </div>
 </div>
@@ -449,6 +580,78 @@
     // Belt-and-braces: also scroll once nav partial has loaded and re-run its scripts
     setTimeout(function() { window.scrollTo({ top: 0, left: 0, behavior: 'instant' }); }, 150);
   });
+</script>
+
+<script>
+(function() {
+  var items   = Array.from(document.querySelectorAll('.home-gal-item'));
+  var lb      = document.getElementById('homeGalLightbox');
+  var backdrop= document.getElementById('homeGalBackdrop');
+  var imgWrap = document.getElementById('homeGalImgWrap');
+  var caption = document.getElementById('homeGalCaption');
+  var counter = document.getElementById('homeGalCounter');
+  var btnClose= document.getElementById('homeGalClose');
+  var btnPrev = document.getElementById('homeGalPrev');
+  var btnNext = document.getElementById('homeGalNext');
+  var current = 0;
+
+  function open(index) {
+    current = ((index % items.length) + items.length) % items.length;
+    render();
+    lb.classList.add('open');
+    lb.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('home-gal-lb-open');
+  }
+
+  function close() {
+    lb.classList.remove('open');
+    lb.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('home-gal-lb-open');
+  }
+
+  function render() {
+    var item = items[current];
+    var src  = item.getAttribute('data-src');
+    var cap  = item.getAttribute('data-caption') || '';
+    imgWrap.innerHTML = '';
+    imgWrap.classList.remove('loaded');
+    if (src) {
+      var el = document.createElement('img');
+      el.src = src; el.alt = cap;
+      el.onload = function() { imgWrap.classList.add('loaded'); };
+      imgWrap.appendChild(el);
+    }
+    caption.textContent = cap;
+    counter.textContent = (current + 1) + ' / ' + items.length;
+  }
+
+  items.forEach(function(item, i) {
+    item.addEventListener('click', function() { open(i); });
+    item.setAttribute('tabindex', '0');
+    item.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(i); }
+    });
+  });
+
+  btnClose.addEventListener('click', close);
+  backdrop.addEventListener('click', close);
+  btnPrev.addEventListener('click', function() { open(current - 1); });
+  btnNext.addEventListener('click', function() { open(current + 1); });
+
+  document.addEventListener('keydown', function(e) {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape')     close();
+    if (e.key === 'ArrowLeft')  open(current - 1);
+    if (e.key === 'ArrowRight') open(current + 1);
+  });
+
+  var touchStartX = 0;
+  lb.addEventListener('touchstart', function(e) { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+  lb.addEventListener('touchend', function(e) {
+    var dx = e.changedTouches[0].screenX - touchStartX;
+    if (Math.abs(dx) > 50) dx < 0 ? open(current + 1) : open(current - 1);
+  });
+})();
 </script>
 
 </body>
