@@ -3,239 +3,250 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+<title>Destiny Playground</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/destiny-playground/css/styles.css">
 <link rel="stylesheet" href="/destiny-playground/css/nav.css">
 <link rel="stylesheet" href="/destiny-playground/css/a11y-overrides.css">
-
-<title>Destiny Playground</title>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  
+
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
 <div id="nav-placeholder"></div>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
-  <div class="hero-orb"></div>
-  <div class="hero-badge">Fan Project</div>
+<main id="main-content">
 
-  <div class="hero-eyebrow">
-    <span class="eyebrow-line"></span>
-    A New Timeline Begins
-    <span class="eyebrow-line"></span>
-  </div>
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="hero-orb" aria-hidden="true"></div>
+    <div class="hero-badge" aria-hidden="true">Fan Project</div>
 
-  <h1 class="hero-title">Destiny<br><span>Playground</span></h1>
+    <p class="hero-eyebrow" aria-hidden="true">
+      <span class="eyebrow-line"></span>
+      A New Timeline Begins
+      <span class="eyebrow-line"></span>
+    </p>
 
-  <div class="hero-divider">
-    <span class="hero-divider-line"></span>
-    <span class="hero-diamond"></span>
-    <span class="hero-subtitle-text">Wake Up Guardian</span>
-    <span class="hero-diamond"></span>
-    <span class="hero-divider-line"></span>
-  </div>
+    <h1 class="hero-title" id="hero-heading">Destiny <span>Playground</span></h1>
 
-  <p class="hero-desc">A fan-made Minecraft server built in the world of Destiny. New destinations, new lore, a full campaign - rebuilt from scratch by the community, for the community. No mods required.</p>
-
-  <div class="hero-ctas">
-    <a class="btn-primary" href="/destiny-playground/getting-started.html">How to Join</a>
-    <a class="btn-secondary" href="/destiny-playground/news.html">Latest News</a>
-  </div>
-
-</div>
-
-<div class="divider"></div>
-
-<!-- DESTINY 2 TRIBUTE -->
-<div class="tribute-section" id="d2-tribute">
-  <div class="tribute-bg"></div>
-  <div class="tribute-inner">
-    <div class="section-label" style="justify-content:center;margin:0 auto 0.8rem;">2014 - 2026</div>
-    <h2 class="tribute-title">Thank You, Destiny 2</h2>
-    <div class="tribute-divider">
-      <span class="tribute-line"></span>
-      <span class="tribute-diamond">&#9670;</span>
-      <span class="tribute-line"></span>
+    <div class="hero-divider" aria-hidden="true">
+      <span class="hero-divider-line"></span>
+      <span class="hero-diamond"></span>
+      <span class="hero-subtitle-text">Wake Up Guardian</span>
+      <span class="hero-diamond"></span>
+      <span class="hero-divider-line"></span>
     </div>
-    <p class="tribute-desc">On June 9th, Destiny 2 gets its final update. Twelve years. This project exists because of what Bungie built - the worlds, the lore, the feeling of being a Guardian. That doesn't go away. We're carrying it forward.</p>
-    <div class="tribute-cta-row">
-      <a class="tribute-btn" href="/destiny-playground/articles/announcement-22-05-2026.html">Read Our Full Statement &#8594;</a>
+
+    <p class="hero-desc">A fan-made Minecraft server built in the world of Destiny. New destinations, new lore, a full campaign — rebuilt from scratch by the community, for the community. No mods required.</p>
+
+    <div class="hero-ctas">
+      <a class="btn-primary" href="/destiny-playground/getting-started.html">How to Join</a>
+      <a class="btn-secondary" href="/destiny-playground/news.html">Latest News</a>
     </div>
-    <div class="tribute-stats">
-      <div class="tribute-stat">
-        <div class="tribute-stat-value">2014</div>
-        <div class="tribute-stat-label">Destiny 1 Launch</div>
+  </section>
+
+  <div class="divider" role="separator" aria-hidden="true"></div>
+
+  <!-- DESTINY 2 TRIBUTE -->
+  <section class="tribute-section" id="d2-tribute" aria-labelledby="tribute-heading">
+    <div class="tribute-bg" aria-hidden="true"></div>
+    <div class="tribute-inner">
+      <p class="section-label section-label--centered" aria-hidden="true">2014 – 2026</p>
+      <h2 class="tribute-title" id="tribute-heading">Thank You, Destiny 2</h2>
+      <div class="tribute-divider" aria-hidden="true">
+        <span class="tribute-line"></span>
+        <span class="tribute-diamond">&#9670;</span>
+        <span class="tribute-line"></span>
       </div>
-      <div class="tribute-stat-sep">&#9670;</div>
-      <div class="tribute-stat">
-        <div class="tribute-stat-value">2017</div>
-        <div class="tribute-stat-label">Destiny 2 Launch</div>
+      <p class="tribute-desc">On June 9th, Destiny 2 gets its final update. Twelve years. This project exists because of what Bungie built — the worlds, the lore, the feeling of being a Guardian. That doesn't go away. We're carrying it forward.</p>
+      <div class="tribute-cta-row">
+        <a class="tribute-btn" href="/destiny-playground/articles/announcement-22-05-2026.html">Read Our Full Statement <span aria-hidden="true">&#8594;</span></a>
       </div>
-      <div class="tribute-stat-sep">&#9670;</div>
-      <div class="tribute-stat">
-        <div class="tribute-stat-value">12</div>
-        <div class="tribute-stat-label">Years of Guardians</div>
-      </div>
-      <div class="tribute-stat-sep">&#9670;</div>
-      <div class="tribute-stat">
-        <div class="tribute-stat-value">&#8734;</div>
-        <div class="tribute-stat-label">The Legacy</div>
+      <dl class="tribute-stats">
+        <div class="tribute-stat">
+          <dt class="tribute-stat-label">Destiny 1 Launch</dt>
+          <dd class="tribute-stat-value">2014</dd>
+        </div>
+        <span class="tribute-stat-sep" aria-hidden="true">&#9670;</span>
+        <div class="tribute-stat">
+          <dt class="tribute-stat-label">Destiny 2 Launch</dt>
+          <dd class="tribute-stat-value">2017</dd>
+        </div>
+        <span class="tribute-stat-sep" aria-hidden="true">&#9670;</span>
+        <div class="tribute-stat">
+          <dt class="tribute-stat-label">Years of Guardians</dt>
+          <dd class="tribute-stat-value">12</dd>
+        </div>
+        <span class="tribute-stat-sep" aria-hidden="true">&#9670;</span>
+        <div class="tribute-stat">
+          <dt class="tribute-stat-label">The Legacy</dt>
+          <dd class="tribute-stat-value" aria-label="Infinite">&#8734;</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <div class="divider" role="separator" aria-hidden="true"></div>
+
+  <!-- NEWS -->
+  <section class="section-wrap" aria-labelledby="news-heading">
+    <p class="section-label" aria-hidden="true">Latest Transmissions</p>
+    <h2 class="section-title" id="news-heading">News</h2>
+    <div class="news-grid" id="news-grid" aria-live="polite" aria-busy="true">
+      <div class="news-loading">
+        <div class="news-loading-dot" aria-hidden="true"></div>
+        <p>Loading transmissions...</p>
       </div>
     </div>
-  </div>
-</div>
-
-<div class="divider"></div>
-
-<!-- NEWS -->
-<section class="section-wrap">
-  <div class="section-label">Latest Transmissions</div>
-  <h2 class="section-title">News</h2>
-  <div class="news-grid" id="news-grid">
-    <div class="news-loading">
-      <div class="news-loading-dot"></div>
-      <p>Loading transmissions...</p>
+    <div class="news-footer">
+      <a href="news.html">All News <span aria-hidden="true">&#8594;</span></a>
     </div>
-  </div>
-  <div class="news-footer">
-    <a href="news.html">All News &#8594;</a>
-  </div>
-</section>
+  </section>
 
-<div class="divider"></div>
+  <div class="divider" role="separator" aria-hidden="true"></div>
 
-
-<!-- TRAILER -->
-<div class="trailer-section" id="trailer-section">
-  <div class="section-label" style="justify-content:center;margin:0 auto 0.8rem;">Official Weapon Showcase</div>
-  <h2 class="section-title" style="font-family:'Cinzel',serif;font-size:clamp(1.5rem,3vw,2.2rem);letter-spacing:0.08em;text-transform:uppercase;">Watch the Showcase</h2>
-  <div class="trailer-box">
-    <div class="trailer-corner tl"></div>
-    <div class="trailer-corner tr"></div>
-    <div class="trailer-corner bl"></div>
-    <div class="trailer-corner br"></div>
-    <iframe src="https://www.youtube.com/embed/A7paYH30QCw?si=dZAaRpf3rTd_qb_r" title="Destiny Playground - Halfdan-D Weapon Showcase" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    <div class="trailer-label"></div>
-  </div>
-</div>
-
-<div class="divider"></div>
-
-<!-- GALLERY -->
-<div class="gallery-section" id="gallery">
-  <div class="section-label">From the Field</div>
-  <h2 class="section-title">Gallery</h2>
-  <div class="home-gal-grid" id="homeGalGrid">
-    
-    <div class="home-gal-item" data-index="0" data-caption="Screenshot 01" data-src="/destiny-playground/images/gallery/gallery (30).png">
-      <div class="home-gal-inner">
-        <img src="/destiny-playground/images/gallery/gallery (30).png" alt="Screenshot 01">
-      </div>
-      <div class="home-gal-overlay"><div class="home-gal-overlay-icon">&#9633;</div><div class="home-gal-overlay-label">View</div></div>
+  <!-- TRAILER -->
+  <section class="trailer-section" id="trailer-section" aria-labelledby="trailer-heading">
+    <p class="section-label section-label--centered" aria-hidden="true">Official Weapon Showcase</p>
+    <h2 class="section-title trailer-section-title" id="trailer-heading">Watch the Showcase</h2>
+    <div class="trailer-box">
+      <div class="trailer-corner tl" aria-hidden="true"></div>
+      <div class="trailer-corner tr" aria-hidden="true"></div>
+      <div class="trailer-corner bl" aria-hidden="true"></div>
+      <div class="trailer-corner br" aria-hidden="true"></div>
+      <iframe
+        src="https://www.youtube.com/embed/A7paYH30QCw?si=dZAaRpf3rTd_qb_r"
+        title="Destiny Playground — Halfdan-D Weapon Showcase video"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen>
+      </iframe>
+      <div class="trailer-label" aria-hidden="true"></div>
     </div>
-    <div class="home-gal-item" data-index="1" data-caption="Screenshot 01" data-src="/destiny-playground/images/gallery/gallery (73).png">
-      <div class="home-gal-inner">
-        <img src="/destiny-playground/images/gallery/gallery (73).png" alt="Screenshot 02">
-      </div>
-      <div class="home-gal-overlay"><div class="home-gal-overlay-icon">&#9633;</div><div class="home-gal-overlay-label">View</div></div>
-    </div>
-    <div class="home-gal-item" data-index="2" data-caption="Screenshot 01" data-src="/destiny-playground/images/gallery/gallery (13).png">
-      <div class="home-gal-inner">
-        <img src="/destiny-playground/images/gallery/gallery (13).png" alt="Screenshot 03">
-      </div>
-      <div class="home-gal-overlay"><div class="home-gal-overlay-icon">&#9633;</div><div class="home-gal-overlay-label">View</div></div>
-    </div>
-    <div class="home-gal-item" data-index="3" data-caption="Screenshot 01" data-src="/destiny-playground/images/gallery/gallery (11).png">
-      <div class="home-gal-inner">
-        <img src="/destiny-playground/images/gallery/gallery (11).png" alt="Screenshot 04">
-      </div>
-      <div class="home-gal-overlay"><div class="home-gal-overlay-icon">&#9633;</div><div class="home-gal-overlay-label">View</div></div>
-    </div>
-    <div class="home-gal-item" data-index="4" data-caption="Screenshot 01" data-src="/destiny-playground/images/gallery/gallery (5).png">
-      <div class="home-gal-inner">
-        <img src="/destiny-playground/images/gallery/gallery (5).png" alt="Screenshot 05">
-      </div>
-      <div class="home-gal-overlay"><div class="home-gal-overlay-icon">&#9633;</div><div class="home-gal-overlay-label">View</div></div>
-    </div>
-  </div>
-  <div class="news-footer" style="margin-top:2rem;">
-    <a href="/destiny-playground/gallery.html">Full Gallery &#8594;</a>
-  </div>
-</div>
+  </section>
 
-<!-- HOME GALLERY LIGHTBOX -->
-<div class="home-gal-lightbox" id="homeGalLightbox" aria-modal="true" role="dialog" aria-hidden="true">
-  <div class="home-gal-backdrop" id="homeGalBackdrop"></div>
-  <button class="home-gal-lb-close" id="homeGalClose" aria-label="Close">&#10005;</button>
-  <button class="home-gal-lb-prev" id="homeGalPrev" aria-label="Previous">&#10094;</button>
-  <button class="home-gal-lb-next" id="homeGalNext" aria-label="Next">&#10095;</button>
-  <div class="home-gal-lb-frame">
-    <div class="home-gal-lb-imgwrap" id="homeGalImgWrap"></div>
-    <div class="home-gal-lb-meta">
-      <div class="home-gal-lb-caption" id="homeGalCaption"></div>
-      <div class="home-gal-lb-counter" id="homeGalCounter"></div>
-    </div>
-  </div>
-</div>
+  <div class="divider" role="separator" aria-hidden="true"></div>
 
-<div class="divider"></div>
+  <!-- GALLERY -->
+  <section class="gallery-section" id="gallery" aria-labelledby="gallery-heading">
+    <p class="section-label" aria-hidden="true">From the Field</p>
+    <h2 class="section-title" id="gallery-heading">Gallery</h2>
+    <div class="home-gal-grid" id="homeGalGrid" role="list">
 
-<!-- ROADMAP -->
-<div class="roadmap-section" id="roadmap">
-  <div class="section-label">Progress Report</div>
-  <h2 class="section-title">Dev Roadmap</h2>
-
-  <div class="roadmap-track">
-    <div class="roadmap-items">
-
-      <div class="roadmap-item">
-        <div class="roadmap-dot"></div>
-        <div class="roadmap-phase">Week I</div>
-        <div class="roadmap-name">Bounties, Quest, and Progression Overview</div>
-        <div class="roadmap-desc">27.05.2026</div>
+      <div class="home-gal-item" role="listitem button" tabindex="0" data-index="0" data-caption="Screenshot 01" data-src="/destiny-playground/images/gallery/gallery (30).png" aria-label="View Screenshot 01 in lightbox">
+        <div class="home-gal-inner">
+          <img src="/destiny-playground/images/gallery/gallery (30).png" alt="Screenshot 01 — Destiny Playground">
+        </div>
+        <div class="home-gal-overlay" aria-hidden="true"><div class="home-gal-overlay-icon">&#9633;</div><div class="home-gal-overlay-label">View</div></div>
       </div>
 
-      <div class="roadmap-item">
-        <div class="roadmap-dot"></div>
-        <div class="roadmap-phase">Week II</div>
-        <div class="roadmap-name">Ability Showcase 2</div>
-        <div class="roadmap-desc">03.06.2026</div>
+      <div class="home-gal-item" role="listitem button" tabindex="0" data-index="1" data-caption="Screenshot 02" data-src="/destiny-playground/images/gallery/gallery (73).png" aria-label="View Screenshot 02 in lightbox">
+        <div class="home-gal-inner">
+          <img src="/destiny-playground/images/gallery/gallery (73).png" alt="Screenshot 02 — Destiny Playground">
+        </div>
+        <div class="home-gal-overlay" aria-hidden="true"><div class="home-gal-overlay-icon">&#9633;</div><div class="home-gal-overlay-label">View</div></div>
       </div>
 
-      <div class="roadmap-item">
-        <div class="roadmap-dot"></div>
-        <div class="roadmap-phase">Week III</div>
-        <div class="roadmap-name">Campaign Sneak Peak and Story Overview</div>
-        <div class="roadmap-desc">10.06.2026</div>
+      <div class="home-gal-item" role="listitem button" tabindex="0" data-index="2" data-caption="Screenshot 03" data-src="/destiny-playground/images/gallery/gallery (13).png" aria-label="View Screenshot 03 in lightbox">
+        <div class="home-gal-inner">
+          <img src="/destiny-playground/images/gallery/gallery (13).png" alt="Screenshot 03 — Destiny Playground">
+        </div>
+        <div class="home-gal-overlay" aria-hidden="true"><div class="home-gal-overlay-icon">&#9633;</div><div class="home-gal-overlay-label">View</div></div>
       </div>
 
-      <div class="roadmap-item">
-        <div class="roadmap-dot"></div>
-        <div class="roadmap-phase">Week IV</div>
-        <div class="roadmap-name">Destination Trailer - Official Teaser Trailer 1</div>
-        <div class="roadmap-desc">17.06.2026</div>
+      <div class="home-gal-item" role="listitem button" tabindex="0" data-index="3" data-caption="Screenshot 04" data-src="/destiny-playground/images/gallery/gallery (11).png" aria-label="View Screenshot 04 in lightbox">
+        <div class="home-gal-inner">
+          <img src="/destiny-playground/images/gallery/gallery (11).png" alt="Screenshot 04 — Destiny Playground">
+        </div>
+        <div class="home-gal-overlay" aria-hidden="true"><div class="home-gal-overlay-icon">&#9633;</div><div class="home-gal-overlay-label">View</div></div>
+      </div>
+
+      <div class="home-gal-item" role="listitem button" tabindex="0" data-index="4" data-caption="Screenshot 05" data-src="/destiny-playground/images/gallery/gallery (5).png" aria-label="View Screenshot 05 in lightbox">
+        <div class="home-gal-inner">
+          <img src="/destiny-playground/images/gallery/gallery (5).png" alt="Screenshot 05 — Destiny Playground">
+        </div>
+        <div class="home-gal-overlay" aria-hidden="true"><div class="home-gal-overlay-icon">&#9633;</div><div class="home-gal-overlay-label">View</div></div>
       </div>
 
     </div>
-  </div>
+    <div class="news-footer gallery-footer">
+      <a href="/destiny-playground/gallery.html">Full Gallery <span aria-hidden="true">&#8594;</span></a>
+    </div>
+  </section>
 
-  <div class="roadmap-track roadmap-track--second">
-    <div class="roadmap-items">
-
-
+  <!-- HOME GALLERY LIGHTBOX -->
+  <div class="home-gal-lightbox" id="homeGalLightbox" role="dialog" aria-modal="true" aria-labelledby="homeGalCaption" aria-hidden="true">
+    <div class="home-gal-backdrop" id="homeGalBackdrop"></div>
+    <button class="home-gal-lb-close" id="homeGalClose" aria-label="Close lightbox">&#10005;</button>
+    <button class="home-gal-lb-prev" id="homeGalPrev" aria-label="Previous image">&#10094;</button>
+    <button class="home-gal-lb-next" id="homeGalNext" aria-label="Next image">&#10095;</button>
+    <div class="home-gal-lb-frame">
+      <div class="home-gal-lb-imgwrap" id="homeGalImgWrap"></div>
+      <div class="home-gal-lb-meta">
+        <div class="home-gal-lb-caption" id="homeGalCaption"></div>
+        <div class="home-gal-lb-counter" id="homeGalCounter" aria-live="polite" aria-atomic="true"></div>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="divider"></div>
+  <div class="divider" role="separator" aria-hidden="true"></div>
+
+  <!-- ROADMAP -->
+  <section class="roadmap-section" id="roadmap" aria-labelledby="roadmap-heading">
+    <p class="section-label" aria-hidden="true">Progress Report</p>
+    <h2 class="section-title" id="roadmap-heading">Dev Roadmap</h2>
+
+    <div class="roadmap-track">
+      <ol class="roadmap-items" aria-label="Upcoming content schedule">
+
+        <li class="roadmap-item">
+          <div class="roadmap-dot" aria-hidden="true"></div>
+          <p class="roadmap-phase">Week I</p>
+          <p class="roadmap-name">Bounties, Quest, and Progression Overview</p>
+          <p class="roadmap-desc"><time datetime="2026-05-27">27.05.2026</time></p>
+        </li>
+
+        <li class="roadmap-item">
+          <div class="roadmap-dot" aria-hidden="true"></div>
+          <p class="roadmap-phase">Week II</p>
+          <p class="roadmap-name">Ability Showcase 2</p>
+          <p class="roadmap-desc"><time datetime="2026-06-03">03.06.2026</time></p>
+        </li>
+
+        <li class="roadmap-item">
+          <div class="roadmap-dot" aria-hidden="true"></div>
+          <p class="roadmap-phase">Week III</p>
+          <p class="roadmap-name">Campaign Sneak Peek and Story Overview</p>
+          <p class="roadmap-desc"><time datetime="2026-06-10">10.06.2026</time></p>
+        </li>
+
+        <li class="roadmap-item">
+          <div class="roadmap-dot" aria-hidden="true"></div>
+          <p class="roadmap-phase">Week IV</p>
+          <p class="roadmap-name">Destination Trailer — Official Teaser Trailer 1</p>
+          <p class="roadmap-desc"><time datetime="2026-06-17">17.06.2026</time></p>
+        </li>
+
+      </ol>
+    </div>
+
+    <div class="roadmap-track roadmap-track--second">
+      <ol class="roadmap-items" aria-label="Future roadmap items"></ol>
+    </div>
+  </section>
+
+  <div class="divider" role="separator" aria-hidden="true"></div>
+
+</main>
 
 <!-- FOOTER -->
 <div id="footer-placeholder"></div>
 <script src="/destiny-playground/js/shared.js"></script>
-  
+
 <script>
   async function loadNews() {
     const grid = document.getElementById('news-grid');
@@ -243,6 +254,7 @@
       const res = await fetch('articles.json');
       if (!res.ok) throw new Error('Failed to load');
       const articles = await res.json();
+      grid.setAttribute('aria-busy', 'false');
 
       const featured = articles.find(a => a.featured);
       const rest = articles.filter(a => !a.featured).slice(0, 3);
@@ -255,7 +267,7 @@
         fc.href = featured.file;
         fc.innerHTML = `
           <div class="featured-img-box">
-            <div class="featured-img-placeholder"><span>&#9670;</span></div>
+            <div class="featured-img-placeholder" aria-hidden="true"><span>&#9670;</span></div>
           </div>
           <div class="featured-content">
             <div class="featured-tag">${featured.tag} &nbsp;&#8212;&nbsp; Featured</div>
@@ -287,7 +299,8 @@
       }
 
     } catch (err) {
-      grid.innerHTML = `<div class="news-error">
+      grid.setAttribute('aria-busy', 'false');
+      grid.innerHTML = `<div class="news-error" role="alert">
         Transmissions offline.<br>
         <span style="font-size:0.78rem; opacity:0.6;">Make sure articles.json is in the same folder as index.html.</span>
       </div>`;
@@ -295,31 +308,59 @@
   }
 
   loadNews();
-  
+</script>
+
+<script>
 (function() {
-  var items   = Array.from(document.querySelectorAll('.home-gal-item'));
-  var lb      = document.getElementById('homeGalLightbox');
-  var backdrop= document.getElementById('homeGalBackdrop');
-  var imgWrap = document.getElementById('homeGalImgWrap');
-  var caption = document.getElementById('homeGalCaption');
-  var counter = document.getElementById('homeGalCounter');
-  var btnClose= document.getElementById('homeGalClose');
-  var btnPrev = document.getElementById('homeGalPrev');
-  var btnNext = document.getElementById('homeGalNext');
-  var current = 0;
+  var items    = Array.from(document.querySelectorAll('.home-gal-item'));
+  var lb       = document.getElementById('homeGalLightbox');
+  var backdrop = document.getElementById('homeGalBackdrop');
+  var imgWrap  = document.getElementById('homeGalImgWrap');
+  var caption  = document.getElementById('homeGalCaption');
+  var counter  = document.getElementById('homeGalCounter');
+  var btnClose = document.getElementById('homeGalClose');
+  var btnPrev  = document.getElementById('homeGalPrev');
+  var btnNext  = document.getElementById('homeGalNext');
+  var current  = 0;
+  var lastFocused = null;
+
+  // All focusable elements inside the lightbox
+  function getFocusable() {
+    return Array.from(lb.querySelectorAll('button:not([disabled])'));
+  }
+
+  function trapFocus(e) {
+    var focusable = getFocusable();
+    var first = focusable[0];
+    var last  = focusable[focusable.length - 1];
+    if (e.key === 'Tab') {
+      if (e.shiftKey) {
+        if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+      } else {
+        if (document.activeElement === last)  { e.preventDefault(); first.focus(); }
+      }
+    }
+  }
 
   function open(index) {
+    lastFocused = document.activeElement;
     current = ((index % items.length) + items.length) % items.length;
     render();
     lb.classList.add('open');
     lb.setAttribute('aria-hidden', 'false');
     document.body.classList.add('home-gal-lb-open');
+    lb.addEventListener('keydown', trapFocus);
+    // Move focus to close button
+    setTimeout(function() { btnClose.focus(); }, 50);
   }
 
   function close() {
     lb.classList.remove('open');
     lb.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('home-gal-lb-open');
+    lb.removeEventListener('keydown', trapFocus);
+    // Return focus to the item that opened the lightbox
+    if (lastFocused) lastFocused.focus();
   }
 
   function render() {
@@ -330,17 +371,20 @@
     imgWrap.classList.remove('loaded');
     if (src) {
       var el = document.createElement('img');
-      el.src = src; el.alt = cap;
+      el.src = src;
+      el.alt = cap + ' — Destiny Playground';
       el.onload = function() { imgWrap.classList.add('loaded'); };
       imgWrap.appendChild(el);
     }
     caption.textContent = cap;
-    counter.textContent = (current + 1) + ' / ' + items.length;
+    counter.textContent = (current + 1) + ' of ' + items.length;
+    // Update prev/next labels
+    btnPrev.setAttribute('aria-label', 'Previous image (' + (((current - 1 + items.length) % items.length) + 1) + ' of ' + items.length + ')');
+    btnNext.setAttribute('aria-label', 'Next image ('     + (((current + 1) % items.length) + 1)              + ' of ' + items.length + ')');
   }
 
   items.forEach(function(item, i) {
     item.addEventListener('click', function() { open(i); });
-    item.setAttribute('tabindex', '0');
     item.addEventListener('keydown', function(e) {
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(i); }
     });
