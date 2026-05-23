@@ -6,512 +6,17 @@
 
 <link rel="stylesheet" href="/destiny-playground/css/styles.css">
 <link rel="stylesheet" href="/destiny-playground/css/nav.css">
+<link rel="stylesheet" href="/destiny-playground/css/roadmap.css">
 <link rel="stylesheet" href="/destiny-playground/css/a11y-overrides.css">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <title>Roadmap - Destiny Playground</title>
-
-<style>
-
-/* ----
-   PAGE HERO
-   ---- */
-.page-hero {
-  position: relative;
-  min-height: 70vh;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  padding: 10rem 3rem 6rem;
-  text-align: center; overflow: hidden;
-}
-
-/* layered atmospheric background */
-.hero-layer {
-  position: absolute; inset: 0; pointer-events: none;
-}
-.hero-layer--grid {
-  opacity: 0.045;
-  background-image:
-    linear-gradient(rgba(201,168,76,0.7) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(201,168,76,0.7) 1px, transparent 1px);
-  background-size: 80px 80px;
-  mask-image: radial-gradient(ellipse 90% 90% at 50% 40%, black 10%, transparent 72%);
-}
-.hero-layer--glow {
-  background:
-    radial-gradient(ellipse 60% 55% at 50% 30%, rgba(201,168,76,0.09) 0%, transparent 60%),
-    radial-gradient(ellipse 30% 30% at 30% 70%, rgba(201,168,76,0.03) 0%, transparent 60%),
-    radial-gradient(ellipse 30% 30% at 70% 70%, rgba(201,168,76,0.03) 0%, transparent 60%),
-    linear-gradient(180deg, #0a0906 0%, #0d0b07 50%, #0a0906 100%);
-}
-/* animated horizon scan line */
-.hero-layer--scan {
-  overflow: hidden;
-}
-.hero-layer--scan::after {
-  content: '';
-  position: absolute; left: 0; right: 0;
-  height: 1px;
-  background: linear-gradient(to right, transparent 0%, rgba(201,168,76,0.2) 20%, rgba(201,168,76,0.5) 50%, rgba(201,168,76,0.2) 80%, transparent 100%);
-  animation: scanline 8s ease-in-out infinite;
-  top: 0;
-}
-@keyframes scanline {
-  0%   { top: 100%; opacity: 0; }
-  5%   { opacity: 1; }
-  95%  { opacity: 1; }
-  100% { top: -2px; opacity: 0; }
-}
-
-/* hero text */
-.hero-badge {
-  position: relative;
-  font-size: 0.6rem; letter-spacing: 0.38em; text-transform: uppercase;
-  color: var(--dark); background: var(--gold-dim); padding: 3px 18px;
-  margin-bottom: 1.5rem;
-  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
-  opacity: 0; animation: fadeUp 1s ease forwards 0.1s;
-}
-.hero-eyebrow {
-  position: relative;
-  font-size: 0.7rem; letter-spacing: 0.38em; text-transform: uppercase;
-  color: var(--gold); margin-bottom: 1.3rem;
-  display: flex; align-items: center; justify-content: center; gap: 1.2rem;
-  opacity: 0; animation: fadeUp 1s ease forwards 0.3s;
-}
-.eyebrow-line { width: 50px; height: 0.5px; background: var(--gold-dim); flex: none; }
-
-.hero-title {
-  position: relative;
-  font-family: 'Cinzel', serif;
-  font-size: clamp(2.8rem, 7vw, 5.2rem);
-  font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
-  line-height: 1.05; color: var(--white);
-  margin-bottom: 1.5rem;
-  opacity: 0; animation: fadeUp 1s ease forwards 0.5s;
-}
-.hero-title span { color: var(--gold); }
-.hero-title em {
-  display: block; font-family: 'Rajdhani', sans-serif;
-  font-style: normal; font-size: 0.28em; font-weight: 600;
-  letter-spacing: 0.45em; color: var(--muted);
-  margin-top: 0.6rem;
-}
-
-.hero-desc {
-  position: relative;
-  max-width: 500px; margin: 0 auto;
-  font-size: 0.92rem; line-height: 1.85; color: var(--body-text); font-weight: 300;
-  opacity: 0; animation: fadeUp 1s ease forwards 0.75s;
-}
-
-/* status legend */
-.hero-legend {
-  position: relative;
-  display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; justify-content: center;
-  margin-top: 2.5rem;
-  opacity: 0; animation: fadeUp 1s ease forwards 0.95s;
-}
-.legend-item {
-  display: flex; align-items: center; gap: 0.6rem;
-  font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted);
-}
-.legend-pip {
-  width: 8px; height: 8px; transform: rotate(45deg);
-}
-.legend-pip--released  { background: var(--gold); }
-.legend-pip--active    { background: transparent; border: 1.5px solid var(--gold); }
-.legend-pip--upcoming  { background: transparent; border: 0.5px solid rgba(138,128,112,0.4); }
-.legend-pip--redacted  { background: rgba(138,128,112,0.15); border: 0.5px dashed rgba(138,128,112,0.3); }
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-
-/* ----
-   LONG-TERM ROADMAP - VERTICAL TIMELINE
-   ---- */
-.roadmap-section {
-  position: relative;
-  padding: 6rem 3rem 8rem;
-  max-width: 1100px; margin: 0 auto;
-}
-
-/* the glowing central spine */
-.timeline-spine {
-  position: absolute;
-  left: 50%; top: 0; bottom: 0;
-  width: 1px;
-  background: linear-gradient(to bottom,
-    transparent 0%,
-    rgba(201,168,76,0.12) 5%,
-    rgba(201,168,76,0.25) 20%,
-    rgba(201,168,76,0.25) 80%,
-    rgba(201,168,76,0.12) 95%,
-    transparent 100%
-  );
-  transform: translateX(-50%);
-}
-.timeline-spine::before {
-  content: '';
-  position: absolute; left: 50%; top: 0; bottom: 0;
-  width: 8px; transform: translateX(-50%);
-  background: linear-gradient(to bottom,
-    transparent 0%,
-    rgba(201,168,76,0.04) 20%,
-    rgba(201,168,76,0.08) 50%,
-    rgba(201,168,76,0.04) 80%,
-    transparent 100%
-  );
-  filter: blur(3px);
-}
-
-/* year / era dividers */
-.timeline-era {
-  position: relative;
-  display: flex; align-items: center; justify-content: center;
-  margin: 4rem 0 3rem;
-  z-index: 2;
-}
-.timeline-era-label {
-  font-family: 'Cinzel', serif;
-  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.45em; text-transform: uppercase;
-  color: var(--gold);
-  background: var(--dark);
-  padding: 0.4rem 2rem;
-  border: 0.5px solid rgba(201,168,76,0.2);
-  position: relative; z-index: 1;
-}
-.timeline-era::before {
-  content: '';
-  position: absolute; left: 0; right: 0; top: 50%;
-  height: 0.5px;
-  background: linear-gradient(to right, transparent, rgba(201,168,76,0.15) 30%, rgba(201,168,76,0.15) 70%, transparent);
-}
-
-/* entry rows - alternating left/right */
-.timeline-entry {
-  position: relative;
-  display: grid;
-  grid-template-columns: 1fr 56px 1fr;
-  gap: 0;
-  margin-bottom: 3.5rem;
-  z-index: 2;
-}
-
-/* the central node */
-.timeline-node {
-  display: flex; flex-direction: column; align-items: center; gap: 0;
-  position: relative; z-index: 3;
-}
-.timeline-node-pip {
-  width: 14px; height: 14px;
-  transform: rotate(45deg);
-  flex-shrink: 0; margin-top: 2rem;
-  transition: transform 0.3s;
-}
-.timeline-entry:hover .timeline-node-pip { transform: rotate(45deg) scale(1.25); }
-
-.timeline-node-pip--released { background: var(--gold); box-shadow: 0 0 12px rgba(201,168,76,0.5); }
-.timeline-node-pip--active   { background: var(--dark); border: 1.5px solid var(--gold); box-shadow: 0 0 14px rgba(201,168,76,0.35); }
-.timeline-node-pip--upcoming { background: var(--dark); border: 0.5px solid rgba(138,128,112,0.35); }
-.timeline-node-pip--redacted { background: rgba(138,128,112,0.08); border: 0.5px dashed rgba(138,128,112,0.3); }
-
-.timeline-node-line {
-  width: 1px; flex: 1;
-  background: linear-gradient(to bottom, rgba(201,168,76,0.15), transparent);
-  min-height: 2rem;
-}
-
-/* cards - left side (content right-aligned) */
-.timeline-card-left {
-  padding-right: 2.5rem;
-  display: flex; flex-direction: column; align-items: flex-end;
-}
-/* cards - right side */
-.timeline-card-right {
-  padding-left: 2.5rem;
-  display: flex; flex-direction: column; align-items: flex-start;
-}
-/* empty side spacer */
-.timeline-empty { }
-
-/* the actual card */
-.tm-card {
-  position: relative;
-  width: 100%;
-  background: rgba(10,9,6,0.8);
-  border: 0.5px solid rgba(201,168,76,0.1);
-  padding: 1.8rem 2rem;
-  transition: border-color 0.25s, background 0.25s;
-  overflow: hidden;
-}
-.tm-card::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(201,168,76,0.03) 0%, transparent 50%);
-  pointer-events: none;
-}
-.timeline-entry:hover .tm-card {
-  border-color: rgba(201,168,76,0.22);
-  background: rgba(14,12,8,0.95);
-}
-
-/* card status bar on left edge */
-.tm-card::after {
-  content: '';
-  position: absolute; left: 0; top: 0; bottom: 0;
-  width: 2px;
-}
-.tm-card--released::after  { background: var(--gold); }
-.tm-card--active::after    { background: var(--gold); animation: pulse-bar 2s ease-in-out infinite; }
-.tm-card--upcoming::after  { background: rgba(138,128,112,0.25); }
-.tm-card--redacted::after  { background: rgba(138,128,112,0.12); }
-
-/* right-side card - flip the accent bar */
-.timeline-card-right .tm-card::after {
-  left: auto; right: 0;
-}
-
-@keyframes pulse-bar {
-  0%,100% { opacity: 0.6; }
-  50%      { opacity: 1; box-shadow: 2px 0 8px rgba(201,168,76,0.4); }
-}
-
-/* corner accents */
-.tm-corner {
-  position: absolute; width: 12px; height: 12px;
-  border-color: rgba(201,168,76,0.2); border-style: solid;
-  transition: border-color 0.25s;
-}
-.timeline-entry:hover .tm-corner { border-color: rgba(201,168,76,0.4); }
-.tm-corner.tl { top: 8px; left: 8px; border-width: 1px 0 0 1px; }
-.tm-corner.tr { top: 8px; right: 8px; border-width: 1px 1px 0 0; }
-.tm-corner.bl { bottom: 8px; left: 8px; border-width: 0 0 1px 1px; }
-.tm-corner.br { bottom: 8px; right: 8px; border-width: 0 1px 1px 0; }
-
-/* card content */
-.tm-status-tag {
-  display: inline-flex; align-items: center; gap: 0.45rem;
-  font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase;
-  margin-bottom: 0.6rem;
-}
-.tm-status-tag--released { color: var(--gold); }
-.tm-status-tag--active   { color: var(--gold); }
-.tm-status-tag--upcoming { color: var(--muted); }
-.tm-status-tag--redacted { color: rgba(138,128,112,0.5); }
-
-.tm-status-dot {
-  width: 5px; height: 5px; border-radius: 50%;
-  flex-shrink: 0;
-}
-.tm-status-dot--released  { background: var(--gold); }
-.tm-status-dot--active    { background: var(--gold); animation: blink 1.4s ease-in-out infinite; }
-.tm-status-dot--upcoming  { background: rgba(138,128,112,0.4); }
-.tm-status-dot--redacted  { background: rgba(138,128,112,0.15); }
-
-@keyframes blink { 0%,100% { opacity: 0.3; } 50% { opacity: 1; } }
-
-.tm-phase {
-  font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase;
-  color: var(--gold-dim); margin-bottom: 0.4rem;
-}
-
-.tm-title {
-  font-family: 'Cinzel', serif;
-  font-size: clamp(0.95rem, 1.8vw, 1.2rem);
-  font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase;
-  color: var(--white); margin-bottom: 0.5rem; line-height: 1.3;
-}
-
-.tm-date {
-  font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--muted); margin-bottom: 1rem;
-}
-
-.tm-desc {
-  font-size: 0.83rem; line-height: 1.75; color: var(--body-text); font-weight: 300;
-  margin-bottom: 1rem;
-}
-
-/* highlights list */
-.tm-highlights {
-  display: flex; flex-direction: column; gap: 0.35rem;
-  list-style: none; padding: 0; margin: 0;
-}
-.tm-highlights li {
-  font-size: 0.78rem; line-height: 1.55; color: var(--body-text); font-weight: 300;
-  padding-left: 1.1rem; position: relative;
-}
-.tm-highlights li::before {
-  content: '◆';
-  position: absolute; left: 0; top: 0.22em;
-  font-size: 0.38rem; color: var(--gold-dim);
-}
-
-/* redacted blocks */
-.tm-redacted {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase;
-  color: rgba(138,128,112,0.4);
-}
-.tm-redacted-bar {
-  height: 10px; background: rgba(138,128,112,0.12);
-  border: 0.5px dashed rgba(138,128,112,0.2);
-  display: inline-block;
-}
-.tm-redacted-bar--sm  { width: 80px; }
-.tm-redacted-bar--md  { width: 130px; }
-.tm-redacted-bar--lg  { width: 180px; }
-
-/* redacted card overlay */
-.tm-card--redacted .tm-title,
-.tm-card--redacted .tm-desc { filter: blur(0); }
-.tm-redacted-overlay {
-  margin-top: 0.8rem;
-  padding: 0.8rem 1rem;
-  border: 0.5px dashed rgba(138,128,112,0.2);
-  background: rgba(138,128,112,0.03);
-}
-.tm-redacted-overlay p {
-  font-size: 0.72rem; letter-spacing: 0.12em; color: rgba(138,128,112,0.45);
-  line-height: 1.6;
-}
-
-/* connector arrow from node to card */
-.timeline-connector {
-  position: absolute; top: 2.55rem;
-  width: 2.5rem; height: 1px;
-  background: linear-gradient(to right, rgba(201,168,76,0.3), transparent);
-}
-.timeline-card-left .timeline-connector {
-  right: 0;
-  background: linear-gradient(to left, rgba(201,168,76,0.3), transparent);
-}
-.timeline-card-right .timeline-connector {
-  left: 0;
-}
-
-
-/* ----
-   DEV UPDATE SCHEDULE (bottom section)
-   ---- */
-.dev-schedule-section {
-  padding: 6rem 3rem 5rem;
-  max-width: 1100px; margin: 0 auto;
-}
-
-.dev-schedule-header {
-  display: flex; align-items: flex-end; justify-content: space-between;
-  flex-wrap: wrap; gap: 1.5rem; margin-bottom: 3rem;
-}
-.dev-schedule-note {
-  font-size: 0.78rem; color: var(--muted); font-weight: 300; line-height: 1.65;
-  max-width: 380px;
-}
-
-/* horizontal scroll track on mobile */
-.dev-track {
-  position: relative;
-}
-.dev-track-line {
-  position: absolute; left: 0; right: 0; top: 10px;
-  height: 0.5px;
-  background: linear-gradient(to right, rgba(201,168,76,0.08), rgba(201,168,76,0.2) 20%, rgba(201,168,76,0.2) 80%, rgba(201,168,76,0.08));
-}
-.dev-items {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0;
-  position: relative;
-}
-
-.dev-item {
-  padding: 2.5rem 1.5rem 1.5rem;
-  position: relative;
-  border-right: 0.5px solid rgba(201,168,76,0.06);
-  transition: background 0.2s;
-}
-.dev-item:last-child { border-right: none; }
-.dev-item:hover { background: rgba(201,168,76,0.02); }
-
-.dev-pip {
-  width: 10px; height: 10px; transform: rotate(45deg);
-  margin-bottom: 1.5rem; position: relative; z-index: 1;
-  background: var(--dark);
-}
-.dev-pip--done     { background: var(--gold-dim); border: none; }
-.dev-pip--active   { background: var(--dark); border: 1.5px solid var(--gold); box-shadow: 0 0 8px rgba(201,168,76,0.3); }
-.dev-pip--upcoming { border: 0.5px solid rgba(138,128,112,0.35); }
-
-.dev-week {
-  font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase;
-  color: var(--gold); margin-bottom: 0.4rem;
-}
-.dev-title {
-  font-family: 'Cinzel', serif;
-  font-size: 0.85rem; font-weight: 600; letter-spacing: 0.04em;
-  color: var(--white); margin-bottom: 0.4rem; line-height: 1.35;
-}
-.dev-date {
-  font-size: 0.68rem; letter-spacing: 0.15em; color: var(--muted); margin-bottom: 0.8rem;
-}
-.dev-status {
-  display: inline-block;
-  font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase;
-  padding: 2px 8px; border: 0.5px solid;
-}
-.dev-status--done     { border-color: rgba(138,128,112,0.25); color: var(--muted); }
-.dev-status--upcoming { border-color: rgba(138,128,112,0.2); color: rgba(138,128,112,0.5); }
-
-
-/* - RESPONSIVE - */
-@media (max-width: 860px) {
-  .page-hero { padding: 8rem 1.5rem 5rem; min-height: auto; }
-
-  /* collapse to single column on mobile */
-  .timeline-spine { left: 24px; }
-
-  .timeline-entry {
-    grid-template-columns: 48px 1fr;
-    grid-template-areas: "node card";
-    margin-bottom: 2rem;
-  }
-  .timeline-node { grid-area: node; }
-  .timeline-card-left {
-    grid-area: card;
-    align-items: flex-start;
-    padding-right: 0; padding-left: 1.5rem;
-  }
-  .timeline-card-right {
-    grid-area: card;
-    padding-left: 1.5rem;
-  }
-  .timeline-empty { display: none; }
-  .timeline-card-left .timeline-connector,
-  .timeline-card-right .timeline-connector { left: 0; right: auto; background: linear-gradient(to right, rgba(201,168,76,0.3), transparent); }
-  .timeline-card-left .tm-card::after { left: 0; right: auto; }
-
-  .roadmap-section { padding: 4rem 1.5rem 5rem; }
-  .dev-schedule-section { padding: 4rem 1.5rem 4rem; }
-  .dev-items { grid-template-columns: 1fr 1fr; }
-  .dev-item { border-bottom: 0.5px solid rgba(201,168,76,0.06); }
-
-  .hero-legend { gap: 1.2rem; }
-}
-@media (max-width: 480px) {
-  .dev-items { grid-template-columns: 1fr; }
-}
-</style>
 </head>
 <body>
 
 <div id="nav-placeholder"></div>
 
-<!-- ----
-     HERO
-     ---- -->
+<!-- PAGE HERO -->
 <div class="page-hero">
   <div class="hero-layer hero-layer--glow"></div>
   <div class="hero-layer hero-layer--grid"></div>
@@ -544,9 +49,7 @@
 
 <div class="divider"></div>
 
-<!-- ----
-     LONG-TERM ROADMAP
-     ---- -->
+<!-- CONTENT ROADMAP - VERTICAL TIMELINE -->
 <section class="roadmap-section">
   <div class="section-label">Mission Timeline</div>
   <h2 class="section-title">Content Roadmap</h2>
@@ -554,7 +57,6 @@
   <div style="position:relative;">
     <div class="timeline-spine"></div>
 
-    <!-- - ERA - -->
     <div class="timeline-era">
       <span class="timeline-era-label">Foundation</span>
     </div>
@@ -589,7 +91,7 @@
       <div class="timeline-empty"></div>
     </div>
 
-    <!-- ENTRY 2 - RIGHT - v1.0 Launch & Season 1 -->
+    <!-- ENTRY 2 - RIGHT - v1.0 Launch -->
     <div class="timeline-entry">
       <div class="timeline-empty"></div>
       <div class="timeline-node">
@@ -620,7 +122,6 @@
       </div>
     </div>
 
-    <!-- - ERA - -->
     <div class="timeline-era">
       <span class="timeline-era-label">Live Service</span>
     </div>
@@ -685,7 +186,6 @@
       </div>
     </div>
 
-    <!-- - ERA - -->
     <div class="timeline-era">
       <span class="timeline-era-label">Beyond</span>
     </div>
@@ -726,71 +226,73 @@
     </div>
 
     <!-- END NODE -->
-    <div style="position:relative; display:flex; justify-content:center; padding:1rem 0 0; z-index:2;">
-      <div style="display:flex; flex-direction:column; align-items:center; gap:0.5rem;">
-        <div style="width:1px; height:2rem; background:linear-gradient(to bottom, rgba(201,168,76,0.2), transparent);"></div>
-        <div style="width:18px; height:18px; transform:rotate(45deg); border:0.5px dashed rgba(201,168,76,0.2); background:transparent;"></div>
-        <div style="font-size:0.6rem; letter-spacing:0.3em; text-transform:uppercase; color:rgba(138,128,112,0.35); margin-top:0.6rem;">To be continued</div>
+    <div class="timeline-end-node">
+      <div class="timeline-end-inner">
+        <div class="timeline-end-line"></div>
+        <div class="timeline-end-pip"></div>
+        <div class="timeline-end-label">To be continued</div>
       </div>
     </div>
 
-  </div><!-- /relative spine wrapper -->
+  </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- ----
-     DEV UPDATE SCHEDULE
-     ---- -->
-<section class="dev-schedule-section">
+<!-- PRE-LAUNCH CONTENT SCHEDULE -->
+<section class="content-schedule-section">
   <div style="margin-bottom:3rem;">
     <div class="section-label">Weekly Transmissions</div>
-    <div class="dev-schedule-header">
-      <h2 class="section-title" style="margin-bottom:0;">Dev Update Schedule</h2>
-      <p class="dev-schedule-note">A rolling schedule of pre-launch dev updates - each one spotlighting a different system or piece of content ahead of launch.</p>
+    <div class="content-schedule-header">
+      <h2 class="section-title" style="margin-bottom:0;">Pre-Launch Schedule</h2>
+      <p class="content-schedule-note">A rolling schedule of pre-launch dev updates and reveals — each one spotlighting a different system or piece of content ahead of launch.</p>
     </div>
   </div>
 
-  <div class="dev-track">
-    <div class="dev-track-line"></div>
-    <div class="dev-items">
+  <div class="schedule-track">
+    <div class="schedule-track-line"></div>
+    <div class="schedule-items">
 
-      <div class="dev-item">
-        <div class="dev-pip dev-pip--done"></div>
-        <div class="dev-week">Week I</div>
-        <div class="dev-title">Bounties, Quests and Progression</div>
-        <div class="dev-date">27.05.2026</div>
-        <span class="dev-status dev-status--upcoming">Upcoming</span>
+      <div class="schedule-item">
+        <div class="schedule-pip schedule-pip--upcoming"></div>
+        <div class="schedule-week">Week I</div>
+        <div class="schedule-title">Bounties, Quests, and Overall Progression</div>
+        <div class="schedule-type">Dev Update</div>
+        <div class="schedule-date">25.05.2026</div>
+        <span class="schedule-status schedule-status--upcoming">Upcoming</span>
       </div>
 
-      <div class="dev-item">
-        <div class="dev-pip dev-pip--upcoming"></div>
-        <div class="dev-week">Week II</div>
-        <div class="dev-title">Ability Showcase 2</div>
-        <div class="dev-date">03.06.2026</div>
-        <span class="dev-status dev-status--upcoming">Upcoming</span>
+      <div class="schedule-item">
+        <div class="schedule-pip schedule-pip--upcoming"></div>
+        <div class="schedule-week">Week II</div>
+        <div class="schedule-title">Ability Showcase Teaser Trailer I</div>
+        <div class="schedule-type">Teaser Trailer</div>
+        <div class="schedule-date">01.06.2026</div>
+        <span class="schedule-status schedule-status--upcoming">Upcoming</span>
       </div>
 
-      <div class="dev-item">
-        <div class="dev-pip dev-pip--upcoming"></div>
-        <div class="dev-week">Week III</div>
-        <div class="dev-title">Campaign Sneak Peek and Story Overview</div>
-        <div class="dev-date">10.06.2026</div>
-        <span class="dev-status dev-status--upcoming">Upcoming</span>
+      <div class="schedule-item">
+        <div class="schedule-pip schedule-pip--upcoming"></div>
+        <div class="schedule-week">Week III</div>
+        <div class="schedule-title">Destinations Teaser Trailer I</div>
+        <div class="schedule-type">Teaser Trailer</div>
+        <div class="schedule-date">08.06.2026</div>
+        <span class="schedule-status schedule-status--upcoming">Upcoming</span>
       </div>
 
-      <div class="dev-item">
-        <div class="dev-pip dev-pip--upcoming"></div>
-        <div class="dev-week">Week IV</div>
-        <div class="dev-title">Destination Trailer - Official Teaser Trailer 1</div>
-        <div class="dev-date">17.06.2026</div>
-        <span class="dev-status dev-status--upcoming">Upcoming</span>
+      <div class="schedule-item">
+        <div class="schedule-pip schedule-pip--upcoming"></div>
+        <div class="schedule-week">Week IV</div>
+        <div class="schedule-title">Campaign Overview</div>
+        <div class="schedule-type">Dev Update</div>
+        <div class="schedule-date">15.06.2026</div>
+        <span class="schedule-status schedule-status--upcoming">Upcoming</span>
       </div>
 
     </div>
   </div>
 
-  <p style="margin-top:2.5rem; font-size:0.75rem; color:var(--muted); letter-spacing:0.1em; opacity:0.6;">
+  <p class="schedule-disclaimer">
     Schedule subject to change. Additional weeks will be added as pre-launch continues.
   </p>
 </section>
