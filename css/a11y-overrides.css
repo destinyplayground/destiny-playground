@@ -320,3 +320,40 @@ html.a11y-motion .article-image img,
 html.a11y-motion .btn-back,
 html.a11y-motion .survey-btn,
 html.a11y-motion .banner-img { transition: none !important; }
+
+/* ── HOME SCHEDULE: LIGHT MODE ── */
+html.a11y-light .home-schedule-item:hover { background: rgba(120,90,0,0.04); }
+html.a11y-light .home-schedule-title { color: var(--white); }
+
+/* ── HOME SCHEDULE: SIMPLE FONT ── */
+html.a11y-font .home-schedule-title {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif !important;
+  letter-spacing: 0.01em !important;
+}
+html.a11y-font .home-schedule-week,
+html.a11y-font .home-schedule-type,
+html.a11y-font .home-schedule-date {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif !important;
+  letter-spacing: 0.03em !important;
+}
+
+/* ── HOME SCHEDULE: LARGER TEXT ── */
+html.a11y-size .home-schedule-title { font-size: 1rem; }
+html.a11y-size .home-schedule-date  { font-size: 0.78rem; }
+
+/* ── HOME SCHEDULE: HIGH CONTRAST ── */
+html.a11y-contrast .home-schedule-item:hover { background: rgba(255,210,77,0.03); }
+html.a11y-contrast .home-schedule-title { color: #ffffff; }
+html.a11y-contrast .home-schedule-item { border-right-color: rgba(255,210,77,0.08); }
+
+/* ── HOME SCHEDULE: DYSLEXIA FRIENDLY ── */
+html.a11y-dyslexia .home-schedule-title {
+  font-family: 'OpenDyslexic', Arial, sans-serif !important;
+  letter-spacing: 0.04em !important; line-height: 1.4 !important;
+}
+html.a11y-dyslexia .home-schedule-week,
+html.a11y-dyslexia .home-schedule-type,
+html.a11y-dyslexia .home-schedule-date {
+  font-family: 'OpenDyslexic', Arial, sans-serif !important;
+  letter-spacing: 0.04em !important;
+}
