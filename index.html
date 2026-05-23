@@ -184,6 +184,44 @@
   <div class="site-banner-overlay"></div>
 </div>
 
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-orb"></div>
+  <div class="hero-badge">Fan Project</div>
+
+  <div class="hero-eyebrow">
+    <span class="eyebrow-line"></span>
+    A New Timeline Begins
+    <span class="eyebrow-line"></span>
+  </div>
+
+  <h1 class="hero-title">Destiny<br><span>Playground</span></h1>
+
+  <div class="hero-divider">
+    <span class="hero-divider-line"></span>
+    <span class="hero-diamond"></span>
+    <span class="hero-subtitle-text">Wake Up Guardian</span>
+    <span class="hero-diamond"></span>
+    <span class="hero-divider-line"></span>
+  </div>
+
+  <p class="hero-desc">A fan-made Minecraft server built in the world of Destiny. New destinations, new lore, a full campaign - rebuilt from scratch by the community, for the community.</p>
+
+  <div class="hero-ctas">
+    <a class="btn-primary" href="/destiny-playground/getting-started.html">How to Join</a>
+    <a class="btn-secondary" href="/destiny-playground/news.html">Latest News</a>
+  </div>
+
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    Explore
+  </div>
+</div>
+
+<div class="divider"></div>
+
 <!-- DESTINY 2 TRIBUTE -->
 <div class="tribute-section" id="d2-tribute">
   <div class="tribute-bg"></div>
@@ -195,8 +233,7 @@
       <span class="tribute-diamond">&#9670;</span>
       <span class="tribute-line"></span>
     </div>
-    <p class="tribute-desc">On June 9th, 2026, Destiny 2 receives its final update. After twelve years, the lights go down on one of the most extraordinary universes ever built in gaming. The worlds, the lore, the feeling of running a Raid with your Fireteam at midnight - none of that disappears. It lives on in everyone who was ever a Guardian.</p>
-    <p class="tribute-desc">Destiny Playground exists because of what Bungie built. This is our way of carrying it forward.</p>
+    <p class="tribute-desc">On June 9th, Destiny 2 gets its final update. Twelve years. This project exists because of what Bungie built - the worlds, the lore, the feeling of being a Guardian. That doesn't go away. We're carrying it forward.</p>
     <div class="tribute-cta-row">
       <a class="tribute-btn" href="/destiny-playground/articles/announcement-22-05-2026.html">Read Our Full Statement &#8594;</a>
     </div>
@@ -221,47 +258,6 @@
         <div class="tribute-stat-label">The Legacy</div>
       </div>
     </div>
-  </div>
-</div>
-
-<div class="divider"></div>
-
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
-  <div class="hero-orb"></div>
-  <div class="hero-badge">Fan Project</div>
-
-  <div class="hero-eyebrow">
-    <span class="eyebrow-line"></span>
-    A New Timeline Begins
-    <span class="eyebrow-line"></span>
-  </div>
-
-  <h1 class="hero-title">Destiny<br><span>Playground</span></h1>
-
-  <div class="hero-divider">
-    <span class="hero-divider-line"></span>
-    <span class="hero-diamond"></span>
-    <span class="hero-subtitle-text">Wake Up Guardian</span>
-    <span class="hero-diamond"></span>
-    <span class="hero-divider-line"></span>
-  </div>
-
-  <p class="hero-desc">A fan-made Minecraft experience set in the world of Destiny - reimagined, retold, &amp; rebuilt from the ground up.</p>
-
-  <div class="hero-ctas">
-    <a class="btn-primary" href="/destiny-playground/getting-started.html">How to Join</a>
-    <button class="btn-secondary" onclick="document.getElementById('trailer-section').scrollIntoView({behavior:'smooth'})">
-      <span class="btn-play-icon"></span>
-      Watch Trailer
-    </button>
-  </div>
-
-  <div class="scroll-hint">
-    <div class="scroll-line"></div>
-    Explore
   </div>
 </div>
 
@@ -352,7 +348,6 @@
         <div class="roadmap-phase">Week I</div>
         <div class="roadmap-name">Bounties, Quest, and Progression Overview</div>
         <div class="roadmap-desc">27.05.2026</div>
-        <span class="roadmap-status status-upcoming">Upcoming</span>
       </div>
 
       <div class="roadmap-item">
@@ -360,7 +355,6 @@
         <div class="roadmap-phase">Week II</div>
         <div class="roadmap-name">Ability Showcase 2</div>
         <div class="roadmap-desc">03.06.2026</div>
-        <span class="roadmap-status status-upcoming">Upcoming</span>
       </div>
 
       <div class="roadmap-item">
@@ -368,7 +362,6 @@
         <div class="roadmap-phase">Week III</div>
         <div class="roadmap-name">Campaign Sneak Peak and Story Overview</div>
         <div class="roadmap-desc">10.06.2026</div>
-        <span class="roadmap-status status-upcoming">Upcoming</span>
       </div>
 
       <div class="roadmap-item">
@@ -376,7 +369,6 @@
         <div class="roadmap-phase">Week IV</div>
         <div class="roadmap-name">Destination Trailer - Official Teaser Trailer 1</div>
         <div class="roadmap-desc">17.06.2026</div>
-        <span class="roadmap-status status-upcoming">Upcoming</span>
       </div>
 
     </div>
@@ -458,12 +450,10 @@
 </script>
 
 <script>
-  // Scroll to top on page load - prevents browser restoring mid-page position
+  // Scroll to top on page load
   if ('scrollRestoration' in history) {
     history.scrollRestoration = 'manual';
   }
-  // Must run after shared.js finishes injecting nav/footer, as layout shifts
-  // caused by async injection can push the page down after an early scrollTo
   document.addEventListener('DOMContentLoaded', function() {
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     // Belt-and-braces: also scroll once nav partial has loaded and re-run its scripts
