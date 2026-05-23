@@ -417,42 +417,47 @@ footer {
   color: rgba(201,168,76,0.2); text-align: center; padding: 1rem;
 }
 
-/* ── ROADMAP ── */
-.roadmap-section { padding: 6rem 3rem; max-width: 1200px; margin: 0 auto; }
-.roadmap-track { position: relative; margin-top: 4rem; margin-bottom: 0; }
-.roadmap-track--second { margin-top: 3rem; }
-.roadmap-track::before {
-  content: ''; position: absolute; left: 0; top: 10px; right: 0;
-  height: 0.5px; background: var(--border);
-}
-.roadmap-items {
+/* ── HOME CONTENT SCHEDULE PREVIEW ── */
+.home-schedule-section { padding: 6rem 3rem; max-width: 1200px; margin: 0 auto; }
+.home-schedule-track {
+  position: relative;
   display: grid; grid-template-columns: repeat(4, 1fr);
-  gap: 0; position: relative;
+  gap: 0; margin-top: 3.5rem;
 }
-.roadmap-item { padding: 2rem 1.5rem 0; position: relative; }
-.roadmap-dot {
-  width: 10px; height: 10px; border: 0.5px solid var(--gold-dim);
-  transform: rotate(45deg); margin-bottom: 1.5rem; background: var(--dark);
+.home-schedule-line {
+  position: absolute; left: 0; right: 0; top: 10px;
+  height: 0.5px;
+  background: linear-gradient(to right, rgba(201,168,76,0.08), rgba(201,168,76,0.2) 20%, rgba(201,168,76,0.2) 80%, rgba(201,168,76,0.08));
 }
-.roadmap-item.active .roadmap-dot { background: var(--gold); border-color: var(--gold); }
-.roadmap-item.done   .roadmap-dot { background: var(--gold-dim); }
-.roadmap-phase {
-  font-size: 0.68rem; letter-spacing: 0.25em; text-transform: uppercase;
-  color: var(--gold); margin-bottom: 0.5rem;
+.home-schedule-item {
+  padding: 2.5rem 1.5rem 1.5rem;
+  position: relative;
+  border-right: 0.5px solid rgba(201,168,76,0.06);
+  transition: background 0.2s;
 }
-.roadmap-name {
-  font-family: 'Cinzel', serif; font-size: 0.95rem;
-  letter-spacing: 0.05em; margin-bottom: 0.5rem; color: var(--white);
+.home-schedule-item:last-child { border-right: none; }
+.home-schedule-item:hover { background: rgba(201,168,76,0.02); }
+.home-schedule-pip {
+  width: 10px; height: 10px; transform: rotate(45deg);
+  margin-bottom: 1.5rem; position: relative; z-index: 1;
+  background: var(--dark); border: 0.5px solid rgba(138,128,112,0.35);
 }
-.roadmap-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.6; font-weight: 300; }
-.roadmap-status {
-  display: inline-block; margin-top: 0.8rem;
-  font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
-  padding: 3px 10px; border: 0.5px solid;
+.home-schedule-week {
+  font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 0.4rem;
 }
-.status-done     { border-color: var(--gold-dim); color: var(--gold-dim); }
-.status-active   { border-color: var(--gold);     color: var(--gold); }
-.status-upcoming { border-color: rgba(138,128,112,0.3); color: var(--muted); }
+.home-schedule-title {
+  font-family: 'Cinzel', serif;
+  font-size: 0.88rem; font-weight: 600; letter-spacing: 0.04em;
+  color: var(--white); margin-bottom: 0.3rem; line-height: 1.35;
+}
+.home-schedule-type {
+  font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--gold-dim); margin-bottom: 0.35rem;
+}
+.home-schedule-date {
+  font-size: 0.68rem; letter-spacing: 0.15em; color: var(--muted);
+}
 
 /* ── SOCIAL BUTTONS ── */
 .social-btn {
@@ -473,19 +478,21 @@ footer {
   .nav-links { display: none; }
   .nav-mobile-toggle { display: flex; }
   .section-wrap { padding: 4rem 1.5rem; }
-  .gallery-section, .roadmap-section { padding: 4rem 1.5rem; }
+  .gallery-section, .home-schedule-section { padding: 4rem 1.5rem; }
   .news-grid { grid-template-columns: 1fr; }
   .news-card-featured { grid-column: span 1; grid-template-columns: 1fr; }
   .featured-img-box { min-height: 160px; border-right: none; border-bottom: 1.5px solid var(--border); }
   .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
   .gallery-item--large { grid-row: span 1; }
   .roadmap-items { grid-template-columns: 1fr 1fr; }
+  .home-schedule-track { grid-template-columns: 1fr 1fr; }
   footer { grid-template-columns: 1fr; }
   .footer-right { align-items: flex-start; }
 }
 @media (max-width: 480px) {
   .hero-title { font-size: clamp(2.2rem, 10vw, 3.5rem); }
   .roadmap-items { grid-template-columns: 1fr; }
+  .home-schedule-track { grid-template-columns: 1fr 1fr; }
   .gallery-grid { grid-template-columns: 1fr; }
 }
 
