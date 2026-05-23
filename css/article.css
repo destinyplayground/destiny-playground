@@ -53,7 +53,7 @@
 /* ── ARTICLE BODY ── */
 .article-body { max-width: 800px; margin: 0 auto; padding: 2.5rem 3rem; }
 .article-body p {
-  font-size: 1rem; line-height: 1.85; color: var(--body-text);
+  font-size: 2rem; line-height: 1.85; color: var(--body-text);
   font-weight: 300; margin-bottom: 1.5rem; letter-spacing: 0.02em;
 }
 .article-body h2 {
