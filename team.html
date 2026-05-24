@@ -27,7 +27,7 @@
     linear-gradient(180deg, #0a0906 0%, #0f0d08 60%, #0a0906 100%);
 }
 .page-hero-grid {
-  position: absolute; inset: 0; opacity: 0.04;
+  position: absolute; inset: 0; opa: 0.04;
   background-image:
     linear-gradient(rgba(201,168,76,0.6) 1px, transparent 1px),
     linear-gradient(90deg, rgba(201,168,76,0.6) 1px, transparent 1px);
@@ -41,14 +41,14 @@
   color: var(--dark); background: var(--gold-dim); padding: 3px 16px;
   margin-bottom: 1.4rem;
   clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
-  opacity: 0; animation: fadeUp 0.9s ease forwards 0.1s;
+  opa: 0; animation: fadeUp 0.9s ease forwards 0.1s;
 }
 .page-hero-eyebrow {
   position: relative;
   font-size: 0.72rem; letter-spacing: 0.35em; text-transform: uppercase;
   color: var(--gold); margin-bottom: 1.2rem;
   display: flex; align-items: center; justify-content: center; gap: 1rem;
-  opacity: 0; animation: fadeUp 0.9s ease forwards 0.3s;
+  opa: 0; animation: fadeUp 0.9s ease forwards 0.3s;
 }
 .eyebrow-line { flex: none; width: 40px; height: 0.5px; background: var(--gold-dim); }
 .page-hero-title {
@@ -57,19 +57,19 @@
   font-size: clamp(2rem, 5vw, 3.6rem);
   font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
   color: var(--white); margin-bottom: 1.4rem;
-  opacity: 0; animation: fadeUp 0.9s ease forwards 0.55s;
+  opa: 0; animation: fadeUp 0.9s ease forwards 0.55s;
 }
 .page-hero-title span { color: var(--gold); }
 .page-hero-desc {
   position: relative;
   max-width: 540px; margin: 0 auto;
   font-size: 0.95rem; line-height: 1.8; color: var(--body-text); font-weight: 300;
-  opacity: 0; animation: fadeUp 0.9s ease forwards 0.75s;
+  opa: 0; animation: fadeUp 0.9s ease forwards 0.75s;
 }
 
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(18px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from { opa: 0; transform: translateY(18px); }
+  to   { opa: 1; transform: translateY(0); }
 }
 
 /* - SHARED SECTION WRAPPER - */
@@ -454,7 +454,7 @@
         <div class="team-roles">
           <span class="team-role">Builder</span>
         </div>
-        <p class="team-detail">Contributing to world construction, including work on The Last City.</p>
+        <p class="team-detail">Contributing to world construction, including work on The Last .</p>
       </div>
     </div>
 
@@ -504,6 +504,22 @@
           <span class="team-role">QA</span>
         </div>
         <p class="team-detail">Composing the original soundtrack and ambient audio that defines the world's atmosphere.</p>
+      </div>
+    </div>
+
+    <!-- Haker -->
+    <div class="team-card">
+      <div class="team-avatar">
+        <span class="team-avatar-inner">H</span>
+        <span class="avatar-corner-bl"></span>
+        <span class="avatar-corner-br"></span>
+      </div>
+      <div class="team-info" style="margin-top:1.2rem;">
+        <div class="team-name">Haker</div>
+        <div class="team-roles">
+          <span class="team-role">Contractor - Modeller</span>
+        </div>
+        <p class="team-detail">Creating weapon, item, enemy models for the server.</p>
       </div>
     </div>
 
@@ -612,6 +628,22 @@
       </div>
       <div class="credits-rows">
         <div class="credits-row">
+          <span class="credits-label">Earth, The Last City</span>
+          <span class="credits-value"><strong>Qewl</strong>, <strong>CNT DarthGaming</strong>, <strong>Archunter29</strong>, <strong>Emi</strong>, <strong>JesusSwag4Dan</strong>, <strong>Lilravo</strong>, <strong>Viviswag</strong></span>
+        </div>
+        <div class="credits-row">
+          <span class="credits-label">Earth, The Last City - Destiny 1 Tower</span>
+          <span class="credits-value"><strong>TCMC Team</strong></span>
+        </div>
+        <div class="credits-row">
+          <span class="credits-label">Earth, The Last City - Destiny 2 Tower</span>
+          <span class="credits-value"><strong>Saucybac0n</strong></span>
+        </div>
+        <div class="credits-row">
+          <span class="credits-label">Earth, The Last City - Bannerfall, Crucible Map</span>
+          <span class="credits-value"><strong>CNT DarthGaming</strong></span>
+        </div>
+        <div class="credits-row">
           <span class="credits-label">Earth, European Dead Zone</span>
           <span class="credits-value"><strong>CNT DarthGaming</strong></span>
         </div>
@@ -620,100 +652,80 @@
           <span class="credits-value"><strong>CNT DarthGaming</strong></span>
         </div>
         <div class="credits-row">
-          <span class="credits-label">Earth, The Last City - Bannerfall, Crucible Map</span>
+          <span class="credits-label">Earth, European Dead Zone - Firebase Hades, Under-Siege Version</span>
           <span class="credits-value"><strong>CNT DarthGaming</strong></span>
-        </div>
-        <div class="credits-row">
-          <span class="credits-label">Mars, Meridian Bay</span>
-          <span class="credits-value"><strong>CNT DarthGaming</strong>, <strong>End</strong></span>
         </div>
         <div class="credits-row">
           <span class="credits-label">Europa, Moon of Jupiter</span>
           <span class="credits-value"><strong>UnknownMemes</strong></span>
         </div>
         <div class="credits-row">
-          <span class="credits-label">Earth, The Last City - Tower</span>
-          <span class="credits-value"><strong>TCMC Team</strong></span>
-        </div>
-        <div class="credits-row">
-          <span class="credits-label">Titan, New Pacific Arcology - Savathûn's Song Strike</span>
-          <span class="credits-value"><strong>CNT DarthGaming</strong></span>
+          <span class="credits-label">The Moon, Ocean of Storms <span style="color:var(--muted);font-style:italic;">- Heavily WIP</span></span>
+          <span class="credits-value"><strong>End</strong></span>
         </div>
         <div class="credits-row">
           <span class="credits-label">The Moon, Ocean of Storms - Anomaly, Crucible Map</span>
           <span class="credits-value"><strong>TCMC Team</strong></span>
         </div>
         <div class="credits-row">
+          <span class="credits-label">Mars, Meridian Bay</span>
+          <span class="credits-value"><strong>CNT DarthGaming</strong>, <strong>End</strong></span>
+        </div>
+        <div class="credits-row">
           <span class="credits-label">Mars, Meridian Bay - Firebase Delphi, Crucible Map</span>
           <span class="credits-value"><strong>TCMC Team</strong></span>
-        </div>
-        <div class="credits-row">
-          <span class="credits-label">Mercury, Fields of Glass - Altar of Flame, Crucible Map</span>
-          <span class="credits-value"><strong>UnknownMemes</strong></span>
-        </div>
-        <div class="credits-row">
-          <span class="credits-label">Dreadnaught, Rings of Saturn - Court of Oryx</span>
-          <span class="credits-value"><strong>UnknownMemes</strong></span>
-        </div>
-        <div class="credits-row">
-          <span class="credits-label">Io, Echo Mesa - Javelin-4, Crucible Map</span>
-          <span class="credits-value"><strong>Lilravo</strong></span>
-        </div>
-        <div class="credits-row">
-          <span class="credits-label">Earth, The Cosmodrome - Fallen S.A.B.E.R. Strike</span>
-          <span class="credits-value"><strong>Tobby</strong>, <strong>Shade</strong>, <strong>Noodil</strong>, <strong>Emi</strong></span>
-        </div>
-        <div class="credits-row">
-          <span class="credits-label">Nessus, Arcadian Valley - The Inverted Spire Strike</span>
-          <span class="credits-value"><strong>CNT DarthGaming</strong></span>
-        </div>
-        <div class="credits-row">
-          <span class="credits-label">Savathûn's Throne World, Court of Savathûn - The Lightblade Strike</span>
-          <span class="credits-value"><strong>Kyubd</strong></span>
-        </div>
-        <div class="credits-row">
-          <span class="credits-label">Mars, Braytech Futurescape - New Arcadia, Gambit Map</span>
-          <span class="credits-value"><strong>Nefien</strong></span>
-        </div>
-        <div class="credits-row">
-          <span class="credits-label">The Pale Heart, The Traveler - Liminality Strike</span>
-          <span class="credits-value"><strong>Palgia</strong></span>
-        </div>
-        <div class="credits-row">
-          <span class="credits-label">Io, Echo Mesa - The Pyramidion Strike</span>
-          <span class="credits-value"><strong>CNT DarthGaming</strong></span>
         </div>
         <div class="credits-row">
           <span class="credits-label">Earth, The Cosmodrome</span>
           <span class="credits-value"><strong>End</strong></span>
         </div>
         <div class="credits-row">
+          <span class="credits-label">Dreadnaught, Rings of Saturn - Court of Oryx</span>
+          <span class="credits-value"><strong>UnknownMemes</strong></span>
+        </div>
+        <div class="credits-row">
           <span class="credits-label">Earth, The Cosmodrome - The Devils Lair Strike</span>
           <span class="credits-value"><strong>End</strong>, <strong>CNT DarthGaming</strong></span>
         </div>
         <div class="credits-row">
-          <span class="credits-label">Earth, The Last City - The Hangar</span>
-          <span class="credits-value"><strong>Saucybac0n</strong></span>
+          <span class="credits-label">Earth, The Cosmodrome - Fallen S.A.B.E.R. Strike</span>
+          <span class="credits-value"><strong>Tobby</strong>, <strong>Shade</strong>, <strong>Noodil</strong>, <strong>Emi</strong></span>
         </div>
         <div class="credits-row">
-          <span class="credits-label">Earth, European Dead Zone - Firebase Hades, Under-Siege Version</span>
+          <span class="credits-label">Titan, New Pacific Arcology - Savathûn's Song Strike</span>
           <span class="credits-value"><strong>CNT DarthGaming</strong></span>
         </div>
         <div class="credits-row">
-          <span class="credits-label">The Moon, Ocean of Storms <span style="color:var(--muted);font-style:italic;">- Heavily WIP</span></span>
-          <span class="credits-value"><strong>End</strong></span>
+          <span class="credits-label">Nessus, Arcadian Valley - The Inverted Spire Strike</span>
+          <span class="credits-value"><strong>CNT DarthGaming</strong></span>
         </div>
         <div class="credits-row">
-          <span class="credits-label">The Moon, Ocean of Storms - Archer's Line <span style="color:var(--muted);font-style:italic;">Heavily WIP</span></span>
-          <span class="credits-value"><strong>TCMC Team</strong></span>
+          <span class="credits-label">Io, Echo Mesa - The Pyramidion Strike</span>
+          <span class="credits-value"><strong>CNT DarthGaming</strong></span>
         </div>
         <div class="credits-row">
           <span class="credits-label">The Dreadnaught, Rings of Saturn - The Darkblade Strike</span>
           <span class="credits-value"><strong>Palgia</strong></span>
         </div>
         <div class="credits-row">
-          <span class="credits-label">Earth, The Last City</span>
-          <span class="credits-value"><strong>Qewl</strong>, <strong>CNT DarthGaming</strong>, <strong>Archunter29</strong>, <strong>Emi</strong>, <strong>JesusSwag4Dan</strong>, <strong>Lilravo</strong>, <strong>Viviswag</strong></span>
+          <span class="credits-label">Savathûn's Throne World, Court of Savathûn - The Lightblade Strike</span>
+          <span class="credits-value"><strong>Kyubd</strong></span>
+        </div>
+        <div class="credits-row">
+          <span class="credits-label">The Pale Heart, The Traveler - Liminality Strike</span>
+          <span class="credits-value"><strong>Palgia</strong></span>
+        </div>
+        <div class="credits-row">
+          <span class="credits-label">Io, Echo Mesa - Javelin-4, Crucible Map</span>
+          <span class="credits-value"><strong>Lilravo</strong></span>
+        </div>
+        <div class="credits-row">
+          <span class="credits-label">Mercury, Fields of Glass - Altar of Flame, Crucible Map</span>
+          <span class="credits-value"><strong>UnknownMemes</strong></span>
+        </div>
+        <div class="credits-row">
+          <span class="credits-label">Mars, Braytech Futurescape - New Arcadia, Gambit Map</span>
+          <span class="credits-value"><strong>Nefien</strong></span>
         </div>
       </div>
     </div>
