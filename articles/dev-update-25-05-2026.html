@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bounties, Quests & Progression - Dev Update - Destiny Playground</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/destiny-playground/css/styles.css">
+<link rel="stylesheet" href="/destiny-playground/css/article.css">
+<link rel="stylesheet" href="/destiny-playground/css/nav.css">
+<link rel="stylesheet" href="/destiny-playground/css/a11y-overrides.css">
+
+<style>
+/* ── DIRECTOR REVEAL ── */
+.director-reveal {
+  margin: 2.5rem 0;
+  border: 0.5px solid rgba(201,168,76,0.25);
+  background: rgba(201,168,76,0.02);
+  overflow: hidden;
+}
+.director-reveal-label {
+  font-size: 0.68rem; letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--gold); padding: 0.9rem 1.5rem;
+  border-bottom: 0.5px solid rgba(201,168,76,0.15);
+  background: rgba(201,168,76,0.04);
+}
+.director-img-placeholder {
+  width: 100%; aspect-ratio: 16/7;
+  background: linear-gradient(135deg, rgba(201,168,76,0.06) 0%, rgba(201,168,76,0.01) 50%, rgba(201,168,76,0.04) 100%);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 1rem; border-bottom: 0.5px solid rgba(201,168,76,0.1);
+}
+.director-img-placeholder-icon {
+  width: 56px; height: 56px; border: 0.5px solid rgba(201,168,76,0.2);
+  transform: rotate(45deg); display: flex; align-items: center; justify-content: center;
+}
+.director-img-placeholder-icon span { transform: rotate(-45deg); font-size: 1.4rem; color: rgba(201,168,76,0.25); }
+.director-img-placeholder-text {
+  font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(201,168,76,0.2);
+}
+.director-caption {
+  padding: 0.8rem 1.5rem; font-size: 0.78rem; letter-spacing: 0.08em;
+  color: var(--muted); font-style: italic;
+}
+
+/* ── PLANET PILLS ── */
+.planet-list {
+  display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 1.2rem 0 1.8rem;
+}
+.planet-pill {
+  padding: 0.45rem 1.1rem;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+  border: 0.5px solid var(--border); color: var(--muted);
+  background: rgba(255,255,255,0.01);
+}
+.planet-pill.confirmed {
+  border-color: rgba(201,168,76,0.35); color: var(--gold);
+  background: rgba(201,168,76,0.04);
+}
+
+/* ── TOWER REVEAL BOX ── */
+.reveal-box {
+  border: 0.5px solid rgba(201,168,76,0.4);
+  padding: 2rem 2.2rem;
+  background: rgba(201,168,76,0.04);
+  margin: 2.5rem 0;
+  position: relative;
+  overflow: hidden;
+}
+.reveal-box::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(to right, transparent, rgba(201,168,76,0.5), transparent);
+}
+.reveal-box-label {
+  font-size: 0.68rem; letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 1rem;
+  display: flex; align-items: center; gap: 0.8rem;
+}
+.reveal-box-label::after { content: ''; flex: 1; height: 0.5px; background: rgba(201,168,76,0.25); }
+.reveal-box-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.3rem, 3vw, 1.9rem);
+  letter-spacing: 0.06em; color: var(--white);
+  margin-bottom: 0.8rem; line-height: 1.2;
+}
+.reveal-box p {
+  font-size: 0.98rem; line-height: 1.8; color: var(--muted);
+  font-weight: 300; margin: 0; letter-spacing: 0.02em;
+}
+
+/* ── CREDITS NOTICE ── */
+.credits-notice {
+  display: flex; align-items: flex-start; gap: 1.2rem;
+  padding: 1.2rem 1.5rem;
+  border: 0.5px solid var(--border);
+  background: rgba(255,255,255,0.01);
+  margin: 2rem 0;
+}
+.credits-notice-icon {
+  font-size: 1.1rem; color: var(--gold-dim); flex-shrink: 0; margin-top: 0.1rem;
+}
+.credits-notice p {
+  font-size: 0.95rem; line-height: 1.75; color: var(--muted);
+  font-weight: 300; margin: 0; letter-spacing: 0.02em;
+}
+</style>
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+<div style="height: 64px;"></div>
+
+<div class="banner">
+  <div class="banner-placeholder">
+    <div class="banner-placeholder-icon"><span>&#9670;</span></div>
+    <div class="banner-placeholder-text">Banner Image — banner_16.png</div>
+  </div>
+  <div class="banner-overlay"></div>
+  <div class="banner-tag">Dev Update</div>
+</div>
+
+<div class="article-header">
+  <h1 class="article-title">Bounties, Quests & Overall Progression</h1>
+  <div class="article-meta">
+    <span class="meta-date">25 May, 2026</span>
+    <div class="meta-sep"></div>
+    <span class="meta-author">CNT Darthgaming</span>
+    <span class="meta-tag">Dev Update</span>
+  </div>
+</div>
+
+<div class="article-body">
+
+  <div class="dev-notice">
+    <div class="dev-notice-label">Developer Note</div>
+    <p>The purpose of these dev updates is to share systems currently in development and to give insight into the early stages of design as the project evolves. What you're seeing right now are the foundations and skeletons of systems, nowhere near their final versions.</p>
+    <p>Things like names, values, stats, and organisation are often placeholders or early iterations. My current focus is building the core structure and functionality of systems first. Refinement, balancing, and polish come later in development.</p>
+    <p>Because of this, please keep in mind that everything shown in dev updates is subject to change. Feedback and suggestions are always welcome, but constructive feedback with reasoning is far more helpful than simple reactions. It's also worth remembering that seeing a system from the outside doesn't always show the full context of how it connects with other systems or the wider project.</p>
+  </div>
+
+  <p>Welcome back, Guardians. This week's update comes after a stretch where development had to take a back seat — the new website launched on May 22nd, and getting that across the line took everything. If you haven't explored it yet, go do that first. It's worth it.</p>
+
+  <p>With the site live, the focus is back where it belongs: the server itself. A lot has been in motion behind the scenes, and this week there are a few things worth talking about before we get into the main systems content.</p>
+
+  <h2>Development Update</h2>
+
+  <p>Work is ramping back up across the board. The website consumed the majority of available time over the past few weeks, but that's done now, and the shift back to active development is already underway. A few things currently in motion:</p>
+
+  <ul>
+    <li>The <strong>weapons system</strong> is in a new iteration — more on that in a future update, but progress is being made on the new random roll perk implementation in practice.</li>
+    <li><strong>EDZ construction</strong> continues. That's ongoing first-party work and it's coming along well.</li>
+    <li><strong>Teaser trailers</strong> are being organised. All destinations have now been revealed, which means visual content for them is the natural next step. More on that soon.</li>
+    <li>The <strong>team is expanding</strong> — work is being distributed to additional contributors to help carry more of the load across more areas simultaneously. If you haven't already, applications are open in Discord.</li>
+    <li><strong>Campaign writing</strong> has picked back up and is going excellently. There's a lot of material in development that we're genuinely excited about.</li>
+  </ul>
+
+  <p>One thing worth mentioning separately: with the amount of Destiny 2 cut content and behind-the-scenes material that has been surfacing from former developers since the shutdown announcement, there's a real opportunity here. Some of what never made it into the live game — concepts, ideas, directions that were abandoned — deserve a chance to exist somewhere. Destiny Playground may be exactly the right place for some of that. We're paying close attention.</p>
+
+  <h2>Founders Playtest</h2>
+
+  <p>As announced last week, a limited-scope Founders-only playtest is planned before launch. If you missed the full details, <a href="/destiny-playground/articles/announcement-22-05-2026.html">check out the website announcement article</a> for the complete breakdown of what it involves and how Founder status works.</p>
+
+  <p>There are still spots remaining. To secure one, join the Discord — that's all it takes.</p>
+
+  <h2>What's Next for D2 — and for Us</h2>
+
+  <p>June 9th is approaching. Destiny 2's final update. There's not much left to say about it that wasn't said in last week's announcement, but the feeling hasn't changed: the torch doesn't have to go out, and we intend to make sure it doesn't.</p>
+
+  <p>If you have memories from the past twelve years that you want to put somewhere, the <strong>#Tribute</strong> channel in Discord is there for exactly that. We'll be doing something to mark the day — details to follow.</p>
+
+  <h2>Reveals</h2>
+
+  <h3>Say Hello to Nostalgia</h3>
+
+  <div class="reveal-box">
+    <div class="reveal-box-label">&#9670; &nbsp; Reveal</div>
+    <div class="reveal-box-title">The Tower is Coming to Destiny Playground</div>
+    <p>The original plan was no Tower. The Last City only — the actual city, as it should have always been the centre of things. That plan has changed.</p>
+  </div>
+
+  <p>The <strong>Destiny 1 Tower</strong> will be present in Destiny Playground, sitting alongside The Last City. Both will exist together. You'll have the City as a living, breathing social and narrative space, and the Tower as the Guardians' home within it — exactly the relationship that always made sense but that the games never quite committed to showing properly.</p>
+
+  <p>This felt like the right call for a lot of reasons. The Tower carries twelve years of memory. It's where this community grew up, in a sense. Having it present isn't just nostalgia — it's acknowledgement of what it meant, and a chance to honour that properly within a world that's built to last.</p>
+
+  <p>A D2 Tower incorporation is something we may also explore in the future. No promises yet, but it's on the radar.</p>
+
+  <h3>The Full Director</h3>
+
+  <p>All destinations have now been officially revealed. That means we can share, for the first time, the current full version of the Director art — the complete map of where you'll be going.</p>
+
+  <div class="director-reveal">
+    <div class="director-reveal-label">&#9670; &nbsp; Director Art — Season 1 Launch</div>
+    <div class="director-img-placeholder">
+      <div class="director-img-placeholder-icon"><span>&#9670;</span></div>
+      <div class="director-img-placeholder-text">Director Art Image</div>
+    </div>
+    <div class="director-caption">The Director — current Season 1 launch version. Subject to change as development continues.</div>
+  </div>
+
+  <p>The four confirmed launch destinations are:</p>
+
+  <div class="planet-list">
+    <div class="planet-pill confirmed">Earth — EDZ &amp; Northreach</div>
+    <div class="planet-pill confirmed">Europa</div>
+    <div class="planet-pill confirmed">The Moon</div>
+    <div class="planet-pill confirmed">Mars — Meridian Bay</div>
+  </div>
+
+  <p>These are the destinations that will be present at launch. Everything else — future expansions, additional locations, seasonal content — builds from here.</p>
+
+  <h3>Credits Page</h3>
+
+  <p>The credits page on the website has been significantly updated. There are almost no redactions remaining at this point, which means you can now see a much more complete picture of the team, contributors, and resources that have gone into building this.</p>
+
+  <div class="credits-notice">
+    <div class="credits-notice-icon">&#9670;</div>
+    <p>One thing worth clarifying: the credits list includes some resources and assets that exist within the project but have <strong>no planned role at launch</strong>. The Liminality strike is a good example — it's listed, but it won't be present when the server opens. These are things we have access to and may refactor in the future to fit properly, potentially giving players a chance to experience content that never made it into the original games in a meaningful form. No timeline on any of that, but we wanted to be transparent about what's listed and why.</p>
+  </div>
+
+  <p>Go have a look. The people making this deserve to be seen.</p>
+
+  <h2>Bounties, Quests & Overall Progression</h2>
+
+  <p>This week's main systems content covers how moment-to-moment and long-term progression works in Destiny Playground — bounties, quests, and the broader structure that ties everything together into a coherent loop.</p>
+
+  <div class="callout">
+    <p>This section is still being written and will be added here shortly. Check back soon, or keep an eye on Discord for the update.</p>
+  </div>
+
+</div>
+
+<div class="closing">
+  <div class="closing-note">
+    The website is live, the team is growing, and development is moving again. There's a lot more coming — keep an eye on the roadmap, and find us in Discord if you want to be part of it.
+    <div class="closing-sig">- CNT Darthgaming</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="socials-section">
+  <div class="socials-label">Find Us</div>
+  <div class="socials-title">Follow the Project</div>
+  <div class="socials-grid">
+    <a class="social-btn" href="https://discord.gg/Ah6Jt5KVPH">&#9671; Discord</a>
+    <a class="social-btn" href="https://youtube.com/@cntdarthgaming">&#9654; YouTube</a>
+    <a class="social-btn" href="https://bsky.app/profile/thedestinyplayground.bsky.social">&#9633; Bluesky</a>
+    <a class="social-btn" href="https://x.com/destinyplaygrnd">&#9632; Twitter</a>
+    <a class="social-btn" href="https://ko-fi.com/destinyplayground">&#9651; Ko-fi</a>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="back-section">
+  <a class="btn-back" href="/destiny-playground/news.html">&#8592; Back to News</a>
+</div>
+
+<div id="footer-placeholder"></div>
+<script src="/destiny-playground/js/shared.js"></script>
+</body>
+</html>
