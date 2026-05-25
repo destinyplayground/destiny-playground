@@ -1,9 +1,20 @@
 [
   {
+    "title": "Bounties, Quests & Overall Progression",
+    "tag": "Dev Update",
+    "date": "25 May, 2026",
+    "dateSort": 20260525,
+    "author": "CNT Darthgaming",
+    "excerpt": "Significant development updates, The tower, Currencies, Bounties, Quests, Vendors, Season archive scrapped, Quests, Side missions, and Prestige...",
+    "file": "articles/announcement-25-05-2026.html",
+    "image": "/destiny-playground/images/dev-update-banners/banner_17.png",
+    "featured": true
+  },
+  {
     "title": "The New Website Is Live",
     "tag": "Announcement",
     "date": "22 May, 2026",
-    "dateSort": 20260518,
+    "dateSort": 20260522,
     "author": "CNT Darthgaming",
     "excerpt": "Destiny 2 is coming to an end, but the torch doesn't have to go out.",
     "file": "articles/announcement-22-05-2026.html",
