@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vault System - Dev Update - Destiny Playground</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/destiny-playground/css/styles.css">
+<link rel="stylesheet" href="/destiny-playground/css/article.css">
+<link rel="stylesheet" href="/destiny-playground/css/nav.css">
+<link rel="stylesheet" href="/destiny-playground/css/a11y-overrides.css">
+
+<style>
+
+/* ── TEAM CARD GRID ── */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.2rem;
+  margin: 2rem 0;
+}
+.team-card {
+  border: 0.5px solid var(--border);
+  background: rgba(255,255,255,0.01);
+  padding: 1.5rem 1.6rem;
+  position: relative;
+  overflow: hidden;
+}
+.team-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(to right, transparent, rgba(201,168,76,0.3), transparent);
+}
+.team-card--join { border-color: rgba(93,202,138,0.3); background: rgba(93,202,138,0.02); }
+.team-card--join::before { background: linear-gradient(to right, transparent, rgba(93,202,138,0.4), transparent); }
+.team-card--leave { border-color: rgba(255,255,255,0.08); }
+.team-card-status {
+  font-size: 0.65rem; letter-spacing: 0.28em; text-transform: uppercase;
+  margin-bottom: 0.6rem; display: flex; align-items: center; gap: 0.5rem;
+}
+.team-card-status--join { color: #5dca8a; }
+.team-card-status--leave { color: var(--muted); }
+.team-card-status-dot {
+  width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
+}
+.team-card-status-dot--join { background: #5dca8a; box-shadow: 0 0 5px rgba(93,202,138,0.7); }
+.team-card-status-dot--leave { background: var(--muted); opacity: 0.5; }
+.team-card-name {
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem; letter-spacing: 0.06em;
+  color: var(--white); margin-bottom: 0.4rem;
+}
+.team-card-role {
+  font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 0.8rem;
+}
+.team-card-role--muted { color: var(--muted); }
+.team-card p {
+  font-size: 0.92rem; line-height: 1.75; color: var(--muted);
+  font-weight: 300; margin: 0; letter-spacing: 0.02em;
+}
+
+/* ── CONCEPT ART GRID ── */
+.concept-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.8rem;
+  margin: 2rem 0;
+}
+.concept-item {
+  border: 0.5px solid var(--border);
+  overflow: hidden;
+  background: rgba(255,255,255,0.01);
+  position: relative;
+}
+.concept-item-placeholder {
+  width: 100%; aspect-ratio: 4/3;
+  background: linear-gradient(135deg, rgba(201,168,76,0.05) 0%, rgba(201,168,76,0.01) 100%);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 0.6rem;
+}
+.concept-item img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: opacity 0.3s;
+}
+.concept-item img:hover { opacity: 0.85; }
+.concept-item-placeholder-icon {
+  width: 36px; height: 36px; border: 0.5px solid rgba(201,168,76,0.2);
+  transform: rotate(45deg); display: flex; align-items: center; justify-content: center;
+}
+.concept-item-placeholder-icon span { transform: rotate(-45deg); font-size: 0.9rem; color: rgba(201,168,76,0.25); }
+.concept-item-placeholder-text {
+  font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(201,168,76,0.18);
+}
+.concept-caption {
+  padding: 0.5rem 0.8rem;
+  font-size: 0.72rem; letter-spacing: 0.08em;
+  color: var(--muted); font-style: italic;
+  border-top: 0.5px solid var(--border);
+}
+@media (max-width: 600px) {
+  .concept-grid { grid-template-columns: 1fr; }
+}
+
+/* ── PROGRESS GALLERY ── */
+.progress-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 0.8rem;
+  margin: 2rem 0;
+}
+.progress-item {
+  border: 0.5px solid var(--border);
+  overflow: hidden;
+  background: rgba(255,255,255,0.01);
+}
+.progress-item-placeholder {
+  width: 100%; aspect-ratio: 16/9;
+  background: linear-gradient(135deg, rgba(201,168,76,0.04) 0%, rgba(201,168,76,0.01) 100%);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 0.5rem;
+}
+.progress-item img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.progress-item-placeholder-icon {
+  width: 32px; height: 32px; border: 0.5px solid rgba(201,168,76,0.15);
+  transform: rotate(45deg); display: flex; align-items: center; justify-content: center;
+}
+.progress-item-placeholder-icon span { transform: rotate(-45deg); font-size: 0.8rem; color: rgba(201,168,76,0.2); }
+.progress-item-placeholder-text {
+  font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(201,168,76,0.15);
+}
+.progress-label {
+  padding: 0.45rem 0.8rem;
+  font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--muted); border-top: 0.5px solid var(--border);
+  font-family: 'Rajdhani', sans-serif;
+}
+
+/* ── DIRECTOR MAPS GRID ── */
+.maps-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.8rem;
+  margin: 2rem 0;
+}
+.maps-item {
+  border: 0.5px solid var(--border);
+  overflow: hidden;
+  background: rgba(255,255,255,0.01);
+}
+.maps-item-placeholder {
+  width: 100%; aspect-ratio: 16/9;
+  background: linear-gradient(135deg, rgba(201,168,76,0.04) 0%, rgba(201,168,76,0.01) 100%);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 0.5rem;
+}
+.maps-item img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.maps-item-placeholder-icon {
+  width: 32px; height: 32px; border: 0.5px solid rgba(201,168,76,0.15);
+  transform: rotate(45deg); display: flex; align-items: center; justify-content: center;
+}
+.maps-item-placeholder-icon span { transform: rotate(-45deg); font-size: 0.8rem; color: rgba(201,168,76,0.2); }
+.maps-item-placeholder-text {
+  font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(201,168,76,0.15);
+}
+.maps-label {
+  padding: 0.45rem 0.8rem;
+  font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--gold-dim); border-top: 0.5px solid var(--border);
+  font-family: 'Rajdhani', sans-serif;
+}
+@media (max-width: 600px) {
+  .maps-grid { grid-template-columns: 1fr; }
+}
+
+/* ── VAULT DIAGRAM ── */
+.vault-tiers {
+  margin: 2rem 0;
+  border: 0.5px solid var(--border);
+  background: rgba(255,255,255,0.01);
+  overflow: hidden;
+}
+.vault-tier-row {
+  display: flex; align-items: stretch;
+  border-bottom: 0.5px solid var(--border);
+}
+.vault-tier-row:last-child { border-bottom: none; }
+.vault-tier-label {
+  min-width: 160px; padding: 1rem 1.2rem;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--gold); border-right: 0.5px solid var(--border);
+  display: flex; align-items: center;
+  background: rgba(201,168,76,0.03);
+}
+.vault-tier-content {
+  padding: 1rem 1.4rem;
+  font-size: 0.9rem; line-height: 1.7; color: var(--muted);
+  font-weight: 300; flex: 1;
+}
+.vault-tier-content strong { color: var(--body-text); }
+@media (max-width: 600px) {
+  .vault-tier-row { flex-direction: column; }
+  .vault-tier-label { min-width: unset; border-right: none; border-bottom: 0.5px solid var(--border); }
+}
+
+</style>
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+<div style="height: 64px;"></div>
+
+<div class="banner">
+  <img class="banner-img" src="/destiny-playground/images/dev-update-banners/banner_18.png" alt="Banner">
+  <div class="banner-overlay"></div>
+  <div class="banner-tag">Dev Update</div>
+</div>
+
+<div class="article-header">
+  <h1 class="article-title">Vault System</h1>
+  <div class="article-meta">
+    <span class="meta-date">1 Jun, 2026</span>
+    <div class="meta-sep"></div>
+    <span class="meta-author">CNT Darthgaming</span>
+    <span class="meta-tag">Dev Update</span>
+  </div>
+</div>
+
+<div class="article-body">
+
+  <div class="dev-notice">
+    <div class="dev-notice-label">Developer Note</div>
+    <p>The purpose of these dev updates is to share systems currently in development and to give insight into the early stages of design as the project evolves. What you're seeing right now are the foundations and skeletons of systems, nowhere near their final versions.</p>
+    <p>Things like names, values, stats, and organisation are often placeholders or early iterations. My current focus is building the core structure and functionality of systems first. Refinement, balancing, and polish come later in development.</p>
+    <p>Because of this, please keep in mind that everything shown in dev updates is subject to change. Feedback and suggestions are always welcome, but constructive feedback with reasoning is far more helpful than simple reactions.</p>
+  </div>
+
+  <p>Welcome back, Guardians. Another Monday, another update — and this one has quite a bit to cover. Before we get into the Vault System, there are some significant team changes to share, some proper building progress to show off, and a look at some Director maps that have just been put together.</p>
+
+  <p>To everyone joining fresh — welcome. The response the project has been getting lately has been genuinely heartening. If you want to help, read the section below on how to get involved. If you just want to follow along, every Monday is a new update.</p>
+
+  <h2>The Team</h2>
+
+  <p>This week brings some goodbyes and some exciting new arrivals. Let's start with the latter.</p>
+
+  <div class="team-grid">
+
+    <div class="team-card team-card--join">
+      <div class="team-card-status team-card-status--join">
+        <div class="team-card-status-dot team-card-status-dot--join"></div>
+        Joining the Team
+      </div>
+      <div class="team-card-name">Haker</div>
+      <div class="team-card-role">Modeller</div>
+      <p>Haker joins as a modeller, helping build out the weapon and enemy model library. A resource the project badly needs as it scales up toward launch.</p>
+    </div>
+
+    <div class="team-card team-card--join">
+      <div class="team-card-status team-card-status--join">
+        <div class="team-card-status-dot team-card-status-dot--join"></div>
+        Joining the Team
+      </div>
+      <div class="team-card-name">Captain Saturn</div>
+      <div class="team-card-role">Concept &amp; Promo Artist &mdash; Composer</div>
+      <p>Captain Saturn joins in a rare dual role — concept and promotional art on one side, original composition on the other. You'll be hearing and seeing their work very soon. Three pieces of concept art from Captain Saturn are below, and the upcoming soundtrack releases — Loose Variable, Cabal Stomp, and Reminisce — are theirs.</p>
+    </div>
+
+  </div>
+
+  <p>Captain Saturn's arrival is a significant one for the project. Original music has always been part of the vision for Destiny Playground, and having a composer on the team who can also produce the kind of visual work you're about to see below is exactly the kind of contributor that changes what the project can be.</p>
+
+  <p>A first look at Captain Saturn's concept art:</p>
+
+  <div class="concept-grid">
+    <div class="concept-item">
+      <div class="concept-item-placeholder">
+        <div class="concept-item-placeholder-icon"><span>&#9670;</span></div>
+        <div class="concept-item-placeholder-text">Concept Art 1</div>
+      </div>
+      <div class="concept-caption">Concept Art — Captain Saturn</div>
+    </div>
+    <div class="concept-item">
+      <div class="concept-item-placeholder">
+        <div class="concept-item-placeholder-icon"><span>&#9670;</span></div>
+        <div class="concept-item-placeholder-text">Concept Art 2</div>
+      </div>
+      <div class="concept-caption">Concept Art — Captain Saturn</div>
+    </div>
+    <div class="concept-item">
+      <div class="concept-item-placeholder">
+        <div class="concept-item-placeholder-icon"><span>&#9670;</span></div>
+        <div class="concept-item-placeholder-text">Concept Art 3</div>
+      </div>
+      <div class="concept-caption">Concept Art — Captain Saturn</div>
+    </div>
+  </div>
+
+  <p>Now the harder part. Following last week's team checkup, two members of the staff team are stepping away.</p>
+
+  <div class="team-grid">
+
+    <div class="team-card team-card--leave">
+      <div class="team-card-status team-card-status--leave">
+        <div class="team-card-status-dot team-card-status-dot--leave"></div>
+        Departing
+      </div>
+      <div class="team-card-name">Qewl</div>
+      <div class="team-card-role team-card-role--muted">Builder</div>
+      <p>Qewl has been part of the builders team and we're grateful for everything contributed during their time here. We wish them well in whatever comes next.</p>
+    </div>
+
+    <div class="team-card team-card--leave">
+      <div class="team-card-status team-card-status--leave">
+        <div class="team-card-status-dot team-card-status-dot--leave"></div>
+        Departing
+      </div>
+      <div class="team-card-name">Fursia</div>
+      <div class="team-card-role team-card-role--muted">Artist</div>
+      <p>Fursia has been part of the art team and their work has been a part of the project's visual identity during development. Thank you — and good luck.</p>
+    </div>
+
+  </div>
+
+  <p>Losing builders and artists at the same time is genuinely felt. If you have skills in either area and want to help carry this project forward, please read the section below on how to get involved.</p>
+
+  <h2>Get Involved</h2>
+
+  <p>The team is smaller than it needs to be right now, and we've just updated both our builder and modeller application forms to reflect what we're currently looking for. These are the two areas where the project needs the most help heading into the next phase of development.</p>
+
+  <ul>
+    <li><strong>Builders</strong> — helping recreate Destiny locations in Minecraft. Experience with large-scale Minecraft builds is the main thing we're looking for.</li>
+    <li><strong>Modellers</strong> — helping build out the weapon, enemy, and asset model library. 3D modelling experience relevant to Minecraft's visual style.</li>
+  </ul>
+
+  <p>Both application forms are in the Discord. If either of those sounds like you, don't talk yourself out of applying — we'd rather hear from you and find out than not at all.</p>
+
+  <p>If you think you could contribute in another way — art, music, writing, or anything else — join the Discord and send a DM to <strong>@CNTDarthgaming</strong> with full details of what you'd offer and examples of your previous work.</p>
+
+  <h2>Building Progress — Trostland</h2>
+
+  <p>With the builder team currently down to essentially just myself, the focus this week has been on getting as much done on the EDZ as possible. Trostland has been the primary target — the ruined town at the heart of the EDZ that players will pass through from Mission 01 onward, and one of the most recognisable locations in the early campaign.</p>
+
+  <p>The progress over the past week has been genuinely good. Here's a day-by-day look at how it's come together:</p>
+
+  <div class="progress-gallery">
+
+    <div class="progress-item">
+      <div class="progress-item-placeholder">
+        <div class="progress-item-placeholder-icon"><span>&#9670;</span></div>
+        <div class="progress-item-placeholder-text">Day 1</div>
+      </div>
+      <div class="progress-label">Day 1</div>
+    </div>
+
+    <div class="progress-item">
+      <div class="progress-item-placeholder">
+        <div class="progress-item-placeholder-icon"><span>&#9670;</span></div>
+        <div class="progress-item-placeholder-text">Day 2</div>
+      </div>
+      <div class="progress-label">Day 2</div>
+    </div>
+
+    <div class="progress-item">
+      <div class="progress-item-placeholder">
+        <div class="progress-item-placeholder-icon"><span>&#9670;</span></div>
+        <div class="progress-item-placeholder-text">Day 3</div>
+      </div>
+      <div class="progress-label">Day 3</div>
+    </div>
+
+    <div class="progress-item">
+      <div class="progress-item-placeholder">
+        <div class="progress-item-placeholder-icon"><span>&#9670;</span></div>
+        <div class="progress-item-placeholder-text">Day 4</div>
+      </div>
+      <div class="progress-label">Day 4</div>
+    </div>
+
+    <div class="progress-item">
+      <div class="progress-item-placeholder">
+        <div class="progress-item-placeholder-icon"><span>&#9670;</span></div>
+        <div class="progress-item-placeholder-text">Day 5</div>
+      </div>
+      <div class="progress-label">Day 5</div>
+    </div>
+
+    <div class="progress-item">
+      <div class="progress-item-placeholder">
+        <div class="progress-item-placeholder-icon"><span>&#9670;</span></div>
+        <div class="progress-item-placeholder-text">Day 6</div>
+      </div>
+      <div class="progress-label">Day 6</div>
+    </div>
+
+    <div class="progress-item">
+      <div class="progress-item-placeholder">
+        <div class="progress-item-placeholder-icon"><span>&#9670;</span></div>
+        <div class="progress-item-placeholder-text">Day 7</div>
+      </div>
+      <div class="progress-label">Day 7</div>
+    </div>
+
+  </div>
+
+  <div class="callout">
+    <p>"Building is slow when it's just one person — but it's moving. Trostland is taking shape in a way that feels right. More to show next week."</p>
+  </div>
+
+  <h2>Director World Maps</h2>
+
+  <p>Alongside the building work, the Director world maps have been coming together. Four are now done — the EDZ, Europa, The Last City, and an Earth orbit view. These are the in-universe maps that form the visual language of the Director, the screen players will use to navigate between destinations and activities.</p>
+
+  <div class="maps-grid">
+
+    <div class="maps-item">
+      <div class="maps-item-placeholder">
+        <div class="maps-item-placeholder-icon"><span>&#9670;</span></div>
+        <div class="maps-item-placeholder-text">Map Image</div>
+      </div>
+      <div class="maps-label">Earth — European Dead Zone</div>
+    </div>
+
+    <div class="maps-item">
+      <div class="maps-item-placeholder">
+        <div class="maps-item-placeholder-icon"><span>&#9670;</span></div>
+        <div class="maps-item-placeholder-text">Map Image</div>
+      </div>
+      <div class="maps-label">Europa</div>
+    </div>
+
+    <div class="maps-item">
+      <div class="maps-item-placeholder">
+        <div class="maps-item-placeholder-icon"><span>&#9670;</span></div>
+        <div class="maps-item-placeholder-text">Map Image</div>
+      </div>
+      <div class="maps-label">The Last City</div>
+    </div>
+
+    <div class="maps-item">
+      <div class="maps-item-placeholder">
+        <div class="maps-item-placeholder-icon"><span>&#9670;</span></div>
+        <div class="maps-item-placeholder-text">Map Image</div>
+      </div>
+      <div class="maps-label">Earth — Orbit View</div>
+    </div>
+
+  </div>
+
+  <h2>Vault System</h2>
+
+  <p>This week's main systems content. The Vault is your persistent gear storage — the place where everything you earn but aren't currently using lives between sessions. Getting it right matters, because it touches almost everything else: inventory management, loot chasing, loadout planning, and long-term progression.</p>
+
+  <h3>What the Vault Is</h3>
+  <p>The Vault is a shared, persistent storage space accessible from the Tower and the Last City. It holds weapons, armour, and materials — anything you want to keep but don't have equipped or in your immediate inventory. It persists between sessions, between prestige resets, and between seasons. Your Vault is yours.</p>
+
+  <p>It is <em>not</em> the same as your character inventory. Your character carries a limited number of items at any given time. The Vault is where the rest lives.</p>
+
+  <h3>Capacity</h3>
+
+  <p>Vault space is finite and meaningful. You start with a base capacity and can expand it through progression.</p>
+
+  <div class="vault-tiers">
+    <div class="vault-tier-row">
+      <div class="vault-tier-label">Base Capacity</div>
+      <div class="vault-tier-content"><strong>Available from the start.</strong> Enough space to store a working collection of gear without feeling immediately pressured to dismantle everything.</div>
+    </div>
+    <div class="vault-tier-row">
+      <div class="vault-tier-label">Expanded Capacity</div>
+      <div class="vault-tier-content"><strong>Unlocked through progression.</strong> Vault space can be increased by hitting specific milestones — campaign completion, rank thresholds, and potentially prestige milestones as the prestige system develops. Specific values to be confirmed closer to launch.</div>
+    </div>
+    <div class="vault-tier-row">
+      <div class="vault-tier-label">Prestige Expansion</div>
+      <div class="vault-tier-content"><strong>Under consideration.</strong> Certain prestige milestones may unlock additional Vault space as a reward. This is being evaluated alongside the prestige system and will be confirmed when that system is finalised.</div>
+    </div>
+  </div>
+
+  <h3>Organisation</h3>
+
+  <p>The Vault is organised by item type — weapons, armour, and materials each have their own section. Within each section, items are sorted by rarity and power level by default, with the ability to manually reorder and flag items you want to keep track of.</p>
+
+  <p>The goal is a Vault that never requires you to scroll through a wall of identical items looking for the one thing you want. Organisation should feel effortless — the system should do most of the work for you.</p>
+
+  <h3>Access Points</h3>
+
+  <p>The Vault is accessible from two locations at launch:</p>
+
+  <ul>
+    <li><strong>The Tower</strong> — via the Vault terminal, the same location D1 players will recognise.</li>
+    <li><strong>The Last City</strong> — via a second access point in the social hub area.</li>
+  </ul>
+
+  <p>Access from the field — pulling items from the Vault while on a destination — is not currently planned for launch. If that changes, it'll be covered in a future update.</p>
+
+  <h3>Dismantling</h3>
+
+  <p>Items in the Vault can be dismantled directly without transferring them to your character first. Dismantling returns materials — Glimmer for common and uncommon gear, Marks for rares and legendaries, Exotic Shards for exotics. The Vault is also where dismantling exotic duplicates makes the most sense — keep the roll you want, dismantle the rest for Shards.</p>
+
+  <div class="callout">
+    <p>"The Vault should never be a source of stress. It's your gear library — the place where everything you've earned is waiting for you when you need it."</p>
+  </div>
+
+  <h3>What Doesn't Go in the Vault</h3>
+
+  <p>Currencies, quest items, bounties, and consumables live in your character's dedicated inventory slots rather than the Vault. The Vault is strictly for gear. This keeps the space clean and prevents the Vault from becoming a second inventory to manage.</p>
+
+  <p>Season Pass items and Eververse purchases go directly to character inventory on acquisition — they don't land in the Vault by default, though you can move them there manually.</p>
+
+  <p>All values and specifics here are subject to change as the system is built and tested. The structure is locked — the exact numbers come with playtesting.</p>
+
+</div>
+
+<div class="closing">
+  <div class="closing-note">
+    A busy week on every front. Two people leaving is never easy, but two people joining — especially ones bringing the kind of range Captain Saturn does — is genuinely exciting. The project is moving. Next update is Monday.
+    <div class="closing-sig">- CNT Darthgaming</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="socials-section">
+  <div class="socials-label">Find Us</div>
+  <div class="socials-title">Follow the Project</div>
+  <div class="socials-grid">
+    <a class="social-btn" href="https://discord.gg/Ah6Jt5KVPH">&#9671; Discord</a>
+    <a class="social-btn" href="https://youtube.com/@cntdarthgaming">&#9654; YouTube</a>
+    <a class="social-btn" href="https://bsky.app/profile/thedestinyplayground.bsky.social">&#9633; Bluesky</a>
+    <a class="social-btn" href="https://x.com/destinyplaygrnd">&#9632; Twitter</a>
+    <a class="social-btn" href="https://ko-fi.com/destinyplayground">&#9651; Ko-fi</a>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="back-section">
+  <a class="btn-back" href="/destiny-playground/news.html">&#8592; Back to News</a>
+</div>
+
+<div id="footer-placeholder"></div>
+<script src="/destiny-playground/js/shared.js"></script>
+</body>
+</html>
