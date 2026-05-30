@@ -177,6 +177,101 @@
   .maps-grid { grid-template-columns: 1fr; }
 }
 
+/* ── BOT INCIDENT NOTICE ── */
+.incident-box {
+  border: 0.5px solid rgba(235,93,93,0.5);
+  background: rgba(235,93,93,0.04);
+  padding: 1.8rem 2rem;
+  margin: 2.5rem 0;
+  position: relative;
+  overflow: hidden;
+}
+.incident-box::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(to right, transparent, rgba(235,93,93,0.5), transparent);
+}
+.incident-box-label {
+  font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase;
+  color: #eb5d5d; margin-bottom: 1rem;
+  display: flex; align-items: center; gap: 0.8rem;
+}
+.incident-box-label::after { content: ''; flex: 1; height: 0.5px; background: rgba(235,93,93,0.25); }
+.incident-box-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem; letter-spacing: 0.06em;
+  color: var(--white); margin-bottom: 0.8rem;
+}
+.incident-box p {
+  font-size: 0.95rem; line-height: 1.8; color: var(--body-text);
+  font-weight: 300; margin-bottom: 0.8rem; letter-spacing: 0.02em;
+}
+.incident-box p:last-child { margin-bottom: 0; }
+.incident-box strong { color: var(--white); }
+
+/* ── GHOST MODEL SINGLE ── */
+.ghost-reveal {
+  margin: 2rem 0;
+  border: 0.5px solid var(--border);
+  overflow: hidden;
+  background: rgba(255,255,255,0.01);
+}
+.ghost-reveal-label {
+  font-size: 0.68rem; letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--gold); padding: 0.9rem 1.5rem;
+  border-bottom: 0.5px solid rgba(201,168,76,0.15);
+  background: rgba(201,168,76,0.04);
+}
+.ghost-reveal-placeholder {
+  width: 100%; aspect-ratio: 16/9;
+  background: linear-gradient(135deg, rgba(201,168,76,0.05) 0%, rgba(201,168,76,0.01) 100%);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 0.8rem;
+}
+.ghost-reveal img { width: 100%; height: auto; display: block; object-fit: cover; }
+.ghost-reveal-caption {
+  padding: 0.7rem 1.2rem;
+  font-size: 0.78rem; letter-spacing: 0.08em;
+  color: var(--muted); font-style: italic;
+  border-top: 0.5px solid var(--border);
+}
+
+/* ── ROADMAP LIST ── */
+.roadmap-list {
+  margin: 1.5rem 0 2rem;
+  border: 0.5px solid var(--border);
+  overflow: hidden;
+}
+.roadmap-list-item {
+  display: flex; align-items: flex-start; gap: 1.2rem;
+  padding: 1rem 1.4rem;
+  border-bottom: 0.5px solid var(--border);
+}
+.roadmap-list-item:last-child { border-bottom: none; }
+.roadmap-list-item:hover { background: rgba(201,168,76,0.02); }
+.roadmap-item-week {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gold); white-space: nowrap; padding-top: 0.15rem;
+  min-width: 90px;
+}
+.roadmap-item-body { flex: 1; }
+.roadmap-item-title {
+  font-size: 0.92rem; color: var(--white); font-weight: 400;
+  letter-spacing: 0.02em; margin-bottom: 0.15rem;
+}
+.roadmap-item-date {
+  font-size: 0.75rem; letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase;
+}
+.roadmap-item-tags { display: flex; gap: 0.5rem; margin-top: 0.35rem; flex-wrap: wrap; }
+.roadmap-tag {
+  font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase;
+  padding: 2px 8px; border: 0.5px solid var(--border); color: var(--muted);
+}
+.roadmap-tag--soundtrack { border-color: rgba(93,183,235,0.35); color: #5db7eb; }
+.roadmap-tag--video { border-color: rgba(201,168,76,0.35); color: var(--gold); }
+
+/* ── VAULT DIAGRAM ── */
 /* ── VAULT DIAGRAM ── */
 .vault-tiers {
   margin: 2rem 0;
@@ -244,6 +339,27 @@
 
   <p>To everyone joining fresh - welcome. The response the project has been getting lately has been genuinely heartening. If you want to help, read the section below on how to get involved. If you just want to follow along, every Monday is a new update.</p>
 
+  <div class="incident-box">
+    <div class="incident-box-label">&#9670; &nbsp; Important Notice</div>
+    <div class="incident-box-title">Discord Bot Incident &mdash; Action Required</div>
+    <p>We recently discovered an issue where one of our Discord bots went rogue and was inadvertently kicking all new users from the server after one week. This was happening from <strong>11th May</strong> onwards without our knowledge, and we are sincerely sorry for any confusion or distress this caused.</p>
+    <p>The issue has now been identified and fully fixed. I have personally reached out via Discord DM to every user affected. If I was unable to DM you, I have sent a friend request. <strong>These messages will come from me directly - @CNTDarthgaming on Discord. Anyone else claiming to be me is not.</strong></p>
+    <p>If you think you were affected, check your DMs and friend requests from @CNTDarthgaming. You are welcome to rejoin at any time using the Discord link at the bottom of this article - you will not be kicked again.</p>
+    <p><strong>Founder status reinstatement:</strong> If you held Founder status before being kicked and you rejoin before <strong>2nd June 2026</strong>, your status will be fully reinstated. No questions asked.</p>
+  </div>
+
+  <h2>A Note on Founders</h2>
+
+  <p>On the back of the above, it's a good time to clarify a few things about how Founder status works - including some policies that are worth being transparent about.</p>
+
+  <p><strong>Grace period for leaving:</strong> It's common for users to join the Discord - sometimes as a Founder - and later leave. For those users, we allow a <strong>one week grace period</strong> before their Founder status is revoked and passed to the next most recent eligible person. This exists to make sure that when the Founders Playtest arrives, active players are the ones being rewarded. If you leave and come back within that window, your status is safe.</p>
+
+  <p><strong>Once the Founders Playtest begins</strong>, this policy changes. From that point forward, those who leave will retain their Founder status - no more will be given out to new joiners, and the pool is locked.</p>
+
+  <p><strong>Claiming your title in-game:</strong> During the first Founders Playtest, Founders will need to claim their Founder title inside the game itself. If you leave the server after the Playtest begins and have not claimed your title, you will not be able to redeem it in the future.</p>
+
+  <p><strong>Rewarding active community members:</strong> We know that some of you will end up deeply invested in this project - active in the Discord, contributing ideas, spreading the word - and may have joined later than the original wave. That matters, and we want to recognise it. In the future, we will be granting additional Founder statuses to users who demonstrate genuine, sustained activity in the community. More details on how that works will come in time.</p>
+
   <h2>The Team</h2>
 
   <p>This week brings some goodbyes and some exciting new arrivals. Let's start with the latter.</p>
@@ -267,12 +383,12 @@
       </div>
       <div class="team-card-name">Captain Saturn</div>
       <div class="team-card-role">Concept and Promo Artist, Composer</div>
-      <p>Captain Saturn joins as a concept and promotional artist as well as a composer, adding to the creative team. Three pieces of their concept art are below - you can see immediately why we're excited to have them on board.</p>
+      <p>Captain Saturn joins as a concept and promotional artist as well as a composer, adding to the creative team. Seven pieces of concept art are already out - and there's more in the pipeline. You can see a selection below.</p>
     </div>
 
   </div>
 
-  <p>A first look at Captain Saturn's concept art:</p>
+  <p>Captain Saturn has already produced <strong>seven</strong> released pieces of concept art - and that's not counting what's still in the vault. Here's a first look:</p>
 
   <div class="concept-grid">
     <div class="concept-item">
@@ -296,6 +412,47 @@
       </div>
       <div class="concept-caption">Concept Art - Captain Saturn</div>
     </div>
+    <div class="concept-item">
+      <div class="concept-item-placeholder">
+        <div class="concept-item-placeholder-icon"><span>&#9670;</span></div>
+        <div class="concept-item-placeholder-text">Concept Art 4</div>
+      </div>
+      <div class="concept-caption">Concept Art - Captain Saturn</div>
+    </div>
+    <div class="concept-item">
+      <div class="concept-item-placeholder">
+        <div class="concept-item-placeholder-icon"><span>&#9670;</span></div>
+        <div class="concept-item-placeholder-text">Concept Art 5</div>
+      </div>
+      <div class="concept-caption">Concept Art - Captain Saturn</div>
+    </div>
+    <div class="concept-item">
+      <div class="concept-item-placeholder">
+        <div class="concept-item-placeholder-icon"><span>&#9670;</span></div>
+        <div class="concept-item-placeholder-text">Concept Art 6</div>
+      </div>
+      <div class="concept-caption">Concept Art - Captain Saturn</div>
+    </div>
+    <div class="concept-item">
+      <div class="concept-item-placeholder">
+        <div class="concept-item-placeholder-icon"><span>&#9670;</span></div>
+        <div class="concept-item-placeholder-text">Concept Art 7</div>
+      </div>
+      <div class="concept-caption">Concept Art - Captain Saturn</div>
+    </div>
+  </div>
+
+  <h3>Ghost Model</h3>
+
+  <p>Alongside the concept art, Haker has also delivered the project's first completed Ghost model - and it's the one that matters most. This Ghost will serve as the face of the Main Menu. More on how Ghosts work in Destiny Playground - including customisation - is coming in a dedicated dev update on <strong>19th July</strong>. For now, here it is.</p>
+
+  <div class="ghost-reveal">
+    <div class="ghost-reveal-label">&#9670; &nbsp; First Look</div>
+    <div class="ghost-reveal-placeholder">
+      <div class="concept-item-placeholder-icon"><span>&#9670;</span></div>
+      <div class="concept-item-placeholder-text">Ghost Model Image</div>
+    </div>
+    <div class="ghost-reveal-caption">Ghost Model — Haker &mdash; Main Menu Ghost</div>
   </div>
 
   <p>Now the harder part. Following last week's team checkup, two members of the staff team are stepping away.</p>
@@ -470,26 +627,94 @@
     <li><strong>Loose Variable</strong> - releasing alongside the Destinations Teaser Trailer, 8th June</li>
     <li><strong>Cabal Stomp</strong> - releasing alongside the Sparrows System dev update, 15th June</li>
     <li><strong>Reminisce</strong> - releasing alongside the Ability Showcase Teaser Trailer, 22nd June</li>
+    <li><strong>Husk of The Summing Pits</strong> - releasing alongside the Campaign Overview Dev Insight, 29th June</li>
   </ul>
 
-  <p>Three tracks across three weeks. Keep an eye on the socials - that's where they'll land first.</p>
+  <p>Four tracks across four weeks. Keep an eye on the socials - that's where they'll land first.</p>
 
   <h2>Updated Roadmap</h2>
 
-  <p>The roadmap has been updated this week to reflect the current schedule through to early July. If you haven't checked it since last week, it's worth a look - the pre-launch Dev Update and Teaser Trailer cadence is now laid out through Week VII, with the soundtrack releases marked alongside the weeks they drop.</p>
+  <p>The roadmap has had a significant update this week. The schedule now runs all the way through to mid-July, with a couple of things worth highlighting specifically.</p>
 
-  <p>The full picture currently looks like this:</p>
+  <p>Week VI is no longer a standard dev update - the Campaign Overview on 29th June will be a <strong>Dev Insight Video</strong>. Rather than a written article, it'll be a more relaxed, personal format of me talking through the campaign - the story, the structure, the Acts. Less polished presentation, more behind-the-curtain conversation. A fourth soundtrack release, <strong>Husk of The Summing Pits</strong>, drops alongside it.</p>
 
-  <ul>
-    <li><strong>Week II - 1st June:</strong> Vault System (this update)</li>
-    <li><strong>Week III - 8th June:</strong> Destinations Teaser Trailer I + Loose Variable</li>
-    <li><strong>Week IV - 15th June:</strong> Sparrows System + Cabal Stomp</li>
-    <li><strong>Week V - 22nd June:</strong> Ability Showcase Teaser Trailer I + Reminisce</li>
-    <li><strong>Week VI - 29th June:</strong> Campaign Overview</li>
-    <li><strong>Week VII - 6th July:</strong> Destination Travel</li>
-  </ul>
+  <p>The full current schedule:</p>
 
-  <p>The Campaign Overview in Week VI is one to watch. Work on the version 3 campaign write-up is going well - we can't say much yet, but a proper overview of the full campaign structure will be shared in that update. More details to follow as it gets closer.</p>
+  <div class="roadmap-list">
+
+    <div class="roadmap-list-item">
+      <div class="roadmap-item-week">Week II</div>
+      <div class="roadmap-item-body">
+        <div class="roadmap-item-title">Vault System</div>
+        <div class="roadmap-item-date">1st June 2026</div>
+        <div class="roadmap-item-tags"><span class="roadmap-tag">Dev Update</span></div>
+      </div>
+    </div>
+
+    <div class="roadmap-list-item">
+      <div class="roadmap-item-week">Week III</div>
+      <div class="roadmap-item-body">
+        <div class="roadmap-item-title">Destinations Teaser Trailer I &mdash; Loose Variable</div>
+        <div class="roadmap-item-date">8th June 2026</div>
+        <div class="roadmap-item-tags"><span class="roadmap-tag">Teaser Trailer</span><span class="roadmap-tag roadmap-tag--soundtrack">Soundtrack</span></div>
+      </div>
+    </div>
+
+    <div class="roadmap-list-item">
+      <div class="roadmap-item-week">Week IV</div>
+      <div class="roadmap-item-body">
+        <div class="roadmap-item-title">Sparrows System &mdash; Cabal Stomp</div>
+        <div class="roadmap-item-date">15th June 2026</div>
+        <div class="roadmap-item-tags"><span class="roadmap-tag">Dev Update</span><span class="roadmap-tag roadmap-tag--soundtrack">Soundtrack</span></div>
+      </div>
+    </div>
+
+    <div class="roadmap-list-item">
+      <div class="roadmap-item-week">Week V</div>
+      <div class="roadmap-item-body">
+        <div class="roadmap-item-title">Ability Showcase Teaser Trailer I &mdash; Reminisce</div>
+        <div class="roadmap-item-date">22nd June 2026</div>
+        <div class="roadmap-item-tags"><span class="roadmap-tag">Teaser Trailer</span><span class="roadmap-tag roadmap-tag--soundtrack">Soundtrack</span></div>
+      </div>
+    </div>
+
+    <div class="roadmap-list-item">
+      <div class="roadmap-item-week">Week VI</div>
+      <div class="roadmap-item-body">
+        <div class="roadmap-item-title">Campaign Overview &mdash; Husk of The Summing Pits</div>
+        <div class="roadmap-item-date">29th June 2026</div>
+        <div class="roadmap-item-tags"><span class="roadmap-tag roadmap-tag--video">Dev Insight Video</span><span class="roadmap-tag roadmap-tag--soundtrack">Soundtrack</span></div>
+      </div>
+    </div>
+
+    <div class="roadmap-list-item">
+      <div class="roadmap-item-week">Week VII</div>
+      <div class="roadmap-item-body">
+        <div class="roadmap-item-title">Destination Travel</div>
+        <div class="roadmap-item-date">6th July 2026</div>
+        <div class="roadmap-item-tags"><span class="roadmap-tag">Dev Update</span></div>
+      </div>
+    </div>
+
+    <div class="roadmap-list-item">
+      <div class="roadmap-item-week">Week VIII</div>
+      <div class="roadmap-item-body">
+        <div class="roadmap-item-title">Clans, Friends &amp; Fireteams</div>
+        <div class="roadmap-item-date">12th July 2026</div>
+        <div class="roadmap-item-tags"><span class="roadmap-tag">Dev Update</span></div>
+      </div>
+    </div>
+
+    <div class="roadmap-list-item">
+      <div class="roadmap-item-week">19th July</div>
+      <div class="roadmap-item-body">
+        <div class="roadmap-item-title">Ghosts &amp; Customisation</div>
+        <div class="roadmap-item-date">19th July 2026</div>
+        <div class="roadmap-item-tags"><span class="roadmap-tag">Dev Update</span></div>
+      </div>
+    </div>
+
+  </div>
 
   <div class="callout">
     <p>"The full roadmap is always available at the link below. It's updated whenever something changes - check it regularly."</p>
@@ -552,7 +777,7 @@
 
 <div class="closing">
   <div class="closing-note">
-    A busy week on every front. Two people leaving is never easy, but two people joining - especially ones bringing more to the table is exciting. The project is moving. Next dev update is Monday.
+    A lot in this one - apologies for the bot situation, and thank you for your patience with it. On the brighter side: seven pieces of concept art, a Ghost model, four soundtracks on the horizon, and a roadmap that keeps getting longer. The project is moving. Next update is Monday.
     <div class="closing-sig">- CNT Darthgaming</div>
   </div>
 </div>
