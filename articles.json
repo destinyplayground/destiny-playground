@@ -1,14 +1,25 @@
 [
   {
+    "title": "The Vault System",
+    "tag": "Dev Update",
+    "date": "01 Jun, 2026",
+    "dateSort": 20260525,
+    "author": "CNT Darthgaming",
+    "excerpt": "Large staff changes, Founders information, development progress, the vault system, and more...",
+    "file": "articles/dev-update-01-06-2026.html",
+    "image": "/destiny-playground/images/dev-update-banners/banner_18.png",
+    "featured": true
+  },
+  {
     "title": "Bounties, Quests & Overall Progression",
     "tag": "Dev Update",
     "date": "25 May, 2026",
     "dateSort": 20260525,
     "author": "CNT Darthgaming",
-    "excerpt": "Significant development updates, The tower, Currencies, Bounties, Quests, Vendors, Season archive scrapped, Quests, Side missions, and Prestige...",
+    "excerpt": "Significant development updates, The tower, Currencies, Bounties, Quests, Vendors, Season archive scrapped, Quests, Side missions, Prestige, and more...",
     "file": "articles/dev-update-25-05-2026.html",
     "image": "/destiny-playground/images/dev-update-banners/banner_17.png",
-    "featured": true
+    "featured": false
   },
   {
     "title": "The New Website Is Live",
