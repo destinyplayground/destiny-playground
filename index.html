@@ -8,6 +8,52 @@
 <link rel="stylesheet" href="/destiny-playground/css/styles.css">
 <link rel="stylesheet" href="/destiny-playground/css/nav.css">
 <link rel="stylesheet" href="/destiny-playground/css/a11y-overrides.css">
+<style>
+  .dev-status-banner {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    max-width: 860px;
+    margin: 2.5rem auto 0;
+    padding: 0.85rem 1.4rem;
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-left: 3px solid #c9a84c;
+    letter-spacing: 0.04em;
+  }
+  .dev-status-pip {
+    flex-shrink: 0;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #c9a84c;
+    box-shadow: 0 0 6px #c9a84c;
+    animation: pip-pulse 2.2s ease-in-out infinite;
+  }
+  @keyframes pip-pulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 6px #c9a84c; }
+    50% { opacity: 0.45; box-shadow: 0 0 2px #c9a84c; }
+  }
+  .dev-status-text {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.5;
+    margin: 0;
+  }
+  .dev-status-text strong {
+    color: rgba(255,255,255,0.85);
+    font-weight: 600;
+  }
+  .dev-status-text a {
+    color: #c9a84c;
+    text-decoration: none;
+    opacity: 0.9;
+  }
+  .dev-status-text a:hover {
+    opacity: 1;
+    text-decoration: underline;
+  }
+</style>
 </head>
 <body>
 
@@ -34,19 +80,25 @@
 
     <div class="hero-divider" aria-hidden="true">
       <span class="hero-divider-line"></span>
-      <span class="hero-diamond"></span>
       <span class="hero-subtitle-text">Wake Up Guardian</span>
-      <span class="hero-diamond"></span>
       <span class="hero-divider-line"></span>
     </div>
 
-    <p class="hero-desc">A fan-made Minecraft server built in the world of Destiny. New destinations, new lore, a full campaign — rebuilt from scratch by the community, for the community. No mods required.</p>
+    <p class="hero-desc">A fan-made Minecraft server built in the world of Destiny. New destinations, new lore, a full campaign - rebuilt from scratch by the community, for the community. No mods required.</p>
 
     <div class="hero-ctas">
-      <a class="btn-primary" href="/destiny-playground/getting-started.html">How to Join</a>
+      <a class="btn-primary" href="/destiny-playground/getting-started.html">Get Ready to Join</a>
       <a class="btn-secondary" href="/destiny-playground/news.html">Latest News</a>
     </div>
   </section>
+
+  <!-- DEV STATUS BANNER -->
+  <div class="dev-status-banner" role="note" aria-label="Server development status">
+    <span class="dev-status-pip" aria-hidden="true"></span>
+    <p class="dev-status-text">
+      <strong>Server in Development</strong> &mdash; Destiny Playground is not yet open to players. Follow the <a href="/destiny-playground/roadmap.html">Roadmap</a> or <a href="https://discord.gg/Ah6Jt5KVPH" target="_blank">join the Discord</a> to know the moment it launches.
+    </p>
+  </div>
 
   <div class="divider" role="separator" aria-hidden="true"></div>
 
@@ -58,10 +110,9 @@
       <h2 class="tribute-title" id="tribute-heading">Thank You, Destiny 2</h2>
       <div class="tribute-divider" aria-hidden="true">
         <span class="tribute-line"></span>
-        <span class="tribute-diamond">&#9670;</span>
         <span class="tribute-line"></span>
       </div>
-      <p class="tribute-desc">On June 9th, Destiny 2 gets its final update. Twelve years. This project exists because of what Bungie built — the worlds, the lore, the feeling of being a Guardian. That doesn't go away. We're carrying it forward.</p>
+      <p class="tribute-desc">On June 9th, Destiny 2 gets its final update. Twelve years. This project exists because of what Bungie built - the worlds, the lore, the feeling of being a Guardian. That doesn't go away. We're carrying it forward.</p>
       <div class="tribute-cta-row">
         <a class="tribute-btn" href="/destiny-playground/articles/announcement-22-05-2026.html">Read Our Full Statement <span aria-hidden="true">&#8594;</span></a>
       </div>
@@ -97,7 +148,6 @@
     <h2 class="section-title" id="news-heading">News</h2>
     <div class="news-grid" id="news-grid" aria-live="polite" aria-busy="true">
       <div class="news-loading">
-        <div class="news-loading-dot" aria-hidden="true"></div>
         <p>Loading transmissions...</p>
       </div>
     </div>
@@ -119,7 +169,7 @@
       <div class="trailer-corner br" aria-hidden="true"></div>
       <iframe
         src="https://www.youtube.com/embed/A7paYH30QCw?si=dZAaRpf3rTd_qb_r"
-        title="Destiny Playground — Halfdan-D Weapon Showcase video"
+        title="Destiny Playground - Halfdan-D Weapon Showcase video"
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         referrerpolicy="strict-origin-when-cross-origin"
@@ -139,35 +189,35 @@
 
       <div class="home-gal-item" role="listitem button" tabindex="0" data-index="0" data-caption="Screenshot 01" data-src="/destiny-playground/images/gallery/gallery (30).png" aria-label="View Screenshot 01 in lightbox">
         <div class="home-gal-inner">
-          <img src="/destiny-playground/images/gallery/gallery (30).png" alt="Screenshot 01 — Destiny Playground">
+          <img src="/destiny-playground/images/gallery/gallery (30).png" alt="Screenshot 01 - Destiny Playground">
         </div>
         <div class="home-gal-overlay" aria-hidden="true"><div class="home-gal-overlay-icon">&#9633;</div><div class="home-gal-overlay-label">View</div></div>
       </div>
 
       <div class="home-gal-item" role="listitem button" tabindex="0" data-index="1" data-caption="Screenshot 02" data-src="/destiny-playground/images/gallery/gallery (73).png" aria-label="View Screenshot 02 in lightbox">
         <div class="home-gal-inner">
-          <img src="/destiny-playground/images/gallery/gallery (73).png" alt="Screenshot 02 — Destiny Playground">
+          <img src="/destiny-playground/images/gallery/gallery (73).png" alt="Screenshot 02 - Destiny Playground">
         </div>
         <div class="home-gal-overlay" aria-hidden="true"><div class="home-gal-overlay-icon">&#9633;</div><div class="home-gal-overlay-label">View</div></div>
       </div>
 
       <div class="home-gal-item" role="listitem button" tabindex="0" data-index="2" data-caption="Screenshot 03" data-src="/destiny-playground/images/gallery/gallery (13).png" aria-label="View Screenshot 03 in lightbox">
         <div class="home-gal-inner">
-          <img src="/destiny-playground/images/gallery/gallery (13).png" alt="Screenshot 03 — Destiny Playground">
+          <img src="/destiny-playground/images/gallery/gallery (13).png" alt="Screenshot 03 - Destiny Playground">
         </div>
         <div class="home-gal-overlay" aria-hidden="true"><div class="home-gal-overlay-icon">&#9633;</div><div class="home-gal-overlay-label">View</div></div>
       </div>
 
       <div class="home-gal-item" role="listitem button" tabindex="0" data-index="3" data-caption="Screenshot 04" data-src="/destiny-playground/images/gallery/gallery (11).png" aria-label="View Screenshot 04 in lightbox">
         <div class="home-gal-inner">
-          <img src="/destiny-playground/images/gallery/gallery (11).png" alt="Screenshot 04 — Destiny Playground">
+          <img src="/destiny-playground/images/gallery/gallery (11).png" alt="Screenshot 04 - Destiny Playground">
         </div>
         <div class="home-gal-overlay" aria-hidden="true"><div class="home-gal-overlay-icon">&#9633;</div><div class="home-gal-overlay-label">View</div></div>
       </div>
 
       <div class="home-gal-item" role="listitem button" tabindex="0" data-index="4" data-caption="Screenshot 05" data-src="/destiny-playground/images/gallery/gallery (5).png" aria-label="View Screenshot 05 in lightbox">
         <div class="home-gal-inner">
-          <img src="/destiny-playground/images/gallery/gallery (5).png" alt="Screenshot 05 — Destiny Playground">
+          <img src="/destiny-playground/images/gallery/gallery (5).png" alt="Screenshot 05 - Destiny Playground">
         </div>
         <div class="home-gal-overlay" aria-hidden="true"><div class="home-gal-overlay-icon">&#9633;</div><div class="home-gal-overlay-label">View</div></div>
       </div>
@@ -394,7 +444,7 @@
     if (src) {
       var el = document.createElement('img');
       el.src = src;
-      el.alt = cap + ' — Destiny Playground';
+      el.alt = cap + ' - Destiny Playground';
       el.onload = function() { imgWrap.classList.add('loaded'); };
       imgWrap.appendChild(el);
     }
