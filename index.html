@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="/destiny-playground/css/nav.css">
 <link rel="stylesheet" href="/destiny-playground/css/a11y-overrides.css">
 <style>
+  /* ── DEV STATUS BANNER ── */
   .dev-status-banner {
     display: flex;
     align-items: center;
@@ -23,35 +24,315 @@
   }
   .dev-status-pip {
     flex-shrink: 0;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #c9a84c;
-    box-shadow: 0 0 6px #c9a84c;
+    width: 8px; height: 8px; border-radius: 50%;
+    background: #c9a84c; box-shadow: 0 0 6px #c9a84c;
     animation: pip-pulse 2.2s ease-in-out infinite;
   }
   @keyframes pip-pulse {
     0%, 100% { opacity: 1; box-shadow: 0 0 6px #c9a84c; }
-    50% { opacity: 0.45; box-shadow: 0 0 2px #c9a84c; }
+    50%       { opacity: 0.45; box-shadow: 0 0 2px #c9a84c; }
   }
   .dev-status-text {
-    font-size: 0.78rem;
-    color: rgba(255,255,255,0.6);
-    line-height: 1.5;
-    margin: 0;
+    font-size: 0.78rem; color: rgba(255,255,255,0.6);
+    line-height: 1.5; margin: 0;
   }
-  .dev-status-text strong {
-    color: rgba(255,255,255,0.85);
-    font-weight: 600;
+  .dev-status-text strong { color: rgba(255,255,255,0.85); font-weight: 600; }
+  .dev-status-text a { color: #c9a84c; text-decoration: none; opacity: 0.9; }
+  .dev-status-text a:hover { opacity: 1; text-decoration: underline; }
+
+  /* ── HERO SUBTITLE REWORK ── */
+  .hero-subtitle-text {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1rem; font-weight: 600;
+    letter-spacing: 0.45em; text-transform: uppercase;
+    color: rgba(232, 228, 216, 0.75);
+    text-shadow: 0 1px 12px rgba(0,0,0,0.8);
   }
-  .dev-status-text a {
-    color: #c9a84c;
-    text-decoration: none;
-    opacity: 0.9;
+
+  /* ── HERO CTAs — UNIFORM DESTINY STYLE ── */
+  .hero-ctas { gap: 1rem; }
+  .hero-cta-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.7rem;
+    padding: 0.9rem 2.2rem;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.8rem; font-weight: 600; letter-spacing: 0.28em; text-transform: uppercase;
+    text-decoration: none; cursor: pointer; border: none;
+    clip-path: polygon(14px 0%, 100% 0%, calc(100% - 14px) 100%, 0% 100%);
+    transition: all 0.2s;
   }
-  .dev-status-text a:hover {
-    opacity: 1;
-    text-decoration: underline;
+  .hero-cta-btn--primary {
+    background: var(--gold); color: #0a0906;
+  }
+  .hero-cta-btn--primary:hover { background: #e0bb5c; transform: translateY(-1px); }
+  .hero-cta-btn--secondary {
+    background: transparent; color: var(--gold);
+    border: 0.5px solid var(--gold-dim);
+    clip-path: polygon(14px 0%, 100% 0%, calc(100% - 14px) 100%, 0% 100%);
+  }
+  .hero-cta-btn--secondary:hover { background: rgba(201,168,76,0.08); transform: translateY(-1px); }
+  .hero-cta-arrow { font-size: 0.85rem; opacity: 0.8; }
+
+  /* ── FULL-WIDTH SECTIONS (news, gallery) ── */
+  .full-width-section {
+    width: 100%;
+    padding: 5rem 0;
+  }
+  .full-width-section .section-header {
+    padding: 0 3rem 2.5rem;
+    max-width: 1600px; margin: 0 auto;
+  }
+  .full-width-section .section-footer {
+    padding: 1.8rem 3rem 0;
+    max-width: 1600px; margin: 0 auto;
+    text-align: right;
+  }
+  .full-width-section .section-footer a {
+    font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold-dim); text-decoration: none; transition: color 0.2s;
+  }
+  .full-width-section .section-footer a:hover { color: var(--gold); }
+
+  /* ── FULL-WIDTH NEWS GRID ── */
+  .home-news-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 1.5px;
+    background: rgba(201,168,76,0.08);
+    width: 100%;
+  }
+  /* Featured spans full width on top */
+  .home-news-featured {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: var(--dark);
+    text-decoration: none; color: inherit;
+    position: relative; overflow: hidden;
+    transition: background 0.2s;
+    min-height: 320px;
+  }
+  .home-news-featured:hover { background: rgba(201,168,76,0.04); }
+  .home-news-featured::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0;
+    height: 2px; background: var(--gold); transform: scaleX(0); transition: transform 0.3s;
+  }
+  .home-news-featured:hover::before { transform: scaleX(1); }
+
+  .home-news-feat-img {
+    position: relative; overflow: hidden;
+    background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(201,168,76,0.02));
+    min-height: 280px;
+  }
+  .home-news-feat-img img {
+    width: 100%; height: 100%; object-fit: cover;
+    display: block; opacity: 0.85;
+    transition: opacity 0.35s, transform 0.5s;
+  }
+  .home-news-featured:hover .home-news-feat-img img { opacity: 1; transform: scale(1.03); }
+  .home-news-feat-img-placeholder {
+    width: 100%; height: 100%; min-height: 280px;
+    display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, rgba(201,168,76,0.06), rgba(201,168,76,0.01));
+  }
+  .home-news-feat-img-icon {
+    width: 64px; height: 64px; border: 0.5px solid rgba(201,168,76,0.2);
+    transform: rotate(45deg); display: flex; align-items: center; justify-content: center;
+  }
+  .home-news-feat-img-icon span { transform: rotate(-45deg); font-size: 1.6rem; color: rgba(201,168,76,0.25); }
+
+  .home-news-feat-content {
+    padding: 3rem 3.5rem;
+    display: flex; flex-direction: column; justify-content: center;
+    border-left: 1.5px solid rgba(201,168,76,0.08);
+  }
+  .home-news-feat-tag {
+    font-size: 0.68rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 0.7rem;
+  }
+  .home-news-feat-tag::after {
+    content: ''; flex: 1; height: 0.5px; background: rgba(201,168,76,0.2); max-width: 60px;
+  }
+  .home-news-feat-title {
+    font-family: 'Cinzel', serif; font-size: clamp(1.2rem, 2vw, 1.7rem);
+    font-weight: 700; line-height: 1.25; letter-spacing: 0.04em;
+    color: var(--white); margin-bottom: 1rem;
+  }
+  .home-news-feat-excerpt {
+    font-size: 0.95rem; line-height: 1.75; color: var(--body-text);
+    font-weight: 300; margin-bottom: 2rem; letter-spacing: 0.02em;
+  }
+  .home-news-feat-read {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gold); border: 0.5px solid rgba(201,168,76,0.35);
+    padding: 0.6rem 1.4rem; background: rgba(201,168,76,0.04);
+    transition: background 0.2s, border-color 0.2s;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+    width: fit-content;
+  }
+  .home-news-featured:hover .home-news-feat-read {
+    background: rgba(201,168,76,0.1); border-color: rgba(201,168,76,0.6);
+  }
+
+  /* Small news cards — 3 across bottom */
+  .home-news-card {
+    background: var(--dark); padding: 2.2rem 2.5rem;
+    text-decoration: none; color: inherit;
+    transition: background 0.2s; position: relative; overflow: hidden;
+    display: flex; flex-direction: column; justify-content: space-between;
+    gap: 0;
+  }
+  .home-news-card:hover { background: rgba(201,168,76,0.04); }
+  .home-news-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0;
+    height: 2px; background: var(--gold); transform: scaleX(0); transition: transform 0.3s;
+  }
+  .home-news-card:hover::before { transform: scaleX(1); }
+  .home-news-card-img {
+    position: relative; overflow: hidden; margin: -2.2rem -2.5rem 1.8rem;
+    height: 160px;
+  }
+  .home-news-card-img img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    opacity: 0.8; transition: opacity 0.3s, transform 0.5s;
+  }
+  .home-news-card:hover .home-news-card-img img { opacity: 1; transform: scale(1.04); }
+  .home-news-card-img-placeholder {
+    width: 100%; height: 100%;
+    background: linear-gradient(135deg, rgba(201,168,76,0.06), rgba(201,168,76,0.01));
+    display: flex; align-items: center; justify-content: center;
+  }
+  .home-news-card-tag {
+    font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.6rem;
+  }
+  .home-news-card-title {
+    font-family: 'Cinzel', serif; font-size: 0.95rem; line-height: 1.45;
+    letter-spacing: 0.04em; color: var(--white); margin-bottom: 0.5rem;
+  }
+  .home-news-card-excerpt {
+    font-size: 0.88rem; line-height: 1.65; color: var(--body-text);
+    font-weight: 300; margin-bottom: 1rem; flex: 1; letter-spacing: 0.01em;
+  }
+  .home-news-card-date {
+    font-size: 0.7rem; letter-spacing: 0.12em; color: var(--muted); opacity: 0.7;
+  }
+
+  /* ── FULL-WIDTH GALLERY ── */
+  .home-gal-grid-full {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 240px 240px;
+    gap: 1.5px;
+    background: rgba(201,168,76,0.08);
+    width: 100%;
+  }
+  .home-gal-grid-full .home-gal-item:first-child { grid-row: span 2; }
+
+  /* ── TRIBUTE STATS — TIMELINE STYLE ── */
+  .tribute-timeline {
+    display: flex; align-items: center; justify-content: center;
+    gap: 0; flex-wrap: wrap;
+    padding-top: 2.5rem;
+    border-top: 0.5px solid rgba(201,168,76,0.1);
+  }
+  .tribute-tl-item {
+    display: flex; align-items: center; gap: 0;
+  }
+  .tribute-tl-stat { text-align: center; padding: 0 2rem; }
+  .tribute-tl-value {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(0.95rem, 2vw, 1.15rem);
+    font-weight: 600; color: var(--white);
+    letter-spacing: 0.05em; line-height: 1; margin-bottom: 0.35rem;
+  }
+  .tribute-tl-label {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--muted);
+  }
+  .tribute-tl-arrow {
+    font-size: 0.8rem; color: rgba(201,168,76,0.35);
+    letter-spacing: 0;
+  }
+
+  /* ── ROADMAP SECTION — keep section-wrap but no section-label/title ── */
+  .home-roadmap-section .roadmap-head {
+    margin-bottom: 2.5rem;
+  }
+  .home-roadmap-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    margin-bottom: 0;
+  }
+
+  /* ── ACCESSIBILITY ── */
+  html.a11y-font .hero-subtitle-text,
+  html.a11y-font .hero-cta-btn,
+  html.a11y-font .home-news-feat-tag,
+  html.a11y-font .home-news-card-tag,
+  html.a11y-font .tribute-tl-label {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif !important;
+    letter-spacing: 0.03em !important;
+  }
+  html.a11y-font .home-news-feat-title,
+  html.a11y-font .home-news-card-title,
+  html.a11y-font .tribute-tl-value,
+  html.a11y-font .home-roadmap-title {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif !important;
+    letter-spacing: 0.01em !important;
+  }
+  html.a11y-size .home-news-feat-title { font-size: clamp(1.3rem, 2.2vw, 1.9rem); }
+  html.a11y-size .home-news-feat-excerpt,
+  html.a11y-size .home-news-card-excerpt { font-size: 0.98rem; line-height: 1.85; }
+  html.a11y-contrast .home-news-featured,
+  html.a11y-contrast .home-news-card { background: #0a0a0a; }
+  html.a11y-contrast .home-news-featured:hover,
+  html.a11y-contrast .home-news-card:hover { background: #0e0e0e; }
+  html.a11y-contrast .home-news-feat-title,
+  html.a11y-contrast .home-news-card-title { color: #ffffff; }
+  html.a11y-contrast .home-news-feat-excerpt,
+  html.a11y-contrast .home-news-card-excerpt { color: #e8e8e8; }
+  html.a11y-light .home-news-featured,
+  html.a11y-light .home-news-card { background: rgba(245,240,232,0.5); }
+  html.a11y-light .home-news-featured:hover,
+  html.a11y-light .home-news-card:hover { background: rgba(240,234,220,0.8); }
+  html.a11y-motion .home-news-featured::before,
+  html.a11y-motion .home-news-card::before,
+  html.a11y-motion .hero-cta-btn { transition: none !important; }
+  html.a11y-motion .home-news-feat-img img,
+  html.a11y-motion .home-news-card-img img { transition: none !important; }
+  html.a11y-dyslexia .home-news-feat-title,
+  html.a11y-dyslexia .home-news-card-title,
+  html.a11y-dyslexia .home-roadmap-title {
+    font-family: 'OpenDyslexic', Arial, sans-serif !important;
+    letter-spacing: 0.04em !important; line-height: 1.4 !important;
+  }
+  html.a11y-dyslexia .home-news-feat-excerpt,
+  html.a11y-dyslexia .home-news-card-excerpt,
+  html.a11y-dyslexia .tribute-tl-value,
+  html.a11y-dyslexia .tribute-tl-label {
+    font-family: 'OpenDyslexic', Arial, sans-serif !important;
+    line-height: 2.0 !important; letter-spacing: 0.04em !important;
+  }
+
+  @media (max-width: 900px) {
+    .home-news-featured { grid-template-columns: 1fr; }
+    .home-news-feat-img { min-height: 220px; border-left: none; border-bottom: 1.5px solid rgba(201,168,76,0.08); }
+    .home-news-feat-content { padding: 2rem 2rem; }
+    .home-news-grid { grid-template-columns: 1fr; }
+    .home-gal-grid-full { grid-template-columns: 1fr 1fr; grid-template-rows: 200px 200px; }
+    .home-gal-grid-full .home-gal-item:first-child { grid-row: span 1; }
+  }
+  @media (max-width: 600px) {
+    .full-width-section .section-header { padding: 0 1.5rem 2rem; }
+    .full-width-section .section-footer { padding: 1.5rem 1.5rem 0; }
+    .home-news-card-img { height: 120px; }
+    .tribute-tl-stat { padding: 0 1rem; }
+    .tribute-tl-arrow { font-size: 0.7rem; }
   }
 </style>
 </head>
@@ -68,27 +349,20 @@
     <div class="hero-bg" aria-hidden="true"></div>
     <div class="hero-grid" aria-hidden="true"></div>
     <div class="hero-orb" aria-hidden="true"></div>
-    <div class="hero-badge" aria-hidden="true">Fan Project</div>
-
-    <p class="hero-eyebrow" aria-hidden="true">
-      <span class="eyebrow-line"></span>
-      A New Timeline Begins
-      <span class="eyebrow-line"></span>
-    </p>
 
     <h1 class="hero-title" id="hero-heading">Destiny <span>Playground</span></h1>
 
     <div class="hero-divider" aria-hidden="true">
       <span class="hero-divider-line"></span>
-      <span class="hero-subtitle-text">Wake Up Guardian</span>
+      <span class="hero-subtitle-text">Minecraft Server</span>
       <span class="hero-divider-line"></span>
     </div>
 
-    <p class="hero-desc">A fan-made Minecraft server built in the world of Destiny. New destinations, new lore, a full campaign - rebuilt from scratch by the community, for the community. No mods required.</p>
+    <p class="hero-desc">An in-development fan-made Minecraft server built in the world of Destiny. New destinations, new lore, a full campaign - rebuilt from scratch by the community, for the community. No mods required. Join the community and keep up to date with development.</p>
 
     <div class="hero-ctas">
-      <a class="btn-primary" href="/destiny-playground/getting-started.html">Get Ready to Join</a>
-      <a class="btn-secondary" href="/destiny-playground/news.html">Latest News</a>
+      <a class="hero-cta-btn hero-cta-btn--primary" href="/destiny-playground/getting-started.html">Development Info <span class="hero-cta-arrow" aria-hidden="true">&#8594;</span></a>
+      <a class="hero-cta-btn hero-cta-btn--secondary" href="/destiny-playground/news.html">Latest News <span class="hero-cta-arrow" aria-hidden="true">&#8594;</span></a>
     </div>
   </section>
 
@@ -106,35 +380,38 @@
   <section class="tribute-section" id="d2-tribute" aria-labelledby="tribute-heading">
     <div class="tribute-bg" aria-hidden="true"></div>
     <div class="tribute-inner">
-      <p class="section-label section-label--centered" aria-hidden="true">2014 – 2026</p>
       <h2 class="tribute-title" id="tribute-heading">Thank You, Destiny 2</h2>
-      <div class="tribute-divider" aria-hidden="true">
-        <span class="tribute-line"></span>
-        <span class="tribute-line"></span>
-      </div>
       <p class="tribute-desc">On June 9th, Destiny 2 gets its final update. Twelve years. This project exists because of what Bungie built - the worlds, the lore, the feeling of being a Guardian. That doesn't go away. We're carrying it forward.</p>
       <div class="tribute-cta-row">
         <a class="tribute-btn" href="/destiny-playground/articles/announcement-22-05-2026.html">Read Our Full Statement <span aria-hidden="true">&#8594;</span></a>
       </div>
-      <dl class="tribute-stats">
-        <div class="tribute-stat">
-          <dt class="tribute-stat-label">Destiny 1 Launch</dt>
-          <dd class="tribute-stat-value">2014</dd>
+      <dl class="tribute-timeline">
+        <div class="tribute-tl-item">
+          <div class="tribute-tl-stat">
+            <dt class="tribute-tl-label">Destiny 1 Launch</dt>
+            <dd class="tribute-tl-value">2014</dd>
+          </div>
         </div>
-        <span class="tribute-stat-sep" aria-hidden="true">&#9670;</span>
-        <div class="tribute-stat">
-          <dt class="tribute-stat-label">Destiny 2 Launch</dt>
-          <dd class="tribute-stat-value">2017</dd>
+        <span class="tribute-tl-arrow" aria-hidden="true">&#8594;</span>
+        <div class="tribute-tl-item">
+          <div class="tribute-tl-stat">
+            <dt class="tribute-tl-label">Destiny 2 Launch</dt>
+            <dd class="tribute-tl-value">2017</dd>
+          </div>
         </div>
-        <span class="tribute-stat-sep" aria-hidden="true">&#9670;</span>
-        <div class="tribute-stat">
-          <dt class="tribute-stat-label">Years of Guardians</dt>
-          <dd class="tribute-stat-value">12</dd>
+        <span class="tribute-tl-arrow" aria-hidden="true">&#8594;</span>
+        <div class="tribute-tl-item">
+          <div class="tribute-tl-stat">
+            <dt class="tribute-tl-label">The Final Shape Launch</dt>
+            <dd class="tribute-tl-value">2025</dd>
+          </div>
         </div>
-        <span class="tribute-stat-sep" aria-hidden="true">&#9670;</span>
-        <div class="tribute-stat">
-          <dt class="tribute-stat-label">The Legacy</dt>
-          <dd class="tribute-stat-value" aria-label="Infinite">&#8734;</dd>
+        <span class="tribute-tl-arrow" aria-hidden="true">&#8594;</span>
+        <div class="tribute-tl-item">
+          <div class="tribute-tl-stat">
+            <dt class="tribute-tl-label">Destiny Playground Launch</dt>
+            <dd class="tribute-tl-value">2027</dd>
+          </div>
         </div>
       </dl>
     </div>
@@ -143,15 +420,16 @@
   <div class="divider" role="separator" aria-hidden="true"></div>
 
   <!-- NEWS -->
-  <section class="section-wrap" aria-labelledby="news-heading">
-    <p class="section-label" aria-hidden="true">Latest Transmissions</p>
-    <h2 class="section-title" id="news-heading">News</h2>
-    <div class="news-grid" id="news-grid" aria-live="polite" aria-busy="true">
-      <div class="news-loading">
+  <section class="full-width-section" aria-labelledby="news-heading">
+    <div class="section-header">
+      <h2 class="section-title" id="news-heading">News</h2>
+    </div>
+    <div class="home-news-grid" id="news-grid" aria-live="polite" aria-busy="true">
+      <div class="news-loading" style="grid-column:1/-1;">
         <p>Loading transmissions...</p>
       </div>
     </div>
-    <div class="news-footer">
+    <div class="section-footer">
       <a href="news.html">All News <span aria-hidden="true">&#8594;</span></a>
     </div>
   </section>
@@ -182,10 +460,11 @@
   <div class="divider" role="separator" aria-hidden="true"></div>
 
   <!-- GALLERY -->
-  <section class="gallery-section" id="gallery" aria-labelledby="gallery-heading">
-    <p class="section-label" aria-hidden="true">From the Field</p>
-    <h2 class="section-title" id="gallery-heading">Gallery</h2>
-    <div class="home-gal-grid" id="homeGalGrid" role="list">
+  <section class="full-width-section" id="gallery" aria-labelledby="gallery-heading">
+    <div class="section-header">
+      <h2 class="section-title" id="gallery-heading">Gallery</h2>
+    </div>
+    <div class="home-gal-grid home-gal-grid-full" id="homeGalGrid" role="list">
 
       <div class="home-gal-item" role="listitem button" tabindex="0" data-index="0" data-caption="Screenshot 01" data-src="/destiny-playground/images/gallery/gallery (30).png" aria-label="View Screenshot 01 in lightbox">
         <div class="home-gal-inner">
@@ -223,7 +502,7 @@
       </div>
 
     </div>
-    <div class="news-footer gallery-footer">
+    <div class="section-footer">
       <a href="/destiny-playground/gallery.html">Full Gallery <span aria-hidden="true">&#8594;</span></a>
     </div>
   </section>
@@ -247,60 +526,61 @@
 
   <!-- ROADMAP PREVIEW -->
   <section class="section-wrap home-roadmap-section" id="roadmap" aria-labelledby="roadmap-heading">
-    <p class="section-label" aria-hidden="true">What's Next</p>
-    <h2 class="section-title" id="roadmap-heading">Roadmap</h2>
+    <div class="roadmap-head">
+      <h2 class="home-roadmap-title" id="roadmap-heading">Roadmap</h2>
+    </div>
 
     <div class="home-timeline" aria-label="Upcoming roadmap entries">
       <div class="home-timeline-spine" aria-hidden="true"></div>
 
-      <!-- ENTRY 1 - Vault System Dev Update -->
+      <!-- ENTRY 1 - Destinations Teaser Trailer (released today) -->
       <div class="home-tl-entry">
         <div class="home-tl-node" aria-hidden="true">
-          <div class="home-tl-pip home-tl-pip--upcoming"></div>
+          <div class="home-tl-pip home-tl-pip--released"></div>
           <div class="home-tl-line"></div>
         </div>
         <div class="home-tl-card">
-          <div class="home-tl-phase">Dev Update - Week II</div>
-          <div class="home-tl-title">Vault System</div>
-          <div class="home-tl-date"><time datetime="2026-06-01">1st June 2026</time></div>
-        </div>
-      </div>
-
-      <!-- ENTRY 2 - Destinations Teaser Trailer -->
-      <div class="home-tl-entry">
-        <div class="home-tl-node" aria-hidden="true">
-          <div class="home-tl-pip home-tl-pip--upcoming"></div>
-          <div class="home-tl-line"></div>
-        </div>
-        <div class="home-tl-card">
-          <div class="home-tl-phase">Teaser Trailer - Week III</div>
+          <div class="home-tl-phase">Teaser Trailer — Week III</div>
           <div class="home-tl-title">Destinations Teaser Trailer I</div>
           <div class="home-tl-date"><time datetime="2026-06-08">8th June 2026</time></div>
         </div>
       </div>
 
-      <!-- ENTRY 3 - Sparrows System Dev Update -->
+      <!-- ENTRY 2 - Sparrows System Dev Update -->
       <div class="home-tl-entry">
         <div class="home-tl-node" aria-hidden="true">
           <div class="home-tl-pip home-tl-pip--upcoming"></div>
           <div class="home-tl-line"></div>
         </div>
         <div class="home-tl-card">
-          <div class="home-tl-phase">Dev Update - Week IV</div>
+          <div class="home-tl-phase">Dev Update — Week IV</div>
           <div class="home-tl-title">Sparrows System</div>
           <div class="home-tl-date"><time datetime="2026-06-15">15th June 2026</time></div>
         </div>
       </div>
 
-      <!-- ENTRY 4 - Ability Showcase Teaser Trailer -->
+      <!-- ENTRY 3 - Ability Showcase Teaser Trailer -->
+      <div class="home-tl-entry">
+        <div class="home-tl-node" aria-hidden="true">
+          <div class="home-tl-pip home-tl-pip--upcoming"></div>
+          <div class="home-tl-line"></div>
+        </div>
+        <div class="home-tl-card">
+          <div class="home-tl-phase">Teaser Trailer — Week V</div>
+          <div class="home-tl-title">Ability Showcase Teaser Trailer I</div>
+          <div class="home-tl-date"><time datetime="2026-06-22">22nd June 2026</time></div>
+        </div>
+      </div>
+
+      <!-- ENTRY 4 - Campaign Overview -->
       <div class="home-tl-entry home-tl-entry--last">
         <div class="home-tl-node" aria-hidden="true">
           <div class="home-tl-pip home-tl-pip--upcoming"></div>
         </div>
         <div class="home-tl-card">
-          <div class="home-tl-phase">Teaser Trailer - Week V</div>
-          <div class="home-tl-title">Ability Showcase Teaser Trailer I</div>
-          <div class="home-tl-date"><time datetime="2026-06-22">22nd June 2026</time></div>
+          <div class="home-tl-phase">Dev Insight Video — Week VI</div>
+          <div class="home-tl-title">Campaign Overview</div>
+          <div class="home-tl-date"><time datetime="2026-06-29">29th June 2026</time></div>
         </div>
       </div>
 
@@ -335,17 +615,18 @@
 
       if (featured) {
         const fc = document.createElement('a');
-        fc.className = 'news-card-featured';
+        fc.className = 'home-news-featured';
         fc.href = featured.file;
+        const imgHtml = featured.image
+          ? `<img src="${featured.image}" alt="${featured.title} - Destiny Playground" loading="lazy">`
+          : `<div class="home-news-feat-img-placeholder" aria-hidden="true"><div class="home-news-feat-img-icon"><span>&#9670;</span></div></div>`;
         fc.innerHTML = `
-          <div class="featured-img-box">
-            <div class="featured-img-placeholder" aria-hidden="true"><span>&#9670;</span></div>
-          </div>
-          <div class="featured-content">
-            <div class="featured-tag">${featured.tag} &nbsp;&#8212;&nbsp; Featured</div>
-            <div class="featured-title">${featured.title}</div>
-            <div class="featured-desc">${featured.excerpt}</div>
-            <span class="btn-secondary" style="width:fit-content; padding:0.65rem 1.8rem; font-size:0.75rem;">Read More</span>
+          <div class="home-news-feat-img">${imgHtml}</div>
+          <div class="home-news-feat-content">
+            <div class="home-news-feat-tag">${featured.tag} &nbsp;&mdash;&nbsp; Latest</div>
+            <div class="home-news-feat-title">${featured.title}</div>
+            <div class="home-news-feat-excerpt">${featured.excerpt}</div>
+            <span class="home-news-feat-read">Read More &nbsp;&#8594;</span>
           </div>
         `;
         grid.appendChild(fc);
@@ -353,26 +634,30 @@
 
       rest.forEach(article => {
         const card = document.createElement('a');
-        card.className = 'news-card-small';
+        card.className = 'home-news-card';
         card.href = article.file;
+        const imgHtml = article.image
+          ? `<img src="${article.image}" alt="${article.title} - Destiny Playground" loading="lazy">`
+          : `<div class="home-news-card-img-placeholder" aria-hidden="true"></div>`;
         card.innerHTML = `
+          <div class="home-news-card-img">${imgHtml}</div>
           <div>
-            <div class="news-tag">${article.tag}</div>
-            <div class="news-card-title">${article.title}</div>
-            <div class="news-card-excerpt">${article.excerpt}</div>
+            <div class="home-news-card-tag">${article.tag}</div>
+            <div class="home-news-card-title">${article.title}</div>
+            <div class="home-news-card-excerpt">${article.excerpt}</div>
           </div>
-          <div class="news-card-date">${article.date}</div>
+          <div class="home-news-card-date">${article.date}</div>
         `;
         grid.appendChild(card);
       });
 
       if (!featured && rest.length === 0) {
-        grid.innerHTML = '<div class="news-error">No transmissions yet. Check back soon, Guardian.</div>';
+        grid.innerHTML = '<div class="news-error" style="grid-column:1/-1;">No transmissions yet. Check back soon, Guardian.</div>';
       }
 
     } catch (err) {
       grid.setAttribute('aria-busy', 'false');
-      grid.innerHTML = `<div class="news-error" role="alert">
+      grid.innerHTML = `<div class="news-error" role="alert" style="grid-column:1/-1;">
         Transmissions offline.<br>
         <span style="font-size:0.78rem; opacity:0.6;">Make sure articles.json is in the same folder as index.html.</span>
       </div>`;
