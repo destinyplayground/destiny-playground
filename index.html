@@ -269,6 +269,65 @@
     margin-bottom: 0;
   }
 
+  /* ── GLOBAL HEADING ALIGNMENT ── */
+  /* All section headings indent to the same 3rem left edge regardless of container width */
+  .section-title,
+  .home-roadmap-title {
+    padding-left: 0; /* contained sections already have section-wrap padding */
+  }
+  .full-width-section .section-header,
+  .trailer-section-header {
+    padding-left: 3rem;
+    max-width: none;
+  }
+  /* Trailer section — align its heading the same way */
+  .trailer-section {
+    padding-left: 0; padding-right: 0;
+  }
+  .trailer-section-header {
+    padding: 0 3rem 2rem;
+  }
+  .trailer-section-header .section-title {
+    margin-bottom: 0;
+  }
+  .trailer-section .trailer-box {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  /* ── HERO CTAs — tribute-btn style ── */
+  .hero-cta-btn {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.78rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gold);
+    border: 0.5px solid rgba(201,168,76,0.35);
+    padding: 0.75rem 2rem;
+    text-decoration: none;
+    background: rgba(201,168,76,0.04);
+    transition: background 0.2s, border-color 0.2s;
+    clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+  }
+  .hero-cta-btn:hover {
+    background: rgba(201,168,76,0.1);
+    border-color: rgba(201,168,76,0.6);
+    transform: none;
+  }
+  /* Remove the old primary/secondary variants — both use same base style now */
+  .hero-cta-btn--primary,
+  .hero-cta-btn--secondary {
+    background: rgba(201,168,76,0.04);
+    color: var(--gold);
+    border: 0.5px solid rgba(201,168,76,0.35);
+  }
+  .hero-cta-btn--primary:hover,
+  .hero-cta-btn--secondary:hover {
+    background: rgba(201,168,76,0.1);
+    border-color: rgba(201,168,76,0.6);
+    transform: none;
+  }
+  .hero-cta-arrow { font-size: 0.85rem; opacity: 0.9; }
+
   /* ── ACCESSIBILITY ── */
   html.a11y-font .hero-subtitle-text,
   html.a11y-font .hero-cta-btn,
@@ -281,13 +340,15 @@
   html.a11y-font .home-news-feat-title,
   html.a11y-font .home-news-card-title,
   html.a11y-font .tribute-tl-value,
-  html.a11y-font .home-roadmap-title {
+  html.a11y-font .home-roadmap-title,
+  html.a11y-font .trailer-section-header .section-title {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif !important;
     letter-spacing: 0.01em !important;
   }
   html.a11y-size .home-news-feat-title { font-size: clamp(1.3rem, 2.2vw, 1.9rem); }
   html.a11y-size .home-news-feat-excerpt,
   html.a11y-size .home-news-card-excerpt { font-size: 0.98rem; line-height: 1.85; }
+  html.a11y-size .hero-cta-btn { font-size: 0.88rem; padding: 0.9rem 2.2rem; }
   html.a11y-contrast .home-news-featured,
   html.a11y-contrast .home-news-card { background: #0a0a0a; }
   html.a11y-contrast .home-news-featured:hover,
@@ -296,6 +357,8 @@
   html.a11y-contrast .home-news-card-title { color: #ffffff; }
   html.a11y-contrast .home-news-feat-excerpt,
   html.a11y-contrast .home-news-card-excerpt { color: #e8e8e8; }
+  html.a11y-contrast .hero-cta-btn { border-color: rgba(255,210,77,0.5); }
+  html.a11y-contrast .hero-cta-btn:hover { border-color: rgba(255,210,77,0.8); background: rgba(255,210,77,0.1); }
   html.a11y-light .home-news-featured,
   html.a11y-light .home-news-card { background: rgba(245,240,232,0.5); }
   html.a11y-light .home-news-featured:hover,
@@ -314,7 +377,8 @@
   html.a11y-dyslexia .home-news-feat-excerpt,
   html.a11y-dyslexia .home-news-card-excerpt,
   html.a11y-dyslexia .tribute-tl-value,
-  html.a11y-dyslexia .tribute-tl-label {
+  html.a11y-dyslexia .tribute-tl-label,
+  html.a11y-dyslexia .hero-cta-btn {
     font-family: 'OpenDyslexic', Arial, sans-serif !important;
     line-height: 2.0 !important; letter-spacing: 0.04em !important;
   }
@@ -438,22 +502,23 @@
 
   <!-- TRAILER -->
   <section class="trailer-section" id="trailer-section" aria-labelledby="trailer-heading">
-    <p class="section-label section-label--centered" aria-hidden="true">Destiny Playground - Official Destinations Teaser Trailer</p>
-    <!-- <h2 class="section-title trailer-section-title" id="trailer-heading">Watch the Showcase</h2> -->
+    <div class="trailer-section-header">
+      <h2 class="section-title" id="trailer-heading">Latest Trailer</h2>
+    </div>
     <div class="trailer-box">
       <div class="trailer-corner tl" aria-hidden="true"></div>
       <div class="trailer-corner tr" aria-hidden="true"></div>
       <div class="trailer-corner bl" aria-hidden="true"></div>
       <div class="trailer-corner br" aria-hidden="true"></div>
       <iframe
-        src="https://youtu.be/F4QBhh8Z5Os?si=JZFpYnxzqpTQBaLx"
+        width="560" height="315"
+        src="https://www.youtube.com/embed/F4QBhh8Z5Os?si=FIEV4AhapZw8q7-l"
         title="Destiny Playground - Official Destinations Teaser Trailer"
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         referrerpolicy="strict-origin-when-cross-origin"
         allowfullscreen>
       </iframe>
-      <div class="trailer-label" aria-hidden="true"></div>
     </div>
   </section>
 
