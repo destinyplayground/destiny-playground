@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Destinations Trailer & Loose Variable Soundtrack Release - Dev Update - Destiny Playground</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/destiny-playground/css/styles.css">
+<link rel="stylesheet" href="/destiny-playground/css/article.css">
+<link rel="stylesheet" href="/destiny-playground/css/nav.css">
+<link rel="stylesheet" href="/destiny-playground/css/a11y-overrides.css">
+
+<style>
+
+/* ── PROGRESS GALLERY ── */
+.progress-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 0.8rem;
+  margin: 2rem 0;
+}
+.progress-item {
+  border: 0.5px solid var(--border);
+  overflow: hidden;
+  background: rgba(255,255,255,0.01);
+}
+.progress-item-placeholder {
+  width: 100%; aspect-ratio: 16/9;
+  background: linear-gradient(135deg, rgba(201,168,76,0.04) 0%, rgba(201,168,76,0.01) 100%);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 0.5rem;
+}
+.progress-item img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.progress-item-placeholder-icon {
+  width: 32px; height: 32px; border: 0.5px solid rgba(201,168,76,0.15);
+  transform: rotate(45deg); display: flex; align-items: center; justify-content: center;
+}
+.progress-item-placeholder-icon span { transform: rotate(-45deg); font-size: 0.8rem; color: rgba(201,168,76,0.2); }
+.progress-item-placeholder-text {
+  font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(201,168,76,0.15);
+}
+.progress-label {
+  padding: 0.45rem 0.8rem;
+  font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--muted); border-top: 0.5px solid var(--border);
+  font-family: 'Rajdhani', sans-serif;
+}
+
+/* ── TEAM CARD GRID ── */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.2rem;
+  margin: 2rem 0;
+}
+.team-card {
+  border: 0.5px solid var(--border);
+  background: rgba(255,255,255,0.01);
+  padding: 1.5rem 1.6rem;
+  position: relative;
+  overflow: hidden;
+}
+.team-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(to right, transparent, rgba(201,168,76,0.3), transparent);
+}
+.team-card--join { border-color: rgba(93,202,138,0.3); background: rgba(93,202,138,0.02); }
+.team-card--join::before { background: linear-gradient(to right, transparent, rgba(93,202,138,0.4), transparent); }
+.team-card-status {
+  font-size: 0.65rem; letter-spacing: 0.28em; text-transform: uppercase;
+  margin-bottom: 0.6rem; display: flex; align-items: center; gap: 0.5rem;
+}
+.team-card-status--join { color: #5dca8a; }
+.team-card-status-dot {
+  width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
+}
+.team-card-status-dot--join { background: #5dca8a; box-shadow: 0 0 5px rgba(93,202,138,0.7); }
+.team-card-name {
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem; letter-spacing: 0.06em;
+  color: var(--white); margin-bottom: 0.4rem;
+}
+.team-card-role {
+  font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 0.8rem;
+}
+.team-card p {
+  font-size: 0.92rem; line-height: 1.75; color: var(--muted);
+  font-weight: 300; margin: 0; letter-spacing: 0.02em;
+}
+
+/* ── BANNER PAIR ── */
+.banner-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+  margin: 2rem 0;
+}
+.banner-pair-item {
+  border: 0.5px solid var(--border);
+  overflow: hidden;
+  background: rgba(255,255,255,0.01);
+}
+.banner-pair-item img {
+  width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block;
+  transition: opacity 0.3s;
+}
+.banner-pair-item img:hover { opacity: 0.85; }
+.banner-pair-label {
+  padding: 0.45rem 0.8rem;
+  font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--gold-dim); border-top: 0.5px solid var(--border);
+  font-family: 'Rajdhani', sans-serif;
+}
+@media (max-width: 600px) {
+  .banner-pair { grid-template-columns: 1fr; }
+}
+
+/* ── SINGLE WIDE IMAGE ── */
+.wide-image {
+  margin: 2rem 0;
+  border: 0.5px solid var(--border);
+  overflow: hidden;
+  background: rgba(255,255,255,0.01);
+}
+.wide-image img {
+  width: 100%; display: block; object-fit: cover;
+  transition: opacity 0.3s;
+}
+.wide-image img:hover { opacity: 0.9; }
+.wide-image-label {
+  padding: 0.45rem 0.8rem;
+  font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--muted); border-top: 0.5px solid var(--border);
+  font-family: 'Rajdhani', sans-serif;
+}
+
+/* ── STATS ROW ── */
+.stats-row {
+  display: flex; gap: 0; margin: 2rem 0;
+  border: 0.5px solid var(--border); overflow: hidden;
+  flex-wrap: wrap;
+}
+.stat-item {
+  flex: 1; min-width: 140px; padding: 1.4rem 1.8rem;
+  text-align: center; border-right: 0.5px solid var(--border);
+}
+.stat-item:last-child { border-right: none; }
+.stat-value {
+  font-family: 'Cinzel', serif;
+  font-size: 1.9rem; font-weight: 700;
+  color: var(--gold); letter-spacing: 0.05em;
+  line-height: 1; margin-bottom: 0.45rem;
+}
+.stat-label {
+  font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--muted);
+}
+
+</style>
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+<div style="height: 64px;"></div>
+
+<div class="banner">
+  <img class="banner-img" src="/destiny-playground/images/dev-update-banners/banner_19.png" alt="Banner">
+  <div class="banner-overlay"></div>
+  <div class="banner-tag">Dev Update</div>
+</div>
+
+<div class="article-header">
+  <h1 class="article-title">Destinations Trailer &amp; Loose Variable Soundtrack Release</h1>
+  <div class="article-meta">
+    <span class="meta-date">8 Jun, 2026</span>
+    <div class="meta-sep"></div>
+    <span class="meta-author">CNT Darthgaming</span>
+    <span class="meta-tag">Dev Update</span>
+  </div>
+</div>
+
+<div class="article-body">
+
+  <div class="dev-notice">
+    <div class="dev-notice-label">Developer Note</div>
+    <p>The purpose of these dev updates is to share systems currently in development and to give insight into the early stages of design as the project evolves. What you're seeing right now are the foundations and skeletons of systems, nowhere near their final versions.</p>
+    <p>Things like names, values, stats, and organisation are often placeholders or early iterations. My current focus is building the core structure and functionality of systems first. Refinement, balancing, and polish come later in development.</p>
+    <p>Because of this, please keep in mind that everything shown in dev updates is subject to change. Feedback and suggestions are always welcome, but constructive feedback with reasoning is far more helpful than simple reactions.</p>
+  </div>
+
+  <p>Welcome back, Guardians. This is a big one — two releases today alongside the usual update. A few hours before this post went live, the <strong>Destinations Teaser Trailer I</strong> dropped on YouTube. And with this update, the very first official Destiny Playground soundtrack is out: <strong>Loose Variable</strong>. Both deserve their own section, and we'll get to them shortly.</p>
+
+  <p>Beyond the releases, there's been a solid week of building progress — the Tower has been getting a long-overdue rebuild, the city is coming together, and new custom assets have arrived. Plus two new team additions to share. Let's get into it.</p>
+
+  <h2>Destinations Teaser Trailer I</h2>
+
+  <p>Earlier today, the first official teaser trailer for Destiny Playground went live. The Destinations Teaser gives you a first proper look at the worlds you'll be exploring at launch — the environments, the scale, the atmosphere. Everything we've been building towards, finally visible.</p>
+
+  <div class="video-embed">
+    <div class="video-wrapper">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/PLACEHOLDER_TRAILER" title="Destinations Teaser Trailer I" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    <div class="video-caption">Destinations Teaser Trailer I — Destiny Playground</div>
+  </div>
+
+  <p>All the attention we can draw to the project at this stage genuinely helps. If you haven't already, go watch it, share it, and leave a comment. Every view and every conversation around it helps the project reach people who don't know it exists yet.</p>
+
+  <h2>Loose Variable — First Official Soundtrack</h2>
+
+  <p>Releasing today alongside this update: <strong>Loose Variable</strong>, the first track in Destiny Playground's original soundtrack. Composed by <strong>Emi</strong>, this is the beginning of something we've wanted to do since the project started — original music written specifically for this world.</p>
+
+  <div class="video-embed">
+    <div class="video-wrapper">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/PLACEHOLDER_SOUNDTRACK" title="Loose Variable - Destiny Playground OST" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    <div class="video-caption">Loose Variable — Destiny Playground Original Soundtrack — Emi</div>
+  </div>
+
+  <p>Destiny's relationship with music has always been special — from Marty O'Donnell's iconic work to everything that followed, the soundtracks were as much a part of what made those games feel the way they did as the visuals or the writing. Getting that right for Destiny Playground matters, and having composers producing original work specifically for this world is something we're really proud of.</p>
+
+  <p>This is the first of several tracks dropping over the coming weeks. Here's the current soundtrack schedule:</p>
+
+  <ul>
+    <li><strong>Loose Variable</strong> — releasing today, 8th June, alongside the Destinations Teaser Trailer</li>
+    <li><strong>Cabal Stomp</strong> — releasing 15th June, alongside the Sparrows System dev update</li>
+    <li><strong>Reminisce</strong> — releasing 22nd June, alongside the Ability Showcase Teaser Trailer</li>
+    <li><strong>Husk of The Summing Pits</strong> — releasing 29th June, alongside the Campaign Overview Dev Insight</li>
+  </ul>
+
+  <h2>Building Progress — The Tower</h2>
+
+  <p>The Tower is one of the most iconic locations in Destiny — and ours was built about ten years ago, so it was very much due a proper revisit. This week's building work has been focused on updating blocks, refactoring sections to be more accurate, and making use of tools and techniques that simply didn't exist when the original build was made.</p>
+
+  <p>The Courtyard is now mostly updated, and work is moving towards Tower North. On top of that, the world has been tidied up significantly — the Tower is now properly connected to the city, and the city itself has had a thorough pass.</p>
+
+  <div class="progress-gallery">
+    <div class="progress-item">
+      <img src="/destiny-playground/images/dev-updates/08.06.2026/image1.png" alt="Tower rebuild progress">
+      <div class="progress-label">Tower Courtyard — Updated</div>
+    </div>
+    <div class="progress-item">
+      <img src="/destiny-playground/images/dev-updates/08.06.2026/image2.png" alt="Tower rebuild progress">
+      <div class="progress-label">Tower Courtyard — Detail</div>
+    </div>
+    <div class="progress-item">
+      <img src="/destiny-playground/images/dev-updates/08.06.2026/image3.png" alt="Tower rebuild progress">
+      <div class="progress-label">Tower Courtyard — Further Progress</div>
+    </div>
+    <div class="progress-item">
+      <img src="/destiny-playground/images/dev-updates/08.06.2026/image4.png" alt="Tower rebuild progress">
+      <div class="progress-label">Tower North — In Progress</div>
+    </div>
+    <div class="progress-item">
+      <img src="/destiny-playground/images/dev-updates/08.06.2026/image5.png" alt="Tower rebuild progress">
+      <div class="progress-label">Overview</div>
+    </div>
+    <div class="progress-item">
+      <img src="/destiny-playground/images/dev-updates/08.06.2026/image6.png" alt="Tower rebuild progress">
+      <div class="progress-label">Overview</div>
+    </div>
+  </div>
+
+  <h2>The City &amp; Hall of Guardians</h2>
+
+  <p>Down in the city, block improvement work has been ongoing, and the Tower is now properly connected to the surrounding Last City. Work has also begun on <strong>The Hall of Guardians</strong> — the primary hub building in the Guardian District of the city. This is where your Guardian triumphs and accomplishments will be displayed, where legends will be celebrated, and more. Early days yet, but the foundation is in place.</p>
+
+  <div class="wide-image">
+    <img src="/destiny-playground/images/dev-updates/08.06.2026/image7.png" alt="The Last City — Tower Connection">
+    <div class="wide-image-label">The Last City — Tower Connection &amp; City Tidy</div>
+  </div>
+
+  <div class="wide-image">
+    <img src="/destiny-playground/images/dev-updates/08.06.2026/image8.png" alt="Hall of Guardians — Early Work">
+    <div class="wide-image-label">Hall of Guardians — Early Work</div>
+  </div>
+
+  <h2>Custom Assets — Banners</h2>
+
+  <p>New custom assets are being produced, starting with in-world banners. Two have been completed so far, with many more planned. Here are the first two: the <strong>Guardian Banner</strong> and the <strong>Vanguard Banner</strong>.</p>
+
+  <div class="banner-pair">
+    <div class="banner-pair-item">
+      <img src="/destiny-playground/images/dev-updates/08.06.2026/image9.png" alt="Guardian Banner">
+      <div class="banner-pair-label">Guardian Banner</div>
+    </div>
+    <div class="banner-pair-item">
+      <img src="/destiny-playground/images/dev-updates/08.06.2026/image10.png" alt="Vanguard Banner">
+      <div class="banner-pair-label">Vanguard Banner</div>
+    </div>
+  </div>
+
+  <h2>Weapons Progress</h2>
+
+  <p>On the systems side, we now officially have one fully working weapon with random rolls and everything in place. That's the foundation the weapon arsenal needs — with it solid, work can begin expanding to other weapon types and perks. More on weapons in a dedicated update when there's more to show.</p>
+
+  <h2>New Team Additions</h2>
+
+  <p>Two new contractors have joined the team this week — <strong>noni</strong> and <strong>Johulk</strong>. They've been working to bring a client-side mod to life for the server, alongside some custom plugin work. This is something that's been in discussion for a while, and having dedicated people on it is a big step forward.</p>
+
+  <div class="team-grid">
+
+    <div class="team-card team-card--join">
+      <div class="team-card-status team-card-status--join">
+        <span class="team-card-status-dot team-card-status-dot--join"></span>
+        Joining
+      </div>
+      <div class="team-card-name">noni</div>
+      <div class="team-card-role">Contractor — Client Mod &amp; Plugin Development</div>
+      <p>Working on bringing a client-side mod to Destiny Playground, alongside custom plugin development. Welcome to the team.</p>
+    </div>
+
+    <div class="team-card team-card--join">
+      <div class="team-card-status team-card-status--join">
+        <span class="team-card-status-dot team-card-status-dot--join"></span>
+        Joining
+      </div>
+      <div class="team-card-name">Johulk</div>
+      <div class="team-card-role">Contractor — Client Mod &amp; Plugin Development</div>
+      <p>Working on bringing a client-side mod to Destiny Playground, alongside custom plugin development. Welcome to the team.</p>
+    </div>
+
+  </div>
+
+  <h2>Community &amp; Stats</h2>
+
+  <p>To round things off — a genuine thank you to everyone following this project. The recent influx of people has been incredible to see, especially given that a Beta or Launch is still a long way off and development is in an early phase. The fact that so many of you are following along this early means more than I can properly express.</p>
+
+  <div class="stats-row">
+    <div class="stat-item">
+      <div class="stat-value">381</div>
+      <div class="stat-label">Twitter Followers</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-value">~60K</div>
+      <div class="stat-label">Impressions This Week</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-value">100+</div>
+      <div class="stat-label">Discord Members</div>
+    </div>
+  </div>
+
+  <p>Every share, every comment, every new member of the Discord helps. If you want to get involved — whether as a builder, modeller, or in another capacity — the Discord is the place to start. And if you just want to follow along, every Monday is a new update.</p>
+
+</div>
+
+<div class="divider"></div>
+
+<div class="socials-section">
+  <div class="socials-label">Find Us</div>
+  <div class="socials-title">Follow the Project</div>
+  <div class="socials-grid">
+    <a class="social-btn" href="https://discord.gg/Ah6Jt5KVPH">&#9671; Discord</a>
+    <a class="social-btn" href="https://youtube.com/@cntdarthgaming">&#9654; YouTube</a>
+    <a class="social-btn" href="https://bsky.app/profile/thedestinyplayground.bsky.social">&#9633; Bluesky</a>
+    <a class="social-btn" href="https://x.com/destinyplaygrnd">&#9632; Twitter</a>
+    <a class="social-btn" href="https://ko-fi.com/destinyplayground">&#9651; Ko-fi</a>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="back-section">
+  <a class="btn-back" href="/destiny-playground/news.html">&#8592; Back to News</a>
+</div>
+
+<div id="footer-placeholder"></div>
+<script src="/destiny-playground/js/shared.js"></script>
+</body>
+</html>
