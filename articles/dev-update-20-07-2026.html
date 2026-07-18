@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>We're Back — Weapons, Abilities & Staff Changes - Dev Update - Destiny Playground</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/destiny-playground/css/styles.css">
+<link rel="stylesheet" href="/destiny-playground/css/article.css">
+<link rel="stylesheet" href="/destiny-playground/css/nav.css">
+<link rel="stylesheet" href="/destiny-playground/css/a11y-overrides.css">
+
+<style>
+
+/* ── WEAPON SHOWCASE ── */
+.weapon-showcase {
+  border: 0.5px solid var(--border);
+  background: rgba(255,255,255,0.01);
+  margin: 2rem 0;
+  overflow: hidden;
+}
+.weapon-showcase-header {
+  display: flex; align-items: center; gap: 1.2rem;
+  padding: 1rem 1.4rem;
+  border-bottom: 0.5px solid var(--border);
+  background: rgba(201,168,76,0.025);
+}
+.weapon-icon {
+  width: 36px; height: 36px; flex-shrink: 0;
+  border: 0.5px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  transform: rotate(45deg);
+}
+.weapon-icon span { transform: rotate(-45deg); font-size: 0.9rem; color: var(--gold-dim); }
+.weapon-header-info { flex: 1; }
+.weapon-type {
+  font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 0.2rem;
+}
+.weapon-name {
+  font-family: 'Cinzel', serif;
+  font-size: 1.05rem; letter-spacing: 0.06em;
+  color: var(--white); line-height: 1.2;
+}
+.weapon-tag {
+  font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase;
+  padding: 3px 10px; border: 0.5px solid;
+  align-self: flex-start;
+}
+.weapon-tag--working   { border-color: rgba(93,202,138,0.4); color: #5dca8a; }
+.weapon-tag--prototype { border-color: rgba(201,168,76,0.3); color: var(--gold-dim); }
+.weapon-body { padding: 1.2rem 1.4rem; }
+.weapon-body p {
+  font-size: 0.92rem; line-height: 1.75; color: var(--muted);
+  font-weight: 300; margin: 0 0 1rem; letter-spacing: 0.02em;
+}
+.weapon-body p:last-child { margin-bottom: 0; }
+.weapon-video {
+  position: relative; padding-bottom: 56.25%; height: 0;
+  overflow: hidden; border-top: 0.5px solid var(--border);
+}
+.weapon-video iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+.weapon-video-placeholder {
+  position: absolute; inset: 0;
+  background: rgba(201,168,76,0.02);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.6rem;
+}
+.weapon-video-placeholder-icon {
+  width: 40px; height: 40px; border: 0.5px solid rgba(201,168,76,0.15);
+  transform: rotate(45deg); display: flex; align-items: center; justify-content: center;
+}
+.weapon-video-placeholder-icon span { transform: rotate(-45deg); font-size: 0.9rem; color: rgba(201,168,76,0.2); }
+.weapon-video-placeholder-text {
+  font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: rgba(201,168,76,0.18);
+}
+
+/* ── TEAM CARDS (reuse from existing articles) ── */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.2rem;
+  margin: 2rem 0;
+}
+.team-card {
+  border: 0.5px solid var(--border);
+  background: rgba(255,255,255,0.01);
+  padding: 1.5rem 1.6rem;
+  position: relative; overflow: hidden;
+}
+.team-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(to right, transparent, rgba(201,168,76,0.3), transparent);
+}
+.team-card--join { border-color: rgba(93,202,138,0.3); background: rgba(93,202,138,0.02); }
+.team-card--join::before { background: linear-gradient(to right, transparent, rgba(93,202,138,0.4), transparent); }
+.team-card-status {
+  font-size: 0.65rem; letter-spacing: 0.28em; text-transform: uppercase;
+  margin-bottom: 0.6rem; display: flex; align-items: center; gap: 0.5rem;
+}
+.team-card-status--join { color: #5dca8a; }
+.team-card-status-dot {
+  width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
+}
+.team-card-status-dot--join { background: #5dca8a; box-shadow: 0 0 5px rgba(93,202,138,0.7); }
+.team-card-name {
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem; letter-spacing: 0.06em;
+  color: var(--white); margin-bottom: 0.4rem;
+}
+.team-card-role {
+  font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 0.8rem;
+}
+.team-card p {
+  font-size: 0.92rem; line-height: 1.75; color: var(--muted);
+  font-weight: 300; margin: 0; letter-spacing: 0.02em;
+}
+
+/* ── OPEN ROLES ── */
+.roles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0;
+  margin: 2rem 0;
+  border: 0.5px solid var(--border);
+  overflow: hidden;
+}
+.role-item {
+  padding: 1.2rem 1.5rem;
+  border-right: 0.5px solid var(--border);
+  border-bottom: 0.5px solid var(--border);
+  background: rgba(255,255,255,0.01);
+  transition: background 0.2s;
+}
+.role-item:hover { background: rgba(201,168,76,0.03); }
+.role-item-label {
+  font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase;
+  color: #5dca8a; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;
+}
+.role-item-label::before {
+  content: ''; width: 5px; height: 5px; border-radius: 50%;
+  background: #5dca8a; flex-shrink: 0;
+  box-shadow: 0 0 5px rgba(93,202,138,0.7);
+}
+.role-item-title {
+  font-family: 'Cinzel', serif;
+  font-size: 0.9rem; letter-spacing: 0.05em; color: var(--white);
+}
+
+</style>
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+<div style="height: 64px;"></div>
+
+<!-- BANNER -->
+<div class="banner">
+  <div class="banner-placeholder">
+    <div class="banner-placeholder-icon"><span>&#9670;</span></div>
+    <div class="banner-placeholder-text">Dev Update — 20 July 2026</div>
+  </div>
+  <div class="banner-overlay"></div>
+  <div class="banner-tag">Dev Update</div>
+</div>
+
+<!-- HEADER -->
+<div class="article-header">
+  <h1 class="article-title">We're Back — Weapons, Abilities &amp; What We've Been Up To</h1>
+  <div class="article-meta">
+    <span class="meta-date">20 July, 2026</span>
+    <div class="meta-sep"></div>
+    <span class="meta-author">CNT Darthgaming</span>
+    <span class="meta-tag">Dev Update</span>
+  </div>
+</div>
+
+<!-- BODY -->
+<div class="article-body">
+
+  <p>Welcome back, Guardians. It's been a while — longer than any of us wanted. Before anything else, I want to take a moment to be honest about where the last few weeks went, and say a proper thank you for the patience shown while things went quiet.</p>
+
+  <div class="hiatus-box">
+    <div class="hiatus-box-label">A Note on the Silence</div>
+    <p>The gap since the last update on 8th June is entirely on me. I was in the middle of an intense three-week teaching internship, which on its own would have been manageable — but paired with over four hours of commuting every single day, there was simply nothing left by the time I got home. Not one, but two heatwaves across that period made things harder still. I had no time, no energy, and no headspace to give the project what it deserved. I'm personally sorry for the radio silence, and for the knock-on delay to the listed dev updates and the Ability Teaser Trailer. You stuck around anyway. That genuinely means a lot.</p>
+  </div>
+
+  <p>The good news: we're moving again. And there's actually quite a lot to cover — because while the updates went quiet, some things didn't stop. Let's get into it.</p>
+
+  <h2>Ability Teaser Trailer — Tonight at 9PM</h2>
+
+  <p>First, the big one. The <strong>Ability Teaser Trailer</strong> is dropping <strong>tonight at 9PM</strong>. It's been delayed, but it's coming — and it's worth the wait. Head to the YouTube channel and hit the bell so you don't miss it.</p>
+
+  <div class="teaser-box">
+    <div class="teaser-box-label">Releasing Tonight</div>
+    <div class="teaser-box-title">Ability Teaser Trailer</div>
+    <p>Going live at 9PM. Watch, share, leave a comment — every bit of attention helps the project reach people who haven't found it yet.</p>
+  </div>
+
+  <h2>The Soundtracks — Already Out</h2>
+
+  <p>Here's something you might have missed: while the dev updates went on pause, the scheduled soundtrack releases didn't. <strong>Emi</strong> kept things moving, and the tracks went out on time — just without any fanfare or announcement to go with them. Consider this the belated announcement. All of the tracks released during this period are available to listen to now:</p>
+
+  <div class="survey-box">
+    <div class="survey-box-label">Original Soundtrack</div>
+    <div class="survey-box-title">Destiny Playground — OST Releases</div>
+    <p>Composed by Emi. Released on schedule while we were heads-down — go give them a listen if you haven't already.</p>
+    <a class="survey-btn" href="SOUNDTRACK_LINK_HERE" target="_blank">&#9654; Listen Now</a>
+  </div>
+
+  <h2>The Final Destiny 2 Update</h2>
+
+  <p>Right before my internship started, the final live-service update for Destiny 2 dropped. That wasn't something any of us were going to miss — and for a good chunk of the team, that time was spent doing exactly what we set out to build: playing Destiny. Many of us are still working through it. It felt important to acknowledge that. This project exists because of a love for Destiny, and honoring that feels right.</p>
+
+  <p>We're heading back into full swing from here, with that inspiration fresh.</p>
+
+  <h2>New Team Members</h2>
+
+  <p>Even with the quieter period, the team has been growing. Two new additions to introduce:</p>
+
+  <div class="team-grid">
+
+    <div class="team-card team-card--join">
+      <div class="team-card-status team-card-status--join">
+        <span class="team-card-status-dot team-card-status-dot--join"></span>
+        Joining
+      </div>
+      <div class="team-card-name">lilkorio</div>
+      <div class="team-card-role">Builder</div>
+      <p>Joining as a Builder with a focus on The Moon. Work is set to begin soon — The Moon has been waiting long enough.</p>
+    </div>
+
+    <div class="team-card team-card--join">
+      <div class="team-card-status team-card-status--join">
+        <span class="team-card-status-dot team-card-status-dot--join"></span>
+        Joining
+      </div>
+      <div class="team-card-name">Beanie</div>
+      <div class="team-card-role">Weapon Modeller</div>
+      <p>Joining to help model weapons — and has already made great progress. You'll see the impact of that shortly, in this very update.</p>
+    </div>
+
+  </div>
+
+  <p>The team continues to evolve week on week. It may seem like things change a lot, and they do — because we're actively growing and finding the right people. That's a good thing.</p>
+
+  <h2>Abilities — Solar Titans &amp; Beyond</h2>
+
+  <p>A significant amount of work has gone into abilities over the last few weeks. We now have one <strong>complete subclass</strong> for Solar Titans — fully functional. That's a meaningful marker. The goal from here is to have all ability classes in a working state by the end of summer at the latest, and we'll be sharing more clips and small teasers along the way. The Ability Teaser Trailer tonight is the first real public look at where this system is headed.</p>
+
+  <div class="callout">
+    <p>"The goal is to have all abilities in a working state by end of summer — and Solar Titans show exactly what that looks like."</p>
+  </div>
+
+  <h2>Weapons — The Biggest Progress Update Yet</h2>
+
+  <p>This is the section that's had the most work put into it, and there's a lot to cover. The weapon system has matured significantly — not just in terms of what exists, but in how it's built and documented.</p>
+
+  <p>A major internal effort went into building a <strong>comprehensive guide and process for creating weapons</strong> — how decisions are made, how Destiny 2 weapons translate into Minecraft, how each element is scoped and built. It's long, it's detailed, and it means that whether we've been heads-down on weapons for months or just coming back after a break, we have something to return to. This alone will accelerate progress from here significantly.</p>
+
+  <p>Beyond that, the underlying systems have been refined. Our perk-building process is considerably better, and we've been compiling a full list of perks to work from — D2 conversions, unique Minecraft-native ones, and potentially some from Destiny 1 and Destiny Rising too. The random roll system has also had internal improvements, and one notable quality-of-life change: <strong>weapon stats now reflect perk modifications</strong> inline — if a perk adds two rounds to the magazine, the description will now show something like 12+2. Small detail, big difference.</p>
+
+  <p>We've also been rethinking how weapons sit in your hand. There's a balance between being able to actually see the model and not having it fill the screen — and we've landed in a place we're genuinely happy with.</p>
+
+  <p>Here's where we stand on actual weapons:</p>
+
+  <!-- AUTO RIFLE -->
+  <div class="weapon-showcase">
+    <div class="weapon-showcase-header">
+      <div class="weapon-icon"><span>&#9654;</span></div>
+      <div class="weapon-header-info">
+        <div class="weapon-type">Auto Rifle</div>
+        <div class="weapon-name">Previously Revealed</div>
+      </div>
+      <span class="weapon-tag weapon-tag--working">Working</span>
+    </div>
+    <div class="weapon-body">
+      <p>The auto rifle you've already seen is fully functional with random rolls in place. The foundation the rest of the arsenal is built on.</p>
+    </div>
+  </div>
+
+  <!-- PULSE RIFLE -->
+  <div class="weapon-showcase">
+    <div class="weapon-showcase-header">
+      <div class="weapon-icon"><span>&#9670;</span></div>
+      <div class="weapon-header-info">
+        <div class="weapon-type">Pulse Rifle</div>
+        <div class="weapon-name">Disrespectful Stare</div>
+      </div>
+      <span class="weapon-tag weapon-tag--working">Working</span>
+    </div>
+    <div class="weapon-body">
+      <p>Fully functioning — a few perk iterations still to make, but the weapon itself is there. This one fills the burst-fire niche nicely.</p>
+      <!-- Replace src with actual video URL when available -->
+      <div class="weapon-video">
+        <div class="weapon-video-placeholder">
+          <div class="weapon-video-placeholder-icon"><span>&#9654;</span></div>
+          <div class="weapon-video-placeholder-text">Disrespectful Stare — Video Placeholder</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HAND CANNON -->
+  <div class="weapon-showcase">
+    <div class="weapon-showcase-header">
+      <div class="weapon-icon"><span>&#9670;</span></div>
+      <div class="weapon-header-info">
+        <div class="weapon-type">Hand Cannon</div>
+        <div class="weapon-name">Midnight Coup</div>
+      </div>
+      <span class="weapon-tag weapon-tag--working">Working</span>
+    </div>
+    <div class="weapon-body">
+      <p>Midnight Coup is a Raid weapon — and that means it's one of the more powerful hand cannons you'll get your hands on. Fully working and looking the part.</p>
+      <div class="weapon-video">
+        <div class="weapon-video-placeholder">
+          <div class="weapon-video-placeholder-icon"><span>&#9654;</span></div>
+          <div class="weapon-video-placeholder-text">Midnight Coup — Video Placeholder</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SWORD -->
+  <div class="weapon-showcase">
+    <div class="weapon-showcase-header">
+      <div class="weapon-icon"><span>&#9670;</span></div>
+      <div class="weapon-header-info">
+        <div class="weapon-type">Sword — In Progress</div>
+        <div class="weapon-name">Hardline Cut</div>
+      </div>
+      <span class="weapon-tag weapon-tag--prototype">Prototype</span>
+    </div>
+    <div class="weapon-body">
+      <p>Swords are a different beast entirely, and this one's been a genuinely interesting challenge to work on. The goal is for it to feel as close to D2 as possible: light attack combos, a heavy attack, and a guard. All three are being implemented. The clip below is early prototype footage — it's functioning, but still being iterated on.</p>
+      <div class="weapon-video">
+        <div class="weapon-video-placeholder">
+          <div class="weapon-video-placeholder-icon"><span>&#9654;</span></div>
+          <div class="weapon-video-placeholder-text">Hardline Cut — Early Prototype</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p>The current goal is to have at least <strong>one weapon of every weapon type</strong> built, so we have a clear picture of what each looks like in practice. After that, the target shifts to one of every archetype. The flow of weapon models coming in from Beanie removes one of the main blockers that was slowing things down — expect the pace to pick up from here.</p>
+
+  <h2>What's Next — A Shift in Focus</h2>
+
+  <p>Going forward, my personal focus is shifting more toward <strong>development and coding</strong> over building. With lilkorio joining to push The Moon forward, that side of things is covered. Weapon models are flowing in. And I expect the broader team to ease back into a good rhythm over the coming weeks.</p>
+
+  <div class="dev-notice">
+    <div class="dev-notice-label">Dev Roadmap</div>
+    <p>The weekly dev update schedule has been updated to reflect where we are. You can find the current schedule on the Roadmap page.</p>
+  </div>
+
+  <h2>A Quick Note on the Website</h2>
+
+  <p>The site launched just under two months ago, and the reception has been really positive — genuinely glad it landed well. That said, we've been looking at it critically and there's a feeling that the colours, fonts, and overall theme don't quite reflect Destiny's aesthetic as well as they should. We're working on a rework of a lot of that — it'll roll out gradually, one page at a time over a long period, so don't be surprised if things shift around. We'd love your input on what direction that goes, so head to Discord and share your thoughts while it's in progress.</p>
+
+  <h2>We're Hiring</h2>
+
+  <p>Applications are always open, and right now we're specifically looking for people to fill three roles. If you or anyone you know fits the bill, please — come find us in the Discord and apply. The sooner the better.</p>
+
+  <div class="roles-grid">
+    <div class="role-item">
+      <div class="role-item-label">Open</div>
+      <div class="role-item-title">Builder</div>
+    </div>
+    <div class="role-item">
+      <div class="role-item-label">Open</div>
+      <div class="role-item-title">Enemy Modeller</div>
+    </div>
+    <div class="role-item">
+      <div class="role-item-label">New Opening</div>
+      <div class="role-item-title">Pixel Artist — Armour Skins</div>
+    </div>
+  </div>
+
+  <p>The pixel artist role in particular is a new one — we're looking for someone to work on armour skins. If that sounds like you, please reach out.</p>
+
+</div>
+
+<!-- CLOSING -->
+<div class="closing">
+  <div class="closing-note">
+    That's everything for this one. A longer gap than we'd have liked, but things are moving again, and tonight's trailer is something we've been looking forward to sharing for a while. Thanks, as always, for being here — and for sticking around through the quiet. It means more than I know how to say.
+    <div class="closing-sig">— CNT Darthgaming</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- SOCIALS -->
+<div class="socials-section">
+  <div class="socials-label">Find Us</div>
+  <div class="socials-title">Follow the Project</div>
+  <div class="socials-grid">
+    <a class="social-btn" href="https://discord.gg/Ah6Jt5KVPH">&#9671; Discord</a>
+    <a class="social-btn" href="https://youtube.com/@cntdarthgaming">&#9654; YouTube</a>
+    <a class="social-btn" href="https://bsky.app/profile/thedestinyplayground.bsky.social">&#9633; Bluesky</a>
+    <a class="social-btn" href="https://x.com/destinyplaygrnd">&#9632; Twitter</a>
+    <a class="social-btn" href="https://ko-fi.com/destinyplayground">&#9651; Ko-fi</a>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="back-section">
+  <a class="btn-back" href="/destiny-playground/news.html">&#8592; Back to News</a>
+</div>
+
+<div id="footer-placeholder"></div>
+<script src="/destiny-playground/js/shared.js"></script>
+</body>
+</html>
