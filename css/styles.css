@@ -1,19 +1,15 @@
 /* ═══════════════════════════════════════════
-   DESTINY PLAYGROUND — Shared Stylesheet
-   Covers: variables, reset, nav, footer,
-   buttons, dividers, section labels,
-   news grid, gallery, roadmap, trailer,
-   hero, and mobile menu.
+   DESTINY PLAYGROUND - Shared Stylesheet
    ═══════════════════════════════════════════ */
 
-/* ── RESET & VARIABLES ── */
+/* - RESET & VARIABLES - */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
   --gold:       #c9a84c;
   --gold-dim:   #8a6e30;
   --white:      #e8e4d8;
-  --body-text:  #dbd5c8; /*#c8c0ae;   /* lightened from #b8b09e for readability */
+  --body-text:  #dbd5c8; /*#c8c0ae*/
   --muted:      #787b87; /*8a8070*/
   --dark:       #06070a; /*0a0906*/
   --border:     rgba(201,168,76,0.2);
@@ -26,7 +22,7 @@ body {
   overflow-x: hidden;
 }
 
-/* ── NAV ── */
+/* - NAV - */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   display: flex; align-items: center; justify-content: space-between;
@@ -67,7 +63,7 @@ nav {
 }
 .mobile-menu a:hover { color: var(--gold); }
 
-/* ── FOOTER ── */
+/* - FOOTER - */
 footer {
   border-top: 0.5px solid var(--border); padding: 2.5rem 3rem;
   display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: start;
@@ -90,7 +86,7 @@ footer {
 .footer-links a:hover { color: var(--gold); }
 .footer-copy { font-size: 0.65rem; color: rgba(138,128,112,0.4); letter-spacing: 0.1em; }
 
-/* ── BUTTONS ── */
+/* - BUTTONS - */
 .btn-primary {
   padding: 0.85rem 2.5rem; font-family: 'Rajdhani', sans-serif;
   font-size: 0.78rem; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase;
@@ -110,13 +106,13 @@ footer {
 }
 .btn-secondary:hover { background: rgba(201,168,76,0.08); transform: translateY(-1px); }
 
-/* ── DIVIDER ── */
+/* - DIVIDER - */
 .divider {
   width: 100%; height: 0.5px;
   background: linear-gradient(to right, transparent, var(--border), transparent);
 }
 
-/* ── SECTION LABELS & TITLES ── */
+/* - SECTION LABELS & TITLES - */
 .section-label {
   font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase;
   color: var(--gold); margin-bottom: 0.8rem;
@@ -127,14 +123,14 @@ footer {
   background: var(--border); max-width: 200px;
 }
 .section-title {
-  font-family: 'Cinzel', serif;
+  font-family: 'Orbitron', sans-serif;
   font-size: clamp(1.5rem, 3vw, 2.2rem);
   font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
   margin-bottom: 1rem;
 }
 .section-wrap { padding: 6rem 3rem; max-width: 1200px; margin: 0 auto; }
 
-/* ── HERO ── */
+/* - HERO - */
 .hero {
   position: relative; min-height: 100vh;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -212,7 +208,7 @@ footer {
   width: 6px; height: 6px; background: var(--gold-dim); transform: rotate(45deg);
 }
 .hero-subtitle-text {
-  font-family: 'Cinzel', serif; font-size: 0.85rem;
+  font-family: 'Orbitron', sans-serif; font-size: 0.85rem;
   letter-spacing: 0.4em; text-transform: uppercase; color: var(--gold-dim);
 }
 
@@ -250,7 +246,7 @@ footer {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ── NEWS GRID ── */
+/* - NEWS GRID - */
 .news-grid {
   display: grid; grid-template-columns: 1fr 1fr 1fr;
   gap: 1.5px; margin-top: 3rem; background: var(--border); min-height: 260px;
@@ -338,7 +334,7 @@ footer {
 }
 .news-footer a:hover { color: var(--gold); }
 
-/* ── TRAILER ── */
+/* - TRAILER - */
 .trailer-section {
   position: relative; text-align: center; padding: 6rem 3rem; overflow: hidden;
 }
@@ -390,7 +386,7 @@ footer {
   color: var(--muted); white-space: nowrap;
 }
 
-/* ── GALLERY ── */
+/* - GALLERY - */
 .gallery-section { padding: 6rem 3rem; max-width: 1200px; margin: 0 auto; }
 .gallery-grid {
   display: grid; grid-template-columns: 2fr 1fr 1fr;
@@ -417,7 +413,7 @@ footer {
   color: rgba(201,168,76,0.2); text-align: center; padding: 1rem;
 }
 
-/* ── HOME ROADMAP TIMELINE ── */
+/* - HOME ROADMAP TIMELINE - */
 .home-roadmap-section { padding: 6rem 3rem; max-width: 1200px; margin: 0 auto; }
 
 .home-timeline {
@@ -509,7 +505,7 @@ footer {
   color: var(--muted);
 }
 
-/* ── HOME CONTENT SCHEDULE PREVIEW ── */
+/* - HOME CONTENT SCHEDULE PREVIEW - */
 .home-schedule-section { padding: 6rem 3rem; max-width: 1200px; margin: 0 auto; }
 .home-schedule-track {
   position: relative;
@@ -551,7 +547,7 @@ footer {
   font-size: 0.68rem; letter-spacing: 0.15em; color: var(--muted);
 }
 
-/* ── SOCIAL BUTTONS ── */
+/* - SOCIAL BUTTONS - */
 .social-btn {
   display: inline-flex; align-items: center; gap: 0.6rem;
   padding: 0.65rem 1.4rem; border: 0.5px solid var(--border);
@@ -564,7 +560,7 @@ footer {
   border-color: var(--gold-dim); color: var(--gold); background: rgba(201,168,76,0.05);
 }
 
-/* ── RESPONSIVE ── */
+/* - RESPONSIVE - */
 @media (max-width: 768px) {
   nav { padding: 1rem 1.5rem; }
   .nav-links { display: none; }
@@ -590,10 +586,10 @@ footer {
   .gallery-grid { grid-template-columns: 1fr; }
 }
 
-/* ── BTN-PRIMARY FLEX FIX ── */
+/* - BTN-PRIMARY FLEX FIX - */
 .btn-primary { display: inline-flex; align-items: center; justify-content: center; text-decoration: none; }
 
-/* ── D2 TRIBUTE ── */
+/* - D2 TRIBUTE - */
 .tribute-section {
   position: relative;
   padding: 5rem 2rem;
@@ -708,7 +704,7 @@ footer {
   color: rgba(201,168,76,0.25);
 }
 
-/* ── HOME GALLERY GRID ── */
+/* - HOME GALLERY GRID - */
 .home-gal-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -747,7 +743,7 @@ footer {
 .home-gal-item::after  { top: 8px; right: 8px; border-width: 1px 1px 0 0; }
 .home-gal-item:hover::before, .home-gal-item:hover::after { opacity: 1; }
 
-/* ── HOME GALLERY LIGHTBOX ── */
+/* - HOME GALLERY LIGHTBOX - */
 .home-gal-lightbox {
   position: fixed; inset: 0; z-index: 2000;
   display: flex; align-items: center; justify-content: center;
