@@ -34,7 +34,7 @@
 /* ── ARTICLE HEADER ── */
 .article-header { max-width: 960px; margin: 0 auto; padding: 2.5rem 3rem 0; }
 .article-title {
-  font-family: 'Cinzel', serif;
+  font-family: 'Orbitron', sans-serif;
   font-size: clamp(2rem, 4.5vw, 3.2rem);
   font-weight: 700; line-height: 1.15; letter-spacing: 0.04em;
   color: var(--white); margin-bottom: 1.5rem;
@@ -58,12 +58,12 @@
   font-weight: 300; margin-bottom: 1.6rem; letter-spacing: 0.02em;
 }
 .article-body h2 {
-  font-family: 'Cinzel', serif; font-size: 1.35rem; letter-spacing: 0.08em;
+  font-family: 'Orbitron', sans-serif; font-size: 1.35rem; letter-spacing: 0.08em;
   text-transform: uppercase; color: var(--white);
   margin: 2.8rem 0 1.1rem; padding-bottom: 0.5rem; border-bottom: 0.5px solid var(--border);
 }
 .article-body h3 {
-  font-family: 'Rajdhani', sans-serif; font-size: 1.05rem; letter-spacing: 0.15em;
+  font-family: 'Rajdhani', sans-sans-serif; font-size: 1.05rem; letter-spacing: 0.15em;
   text-transform: uppercase; color: var(--gold); margin: 2.2rem 0 0.9rem;
 }
 .article-body ul { margin: 0 0 1.6rem 1.5rem; }
@@ -107,14 +107,14 @@
   font-size: 0.75rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold);
 }
 .survey-box-title {
-  font-family: 'Cinzel', serif; font-size: 1.15rem; letter-spacing: 0.06em; color: var(--white);
+  font-family: 'Orbitron', sans-serif; font-size: 1.15rem; letter-spacing: 0.06em; color: var(--white);
 }
 .survey-box p {
   font-size: 0.95rem; line-height: 1.75; color: var(--muted); font-weight: 300; margin: 0;
 }
 .survey-btn {
   display: inline-flex; align-items: center; gap: 0.6rem;
-  padding: 0.75rem 2rem; font-family: 'Rajdhani', sans-serif;
+  padding: 0.75rem 2rem; font-family: 'Rajdhani', sans-sans-serif;
   font-size: 0.78rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
   background: var(--gold); color: #0a0906; text-decoration: none;
   clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
@@ -193,7 +193,7 @@
   background: var(--gold-dim); vertical-align: middle; margin: 0 0.8rem;
 }
 .section-banner-title {
-  font-family: 'Cinzel', serif; font-size: clamp(1.2rem, 3vw, 2rem);
+  font-family: 'Orbitron', sans-serif; font-size: clamp(1.2rem, 3vw, 2rem);
   letter-spacing: 0.12em; text-transform: uppercase; color: var(--white);
 }
 
@@ -220,7 +220,7 @@
   color: var(--gold); margin-bottom: 0.5rem;
 }
 .teaser-box-title {
-  font-family: 'Cinzel', serif; font-size: 1.25rem; letter-spacing: 0.08em;
+  font-family: 'Orbitron', sans-serif; font-size: 1.25rem; letter-spacing: 0.08em;
   color: var(--white); margin-bottom: 0.8rem;
 }
 .teaser-box p {
@@ -247,7 +247,7 @@
 }
 .socials-label::after { content: ''; flex: 1; height: 0.5px; background: var(--border); }
 .socials-title {
-  font-family: 'Cinzel', serif; font-size: 1.15rem; letter-spacing: 0.08em;
+  font-family: 'Orbitron', sans-serif; font-size: 1.15rem; letter-spacing: 0.08em;
   text-transform: uppercase; margin-bottom: 1.5rem;
 }
 .socials-grid { display: flex; flex-wrap: wrap; gap: 0.8rem; }
@@ -256,7 +256,7 @@
 .back-section { max-width: 960px; margin: 0 auto; padding: 2rem 3rem 4rem; }
 .btn-back {
   display: inline-flex; align-items: center; gap: 0.8rem;
-  padding: 0.85rem 2rem; font-family: 'Rajdhani', sans-serif;
+  padding: 0.85rem 2rem; font-family: 'Rajdhani', sans-sans-serif;
   font-size: 0.78rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
   color: var(--muted); border: 0.5px solid var(--border); background: transparent;
   cursor: pointer; text-decoration: none; transition: all 0.2s;
