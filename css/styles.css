@@ -6,13 +6,13 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --gold:       #c9a84c;
-  --gold-dim:   #8a6e30;
+  --gold:       #4d9bd6;
+  --gold-dim:   #2f6388;
   --white:      #e8e4d8;
   --body-text:  #dbd5c8; /*#c8c0ae*/
   --muted:      #787b87; /*8a8070*/
   --dark:       #06070a; /*0a0906*/
-  --border:     rgba(201,168,76,0.2);
+  --border:     rgba(77,155,214,0.2);
 }
 
 body {
