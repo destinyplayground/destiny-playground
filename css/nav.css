@@ -8,15 +8,15 @@
    ═══════════════════════════════════════ */
 
 :root {
-  --gold: #c9a84c;
-  --gold-dim: rgba(201,168,76,.55);
-  --gold-faint: rgba(201,168,76,.08);
-  --nav-bg: rgba(10,9,6,.96);
-  --nav-border: rgba(201,168,76,.12);
-  --nav-text: rgba(180,168,148,.85);
-  --nav-text-hover: #e8dcc8;
+  --gold: #4d9bd6;
+  --gold-dim: rgba(77,155,214,.55);
+  --gold-faint: rgba(77,155,214,.08);
+  --nav-bg: rgba(8,10,16,.96);
+  --nav-border: rgba(77,155,214,.12);
+  --nav-text: rgba(150,162,180,.85);
+  --nav-text-hover: #e4eaf2;
   --nav-height: 64px;
-  --drop-bg: rgba(14,12,8,.98);
+  --drop-bg: rgba(12,13,18,.98);
 }
 
 nav {
