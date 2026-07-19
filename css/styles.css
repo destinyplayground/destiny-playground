@@ -151,8 +151,8 @@ footer {
 /* - HERO - */
 .hero {
   position: relative; min-height: 100vh;
-  display: flex; flex-direction: column; align-items: flex-start; justify-content: center;
-  text-align: left; padding: 8rem 6vw 4rem; overflow: hidden;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 8rem 6vw 4rem; overflow: hidden;
 }
 .hero-bg {
   position: absolute; inset: 0;
@@ -244,7 +244,7 @@ footer {
   opacity: 0; animation: fadeUp 1s ease forwards 1.0s;
 }
 .hero-ctas {
-  position: relative; display: flex; gap: 1.2rem; flex-wrap: wrap; justify-content: flex-start;
+  position: relative; display: flex; gap: 1.2rem; flex-wrap: wrap; justify-content: center;
   opacity: 0; animation: fadeUp 1s ease forwards 1.2s;
 }
 .btn-play-icon {
