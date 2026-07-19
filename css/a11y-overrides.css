@@ -7,19 +7,19 @@
    Keeps the full gold/Cinzel theme, just inverts to light
    - */
 html.a11y-light {
-  --gold:       #8a6000;
-  --gold-dim:   #a07820;
-  --white:      #1a1610;
-  --body-text:  #2e2a22;
-  --muted:      #5a5040;
-  --dark:       #f5f0e8;
-  --border:     rgba(120,90,0,0.25);
-  --nav-bg:     rgba(245,240,232,.97);
-  --nav-border: rgba(120,90,0,.2);
-  --nav-text:   rgba(60,50,30,.8);
-  --nav-text-hover: #1a1610;
-  --drop-bg:    rgba(240,234,220,.99);
-  --gold-faint: rgba(120,90,0,.07);
+  --gold:       #1a5c8f;
+  --gold-dim:   #34749f;
+  --white:      #10141c;
+  --body-text:  #29303b;
+  --muted:      #4f5b6b;
+  --dark:       #eef2f7;
+  --border:     rgba(26,92,143,0.25);
+  --nav-bg:     rgba(238,242,247,.97);
+  --nav-border: rgba(26,92,143,.2);
+  --nav-text:   rgba(30,38,50,.8);
+  --nav-text-hover: #10141c;
+  --drop-bg:    rgba(230,236,244,.99);
+  --gold-faint: rgba(26,92,143,.07);
 }
 html.a11y-light body { background: var(--dark); color: var(--white); }
 html.a11y-light .hero-bg {
@@ -100,13 +100,13 @@ html.a11y-size .roadmap-desc { font-size: .92rem; }
    Maximum legibility — pure whites, bright gold, clear borders
    - */
 html.a11y-contrast {
-  --gold:      #ffd24d;
-  --gold-dim:  #ffbe00;
+  --gold:      #5ec8fa;
+  --gold-dim:  #33b5e6;
   --white:     #ffffff;
   --body-text: #e8e8e8;
-  --muted:     #b0a890;
+  --muted:     #a8b4c4;
   --dark:      #000000;
-  --border:    rgba(255,210,77,.4);
+  --border:    rgba(94,200,250,.4);
 }
 html.a11y-contrast body { background: #000; color: #fff; }
 html.a11y-contrast nav {
