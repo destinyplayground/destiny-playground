@@ -190,7 +190,7 @@ footer {
 }
 .eyebrow-line { flex: 1; height: 0.5px; background: var(--gold-dim); max-width: 40px; }
 .hero-title {
-  position: relative; font-family: 'Cinzel', serif;
+  position: relative; font-family: 'Orbitron', sans-serif;
   font-size: clamp(2.8rem, 7vw, 5.5rem); font-weight: 700;
   line-height: 1.05; letter-spacing: 0.05em; text-transform: uppercase;
   color: var(--white); margin-bottom: 1rem;
@@ -279,7 +279,7 @@ footer {
   color: var(--gold); margin-bottom: 1rem;
 }
 .featured-title {
-  font-family: 'Cinzel', serif; font-size: 1.4rem; line-height: 1.4;
+  font-family: 'Orbitron', sans-serif; font-size: 1.4rem; line-height: 1.4;
   letter-spacing: 0.05em; margin-bottom: 1rem; color: var(--white);
 }
 .featured-desc {
@@ -302,7 +302,7 @@ footer {
   color: var(--gold); margin-bottom: 0.8rem;
 }
 .news-card-title {
-  font-family: 'Cinzel', serif; font-size: 0.95rem; line-height: 1.5;
+  font-family: 'Orbitron', sans-serif; font-size: 0.95rem; line-height: 1.5;
   letter-spacing: 0.05em; margin-bottom: 0.6rem; color: var(--white);
 }
 .news-card-excerpt {
@@ -496,7 +496,7 @@ footer {
   color: var(--gold); margin-bottom: 0.35rem;
 }
 .home-tl-title {
-  font-family: 'Cinzel', serif;
+  font-family: 'Orbitron', sans-serif;
   font-size: 0.9rem; font-weight: 600; letter-spacing: 0.04em;
   color: var(--white); margin-bottom: 0.4rem; line-height: 1.35;
 }
@@ -535,7 +535,7 @@ footer {
   color: var(--gold); margin-bottom: 0.4rem;
 }
 .home-schedule-title {
-  font-family: 'Cinzel', serif;
+  font-family: 'Orbitron', sans-serif;
   font-size: 0.88rem; font-weight: 600; letter-spacing: 0.04em;
   color: var(--white); margin-bottom: 0.3rem; line-height: 1.35;
 }
