@@ -32,7 +32,7 @@ nav {
 
 /* ── LOGO ── */
 .nav-logo {
-  font-family: 'Cinzel', serif;
+  font-family: 'Orbitron', sans-serif;
   font-size: .82rem; font-weight: 700; letter-spacing: .18em;
   text-transform: uppercase; color: var(--gold);
   text-decoration: none; white-space: nowrap; flex-shrink: 0;
@@ -200,7 +200,7 @@ nav {
 .mobile-category-links {
   max-height: 0; overflow: hidden;
   transition: max-height .28s ease;
-  background: rgba(201,168,76,.025);
+  background: rgba(77,155,214,.025);
 }
 .mobile-category-links.open { max-height: 500px; }
 
@@ -211,7 +211,7 @@ nav {
   text-transform: uppercase; color: var(--nav-text);
   text-decoration: none;
   padding: .75rem 1.8rem .75rem 2.6rem;
-  border-bottom: .5px solid rgba(201,168,76,.05);
+  border-bottom: .5px solid rgba(77,155,214,.05);
   transition: color .15s;
 }
 .mobile-category-links a:last-child { border-bottom: none; }
@@ -263,12 +263,12 @@ nav {
   text-align: left; transition: background .15s;
 }
 .a11y-option:hover { background: var(--gold-faint); }
-.a11y-option.active { background: rgba(201,168,76,.06); }
+.a11y-option.active { background: rgba(77,155,214,.06); }
 
 .a11y-option-icon {
   width: 28px; height: 28px; flex-shrink: 0;
   display: flex; align-items: center; justify-content: center;
-  border: .5px solid rgba(201,168,76,.2);
+  border: .5px solid rgba(77,155,214,.2);
   font-size: .75rem; font-weight: 700;
   color: var(--nav-text); font-family: sans-serif;
   transition: border-color .15s, color .15s;
@@ -298,7 +298,7 @@ nav {
 .a11y-reset {
   width: calc(100% - 2.4rem); margin: .6rem 1.2rem 0;
   padding: .45rem; background: none;
-  border: .5px solid rgba(201,168,76,.15); cursor: pointer;
+  border: .5px solid rgba(77,155,214,.15); cursor: pointer;
   font-family: 'Rajdhani', sans-serif;
   font-size: .62rem; font-weight: 600; letter-spacing: .2em;
   text-transform: uppercase; color: var(--muted);
