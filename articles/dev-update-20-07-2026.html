@@ -73,6 +73,28 @@
   font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase;
   color: rgba(201,168,76,0.18);
 }
+.weapon-image {
+  border-bottom: 0.5px solid var(--border);
+  background: rgba(201,168,76,0.02);
+  overflow: hidden;
+}
+.weapon-image img {
+  width: 100%; display: block; opacity: 0.9; transition: opacity 0.3s;
+}
+.weapon-image img:hover { opacity: 1; }
+.weapon-image-placeholder {
+  padding: 3rem 1.4rem;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.6rem;
+}
+.weapon-image-placeholder-icon {
+  width: 36px; height: 36px; border: 0.5px solid rgba(201,168,76,0.15);
+  transform: rotate(45deg); display: flex; align-items: center; justify-content: center;
+}
+.weapon-image-placeholder-icon span { transform: rotate(-45deg); font-size: 0.85rem; color: rgba(201,168,76,0.2); }
+.weapon-image-placeholder-text {
+  font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: rgba(201,168,76,0.18);
+}
 
 /* ── TEAM CARDS ── */
 .team-grid {
@@ -291,8 +313,20 @@
       </div>
       <span class="weapon-tag weapon-tag--working">Working</span>
     </div>
+    <div class="weapon-image">
+      <div class="weapon-image-placeholder">
+        <div class="weapon-image-placeholder-icon"><span>&#9670;</span></div>
+        <div class="weapon-image-placeholder-text">Image - Replace with &lt;img src="..."&gt;</div>
+      </div>
+    </div>
     <div class="weapon-body">
       <p>The auto rifle you've already seen - fully working with random rolls in place.</p>
+    </div>
+    <div class="weapon-video">
+      <div class="weapon-video-placeholder">
+        <div class="weapon-video-placeholder-icon"><span>&#9654;</span></div>
+        <div class="weapon-video-placeholder-text">Video - Replace with embed</div>
+      </div>
     </div>
   </div>
 
@@ -304,6 +338,12 @@
         <div class="weapon-name">Disrespectful Stare</div>
       </div>
       <span class="weapon-tag weapon-tag--working">Working</span>
+    </div>
+    <div class="weapon-image">
+      <div class="weapon-image-placeholder">
+        <div class="weapon-image-placeholder-icon"><span>&#9670;</span></div>
+        <div class="weapon-image-placeholder-text">Image - Replace with &lt;img src="..."&gt;</div>
+      </div>
     </div>
     <div class="weapon-body">
       <p>Working - just a few perk iterations still to make.</p>
@@ -325,6 +365,12 @@
       </div>
       <span class="weapon-tag weapon-tag--working">Working</span>
     </div>
+    <div class="weapon-image">
+      <div class="weapon-image-placeholder">
+        <div class="weapon-image-placeholder-icon"><span>&#9670;</span></div>
+        <div class="weapon-image-placeholder-text">Image - Replace with &lt;img src="..."&gt;</div>
+      </div>
+    </div>
     <div class="weapon-body">
       <p>A Raid weapon, so one of the more powerful hand cannons in the pool. Fully working.</p>
       <div class="weapon-video">
@@ -344,6 +390,12 @@
         <div class="weapon-name">Hardline Cut</div>
       </div>
       <span class="weapon-tag weapon-tag--prototype">Prototype</span>
+    </div>
+    <div class="weapon-image">
+      <div class="weapon-image-placeholder">
+        <div class="weapon-image-placeholder-icon"><span>&#9670;</span></div>
+        <div class="weapon-image-placeholder-text">Image - Replace with &lt;img src="..."&gt;</div>
+      </div>
     </div>
     <div class="weapon-body">
       <p>Swords have been a different challenge to work on. The goal is to have it feel as close to D2 as possible - light attack combos, a heavy attack, and a guard. All three are being worked on. What's below is early prototype footage, still being iterated on. Thanks to Lilkorio for this weapon model!</p>
