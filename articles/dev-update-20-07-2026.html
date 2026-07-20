@@ -201,6 +201,47 @@
 .roadmap-tag--delayed { border-color: rgba(235,93,93,0.35); color: #eb8c8c; }
 .roadmap-tag--done    { border-color: rgba(93,202,138,0.3); color: #5dca8a; }
 
+/* ── SOUNDTRACK CARDS ── */
+.ost-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+  background: var(--border);
+  border: 0.5px solid var(--border);
+  margin: 1.5rem 0;
+}
+.ost-card {
+  background: var(--dark);
+  padding: 1.3rem;
+  display: flex; flex-direction: column; gap: 0.85rem;
+}
+.ost-card-art {
+  width: 100%; aspect-ratio: 1 / 1;
+  background: rgba(255,255,255,0.02);
+  border: 0.5px solid var(--border);
+  overflow: hidden;
+}
+.ost-card-art img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ost-card-label {
+  font-size: 0.58rem; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--gold-dim); margin-bottom: 0.3rem;
+}
+.ost-card-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.05rem; color: var(--white); line-height: 1.3;
+}
+.ost-card-credits {
+  font-size: 0.72rem; color: var(--muted); line-height: 1.5;
+}
+.ost-card-link {
+  font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--gold); text-decoration: none;
+  border-bottom: 0.5px solid var(--gold-dim);
+  padding-bottom: 2px; align-self: flex-start; transition: opacity 0.2s;
+}
+.ost-card-link:hover { opacity: 0.7; }
+@media (max-width: 640px) {
+  .ost-grid { grid-template-columns: 1fr; }
+}
+
 </style>
 </head>
 <body>
@@ -217,7 +258,7 @@
 
 <!-- HEADER -->
 <div class="article-header">
-  <h1 class="article-title">MOTW Win, Weapons, Abilities and What's Changed</h1>
+  <h1 class="article-title">Weapons, Abilities and What's Changed</h1>
   <div class="article-meta">
     <span class="meta-date">20 July, 2026</span>
     <div class="meta-sep"></div>
@@ -235,26 +276,95 @@
 
   <p>Anyways - things are moving again, and there's quite a bit to cover, so let's get into it.</p>
 
-  <h2>Ability Teaser Trailer - Tonight at 9PM</h2>
+  <h2>The Destinations Teaser Trailer Got MOTW!! (Movie of the Week)</h2>
 
-  <p>The Ability Teaser Trailer that was due a few weeks ago is finally going live tonight at 9PM. Head to the YouTube channel - if you haven't subscribed yet, now's a good time. Watch it, share it, leave a comment. Every bit of attention helps at this stage.</p>
+  <p>Since the last update, we put out the Destinations Teaser Trailer - and it went further than we ever expected. It got shared on Twitter, picked up serious traction on YouTube, and more people saw it than anything we've put out before.</p>
+
+  <p>Then Bungie featured it as Movie of the Week in one of the final TWIDs, which is an honour we did not see coming.</p>
+
+  <p>If you haven't watched the trailer yet, please go do that. And to everyone who watched, shared, reposted, commented, whatever - thank you so much. It was a wild time and we would not have gotten anywhere near that reach without you.</p>
+
+  <div class="survey-box">
+    <div class="survey-box-label">Featured By Bungie</div>
+    <div class="survey-box-title">Movie of the Week</div>
+    <p>Featured in one of the final TWIDs.</p>
+    <a class="survey-btn" href="https://www.bungie.net/7/en/News/Article/twid_06_11_2026" target="_blank">&#9654; Read the TWID</a>
+  </div>
+
+  <div class="survey-box">
+    <div class="survey-box-label">Destinations Teaser Trailer</div>
+    <div class="survey-box-title">The Post That Started It</div>
+    <p>See the tweet that kicked the whole thing off.</p>
+    <a class="survey-btn" href="https://x.com/destinyplaygrnd/status/2064315730128986160?s=20" target="_blank">&#9654; View the Tweet</a>
+  </div>
+
+  <h2>Ability Teaser Trailer - Tonight</h2>
+
+  <p>The Ability Teaser Trailer that was due a few weeks ago is finally going live tonight. Head to the YouTube channel - if you haven't subscribed yet, now's a good time. Watch it, share it, leave a comment. Every bit of attention helps at this stage.</p>
 
   <div class="survey-box">
     <div class="survey-box-label">Teaser Trailer</div>
     <div class="survey-box-title">Abilities</div>
     <p>Quick & small preview of some of the abilities.</p>
-    <a class="survey-btn" href="https://www.youtube.com/playlist?list=PLgvrYxHtvvE34fsC81DI2nLXszjZ75Phu" target="_blank">&#9654; Watch at 9PM</a>
+    <a class="survey-btn" href="https://www.youtube.com/@cntdarthgaming" target="_blank">&#9654; Watch Tonight</a>
   </div>
 
   <h2>Soundtracks - Out Now</h2>
 
-  <p>One thing that did actually keep to schedule while updates were quiet - the soundtracks. They released on time, just without any announcement to go alongside them. So here's the announcement, a little late. All of them are available to listen to now:</p>
+  <p>One thing that did actually keep to schedule while updates were quiet - the soundtracks. They released on time, just without any announcement to go alongside them. A single combined box doesn't really do them justice, so here's each one properly, a little late:</p>
 
-  <div class="survey-box">
-    <div class="survey-box-label">Original Soundtrack</div>
-    <div class="survey-box-title">Destiny Playground OST</div>
-    <p>Loose Variable , Cabal Stomp (remix) , Reminisce , Husk of The Summoning Pits.</p>
-    <a class="survey-btn" href="https://www.youtube.com/playlist?list=PLgvrYxHtvvE34fsC81DI2nLXszjZ75Phu" target="_blank">&#9654; Listen Now</a>
+  <div class="ost-grid">
+    <div class="ost-card">
+      <!-- swap src for the real cover art, e.g. /destiny-playground/images/ost/loose-variable.jpg -->
+      <div class="ost-card-art">
+        <img src="/destiny-playground/images/ost/loose_variable.png" alt="Loose Variable" loading="lazy">
+      </div>
+      <div>
+        <div class="ost-card-label">Original Soundtrack</div>
+        <div class="ost-card-title">Loose Variable</div>
+      </div>
+      <div class="ost-card-credits">Track produced by Emi &middot; Artwork by Captain Saturn</div>
+      <a class="ost-card-link" href="https://www.youtube.com/watch?v=YCTBC8CvpQo&list=PLgvrYxHtvvE34fsC81DI2nLXszjZ75Phu&index=4" target="_blank">&#9654; Listen on YouTube</a>
+    </div>
+
+    <div class="ost-card">
+      <!-- swap src for the real cover art, e.g. /destiny-playground/images/ost/cabal-stomp-remix.jpg -->
+      <div class="ost-card-art">
+        <img src="/destiny-playground/images/ost/cabal_stomp_remix.png" alt="Cabal Stomp (remix)" loading="lazy">
+      </div>
+      <div>
+        <div class="ost-card-label">Original Soundtrack</div>
+        <div class="ost-card-title">Cabal Stomp (remix)</div>
+      </div>
+      <div class="ost-card-credits">Track produced by Emi &middot; Artwork by Captain Saturn</div>
+      <a class="ost-card-link" href="https://www.youtube.com/watch?v=axQYrF8Vpn4&list=PLgvrYxHtvvE34fsC81DI2nLXszjZ75Phu&index=3" target="_blank">&#9654; Listen on YouTube</a>
+    </div>
+
+    <div class="ost-card">
+      <!-- swap src for the real cover art, e.g. /destiny-playground/images/ost/reminisce.jpg -->
+      <div class="ost-card-art">
+        <img src="/destiny-playground/images/ost/reminisce.png" alt="Reminisce" loading="lazy">
+      </div>
+      <div>
+        <div class="ost-card-label">Original Soundtrack</div>
+        <div class="ost-card-title">Reminisce</div>
+      </div>
+      <div class="ost-card-credits">Track produced by Emi &middot; Artwork by Captain Saturn</div>
+      <a class="ost-card-link" href="https://www.youtube.com/watch?v=CQlACBwxV5o&list=PLgvrYxHtvvE34fsC81DI2nLXszjZ75Phu&index=2" target="_blank">&#9654; Listen on YouTube</a>
+    </div>
+
+    <div class="ost-card">
+      <!-- swap src for the real cover art, e.g. /destiny-playground/images/ost/husk-of-the-summoning-pits.jpg -->
+      <div class="ost-card-art">
+        <img src="/destiny-playground/images/ost/husk_of_the_summoning_pits.png" alt="Husk of The Summoning Pits" loading="lazy">
+      </div>
+      <div>
+        <div class="ost-card-label">Original Soundtrack</div>
+        <div class="ost-card-title">Husk of The Summoning Pits</div>
+      </div>
+      <div class="ost-card-credits">Track produced by Captain Saturn &middot; Artwork by Captain Saturn</div>
+      <a class="ost-card-link" href="https://www.youtube.com/watch?v=twYeD8QTsbQ&list=PLgvrYxHtvvE34fsC81DI2nLXszjZ75Phu&index=1" target="_blank">&#9654; Listen on YouTube</a>
+    </div>
   </div>
 
   <h2>The Final Destiny 2 Update</h2>
