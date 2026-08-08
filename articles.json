@@ -1,5 +1,16 @@
 [
   {
+    "title": "The Sparrow System",
+    "tag": "Dev Update",
+    "date": "08 Aug, 2026",
+    "dateSort": 20260720,
+    "author": "CNT Darthgaming",
+    "excerpt": "A look into the Sparrow System, and more...",
+    "file": "articles/dev-update-08-08-2026.html",
+    "image": "/destiny-playground/images/dev-update-banners/banner_21.png",
+    "featured": true
+  },
+  {
     "title": "MOTW Win, Weapons, Abilities and What's Changed",
     "tag": "Dev Update",
     "date": "20 Jul, 2026",
