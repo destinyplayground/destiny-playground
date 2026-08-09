@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lore - Destiny Playground</title>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>Destiny Playground</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/destiny-playground/css/styles.css">
 <link rel="stylesheet" href="/destiny-playground/css/nav.css">
 <link rel="stylesheet" href="/destiny-playground/css/lore.css">
@@ -95,7 +95,7 @@
         <div class="dest-info-panel">
           <div class="dest-name">Europa</div>
           <div class="dest-subtitle">Moon of Jupiter &middot; Darkness Stronghold</div>
-          <div class="dest-desc">Jupiter's frozen moon hides an ocean beneath a crust of ancient ice.. The House of Winter roams the areas. The Vex have constructed gate networks across the surface..</div>
+          <div class="dest-desc">Jupiter's frozen moon hides an ocean beneath a crust of ancient ice. The House of Winter roams the surface. The Vex have constructed gate networks across it.</div>
           <div class="dest-zones">
             <div class="dest-zone-row"><div class="dest-zone-dot" style="background:#88c4e8;"></div><div class="dest-zone-name">Eventide Ruins</div><div class="dest-zone-type">Patrol Zone</div></div>
             <div class="dest-zone-row"><div class="dest-zone-dot" style="background:#6aaac8;"></div><div class="dest-zone-name">Cadmus Ridge</div><div class="dest-zone-type">Patrol Zone</div></div>
@@ -179,11 +179,11 @@
         </div>
       </div>
 
-      <div class="social-card" style="--social-color:#c9a84c;">
+      <div class="social-card" style="--social-color:#4d9bd6;">
         <div class="social-card-header">
           <div><div class="social-label">Social Space - Guardian Hub</div><div class="social-name">The Last City</div></div>
           <div class="social-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="rgba(201,168,76,0.5)" stroke-width="1" stroke-linecap="round">
+            <svg viewBox="0 0 24 24" fill="none" stroke="rgba(77,155,214,0.5)" stroke-width="1" stroke-linecap="round">
               <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><path d="M12 3V1"/>
             </svg>
           </div>
@@ -220,7 +220,7 @@
 
   <div class="factions-layout">
     <div class="faction-list">
-      <div class="faction-tab active" style="--faction-color:#c9a84c;" onclick="switchFaction(this,'f-vanguard')">
+      <div class="faction-tab active" style="--faction-color:#4d9bd6;" onclick="switchFaction(this,'f-vanguard')">
         <div class="faction-tab-icon">&#9651;</div>
         <div><div class="faction-tab-name">The Vanguard</div><div class="faction-tab-type">Allied - Command</div></div>
         <div class="faction-tab-arrow">&#8594;</div>
@@ -230,9 +230,29 @@
         <div><div class="faction-tab-name">The Survivors</div><div class="faction-tab-type">Allied - Civilians</div></div>
         <div class="faction-tab-arrow">&#8594;</div>
       </div>
+      <div class="faction-tab" style="--faction-color:#c8603a;" onclick="switchFaction(this,'f-fallen')">
+        <div class="faction-tab-icon">&#9670;</div>
+        <div><div class="faction-tab-name">The Fallen</div><div class="faction-tab-type">Enemy - Eliksni</div></div>
+        <div class="faction-tab-arrow">&#8594;</div>
+      </div>
+      <div class="faction-tab" style="--faction-color:#7a6880;" onclick="switchFaction(this,'f-hive')">
+        <div class="faction-tab-icon">&#9651;</div>
+        <div><div class="faction-tab-name">The Hive</div><div class="faction-tab-type">Enemy - Sword Logic</div></div>
+        <div class="faction-tab-arrow">&#8594;</div>
+      </div>
+      <div class="faction-tab" style="--faction-color:#6088cc;" onclick="switchFaction(this,'f-vex')">
+        <div class="faction-tab-icon">&#9632;</div>
+        <div><div class="faction-tab-name">The Vex</div><div class="faction-tab-type">Enemy - Synthetic</div></div>
+        <div class="faction-tab-arrow">&#8594;</div>
+      </div>
+      <div class="faction-tab" style="--faction-color:#c06040;" onclick="switchFaction(this,'f-cabal')">
+        <div class="faction-tab-icon">&#9670;</div>
+        <div><div class="faction-tab-name">The Cabal</div><div class="faction-tab-type">Enemy - Imperial</div></div>
+        <div class="faction-tab-arrow">&#8594;</div>
+      </div>
     </div>
 
-    <div id="f-vanguard" class="faction-detail" style="--faction-color:#c9a84c;">
+    <div id="f-vanguard" class="faction-detail" style="--faction-color:#4d9bd6;">
       <div class="faction-detail-tag">Allied - Command Structure</div>
       <div class="faction-detail-name">The Vanguard</div>
       <div class="faction-detail-alias">&ldquo;The three who chose to stay&rdquo;</div>
@@ -287,14 +307,14 @@
 
   <div class="guardians-grid">
     <div class="guardian-col">
-      <div class="guardian-banner" style="--class-color:#c9a84c;">
+      <div class="guardian-banner" style="--class-color:#4d9bd6;">
         <div class="guardian-banner-img-slot">
           <img src="/destiny-playground/images/hunter.webp" alt="Hunter">
         </div>
       </div>
-      <div class="guardian-card" style="--class-color:#c9a84c;">
+      <div class="guardian-card" style="--class-color:#4d9bd6;">
         <div class="guardian-class-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="rgba(201,168,76,0.55)" stroke-width="1" stroke-linecap="round">
+          <svg viewBox="0 0 24 24" fill="none" stroke="rgba(77,155,214,0.55)" stroke-width="1" stroke-linecap="round">
             <path d="M12 2L4 7v5c0 5.5 3.5 10.7 8 12 4.5-1.3 8-6.5 8-12V7l-8-5z"/><path d="M9 12l2 2 4-4"/>
           </svg>
         </div>
@@ -668,13 +688,6 @@ function switchFaction(tabEl, targetId) {
   const t = document.getElementById(targetId);
   if (t) t.style.display = 'flex';
 }
-function switchEntry(navEl, targetId) {
-  document.querySelectorAll('.lore-entry-nav-item').forEach(n => n.classList.remove('active'));
-  navEl.classList.add('active');
-  document.querySelectorAll('.lore-entry-body').forEach(e => e.style.display = 'none');
-  const t = document.getElementById(targetId);
-  if (t) t.style.display = 'block';
-}
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -683,7 +696,6 @@ const observer = new IntersectionObserver((entries) => {
     }
   });
 }, { threshold: 0.06 });
-observer.disconnect ? null : null;
 document.querySelectorAll('.dest-row, .enemy-card, .guardian-card, .mystery-card, .mission-content, .social-card').forEach(el => {
   el.style.opacity = '0';
   el.style.transform = 'translateY(18px)';
