@@ -1,24 +1,19 @@
-/* ═══════════════════════════════════════
-   GALLERY — DESTINY PLAYGROUND
-   gallery.css — link on gallery.html only
-   ═══════════════════════════════════════ */
-
-/* ── HERO ── */
+/* - HERO - */
 .gal-hero {
   position: relative; padding: 10rem 3rem 5rem; overflow: hidden;
 }
 .gal-hero-bg {
   position: absolute; inset: 0;
   background:
-    radial-gradient(ellipse 60% 70% at 25% 55%, rgba(201,168,76,.05) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 70% at 25% 55%, rgba(77,155,214,.05) 0%, transparent 60%),
     radial-gradient(ellipse 45% 55% at 80% 25%, rgba(136,196,232,.025) 0%, transparent 55%),
-    linear-gradient(180deg, #090806 0%, #0c0a07 60%, #090806 100%);
+    linear-gradient(180deg, #080a10 0%, #0b0d13 60%, #080a10 100%);
 }
 .gal-hero-grid {
   position: absolute; inset: 0; opacity: .03;
   background-image:
-    linear-gradient(rgba(201,168,76,.5) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(201,168,76,.5) 1px, transparent 1px);
+    linear-gradient(rgba(77,155,214,.5) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(77,155,214,.5) 1px, transparent 1px);
   background-size: 50px 50px;
 }
 .gal-hero-inner { position: relative; max-width: 1400px; margin: 0 auto; }
@@ -29,7 +24,7 @@
 }
 .gal-hero-eyebrow::before { content: ''; width: 32px; height: .5px; background: var(--gold-dim); }
 .gal-hero-title {
-  font-family: 'Cinzel', serif;
+  font-family: 'Orbitron', sans-serif;
   font-size: clamp(2.4rem, 5.5vw, 4.5rem);
   font-weight: 700; letter-spacing: .05em; text-transform: uppercase;
   color: var(--white); line-height: 1.05; margin-bottom: 1.2rem;
@@ -42,32 +37,33 @@
   display: flex; align-items: baseline; gap: .55rem;
 }
 .gal-count-num {
-  font-family: 'Cinzel', serif; font-size: 1.6rem; font-weight: 700;
+  font-family: 'Orbitron', sans-serif; font-size: 1.6rem; font-weight: 700;
   color: var(--gold); letter-spacing: .04em;
 }
 .gal-count-label {
   font-size: .62rem; letter-spacing: .3em; text-transform: uppercase; color: var(--muted);
 }
 
-/* ── MAIN GRID SECTION ── */
+/* - MAIN GRID SECTION - */
 .gal-section {
-  max-width: 1400px; margin: 0 auto;
-  padding: 0 3rem 6rem;
+  width: 100%;
+  padding: 0 0 6rem;
 }
 
-/* ── MASONRY-STYLE GRID ── */
+/* - MASONRY-STYLE GRID - */
 .gal-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: 220px;
+  grid-auto-flow: dense;
   gap: 1.5px;
   background: var(--border);
 }
 
-/* ── GRID ITEM ── */
+/* - GRID ITEM - */
 .gal-item {
   position: relative; overflow: hidden; cursor: pointer;
-  background: rgba(201,168,76,.02);
+  background: rgba(77,155,214,.02);
   transition: background .25s;
   outline: none;
 }
@@ -91,27 +87,27 @@
 /* Placeholder (shown when no image) */
 .gal-placeholder {
   display: flex; flex-direction: column; align-items: center; gap: .6rem;
-  color: rgba(201,168,76,.15); font-size: 1.4rem;
+  color: rgba(77,155,214,.15); font-size: 1.4rem;
   transition: color .25s;
   user-select: none;
 }
-.gal-item:hover .gal-placeholder { color: rgba(201,168,76,.28); }
+.gal-item:hover .gal-placeholder { color: rgba(77,155,214,.28); }
 .gal-placeholder-label {
   font-size: .6rem; letter-spacing: .2em; text-transform: uppercase;
-  color: rgba(201,168,76,.18); font-size: .6rem;
+  color: rgba(77,155,214,.18); font-size: .6rem;
 }
 
 /* Hover overlay */
 .gal-item-overlay {
   position: absolute; inset: 0;
-  background: rgba(9,8,6,.55);
+  background: rgba(7,9,16,.55);
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   gap: .5rem;
   opacity: 0; transition: opacity .22s;
 }
 .gal-item:hover .gal-item-overlay { opacity: 1; }
 .gal-item-overlay-icon {
-  font-size: 1.3rem; color: rgba(201,168,76,.6);
+  font-size: 1.3rem; color: rgba(77,155,214,.6);
 }
 .gal-item-overlay-label {
   font-size: .6rem; letter-spacing: .28em; text-transform: uppercase; color: var(--gold);
@@ -133,20 +129,20 @@
 .gal-item:hover .gal-item-inner::before,
 .gal-item:hover .gal-item-inner::after { opacity: 1; }
 
-/* ── EMPTY STATE ── */
+/* - EMPTY STATE - */
 .gal-empty {
   display: flex; flex-direction: column; align-items: center;
   padding: 6rem 3rem; text-align: center;
-  border: .5px solid rgba(201,168,76,.08);
+  border: .5px solid rgba(77,155,214,.08);
   background: #0a0906;
 }
 .gal-empty-icon {
-  font-size: 1.6rem; color: rgba(201,168,76,.15); margin-bottom: 1.4rem;
+  font-size: 1.6rem; color: rgba(77,155,214,.15); margin-bottom: 1.4rem;
   animation: gal-breathe 4s ease-in-out infinite;
 }
 @keyframes gal-breathe { 0%,100%{opacity:1;} 50%{opacity:.3;} }
 .gal-empty-title {
-  font-family: 'Cinzel', serif; font-size: 1.1rem; font-weight: 700;
+  font-family: 'Orbitron', sans-serif; font-size: 1.1rem; font-weight: 700;
   letter-spacing: .08em; text-transform: uppercase; color: var(--white);
   margin-bottom: .6rem;
 }
@@ -155,7 +151,7 @@
   font-weight: 300; max-width: 420px;
 }
 
-/* ── LIGHTBOX ── */
+/* - LIGHTBOX - */
 .gal-lightbox {
   position: fixed; inset: 0; z-index: 2000;
   display: flex; align-items: center; justify-content: center;
@@ -171,7 +167,7 @@ body.gal-lb-open { overflow: hidden; }
 
 .gal-lightbox-backdrop {
   position: absolute; inset: 0;
-  background: rgba(7,6,9,.92);
+  background: rgba(5,7,19,.92);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   cursor: pointer;
@@ -193,8 +189,8 @@ body.gal-lb-open { overflow: hidden; }
 /* Image wrap */
 .gal-lb-img-wrap {
   position: relative;
-  background: rgba(12,10,7,.8);
-  border: .5px solid rgba(201,168,76,.15);
+  background: rgba(10,11,17,.8);
+  border: .5px solid rgba(77,155,214,.15);
   min-height: 300px;
   max-height: 72vh;
   display: flex; align-items: center; justify-content: center;
@@ -211,18 +207,18 @@ body.gal-lb-open { overflow: hidden; }
 /* Lightbox placeholder */
 .gal-lb-placeholder {
   display: flex; flex-direction: column; align-items: center; gap: 1rem;
-  padding: 5rem 3rem; color: rgba(201,168,76,.2); font-size: 2.5rem;
+  padding: 5rem 3rem; color: rgba(77,155,214,.2); font-size: 2.5rem;
 }
 .gal-lb-ph-label {
   font-size: .68rem; letter-spacing: .22em; text-transform: uppercase;
-  color: rgba(201,168,76,.2); font-size: .68rem;
+  color: rgba(77,155,214,.2); font-size: .68rem;
 }
 
 /* Corner accents on lightbox frame */
 .gal-lb-img-wrap::before,
 .gal-lb-img-wrap::after {
   content: ''; position: absolute; width: 16px; height: 16px;
-  border-color: rgba(201,168,76,.35); border-style: solid; z-index: 2;
+  border-color: rgba(77,155,214,.35); border-style: solid; z-index: 2;
 }
 .gal-lb-img-wrap::before { top: 10px; left: 10px;  border-width: 1px 0 0 1px; }
 .gal-lb-img-wrap::after  { bottom: 10px; right: 10px; border-width: 0 1px 1px 0; }
@@ -231,12 +227,12 @@ body.gal-lb-open { overflow: hidden; }
 .gal-lb-meta {
   display: flex; align-items: center; gap: 1.5rem;
   padding: .9rem 1.2rem;
-  background: rgba(10,9,6,.9);
-  border: .5px solid rgba(201,168,76,.1);
+  background: rgba(8,10,16,.9);
+  border: .5px solid rgba(77,155,214,.1);
   border-top: none;
 }
 .gal-lb-caption {
-  font-family: 'Cinzel', serif; font-size: .88rem; font-weight: 700;
+  font-family: 'Orbitron', sans-serif; font-size: .88rem; font-weight: 700;
   letter-spacing: .06em; text-transform: uppercase; color: var(--white); flex: 1;
 }
 .gal-lb-sub {
@@ -244,7 +240,7 @@ body.gal-lb-open { overflow: hidden; }
 }
 .gal-lb-counter {
   font-size: .6rem; letter-spacing: .22em; text-transform: uppercase;
-  color: rgba(201,168,76,.4); white-space: nowrap; flex-shrink: 0;
+  color: rgba(77,155,214,.4); white-space: nowrap; flex-shrink: 0;
 }
 
 /* Nav buttons */
@@ -252,7 +248,7 @@ body.gal-lb-open { overflow: hidden; }
 .gal-lb-prev,
 .gal-lb-next {
   position: fixed;
-  background: none; border: .5px solid rgba(201,168,76,.18); cursor: pointer;
+  background: none; border: .5px solid rgba(77,155,214,.18); cursor: pointer;
   color: var(--muted); transition: all .18s;
   display: flex; align-items: center; justify-content: center;
   z-index: 2;
@@ -272,11 +268,11 @@ body.gal-lb-open { overflow: hidden; }
 .gal-lb-close:hover,
 .gal-lb-prev:hover,
 .gal-lb-next:hover {
-  color: var(--gold); border-color: rgba(201,168,76,.5);
-  background: rgba(201,168,76,.06);
+  color: var(--gold); border-color: rgba(77,155,214,.5);
+  background: rgba(77,155,214,.06);
 }
 
-/* ── RESPONSIVE ── */
+/* - RESPONSIVE - */
 @media (max-width: 1024px) {
   .gal-grid { grid-template-columns: repeat(3, 1fr); }
 }
