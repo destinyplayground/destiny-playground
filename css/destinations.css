@@ -152,9 +152,9 @@
   padding: .2rem 0 .6rem 2.9rem;
 }
 .dest-sidebar-zone-item {
-  font-size: .66rem; letter-spacing: .08em; text-transform: uppercase;
-  color: rgba(77,155,214,.25); padding: .22rem 0;
-  border-left: 1px solid rgba(77,155,214,.06);
+  font-size: .7rem; letter-spacing: .05em; text-transform: uppercase;
+  color: #9db4d4; padding: .28rem 0;
+  border-left: 1px solid rgba(77,155,214,.1);
   padding-left: .7rem; margin-left: .1rem;
   pointer-events: none;
 }
@@ -693,45 +693,46 @@
   font-style: italic;
 }
 
-/* - ZONE ACTIVITIES (LIST FORMAT) - */
+/* - ZONE ACTIVITIES (COMPACT BADGE FORMAT) - */
 .dest-zact-list {
-  display: flex; flex-direction: column; gap: .75rem;
+  display: flex; flex-direction: column; gap: .9rem;
 }
+.dest-zact-group { display: flex; flex-direction: column; gap: .45rem; }
 .dest-zact-row-head {
-  display: flex; align-items: baseline; gap: .5rem;
+  display: flex; align-items: center; gap: .5rem;
 }
 .dest-zact-label {
-  font-size: .68rem; letter-spacing: .16em; text-transform: uppercase;
-  color: var(--gold); font-weight: 600;
+  font-size: .64rem; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--gold); font-weight: 700;
 }
 .dest-zact-count {
-  font-size: .72rem; color: var(--muted);
+  font-size: .68rem; color: #8a94a8;
+  background: rgba(255,255,255,.04); padding: .1rem .5rem; border-radius: 2px;
 }
-.dest-zact-sub {
-  display: flex; flex-direction: column; gap: .15rem;
-  padding-left: 1.1rem; margin-top: .2rem;
+.dest-zact-pills {
+  display: flex; flex-wrap: wrap; gap: .4rem;
 }
-.dest-zact-sub-item {
-  font-size: .84rem; line-height: 1.55; color: #d4d8e2; font-weight: 300;
+.dest-zact-pill {
+  font-size: .78rem; letter-spacing: .02em; font-weight: 400;
+  color: #e4e7ee; padding: .32rem .7rem;
+  border: .5px solid rgba(77,155,214,.2);
+  background: rgba(77,155,214,.045);
 }
-.dest-zact-sub-item::before { content: '\2013\0020'; color: var(--muted); }
-.dest-zact-empty {
-  font-size: .78rem; color: #6a7488; font-style: italic; padding-left: 1.1rem;
-}
-.dest-zact-list > .dest-zact-row-head:not(:first-child) { margin-top: .3rem; }
+.dest-zact-pill.hive { border-color: rgba(200,168,120,.25); background: rgba(200,168,120,.05); }
 
-/* - WORLD LOOT (per destination) - */
+/* - WORLD LOOT (per destination) - legendary purple - */
 .dest-worldloot {
   display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem;
 }
 .dest-worldloot-tag {
   font-size: .78rem; letter-spacing: .04em;
   color: var(--white); padding: .4rem .85rem;
-  border: .5px solid rgba(77,155,214,.25);
-  background: rgba(77,155,214,.05);
+  border: .5px solid rgba(177,97,232,.35);
+  background: rgba(177,97,232,.06);
 }
+.dest-worldloot-tag::before { content: '\25C6'; color: #b168e8; margin-right: .5rem; font-size: .7rem; }
 .dest-worldloot-tag span {
-  color: #8fb8dc; font-size: .7rem; margin-left: .4rem;
+  color: #9aa4b8; font-size: .7rem; margin-left: .4rem;
 }
 
 /* - WORLD ACTIVITY BLOCKS (Strikes / Missions / Bosses / Vendor / Bounties / Gear) - */
@@ -769,24 +770,72 @@
   display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .3rem;
 }
 .dest-wcard-loot-tag {
-  font-size: .72rem; color: #b8d4ee;
-  padding: .15rem .55rem; border: .5px solid rgba(77,155,214,.15);
-  background: rgba(77,155,214,.03);
+  font-size: .72rem; color: #d0aef0;
+  padding: .15rem .55rem; border: .5px solid rgba(177,97,232,.25);
+  background: rgba(177,97,232,.05);
 }
+.dest-wcard-loot-tag::before { content: '\25C6'; color: #b168e8; margin-right: .35rem; font-size: .62rem; }
 .dest-act-group { margin-bottom: 1.4rem; }
 .dest-act-group:last-child { margin-bottom: 0; }
 .dest-act-group-title {
   font-size: .62rem; letter-spacing: .22em; text-transform: uppercase;
   color: var(--gold-dim); margin-bottom: .6rem;
 }
+
+/* mission accordions */
+.dest-mission {
+  background: #0b0d13; border-bottom: 1.5px solid var(--border);
+}
+.dest-mission:last-child { border-bottom: none; }
+.dest-mission summary {
+  padding: .9rem 1.4rem; cursor: pointer; list-style: none;
+  display: flex; align-items: center; gap: .8rem;
+  font-family: 'Rajdhani', sans-serif; font-size: .9rem; font-weight: 600;
+  letter-spacing: .05em; color: var(--white);
+  transition: background .15s;
+}
+.dest-mission summary::-webkit-details-marker { display: none; }
+.dest-mission summary:hover { background: rgba(77,155,214,.04); }
+.dest-mission summary::before {
+  content: '\25B8'; color: var(--gold-dim); font-size: .7rem;
+  transition: transform .2s; flex-shrink: 0;
+}
+.dest-mission[open] summary::before { transform: rotate(90deg); }
+.dest-mission-num {
+  font-family: 'Orbitron', sans-serif; font-size: .68rem; color: var(--gold);
+  flex-shrink: 0;
+}
+.dest-mission-body {
+  padding: 0 1.4rem 1.1rem 3rem;
+}
+.dest-mission-name {
+  font-family: 'Rajdhani', sans-serif; font-size: .86rem; font-weight: 600;
+  color: #d4d8e2; margin-bottom: .4rem;
+}
+.dest-mission-desc {
+  font-size: .84rem; line-height: 1.65; color: var(--body-text); font-weight: 300;
+}
+.dest-mission-meta {
+  font-size: .74rem; color: #9aa4b8; margin-bottom: .5rem;
+}
+
+/* bounty rows */
 .dest-bounty-tier-row {
-  display: flex; align-items: baseline; gap: .6rem; margin-bottom: .3rem;
+  display: grid; grid-template-columns: 200px 1fr; gap: .8rem;
+  padding: .4rem 0; align-items: baseline;
 }
 .dest-bounty-tier {
-  font-size: .68rem; letter-spacing: .12em; text-transform: uppercase;
-  color: var(--gold); flex-shrink: 0; width: 72px;
+  font-size: .82rem; letter-spacing: .01em; font-weight: 500;
+  color: var(--white);
 }
-.dest-bounty-desc { font-size: .84rem; color: #d4d8e2; font-weight: 300; }
+.dest-bounty-desc { font-size: .8rem; color: #9aa4b8; font-weight: 300; }
+.dest-bounty-columns {
+  columns: 2; column-gap: 2.2rem;
+}
+@media (max-width: 768px) { .dest-bounty-columns { columns: 1; } }
+.dest-bounty-columns .dest-bounty-tier-row { break-inside: avoid; grid-template-columns: 1fr; gap: .1rem; }
+.dest-bounty-columns .dest-bounty-tier { font-size: .8rem; }
+.dest-bounty-columns .dest-bounty-desc { font-size: .74rem; }
 
 /* - VENDOR CARDS (Social Spaces) - */
 .dest-vendor-list { display: flex; flex-direction: column; gap: 1.5px; background: var(--border); margin-top: 1rem; }
@@ -800,6 +849,9 @@
 }
 .dest-vendor-role {
   font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: #9aa4b8;
+}
+.dest-vendor-area {
+  font-size: .66rem; letter-spacing: .1em; text-transform: uppercase; color: var(--gold-dim);
 }
 .dest-vendor-desc {
   font-size: .82rem; line-height: 1.6; color: var(--body-text); font-weight: 300; margin-top: .2rem;
