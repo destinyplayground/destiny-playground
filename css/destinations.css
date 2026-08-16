@@ -152,7 +152,7 @@
   padding: .2rem 0 .6rem 2.9rem;
 }
 .dest-sidebar-zone-item {
-  font-size: .6rem; letter-spacing: .1em; text-transform: uppercase;
+  font-size: .66rem; letter-spacing: .08em; text-transform: uppercase;
   color: rgba(77,155,214,.25); padding: .22rem 0;
   border-left: 1px solid rgba(77,155,214,.06);
   padding-left: .7rem; margin-left: .1rem;
@@ -233,7 +233,7 @@
   font-family: 'Orbitron', sans-serif; font-size: .95rem; font-weight: 700; letter-spacing: .05em;
 }
 .dest-fact-sub {
-  font-size: .72rem; color: var(--muted); font-weight: 300;
+  font-size: .78rem; color: var(--muted); font-weight: 300;
 }
 
 /* - SECTION BLOCKS - */
@@ -558,7 +558,7 @@
 
 /* - SECTION PROSE - */
 .dest-section-prose {
-  font-size: .88rem; line-height: 1.85; color: var(--body-text); font-weight: 300;
+  font-size: .96rem; line-height: 1.85; color: var(--body-text); font-weight: 300;
   max-width: 780px;
 }
 
@@ -575,7 +575,7 @@
   border-bottom: .5px solid rgba(77,155,214,.06);
 }
 .dest-zone-expanded-name {
-  font-family: 'Rajdhani', sans-serif; font-size: .92rem;
+  font-family: 'Rajdhani', sans-serif; font-size: 1rem;
   font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
   color: var(--white);
 }
@@ -585,7 +585,7 @@
   border: .5px solid rgba(77,155,214,.15);
 }
 .dest-zone-expanded-desc {
-  font-size: .84rem; line-height: 1.75; color: var(--body-text);
+  font-size: .92rem; line-height: 1.8; color: var(--body-text);
   font-weight: 300; padding: .9rem 1.6rem .4rem;
 }
 
@@ -639,15 +639,15 @@
   font-size: .6rem; color: rgba(77,155,214,.3); flex-shrink: 0;
 }
 .dest-ls-cname {
-  font-family: 'Rajdhani', sans-serif; font-size: .8rem;
+  font-family: 'Rajdhani', sans-serif; font-size: .86rem;
   font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
   color: var(--white); flex: 1;
 }
 .dest-ls-cloc {
-  font-size: .7rem; letter-spacing: .08em; color: var(--muted);
+  font-size: .76rem; letter-spacing: .08em; color: var(--muted);
 }
 .dest-ls-cboss {
-  font-size: .68rem; letter-spacing: .08em; color: rgba(77,155,214,.35);
+  font-size: .74rem; letter-spacing: .08em; color: rgba(77,155,214,.45);
   font-style: italic;
 }
 
@@ -671,7 +671,7 @@
   margin-bottom: .3rem;
 }
 .dest-faction-desc {
-  font-size: .82rem; line-height: 1.7; color: var(--body-text); font-weight: 300;
+  font-size: .9rem; line-height: 1.75; color: var(--body-text); font-weight: 300;
 }
 
 /* - LOCKED / CLASSIFIED GRID - */
@@ -689,9 +689,125 @@
   font-size: .55rem; letter-spacing: .28em; text-transform: uppercase; color: var(--muted);
 }
 .dest-locked-val {
-  font-size: .78rem; letter-spacing: .1em; color: rgba(77,155,214,.3);
+  font-size: .84rem; letter-spacing: .1em; color: rgba(77,155,214,.4);
   font-style: italic;
 }
+
+/* - ZONE ACTIVITIES (LIST FORMAT) - */
+.dest-zact-list {
+  display: flex; flex-direction: column; gap: .75rem;
+}
+.dest-zact-row-head {
+  display: flex; align-items: baseline; gap: .5rem;
+}
+.dest-zact-label {
+  font-size: .68rem; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--gold); font-weight: 600;
+}
+.dest-zact-count {
+  font-size: .72rem; color: var(--muted);
+}
+.dest-zact-sub {
+  display: flex; flex-direction: column; gap: .15rem;
+  padding-left: 1.1rem; margin-top: .2rem;
+}
+.dest-zact-sub-item {
+  font-size: .82rem; line-height: 1.5; color: var(--body-text); font-weight: 300;
+}
+.dest-zact-sub-item::before { content: '\2013\0020'; color: var(--muted); }
+.dest-zact-mini {
+  font-size: .74rem; color: var(--muted); padding-left: 1.1rem;
+}
+
+/* - WORLD LOOT (per destination) - */
+.dest-worldloot {
+  display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem;
+}
+.dest-worldloot-tag {
+  font-size: .74rem; letter-spacing: .06em;
+  color: var(--body-text); padding: .35rem .8rem;
+  border: .5px solid rgba(77,155,214,.18);
+  background: rgba(77,155,214,.03);
+}
+.dest-worldloot-tag span {
+  color: var(--muted); font-size: .68rem; margin-left: .4rem;
+}
+
+/* - WORLD ACTIVITY BLOCKS (Strikes / Missions / Bosses / Vendor / Bounties / Gear) - */
+.dest-wblock { margin-bottom: 2.2rem; }
+.dest-wblock:last-child { margin-bottom: 0; }
+.dest-wblock-head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-bottom: .5rem; margin-bottom: 1rem;
+  border-bottom: .5px solid rgba(77,155,214,.08);
+}
+.dest-wblock-title {
+  font-family: 'Orbitron', sans-serif; font-size: .82rem; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--white);
+}
+.dest-wblock-flag {
+  font-size: .6rem; letter-spacing: .18em; text-transform: uppercase;
+  color: rgba(77,155,214,.4); font-style: italic;
+}
+.dest-wcard-list { display: flex; flex-direction: column; gap: 1.5px; background: var(--border); }
+.dest-wcard {
+  background: #0b0d13; padding: 1rem 1.4rem;
+  display: flex; flex-direction: column; gap: .35rem;
+}
+.dest-wcard-name {
+  font-family: 'Rajdhani', sans-serif; font-size: .92rem; font-weight: 600;
+  letter-spacing: .06em; color: var(--white);
+}
+.dest-wcard-desc {
+  font-size: .82rem; line-height: 1.6; color: var(--body-text); font-weight: 300;
+}
+.dest-wcard-meta {
+  font-size: .72rem; color: var(--muted); letter-spacing: .04em;
+}
+.dest-wcard-loot {
+  display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .3rem;
+}
+.dest-wcard-loot-tag {
+  font-size: .68rem; color: rgba(77,155,214,.55);
+  padding: .15rem .55rem; border: .5px solid rgba(77,155,214,.15);
+  background: rgba(77,155,214,.03);
+}
+.dest-act-group { margin-bottom: 1.4rem; }
+.dest-act-group:last-child { margin-bottom: 0; }
+.dest-act-group-title {
+  font-size: .62rem; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--gold-dim); margin-bottom: .6rem;
+}
+.dest-bounty-tier-row {
+  display: flex; align-items: baseline; gap: .6rem; margin-bottom: .3rem;
+}
+.dest-bounty-tier {
+  font-size: .68rem; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--gold); flex-shrink: 0; width: 72px;
+}
+.dest-bounty-desc { font-size: .82rem; color: var(--body-text); font-weight: 300; }
+
+/* - VENDOR CARDS (Social Spaces) - */
+.dest-vendor-list { display: flex; flex-direction: column; gap: 1.5px; background: var(--border); margin-top: 1rem; }
+.dest-vendor-card {
+  background: #0b0d13; padding: 1.1rem 1.4rem;
+  display: flex; flex-direction: column; gap: .3rem;
+}
+.dest-vendor-name {
+  font-family: 'Rajdhani', sans-serif; font-size: .95rem; font-weight: 700;
+  letter-spacing: .06em; color: var(--white);
+}
+.dest-vendor-role {
+  font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted);
+}
+.dest-vendor-desc {
+  font-size: .82rem; line-height: 1.6; color: var(--body-text); font-weight: 300; margin-top: .2rem;
+}
+.dest-area-subhead {
+  font-size: .6rem; letter-spacing: .26em; text-transform: uppercase;
+  color: var(--muted); margin: 1.4rem 0 .3rem; opacity: .75;
+}
+.dest-area-subhead:first-child { margin-top: 0; }
 
 /* - WELCOME SCREEN - */
 .dest-welcome {
