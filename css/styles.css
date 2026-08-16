@@ -1,7 +1,3 @@
-/* ═══════════════════════════════════════════
-   DESTINY PLAYGROUND - Shared Stylesheet
-   ═══════════════════════════════════════════ */
-
 /* - RESET & VARIABLES - */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -370,26 +366,35 @@ footer {
   content: ''; position: absolute; inset: 0;
   background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(77,155,214,0.04) 0%, transparent 70%);
 }
+.trailer-carousel { max-width: 800px; margin: 3rem auto 0; }
 .trailer-box {
-  position: relative; max-width: 800px; margin: 3rem auto 0;
+  position: relative;
   border: 0.5px solid var(--border);
   background: rgba(255,255,255,0.02); overflow: hidden;
   transition: border-color 0.3s;
   aspect-ratio: 16 / 9;
   display: block;
 }
-.trailer-box iframe {
-  position: absolute; top: 0; left: 0;
-  width: 100%; height: 100%; border: none; display: block;
-}
 .trailer-box:hover { border-color: var(--gold-dim); }
 .trailer-box::before {
-  content: ''; position: absolute; inset: 0;
+  content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
   background: linear-gradient(135deg, rgba(77,155,214,0.03) 0%, transparent 60%);
+}
+.trailer-track {
+  display: flex; width: 100%; height: 100%;
+  transition: transform 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+}
+.trailer-slide {
+  position: relative; flex: 0 0 100%; width: 100%; height: 100%;
+}
+.trailer-slide iframe {
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%; border: none; display: block;
 }
 .trailer-corner {
   position: absolute; width: 16px; height: 16px;
   border-color: var(--gold-dim); border-style: solid;
+  z-index: 2; pointer-events: none;
 }
 .trailer-corner.tl { top: 12px; left: 12px; border-width: 1px 0 0 1px; }
 .trailer-corner.tr { top: 12px; right: 12px; border-width: 1px 1px 0 0; }
@@ -412,7 +417,37 @@ footer {
   position: absolute; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
   font-size: 0.7rem; letter-spacing: 0.28em; text-transform: uppercase;
   color: var(--muted); white-space: nowrap;
+  z-index: 2; pointer-events: none;
+  background: rgba(10,10,14,0.55); padding: 0.3rem 0.9rem;
 }
+
+/* - TRAILER ARROWS - */
+.trailer-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 44px; height: 44px; z-index: 3;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(10,10,14,0.55); border: 0.5px solid var(--border);
+  color: var(--gold); font-size: 1.1rem; cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, opacity 0.2s;
+  opacity: 0; padding: 0;
+}
+.trailer-box:hover .trailer-arrow,
+.trailer-arrow:focus-visible { opacity: 1; }
+.trailer-arrow:hover { background: rgba(77,155,214,0.15); border-color: var(--gold-dim); }
+.trailer-arrow--prev { left: 14px; }
+.trailer-arrow--next { right: 14px; }
+
+/* - TRAILER DOTS - */
+.trailer-dots {
+  display: flex; justify-content: center; gap: 0.7rem; margin-top: 1.5rem;
+}
+.trailer-dot {
+  width: 8px; height: 8px; padding: 0; border: 0.5px solid var(--gold-dim);
+  background: transparent; cursor: pointer; transition: all 0.2s;
+  clip-path: polygon(3px 0%, 100% 0%, calc(100% - 3px) 100%, 0% 100%);
+}
+.trailer-dot:hover { border-color: var(--gold); }
+.trailer-dot.is-active { background: var(--gold); border-color: var(--gold); }
 
 /* - GALLERY - */
 .gallery-section { padding: 6rem 3rem; max-width: 1200px; margin: 0 auto; }
