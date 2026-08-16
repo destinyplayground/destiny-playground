@@ -647,7 +647,7 @@
   font-size: .76rem; letter-spacing: .08em; color: var(--muted);
 }
 .dest-ls-cboss {
-  font-size: .74rem; letter-spacing: .08em; color: rgba(77,155,214,.45);
+  font-size: .76rem; letter-spacing: .06em; color: #a8cae8;
   font-style: italic;
 }
 
@@ -712,25 +712,26 @@
   padding-left: 1.1rem; margin-top: .2rem;
 }
 .dest-zact-sub-item {
-  font-size: .82rem; line-height: 1.5; color: var(--body-text); font-weight: 300;
+  font-size: .84rem; line-height: 1.55; color: #d4d8e2; font-weight: 300;
 }
 .dest-zact-sub-item::before { content: '\2013\0020'; color: var(--muted); }
-.dest-zact-mini {
-  font-size: .74rem; color: var(--muted); padding-left: 1.1rem;
+.dest-zact-empty {
+  font-size: .78rem; color: #6a7488; font-style: italic; padding-left: 1.1rem;
 }
+.dest-zact-list > .dest-zact-row-head:not(:first-child) { margin-top: .3rem; }
 
 /* - WORLD LOOT (per destination) - */
 .dest-worldloot {
   display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem;
 }
 .dest-worldloot-tag {
-  font-size: .74rem; letter-spacing: .06em;
-  color: var(--body-text); padding: .35rem .8rem;
-  border: .5px solid rgba(77,155,214,.18);
-  background: rgba(77,155,214,.03);
+  font-size: .78rem; letter-spacing: .04em;
+  color: var(--white); padding: .4rem .85rem;
+  border: .5px solid rgba(77,155,214,.25);
+  background: rgba(77,155,214,.05);
 }
 .dest-worldloot-tag span {
-  color: var(--muted); font-size: .68rem; margin-left: .4rem;
+  color: #8fb8dc; font-size: .7rem; margin-left: .4rem;
 }
 
 /* - WORLD ACTIVITY BLOCKS (Strikes / Missions / Bosses / Vendor / Bounties / Gear) - */
@@ -746,8 +747,8 @@
   letter-spacing: .1em; text-transform: uppercase; color: var(--white);
 }
 .dest-wblock-flag {
-  font-size: .6rem; letter-spacing: .18em; text-transform: uppercase;
-  color: rgba(77,155,214,.4); font-style: italic;
+  font-size: .64rem; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--gold-dim); font-style: normal;
 }
 .dest-wcard-list { display: flex; flex-direction: column; gap: 1.5px; background: var(--border); }
 .dest-wcard {
@@ -762,13 +763,13 @@
   font-size: .82rem; line-height: 1.6; color: var(--body-text); font-weight: 300;
 }
 .dest-wcard-meta {
-  font-size: .72rem; color: var(--muted); letter-spacing: .04em;
+  font-size: .76rem; color: #9aa4b8; letter-spacing: .04em;
 }
 .dest-wcard-loot {
   display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .3rem;
 }
 .dest-wcard-loot-tag {
-  font-size: .68rem; color: rgba(77,155,214,.55);
+  font-size: .72rem; color: #b8d4ee;
   padding: .15rem .55rem; border: .5px solid rgba(77,155,214,.15);
   background: rgba(77,155,214,.03);
 }
@@ -785,7 +786,7 @@
   font-size: .68rem; letter-spacing: .12em; text-transform: uppercase;
   color: var(--gold); flex-shrink: 0; width: 72px;
 }
-.dest-bounty-desc { font-size: .82rem; color: var(--body-text); font-weight: 300; }
+.dest-bounty-desc { font-size: .84rem; color: #d4d8e2; font-weight: 300; }
 
 /* - VENDOR CARDS (Social Spaces) - */
 .dest-vendor-list { display: flex; flex-direction: column; gap: 1.5px; background: var(--border); margin-top: 1rem; }
@@ -798,7 +799,7 @@
   letter-spacing: .06em; color: var(--white);
 }
 .dest-vendor-role {
-  font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted);
+  font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: #9aa4b8;
 }
 .dest-vendor-desc {
   font-size: .82rem; line-height: 1.6; color: var(--body-text); font-weight: 300; margin-top: .2rem;
