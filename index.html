@@ -290,9 +290,9 @@
   .trailer-section-header .section-title {
     margin-bottom: 0;
   }
-  .trailer-section .trailer-box {
+  .trailer-section .trailer-carousel {
     max-width: 1000px;
-    margin: 0 auto;
+    margin: 3rem auto 0;
   }
 
   /* - HERO CTAs - tribute-btn style - */
@@ -441,6 +441,77 @@
 
   <div class="divider" role="separator" aria-hidden="true"></div>
 
+  <!-- TRAILER CAROUSEL -->
+  <section class="trailer-section" id="trailer-section" aria-labelledby="trailer-heading">
+    <div class="trailer-section-header">
+      <h2 class="section-title" id="trailer-heading">Trailers</h2>
+    </div>
+    <div class="trailer-carousel" id="trailerCarousel">
+      <div class="trailer-box">
+        <div class="trailer-corner tl" aria-hidden="true"></div>
+        <div class="trailer-corner tr" aria-hidden="true"></div>
+        <div class="trailer-corner bl" aria-hidden="true"></div>
+        <div class="trailer-corner br" aria-hidden="true"></div>
+
+        <div class="trailer-track" id="trailerTrack">
+          <div class="trailer-slide is-active" data-index="0">
+            <iframe
+              width="560" height="315"
+              src="https://www.youtube.com/embed/F4QBhh8Z5Os?si=FIEV4AhapZw8q7-l&enablejsapi=1"
+              title="Destiny Playground - Official Destinations Teaser Trailer"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen>
+            </iframe>
+            <div class="trailer-label">Destinations Teaser Trailer</div>
+          </div>
+
+          <div class="trailer-slide" data-index="1">
+            <iframe
+              width="560" height="315"
+              src="https://www.youtube.com/embed/udybD6grIUI?enablejsapi=1"
+              title="Destiny Playground - Ability Showcase Teaser Trailer I"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen>
+            </iframe>
+            <div class="trailer-label">Ability Showcase Teaser Trailer I</div>
+          </div>
+
+          <div class="trailer-slide" data-index="2">
+            <iframe
+              width="560" height="315"
+              src="https://www.youtube.com/embed/FfudeWZDkYo?enablejsapi=1"
+              title="Destiny Playground - Campaign Dev Insight Trailer"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen>
+            </iframe>
+            <div class="trailer-label">Campaign Dev Insight Trailer</div>
+          </div>
+        </div>
+
+        <button class="trailer-arrow trailer-arrow--prev" id="trailerPrev" type="button" aria-label="Previous trailer">
+          <span aria-hidden="true">&#8592;</span>
+        </button>
+        <button class="trailer-arrow trailer-arrow--next" id="trailerNext" type="button" aria-label="Next trailer">
+          <span aria-hidden="true">&#8594;</span>
+        </button>
+      </div>
+
+      <div class="trailer-dots" id="trailerDots" role="tablist" aria-label="Select trailer">
+        <button class="trailer-dot is-active" type="button" role="tab" aria-selected="true" aria-label="Trailer 1: Destinations Teaser Trailer" data-index="0"></button>
+        <button class="trailer-dot" type="button" role="tab" aria-selected="false" aria-label="Trailer 2: Ability Showcase Teaser Trailer I" data-index="1"></button>
+        <button class="trailer-dot" type="button" role="tab" aria-selected="false" aria-label="Trailer 3: Campaign Dev Insight Trailer" data-index="2"></button>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider" role="separator" aria-hidden="true"></div>
+
   <!-- NEWS -->
   <section class="full-width-section" aria-labelledby="news-heading">
     <div class="section-header">
@@ -453,30 +524,6 @@
     </div>
     <div class="section-footer">
       <a href="news.html">All News <span aria-hidden="true">&#8594;</span></a>
-    </div>
-  </section>
-
-  <div class="divider" role="separator" aria-hidden="true"></div>
-
-  <!-- TRAILER -->
-  <section class="trailer-section" id="trailer-section" aria-labelledby="trailer-heading">
-    <div class="trailer-section-header">
-      <h2 class="section-title" id="trailer-heading">Latest Trailer</h2>
-    </div>
-    <div class="trailer-box">
-      <div class="trailer-corner tl" aria-hidden="true"></div>
-      <div class="trailer-corner tr" aria-hidden="true"></div>
-      <div class="trailer-corner bl" aria-hidden="true"></div>
-      <div class="trailer-corner br" aria-hidden="true"></div>
-      <iframe
-        width="560" height="315"
-        src="https://www.youtube.com/embed/F4QBhh8Z5Os?si=FIEV4AhapZw8q7-l"
-        title="Destiny Playground - Official Destinations Teaser Trailer"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allowfullscreen>
-      </iframe>
     </div>
   </section>
 
@@ -673,6 +720,62 @@
   }
 
   loadNews();
+</script>
+
+<script>
+(function() {
+  var track     = document.getElementById('trailerTrack');
+  var slides    = Array.from(document.querySelectorAll('.trailer-slide'));
+  var dots      = Array.from(document.querySelectorAll('.trailer-dot'));
+  var prevBtn   = document.getElementById('trailerPrev');
+  var nextBtn   = document.getElementById('trailerNext');
+  var carousel  = document.getElementById('trailerCarousel');
+  if (!track || slides.length === 0) return;
+
+  var current  = 0;
+  var total    = slides.length;
+  var AUTO_MS  = 5000;
+  var timer    = null;
+
+  function goTo(index) {
+    current = (index + total) % total;
+    track.style.transform = 'translateX(-' + (current * 100) + '%)';
+    slides.forEach(function(s, i) { s.classList.toggle('is-active', i === current); });
+    dots.forEach(function(d, i) {
+      d.classList.toggle('is-active', i === current);
+      d.setAttribute('aria-selected', i === current ? 'true' : 'false');
+    });
+  }
+
+  function next() { goTo(current + 1); }
+  function prev() { goTo(current - 1); }
+
+  function startAuto() {
+    stopAuto();
+    timer = setInterval(next, AUTO_MS);
+  }
+  function stopAuto() {
+    if (timer) { clearInterval(timer); timer = null; }
+  }
+  function restartAuto() { stopAuto(); startAuto(); }
+
+  nextBtn.addEventListener('click', function() { next(); restartAuto(); });
+  prevBtn.addEventListener('click', function() { prev(); restartAuto(); });
+  dots.forEach(function(dot) {
+    dot.addEventListener('click', function() {
+      goTo(parseInt(dot.getAttribute('data-index'), 10));
+      restartAuto();
+    });
+  });
+
+  carousel.addEventListener('mouseenter', stopAuto);
+  carousel.addEventListener('mouseleave', startAuto);
+  carousel.addEventListener('focusin', stopAuto);
+  carousel.addEventListener('focusout', startAuto);
+
+  goTo(0);
+  startAuto();
+})();
 </script>
 
 <script>
