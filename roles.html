@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Open Roles - Destiny Playground</title>
+<meta name="description" content="Join the Destiny Playground team. Volunteer roles in server development, building, modelling, pixel art, and narrative writing.">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/destiny-playground/css/styles.css">
+<link rel="stylesheet" href="/destiny-playground/css/nav.css">
+<link rel="stylesheet" href="/destiny-playground/css/a11y-overrides.css">
+<style>
+
+  /* - ROLES PAGE HEADER - */
+  .roles-header {
+    padding: 9rem 3rem 3.5rem;
+    max-width: 1200px; margin: 0 auto;
+    text-align: left;
+  }
+  .roles-eyebrow {
+    font-size: 0.72rem; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.4rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .roles-eyebrow::after {
+    content: ''; flex: 1; height: 0.5px; background: var(--border); max-width: 200px;
+  }
+  .roles-h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(2rem, 4.4vw, 3.2rem);
+    font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase;
+    color: var(--white); margin-bottom: 1.4rem; max-width: 780px;
+  }
+  .roles-lede {
+    font-size: 1.05rem; line-height: 1.75; color: var(--body-text);
+    font-weight: 300; max-width: 680px;
+  }
+
+  /* - GENERAL REQUIREMENTS STRIP - */
+  .roles-baseline {
+    max-width: 1200px; margin: 0 auto; padding: 0 3rem 4.5rem;
+  }
+  .baseline-box {
+    border: 0.5px solid var(--border); border-left: 3px solid var(--gold-dim);
+    background: rgba(255,255,255,0.02);
+    padding: 2rem 2.4rem;
+  }
+  .baseline-box h2 {
+    font-family: 'Orbitron', sans-serif; font-size: 0.85rem; font-weight: 600;
+    letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold);
+    margin-bottom: 1.3rem;
+  }
+  .baseline-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.9rem 2.5rem;
+    list-style: none;
+  }
+  .baseline-grid li {
+    font-size: 0.92rem; line-height: 1.6; color: var(--body-text);
+    font-weight: 300; padding-left: 1.1rem; position: relative;
+  }
+  .baseline-grid li::before {
+    content: ''; position: absolute; left: 0; top: 0.55em;
+    width: 5px; height: 5px; background: var(--gold-dim);
+    clip-path: polygon(1.5px 0%, 100% 0%, calc(100% - 1.5px) 100%, 0% 100%);
+  }
+  .baseline-note {
+    margin-top: 1.4rem; padding-top: 1.2rem; border-top: 0.5px solid var(--border);
+    font-size: 0.82rem; line-height: 1.65; color: var(--muted); font-weight: 300;
+  }
+
+  /* - ROLES LIST (ACCORDION) - */
+  .roles-list-section { max-width: 1200px; margin: 0 auto; padding: 0 3rem 7rem; }
+  .roles-list { border-top: 0.5px solid var(--border); }
+
+  .role-item {
+    border-bottom: 0.5px solid var(--border);
+    position: relative;
+  }
+
+  .role-trigger {
+    width: 100%; background: none; border: none; cursor: pointer;
+    display: flex; align-items: center; gap: 1.6rem;
+    padding: 1.9rem 0.5rem; text-align: left;
+    font-family: inherit; color: inherit;
+  }
+  .role-trigger:hover .role-name { color: var(--gold); }
+  .role-trigger:focus-visible { outline: 1px solid var(--gold); outline-offset: 4px; }
+
+  .role-mark {
+    flex-shrink: 0; width: 34px; height: 34px;
+    border: 0.5px solid var(--gold-dim);
+    transform: rotate(45deg);
+    display: flex; align-items: center; justify-content: center;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .role-mark span {
+    transform: rotate(-45deg);
+    font-family: 'Orbitron', sans-serif; font-size: 0.72rem; color: var(--gold-dim);
+    transition: color 0.2s;
+  }
+  .role-item[data-open="true"] .role-mark {
+    background: rgba(77,155,214,0.1); border-color: var(--gold);
+  }
+  .role-item[data-open="true"] .role-mark span { color: var(--gold); }
+
+  .role-heading { flex: 1; min-width: 0; }
+  .role-name {
+    font-family: 'Orbitron', sans-serif; font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+    font-weight: 600; letter-spacing: 0.03em; text-transform: uppercase;
+    color: var(--white); margin-bottom: 0.4rem; transition: color 0.2s;
+  }
+  .role-summary { font-size: 0.9rem; color: var(--muted); font-weight: 300; line-height: 1.5; }
+
+  .role-meta {
+    flex-shrink: 0; text-align: right; padding-left: 1rem;
+    display: flex; flex-direction: column; align-items: flex-end; gap: 0.4rem;
+  }
+  .role-openings {
+    font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold-dim);
+  }
+  .role-chevron {
+    font-size: 0.9rem; color: var(--muted); transition: transform 0.25s ease;
+  }
+  .role-item[data-open="true"] .role-chevron { transform: rotate(180deg); color: var(--gold); }
+
+  .role-panel {
+    overflow: hidden; height: 0;
+    transition: height 0.3s ease;
+  }
+  .role-panel-inner {
+    padding: 0.2rem 0.5rem 3rem 3.5rem;
+    display: grid; grid-template-columns: 1.3fr 1fr; gap: 3rem;
+  }
+
+  .role-block h3 {
+    font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1rem;
+  }
+  .role-block p {
+    font-size: 0.93rem; line-height: 1.75; color: var(--body-text); font-weight: 300;
+    margin-bottom: 1rem;
+  }
+  .role-reqs { list-style: none; }
+  .role-reqs li {
+    font-size: 0.93rem; line-height: 1.6; color: var(--body-text); font-weight: 300;
+    padding-left: 1.15rem; position: relative; margin-bottom: 0.65rem;
+  }
+  .role-reqs li::before {
+    content: ''; position: absolute; left: 0; top: 0.6em;
+    width: 5px; height: 5px; background: var(--gold-dim);
+    clip-path: polygon(1.5px 0%, 100% 0%, calc(100% - 1.5px) 100%, 0% 100%);
+  }
+  .role-reqs li strong { color: var(--white); font-weight: 600; }
+  .role-reqs li.is-bonus::before { background: var(--gold); }
+
+  .role-side { display: flex; flex-direction: column; }
+  .role-assign {
+    border: 0.5px solid var(--border); background: rgba(255,255,255,0.02);
+    padding: 1.2rem 1.4rem; margin-bottom: 1.6rem;
+  }
+  .role-assign h4 {
+    font-size: 0.66rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 0.7rem;
+  }
+  .role-assign ul { list-style: none; }
+  .role-assign li {
+    font-size: 0.86rem; color: var(--body-text); font-weight: 400;
+    padding: 0.3rem 0; display: flex; align-items: center; gap: 0.6rem;
+  }
+  .role-assign li::before {
+    content: ''; width: 4px; height: 4px; background: var(--gold-dim); border-radius: 50%; flex-shrink: 0;
+  }
+  .role-assign-note {
+    font-size: 0.78rem; color: var(--muted); font-weight: 300; margin-top: 0.8rem;
+    line-height: 1.55; font-style: italic;
+  }
+
+  .role-limited {
+    border: 0.5px solid rgba(77,155,214,0.35); background: rgba(77,155,214,0.05);
+    padding: 1rem 1.3rem; margin-bottom: 1.6rem; font-size: 0.83rem;
+    line-height: 1.6; color: var(--body-text); font-weight: 300;
+  }
+  .role-limited strong { color: var(--gold); font-weight: 600; }
+
+  .role-apply-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.7rem;
+    padding: 0.95rem 2.2rem; margin-top: auto;
+    font-family: 'Rajdhani', sans-serif; font-size: 0.8rem; font-weight: 600;
+    letter-spacing: 0.24em; text-transform: uppercase;
+    background: var(--gold); color: #080a10; text-decoration: none; border: none; cursor: pointer;
+    clip-path: polygon(14px 0%, 100% 0%, calc(100% - 14px) 100%, 0% 100%);
+    transition: all 0.2s; width: fit-content;
+  }
+  .role-apply-btn:hover { background: #59aae3; transform: translateY(-1px); }
+
+  .role-fineprint {
+    font-size: 0.74rem; line-height: 1.6; color: var(--muted); font-weight: 300;
+    margin-top: 1rem; max-width: 320px;
+  }
+
+  @media (max-width: 780px) {
+    .roles-header { padding: 7.5rem 1.5rem 2.5rem; }
+    .roles-baseline { padding: 0 1.5rem 3rem; }
+    .baseline-grid { grid-template-columns: 1fr; }
+    .baseline-box { padding: 1.6rem 1.5rem; }
+    .roles-list-section { padding: 0 1.5rem 4rem; }
+    .role-trigger { gap: 1rem; padding: 1.5rem 0; }
+    .role-mark { width: 28px; height: 28px; }
+    .role-panel-inner { grid-template-columns: 1fr; gap: 2rem; padding: 0.2rem 0 2.5rem 0; }
+    .role-openings { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<div id="nav-placeholder"></div>
+
+<main id="main-content">
+
+  <!-- HEADER -->
+  <section class="roles-header">
+    <div class="roles-eyebrow">Recruitment</div>
+    <h1 class="roles-h1">Build Destiny Playground With Us</h1>
+    <p class="roles-lede">We're expanding the team as the project moves into its next phase. Below are the volunteer roles we're currently recruiting for &mdash; what each one involves, what we're looking for, and how to apply. Select a role to see the full details.</p>
+  </section>
+
+  <!-- GENERAL REQUIREMENTS -->
+  <section class="roles-baseline">
+    <div class="baseline-box">
+      <h2>Applies To Every Role</h2>
+      <ul class="baseline-grid">
+        <li>Age 18+</li>
+        <li>Solid knowledge of the Destiny universe</li>
+        <li>Strong portfolio of relevant previous work (required)</li>
+        <li>Good communication and professionalism</li>
+        <li>Genuine dedication &mdash; development is slow-moving and largely unseen right now, and sticking with it is what keeps things progressing</li>
+        <li>Not currently working on another Destiny-in-Minecraft project</li>
+      </ul>
+      <p class="baseline-note">This is a volunteer project, run in a relaxed way &mdash; but communicating when you're unable to work matters. All roles begin with roughly a one-month probationary period while we assess skills and fit, and extended or repeated inactivity may result in removal from the team at any point. Responses generated with AI assistance will not be considered for any role.</p>
+    </div>
+  </section>
+
+  <!-- ROLES LIST -->
+  <section class="roles-list-section" aria-labelledby="roles-list-heading">
+    <h2 class="section-title" id="roles-list-heading" style="margin-bottom:2rem;">Open Roles</h2>
+
+    <div class="roles-list" id="rolesList">
+
+      <!-- SERVER DEVELOPER -->
+      <div class="role-item" data-open="false">
+        <button class="role-trigger" aria-expanded="false" aria-controls="panel-dev">
+          <span class="role-mark" aria-hidden="true"><span>&#9670;</span></span>
+          <span class="role-heading">
+            <span class="role-name">Server Developer</span>
+            <span class="role-summary">Coding weapons, armour, enemies, missions and systems on the server</span>
+          </span>
+          <span class="role-meta">
+            <span class="role-openings">1 Position</span>
+            <span class="role-chevron" aria-hidden="true">&#9660;</span>
+          </span>
+        </button>
+        <div class="role-panel" id="panel-dev">
+          <div class="role-panel-inner">
+            <div class="role-block">
+              <h3>What The Role Involves</h3>
+              <p>You'll be building out the technical side of the server &mdash; coding weapons, armour, items, enemies, missions and the systems that hold everything together. This is a coding role rather than a design one, so clear, regular communication with the lead is essential to avoid work clashing or duplicating.</p>
+              <p>You'll also be expected to diagnose and fix bugs as they come up, and this role continues on past launch &mdash; there's ongoing work in maintaining and expanding what's already built.</p>
+              <h3 style="margin-top:0.5rem;">Requirements</h3>
+              <ul class="role-reqs">
+                <li><strong>Experience with MythicMobs</strong> (minimum requirement)</li>
+                <li>Access to Destiny 2 (Destiny 1 is a bonus, not required)</li>
+                <li>Good coding practices and the ability to work cleanly within a shared codebase</li>
+                <li>Strong portfolio of previous coding work &mdash; applications without one won't be considered</li>
+                <li class="is-bonus">Bonus: experience with other plugins we use on the server</li>
+                <li class="is-bonus">Bonus: experience building custom plugins</li>
+                <li class="is-bonus">Bonus: knowledge of databases, networking, or other backend fundamentals</li>
+                <li class="is-bonus">Bonus: Minecraft mod development experience (we aren't building mods currently, but it reflects well on your application)</li>
+              </ul>
+            </div>
+            <div class="role-side">
+              <a class="role-apply-btn" href="https://addlinkhere.com" target="_blank" rel="noopener">Apply Here</a>
+              <p class="role-fineprint">Applications are reviewed within 1&ndash;3 weeks. We'll reach out via Discord DM &mdash; please also DM @CNTDarthgaming or ping in the server once you've applied so we see it quicker.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BUILDER -->
+      <div class="role-item" data-open="false">
+        <button class="role-trigger" aria-expanded="false" aria-controls="panel-builder">
+          <span class="role-mark" aria-hidden="true"><span>&#9670;</span></span>
+          <span class="role-heading">
+            <span class="role-name">Builder</span>
+            <span class="role-summary">Recreating Destiny locations within Minecraft to accurate scale</span>
+          </span>
+          <span class="role-meta">
+            <span class="role-openings">4 Positions</span>
+            <span class="role-chevron" aria-hidden="true">&#9660;</span>
+          </span>
+        </button>
+        <div class="role-panel" id="panel-builder">
+          <div class="role-panel-inner">
+            <div class="role-block">
+              <h3>What The Role Involves</h3>
+              <p>Recreating Destiny locations within Minecraft to accurate scale, faithful to the source material, and detailed enough to hold up in a real server environment. You'll need to work to a detailed level without being wholly dependent on external tools &mdash; builds created solely through importing tools or Axiom won't be accepted.</p>
+              <p>Be mindful of the existing building styles and scale already established on the server, so your work sits naturally alongside everyone else's.</p>
+              <h3 style="margin-top:0.5rem;">Requirements</h3>
+              <ul class="role-reqs">
+                <li><strong>Portfolio of at least 5 strong builds</strong> (required) &mdash; 10&ndash;20+ strengthens your application further</li>
+                <li>Destiny builds in your portfolio are valued more highly than non-Destiny work</li>
+                <li>Access to the relevant Destiny game for your assigned location</li>
+                <li>Ability to produce high-quality work with or without external tools</li>
+                <li class="is-bonus">Bonus: access to both Destiny 1 and Destiny 2</li>
+              </ul>
+            </div>
+            <div class="role-side">
+              <div class="role-assign">
+                <h4>Initial Assignment</h4>
+                <ul>
+                  <li>Destiny 1 &mdash; Mars</li>
+                  <li>Destiny 1 &mdash; The Moon</li>
+                  <li>Destiny 2 &mdash; The EDZ</li>
+                  <li>The Last City</li>
+                </ul>
+                <p class="role-assign-note">You may be asked to switch to a different location at any point &mdash; nothing here is set in stone.</p>
+              </div>
+              <a class="role-apply-btn" href="https://addlinkhere.com" target="_blank" rel="noopener">Apply Here</a>
+              <p class="role-fineprint">Applications are reviewed within 1&ndash;3 weeks. We'll reach out via Discord DM &mdash; please also DM @CNTDarthgaming or ping in the server once you've applied so we see it quicker.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MODELLER -->
+      <div class="role-item" data-open="false">
+        <button class="role-trigger" aria-expanded="false" aria-controls="panel-modeller">
+          <span class="role-mark" aria-hidden="true"><span>&#9670;</span></span>
+          <span class="role-heading">
+            <span class="role-name">Modeller</span>
+            <span class="role-summary">Modelling and animating enemies in Blockbench</span>
+          </span>
+          <span class="role-meta">
+            <span class="role-openings">1 Position</span>
+            <span class="role-chevron" aria-hidden="true">&#9660;</span>
+          </span>
+        </button>
+        <div class="role-panel" id="panel-modeller">
+          <div class="role-panel-inner">
+            <div class="role-block">
+              <h3>What The Role Involves</h3>
+              <p>Modelling enemies within Minecraft and Blockbench to accurate scale, and animating them to request, consistent with the project's visual direction and to a level of detail consistent with other models.</p>
+              <h3 style="margin-top:0.5rem;">Requirements</h3>
+              <ul class="role-reqs">
+                <li><strong>Strong portfolio of previous modelling work</strong> (required)</li>
+                <li>Experience using Blockbench, including animation</li>
+                <li>Minecraft Java Edition &mdash; must be able to access version 1.21.8 to test your assets</li>
+                <li>Access to Destiny 1 and/or Destiny 2 for visual reference</li>
+                <li>Familiarity with Destiny's enemy design and aesthetic</li>
+                <li class="is-bonus">Bonus: able to also model weapons</li>
+                <li class="is-bonus">Mega bonus: knowledge of MythicMobs and/or Nexo, to implement your enemies directly into the server</li>
+              </ul>
+            </div>
+            <div class="role-side">
+              <a class="role-apply-btn" href="https://addlinkhere.com" target="_blank" rel="noopener">Apply Here</a>
+              <p class="role-fineprint">Applications are reviewed within 1&ndash;3 weeks. We'll reach out via Discord DM &mdash; please also DM @CNTDarthgaming or ping in the server once you've applied so we see it quicker.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PIXEL ARTIST - ARMOUR -->
+      <div class="role-item" data-open="false">
+        <button class="role-trigger" aria-expanded="false" aria-controls="panel-pixel-armour">
+          <span class="role-mark" aria-hidden="true"><span>&#9670;</span></span>
+          <span class="role-heading">
+            <span class="role-name">Pixel Artist &mdash; Armour &amp; Textures</span>
+            <span class="role-summary">2D armour textures for players and enemies</span>
+          </span>
+          <span class="role-meta">
+            <span class="role-openings">1 Position</span>
+            <span class="role-chevron" aria-hidden="true">&#9660;</span>
+          </span>
+        </button>
+        <div class="role-panel" id="panel-pixel-armour">
+          <div class="role-panel-inner">
+            <div class="role-block">
+              <h3>What The Role Involves</h3>
+              <p>Creating 2D armour textures for players and enemies within Minecraft, consistent with Destiny's visual direction. This means working faithfully from Destiny reference material and producing textures that hold up alongside the rest of the project's assets.</p>
+              <h3 style="margin-top:0.5rem;">Requirements</h3>
+              <ul class="role-reqs">
+                <li><strong>Strong portfolio of previous pixel art work</strong> (required)</li>
+                <li>Experience creating 2D textures or sprite work &mdash; armour, clothing, or character skins preferred</li>
+                <li>Familiarity with Destiny's design and aesthetic</li>
+              </ul>
+            </div>
+            <div class="role-side">
+              <a class="role-apply-btn" href="https://addlinkhere.com" target="_blank" rel="noopener">Apply Here</a>
+              <p class="role-fineprint">Applications are reviewed within 1&ndash;3 weeks. We'll reach out via Discord DM &mdash; please also DM @CNTDarthgaming or ping in the server once you've applied so we see it quicker.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PIXEL ARTIST - UI -->
+      <div class="role-item" data-open="false">
+        <button class="role-trigger" aria-expanded="false" aria-controls="panel-pixel-ui">
+          <span class="role-mark" aria-hidden="true"><span>&#9670;</span></span>
+          <span class="role-heading">
+            <span class="role-name">Pixel Artist &mdash; UI &amp; Menus</span>
+            <span class="role-summary">2D textures for menus and interface elements</span>
+          </span>
+          <span class="role-meta">
+            <span class="role-openings">1 Position</span>
+            <span class="role-chevron" aria-hidden="true">&#9660;</span>
+          </span>
+        </button>
+        <div class="role-panel" id="panel-pixel-ui">
+          <div class="role-panel-inner">
+            <div class="role-block">
+              <h3>What The Role Involves</h3>
+              <p>Creating 2D textures for in-game menus and UI elements, consistent with Destiny's visual identity brought into Minecraft's aesthetic.</p>
+              <h3 style="margin-top:0.5rem;">Requirements</h3>
+              <ul class="role-reqs">
+                <li><strong>Strong portfolio of previous pixel art / UI work</strong> (required)</li>
+                <li>Experience designing interface or menu elements</li>
+                <li>Familiarity with Destiny's design and aesthetic</li>
+              </ul>
+            </div>
+            <div class="role-side">
+              <div class="role-limited"><strong>Limited work right now.</strong> Everything is still changing rapidly, so there isn't much for this role to do at the moment. More work opens up as we approach release.</div>
+              <a class="role-apply-btn" href="https://addlinkhere.com" target="_blank" rel="noopener">Apply Here</a>
+              <p class="role-fineprint">Applications are reviewed within 1&ndash;3 weeks. We'll reach out via Discord DM &mdash; please also DM @CNTDarthgaming or ping in the server once you've applied so we see it quicker.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- NARRATIVE WRITER -->
+      <div class="role-item" data-open="false">
+        <button class="role-trigger" aria-expanded="false" aria-controls="panel-writer">
+          <span class="role-mark" aria-hidden="true"><span>&#9670;</span></span>
+          <span class="role-heading">
+            <span class="role-name">Narrative Writer</span>
+            <span class="role-summary">Writing the campaign and narrative across the whole project</span>
+          </span>
+          <span class="role-meta">
+            <span class="role-openings">1 Position</span>
+            <span class="role-chevron" aria-hidden="true">&#9660;</span>
+          </span>
+        </button>
+        <div class="role-panel" id="panel-writer">
+          <div class="role-panel-inner">
+            <div class="role-block">
+              <h3>What The Role Involves</h3>
+              <p>Writing the campaign and any narrative content throughout the entire project &mdash; missions, side missions, backstory, and everything in between. You'll work from existing concept art and previously written narrative material, and alongside the lead to shape it toward the overall vision &mdash; with a lot of creative freedom otherwise. This is one of the most creatively open roles on the team.</p>
+              <h3 style="margin-top:0.5rem;">Requirements</h3>
+              <ul class="role-reqs">
+                <li><strong>Portfolio of previous writing work</strong> (required)</li>
+                <li>Strong grasp of the Destiny universe, tone, and storytelling style</li>
+                <li>Comfortable writing collaboratively and taking direction alongside your own ideas</li>
+              </ul>
+            </div>
+            <div class="role-side">
+              <a class="role-apply-btn" href="https://addlinkhere.com" target="_blank" rel="noopener">Apply Here</a>
+              <p class="role-fineprint">Applications are reviewed within 1&ndash;3 weeks. We'll reach out via Discord DM &mdash; please also DM @CNTDarthgaming or ping in the server once you've applied so we see it quicker.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<script>
+(function() {
+  var items = Array.from(document.querySelectorAll('.role-item'));
+
+  items.forEach(function(item) {
+    var trigger = item.querySelector('.role-trigger');
+    var panel   = item.querySelector('.role-panel');
+    var inner   = item.querySelector('.role-panel-inner');
+
+    trigger.addEventListener('click', function() {
+      var isOpen = item.getAttribute('data-open') === 'true';
+
+      if (isOpen) {
+        panel.style.height = panel.scrollHeight + 'px';
+        requestAnimationFrame(function() { panel.style.height = '0px'; });
+        item.setAttribute('data-open', 'false');
+        trigger.setAttribute('aria-expanded', 'false');
+      } else {
+        item.setAttribute('data-open', 'true');
+        trigger.setAttribute('aria-expanded', 'true');
+        panel.style.height = inner.getBoundingClientRect().height + 'px';
+        panel.addEventListener('transitionend', function handler() {
+          if (item.getAttribute('data-open') === 'true') panel.style.height = 'auto';
+          panel.removeEventListener('transitionend', handler);
+        });
+      }
+    });
+  });
+
+  window.addEventListener('resize', function() {
+    items.forEach(function(item) {
+      if (item.getAttribute('data-open') === 'true') {
+        var panel = item.querySelector('.role-panel');
+        var inner = item.querySelector('.role-panel-inner');
+        panel.style.height = inner.getBoundingClientRect().height + 'px';
+      }
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
