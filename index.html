@@ -404,7 +404,8 @@
     background: var(--gold); color: #080a10;
     text-decoration: none;
     padding: 0.95rem 3rem;
-    position: relative; overflow: hidden;
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 9999; overflow: hidden;
   }
   .hiring-banner-inner {
     max-width: 1200px; margin: 0 auto;
@@ -441,8 +442,6 @@
 
 <a class="skip-link" href="#main-content">Skip to main content</a>
 
-<div id="nav-placeholder"></div>
-
 <a class="hiring-banner" href="/destiny-playground/roles.html" aria-label="We're now hiring - view open volunteer roles">
   <span class="hiring-banner-inner">
     <span class="hiring-banner-pip" aria-hidden="true"></span>
@@ -451,6 +450,45 @@
     <span class="hiring-banner-arrow" aria-hidden="true">&#8594;</span>
   </span>
 </a>
+
+<div id="nav-placeholder"></div>
+
+<script>
+  /* Pushes the injected fixed nav down below the hiring banner, and adds
+     matching top padding to the page so content isn't hidden behind either. */
+  (function () {
+    var adjusted = false;
+    function adjustForBanner() {
+      var banner = document.querySelector('.hiring-banner');
+      var navPlaceholder = document.getElementById('nav-placeholder');
+      var navEl = navPlaceholder ? navPlaceholder.firstElementChild : null;
+      if (!banner) return;
+      var bannerHeight = banner.offsetHeight;
+
+      if (navEl) {
+        var navPosition = getComputedStyle(navEl).position;
+        if (navPosition === 'fixed' || navPosition === 'sticky') {
+          navEl.style.top = bannerHeight + 'px';
+        }
+      }
+
+      if (!adjusted) {
+        var currentPadding = parseFloat(getComputedStyle(document.body).paddingTop) || 0;
+        document.body.style.paddingTop = (currentPadding + bannerHeight) + 'px';
+        adjusted = true;
+      }
+    }
+
+    window.addEventListener('load', adjustForBanner);
+    window.addEventListener('resize', adjustForBanner);
+
+    var navPlaceholderEl = document.getElementById('nav-placeholder');
+    if (navPlaceholderEl && window.MutationObserver) {
+      var mo = new MutationObserver(adjustForBanner);
+      mo.observe(navPlaceholderEl, { childList: true, subtree: true });
+    }
+  })();
+</script>
 
 <main id="main-content">
 
