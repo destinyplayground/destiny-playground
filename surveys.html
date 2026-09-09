@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Destiny Playground</title>
+<meta name="description" content="Take part in Destiny Playground community surveys and help shape the direction of the project.">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/destiny-playground/css/styles.css">
+<link rel="stylesheet" href="/destiny-playground/css/nav.css">
+<link rel="stylesheet" href="/destiny-playground/css/a11y-overrides.css">
+<style>
+
+  /* - SURVEYS PAGE HEADER - */
+  .surveys-header {
+    padding: 9rem 3rem 3.5rem;
+    max-width: 1200px; margin: 0 auto;
+    text-align: left;
+  }
+  .surveys-eyebrow {
+    font-size: 0.72rem; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.4rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .surveys-eyebrow::after {
+    content: ''; flex: 1; height: 0.5px; background: var(--border); max-width: 200px;
+  }
+  .surveys-h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(2rem, 4.4vw, 3.2rem);
+    font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase;
+    color: var(--white); margin-bottom: 1.4rem; max-width: 780px;
+  }
+  .surveys-lede {
+    font-size: 1.05rem; line-height: 1.75; color: var(--body-text);
+    font-weight: 300; max-width: 680px;
+  }
+
+  /* - PRIVACY / GENERAL INFO STRIP - */
+  .surveys-baseline { max-width: 1200px; margin: 0 auto; padding: 0 3rem 4.5rem; }
+  .baseline-box {
+    border: 0.5px solid var(--border); border-left: 3px solid var(--gold-dim);
+    background: rgba(255,255,255,0.02);
+    padding: 2rem 2.4rem;
+  }
+  .baseline-box h2 {
+    font-family: 'Orbitron', sans-serif; font-size: 0.85rem; font-weight: 600;
+    letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold);
+    margin-bottom: 1.3rem;
+  }
+  .baseline-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.9rem 2.5rem;
+    list-style: none;
+  }
+  .baseline-grid li {
+    font-size: 0.92rem; line-height: 1.6; color: var(--body-text);
+    font-weight: 300; padding-left: 1.1rem; position: relative;
+  }
+  .baseline-grid li::before {
+    content: ''; position: absolute; left: 0; top: 0.55em;
+    width: 5px; height: 5px; background: var(--gold-dim);
+    clip-path: polygon(1.5px 0%, 100% 0%, calc(100% - 1.5px) 100%, 0% 100%);
+  }
+  .baseline-secondary { margin-top: 1.6rem; }
+  .baseline-secondary h2 { margin-bottom: 1rem; }
+  .baseline-secondary p {
+    font-size: 0.92rem; line-height: 1.7; color: var(--body-text); font-weight: 300;
+    margin-bottom: 0.9rem;
+  }
+  .baseline-secondary p:last-child { margin-bottom: 0; }
+  .baseline-secondary a { color: var(--gold); text-decoration: none; border-bottom: 0.5px solid var(--gold-dim); }
+  .baseline-secondary a:hover { color: #59aae3; border-color: #59aae3; }
+
+  /* - SURVEYS LIST - */
+  .surveys-list-section { max-width: 1200px; margin: 0 auto; padding: 0 3rem 7rem; }
+  .surveys-list { display: flex; flex-direction: column; gap: 2rem; }
+
+  .survey-card {
+    border: 0.5px solid var(--border);
+    background: rgba(255,255,255,0.02);
+    padding: 2.4rem 2.6rem;
+    position: relative;
+  }
+  .survey-card.is-current { border-color: var(--gold-dim); }
+  .survey-card.is-current::before {
+    content: 'OPEN NOW';
+    position: absolute; top: 0; right: 0;
+    font-family: 'Rajdhani', sans-serif; font-size: 0.68rem; font-weight: 600;
+    letter-spacing: 0.2em; color: #080a10; background: var(--gold);
+    padding: 0.4rem 1rem;
+    clip-path: polygon(10px 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+
+  .survey-top {
+    display: flex; align-items: baseline; justify-content: space-between; gap: 1.5rem;
+    flex-wrap: wrap; margin-bottom: 1rem;
+  }
+  .survey-name {
+    font-family: 'Orbitron', sans-serif; font-size: clamp(1.1rem, 2vw, 1.5rem);
+    font-weight: 600; letter-spacing: 0.03em; text-transform: uppercase;
+    color: var(--white);
+  }
+  .survey-status {
+    font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--muted); white-space: nowrap;
+  }
+  .survey-status.status-open { color: var(--gold); }
+
+  .survey-desc {
+    font-size: 0.95rem; line-height: 1.75; color: var(--body-text); font-weight: 300;
+    max-width: 760px; margin-bottom: 1.4rem;
+  }
+
+  .survey-meta {
+    display: flex; flex-wrap: wrap; gap: 0.6rem 2.4rem; margin-bottom: 1.6rem;
+  }
+  .survey-meta-item { font-size: 0.85rem; color: var(--muted); font-weight: 300; }
+  .survey-meta-item strong { color: var(--body-text); font-weight: 500; }
+
+  .survey-founder {
+    border: 0.5px solid rgba(77,155,214,0.35); background: rgba(77,155,214,0.05);
+    padding: 1rem 1.3rem; margin-bottom: 1.8rem; font-size: 0.85rem;
+    line-height: 1.65; color: var(--body-text); font-weight: 300;
+  }
+  .survey-founder strong { color: var(--gold); font-weight: 600; }
+
+  .survey-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.7rem;
+    padding: 0.95rem 2.2rem;
+    font-family: 'Rajdhani', sans-serif; font-size: 0.8rem; font-weight: 600;
+    letter-spacing: 0.24em; text-transform: uppercase;
+    background: var(--gold); color: #080a10; text-decoration: none; border: none; cursor: pointer;
+    clip-path: polygon(14px 0%, 100% 0%, calc(100% - 14px) 100%, 0% 100%);
+    transition: all 0.2s; width: fit-content;
+  }
+  .survey-btn:hover { background: #59aae3; transform: translateY(-1px); }
+  .survey-btn.is-closed {
+    background: none; border: 0.5px solid var(--border); color: var(--muted);
+    cursor: default; pointer-events: none;
+  }
+
+  @media (max-width: 780px) {
+    .surveys-header { padding: 7.5rem 1.5rem 2.5rem; }
+    .surveys-baseline { padding: 0 1.5rem 3rem; }
+    .baseline-grid { grid-template-columns: 1fr; }
+    .baseline-box { padding: 1.6rem 1.5rem; }
+    .surveys-list-section { padding: 0 1.5rem 4rem; }
+    .survey-card { padding: 1.8rem 1.6rem; }
+    .survey-meta { gap: 0.5rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+<div id="nav-placeholder"></div>
+
+<main id="main-content">
+
+  <!-- HEADER -->
+  <section class="surveys-header">
+    <div class="surveys-eyebrow">Community Research</div>
+    <h1 class="surveys-h1">Help Shape Destiny Playground</h1>
+    <p class="surveys-lede">We run periodic community surveys to guide development, gathering opinions on gameplay systems, content, and long-term direction straight from players. Every response feeds directly into what gets built. Below are our current and past surveys.</p>
+  </section>
+
+  <!-- GENERAL INFO -->
+  <section class="surveys-baseline">
+    <div class="baseline-box">
+      <h2>How Our Surveys Work</h2>
+      <ul class="baseline-grid">
+        <li>Open to everyone, including non-Destiny players unless stated otherwise</li>
+        <li>Every question is optional - answer as much or as little as you like</li>
+        <li>Fully anonymous unless you choose to share contact info</li>
+        <li>Used solely for internal design &amp; development research</li>
+        <li>Data is never shared outside of the staff team</li>
+        <li>You can complete a survey any time it's marked as open</li>
+      </ul>
+      <div class="baseline-secondary">
+        <h2>Data &amp; Privacy</h2>
+        <p>All responses are anonymous unless you voluntarily provide contact information. Your answers are used solely for design and development research purposes, and data is never shared outside of the staff team.</p>
+        <p>If you'd like to retract your details after completing a survey, email us at <a href="mailto:thedestinyplayground@gmail.com">thedestinyplayground@gmail.com</a> and we'll delete your user details.</p>
+        <p>Want the survey link the moment a new one drops? Join our <a href="https://discord.gg/Ah6Jt5KVPH" target="_blank" rel="noopener">Discord server</a> - new surveys are always announced and pinned there first.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SURVEYS LIST -->
+  <section class="surveys-list-section" aria-labelledby="surveys-list-heading">
+    <h2 class="section-title" id="surveys-list-heading" style="margin-bottom:2rem;">All Surveys</h2>
+
+    <div class="surveys-list">
+
+      <!-- SURVEY 1.1 - CURRENT -->
+      <div class="survey-card is-current">
+        <div class="survey-top">
+          <span class="survey-name">Destiny Playground Survey 1.1</span>
+          <span class="survey-status status-open">Open Now</span>
+        </div>
+        <p class="survey-desc">
+          Survey 1.1 continues our community feedback initiative, this round focused on opinions covering Destiny 1 &amp; Destiny 2 activities, past and present. Each survey in this series covers a different aspect of development as the project evolves.
+          Familiarity with Destiny 1 and/or Destiny 2 is required for this survey - if you haven't played Destiny, you may not be able to fully complete it.
+        </p>
+        <div class="survey-meta">
+          <span class="survey-meta-item"><strong>Time:</strong> ~5-20 minutes</span>
+          <span class="survey-meta-item"><strong>Open from:</strong> 9th September</span>
+          <span class="survey-meta-item"><strong>Audience:</strong> Destiny 1/2 players</span>
+        </div>
+        <div class="survey-founder">
+          <strong>Founder Access Available:</strong> One respondent to this survey will be selected to receive Founders status. Join the <a href="https://discord.gg/Ah6Jt5KVPH" target="_blank" rel="noopener" style="color: var(--gold);">Discord</a> to find out more - winner revealed 18th September 2026.
+        </div>
+        <a class="survey-btn" href="https://forms.cloud.microsoft/r/PHg3xYjeQQ" target="_blank" rel="noopener">Fill In Survey 1.1</a>
+      </div>
+
+      <!-- SURVEY 1.0 - PAST -->
+      <div class="survey-card">
+        <div class="survey-top">
+          <span class="survey-name">Destiny Playground Survey 1.0</span>
+          <span class="survey-status">Still Open</span>
+        </div>
+        <p class="survey-desc">
+          Our first official community survey, covering the core foundations of the project: what players want to see at launch, progression systems, live content ideas, and long-term direction. Open to everyone, including those unfamiliar with Destiny-style games - context is provided throughout.
+        </p>
+        <div class="survey-meta">
+          <span class="survey-meta-item"><strong>Time:</strong> ~10-30 minutes</span>
+          <span class="survey-meta-item"><strong>Launched:</strong> 3rd March 2026</span>
+          <span class="survey-meta-item"><strong>Audience:</strong> Everyone</span>
+        </div>
+        <a class="survey-btn" href="https://forms.cloud.microsoft/r/gJdn0F1EZp" target="_blank" rel="noopener">Fill In Survey 1.0</a>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<div id="footer-placeholder"></div>
+<script src="/destiny-playground/js/shared.js"></script>
+
+</body>
+</html>
