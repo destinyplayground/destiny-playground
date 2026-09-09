@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Open Roles - Destiny Playground</title>
+<title>Destiny Playground</title>
 <meta name="description" content="Join the Destiny Playground team. Volunteer roles in server development, building, modelling, pixel art, and narrative writing.">
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/destiny-playground/css/styles.css">
@@ -63,9 +63,37 @@
     width: 5px; height: 5px; background: var(--gold-dim);
     clip-path: polygon(1.5px 0%, 100% 0%, calc(100% - 1.5px) 100%, 0% 100%);
   }
-  .baseline-note {
-    margin-top: 1.4rem; padding-top: 1.2rem; border-top: 0.5px solid var(--border);
-    font-size: 0.82rem; line-height: 1.65; color: var(--muted); font-weight: 300;
+  .baseline-secondary {
+    margin-top: 1.6rem;
+  }
+  .baseline-secondary h2 { margin-bottom: 1rem; }
+  .baseline-secondary p {
+    font-size: 0.92rem; line-height: 1.7; color: var(--body-text); font-weight: 300;
+    margin-bottom: 0.9rem;
+  }
+  .baseline-secondary p:last-child { margin-bottom: 0; }
+
+  /* - PER-ROLE GENERAL REQUIREMENTS - */
+  .role-general {
+    margin-bottom: 1.8rem;
+  }
+  .role-general h3 {
+    font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 0.9rem;
+  }
+  .role-general ul {
+    list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem 1.5rem;
+  }
+  .role-general li {
+    font-size: 0.85rem; line-height: 1.5; color: var(--muted); font-weight: 300;
+    padding-left: 1.1rem; position: relative;
+  }
+  .role-general li::before {
+    content: ''; position: absolute; left: 0; top: 0.5em;
+    width: 4px; height: 4px; background: var(--gold-dim); border-radius: 50%;
+  }
+  @media (max-width: 780px) {
+    .role-general ul { grid-template-columns: 1fr; }
   }
 
   /* - ROLES LIST (ACCORDION) - */
@@ -239,7 +267,12 @@
         <li>Genuine dedication &mdash; development is slow-moving and largely unseen right now, and sticking with it is what keeps things progressing</li>
         <li>Not currently working on another Destiny-in-Minecraft project</li>
       </ul>
-      <p class="baseline-note">This is a volunteer project, run in a relaxed way &mdash; but communicating when you're unable to work matters. All roles begin with roughly a one-month probationary period while we assess skills and fit, and extended or repeated inactivity may result in removal from the team at any point. Responses generated with AI assistance will not be considered for any role.</p>
+      <div class="baseline-secondary">
+        <h2>Good To Know Before You Apply</h2>
+        <p>This is a volunteer project and the environment is relaxed &mdash; but communication is what keeps it running. Let us know when you're unable to work; extended or repeated inactivity may result in removal from the team at any point.</p>
+        <p>All roles begin with roughly a one-month probationary period, during which we're assessing skills and fit and may remove someone if it's not working out. After that, you're in.</p>
+        <p>Responses generated with AI assistance will not be considered for any role, at any stage of the application.</p>
+      </div>
     </div>
   </section>
 
@@ -268,7 +301,18 @@
               <h3>What The Role Involves</h3>
               <p>You'll be building out the technical side of the server &mdash; coding weapons, armour, items, enemies, missions and the systems that hold everything together. This is a coding role rather than a design one, so clear, regular communication with the lead is essential to avoid work clashing or duplicating.</p>
               <p>You'll also be expected to diagnose and fix bugs as they come up, and this role continues on past launch &mdash; there's ongoing work in maintaining and expanding what's already built.</p>
-              <h3 style="margin-top:0.5rem;">Requirements</h3>
+              <div class="role-general">
+                <h3>General Requirements (All Roles)</h3>
+                <ul>
+                  <li>Age 18+</li>
+                  <li>Knowledge of the Destiny universe</li>
+                  <li>Good communication and professionalism</li>
+                  <li>Genuine dedication to the project</li>
+                  <li>Not on another Destiny-in-Minecraft project</li>
+                  <li>Portfolio of relevant previous work</li>
+                </ul>
+              </div>
+              <h3>Role-Specific Requirements</h3>
               <ul class="role-reqs">
                 <li><strong>Experience with MythicMobs</strong> (minimum requirement)</li>
                 <li>Access to Destiny 2 (Destiny 1 is a bonus, not required)</li>
@@ -307,7 +351,18 @@
               <h3>What The Role Involves</h3>
               <p>Recreating Destiny locations within Minecraft to accurate scale, faithful to the source material, and detailed enough to hold up in a real server environment. You'll need to work to a detailed level without being wholly dependent on external tools &mdash; builds created solely through importing tools or Axiom won't be accepted.</p>
               <p>Be mindful of the existing building styles and scale already established on the server, so your work sits naturally alongside everyone else's.</p>
-              <h3 style="margin-top:0.5rem;">Requirements</h3>
+              <div class="role-general">
+                <h3>General Requirements (All Roles)</h3>
+                <ul>
+                  <li>Age 18+</li>
+                  <li>Knowledge of the Destiny universe</li>
+                  <li>Good communication and professionalism</li>
+                  <li>Genuine dedication to the project</li>
+                  <li>Not on another Destiny-in-Minecraft project</li>
+                  <li>Portfolio of relevant previous work</li>
+                </ul>
+              </div>
+              <h3>Role-Specific Requirements</h3>
               <ul class="role-reqs">
                 <li><strong>Portfolio of at least 5 strong builds</strong> (required) &mdash; 10&ndash;20+ strengthens your application further</li>
                 <li>Destiny builds in your portfolio are valued more highly than non-Destiny work</li>
@@ -352,7 +407,18 @@
             <div class="role-block">
               <h3>What The Role Involves</h3>
               <p>Modelling enemies within Minecraft and Blockbench to accurate scale, and animating them to request, consistent with the project's visual direction and to a level of detail consistent with other models.</p>
-              <h3 style="margin-top:0.5rem;">Requirements</h3>
+              <div class="role-general">
+                <h3>General Requirements (All Roles)</h3>
+                <ul>
+                  <li>Age 18+</li>
+                  <li>Knowledge of the Destiny universe</li>
+                  <li>Good communication and professionalism</li>
+                  <li>Genuine dedication to the project</li>
+                  <li>Not on another Destiny-in-Minecraft project</li>
+                  <li>Portfolio of relevant previous work</li>
+                </ul>
+              </div>
+              <h3>Role-Specific Requirements</h3>
               <ul class="role-reqs">
                 <li><strong>Strong portfolio of previous modelling work</strong> (required)</li>
                 <li>Experience using Blockbench, including animation</li>
@@ -388,12 +454,27 @@
           <div class="role-panel-inner">
             <div class="role-block">
               <h3>What The Role Involves</h3>
-              <p>Creating 2D armour textures for players and enemies within Minecraft, consistent with Destiny's visual direction. This means working faithfully from Destiny reference material and producing textures that hold up alongside the rest of the project's assets.</p>
-              <h3 style="margin-top:0.5rem;">Requirements</h3>
+              <p>Creating 2D armour textures for players and enemies within Minecraft, consistent with Destiny's visual direction. This means working faithfully from Destiny reference material &mdash; translating real armour sets, materials, and colour schemes into Minecraft's texture format without losing what makes them recognisable.</p>
+              <p>You'll be producing a steady stream of these across both player and enemy models, so textures need to hold up consistently alongside everyone else's work, not just as one-off standout pieces.</p>
+              <div class="role-general">
+                <h3>General Requirements (All Roles)</h3>
+                <ul>
+                  <li>Age 18+</li>
+                  <li>Knowledge of the Destiny universe</li>
+                  <li>Good communication and professionalism</li>
+                  <li>Genuine dedication to the project</li>
+                  <li>Not on another Destiny-in-Minecraft project</li>
+                  <li>Portfolio of relevant previous work</li>
+                </ul>
+              </div>
+              <h3>Role-Specific Requirements</h3>
               <ul class="role-reqs">
                 <li><strong>Strong portfolio of previous pixel art work</strong> (required)</li>
                 <li>Experience creating 2D textures or sprite work &mdash; armour, clothing, or character skins preferred</li>
+                <li>Comfortable working within Minecraft's texture resolution and UV mapping constraints</li>
+                <li>Good eye for colour, shading, and translating real-world materials into pixel form</li>
                 <li>Familiarity with Destiny's design and aesthetic</li>
+                <li class="is-bonus">Bonus: experience texturing custom Minecraft item/armour models specifically</li>
               </ul>
             </div>
             <div class="role-side">
@@ -421,11 +502,25 @@
           <div class="role-panel-inner">
             <div class="role-block">
               <h3>What The Role Involves</h3>
-              <p>Creating 2D textures for in-game menus and UI elements, consistent with Destiny's visual identity brought into Minecraft's aesthetic.</p>
-              <h3 style="margin-top:0.5rem;">Requirements</h3>
+              <p>Creating 2D textures for in-game menus and UI elements, consistent with Destiny's visual identity brought into Minecraft's aesthetic. This covers things like menu backgrounds, icons, buttons, and inventory/GUI elements &mdash; giving the server's interfaces the same identity as everything else in the project.</p>
+              <p>This role sits alongside the armour/textures pixel artist but is focused entirely on interface work rather than character or enemy assets.</p>
+              <div class="role-general">
+                <h3>General Requirements (All Roles)</h3>
+                <ul>
+                  <li>Age 18+</li>
+                  <li>Knowledge of the Destiny universe</li>
+                  <li>Good communication and professionalism</li>
+                  <li>Genuine dedication to the project</li>
+                  <li>Not on another Destiny-in-Minecraft project</li>
+                  <li>Portfolio of relevant previous work</li>
+                </ul>
+              </div>
+              <h3>Role-Specific Requirements</h3>
               <ul class="role-reqs">
                 <li><strong>Strong portfolio of previous pixel art / UI work</strong> (required)</li>
-                <li>Experience designing interface or menu elements</li>
+                <li>Experience designing interface, icon, or menu elements</li>
+                <li>Understanding of Minecraft's GUI/texture constraints (resolution, 9-slice scaling, etc.)</li>
+                <li>Good eye for layout, contrast, and readability at small sizes</li>
                 <li>Familiarity with Destiny's design and aesthetic</li>
               </ul>
             </div>
@@ -455,12 +550,73 @@
           <div class="role-panel-inner">
             <div class="role-block">
               <h3>What The Role Involves</h3>
-              <p>Writing the campaign and any narrative content throughout the entire project &mdash; missions, side missions, backstory, and everything in between. You'll work from existing concept art and previously written narrative material, and alongside the lead to shape it toward the overall vision &mdash; with a lot of creative freedom otherwise. This is one of the most creatively open roles on the team.</p>
-              <h3 style="margin-top:0.5rem;">Requirements</h3>
+              <p>Writing the campaign and any narrative content throughout the entire project &mdash; missions, side missions, backstory, and everything in between. You'll work from existing concept art and previously written narrative material, building outward from what's already established rather than starting from a blank page.</p>
+              <p>You'll work closely alongside the lead to keep everything aligned with the overall vision, but otherwise have a lot of creative freedom in how missions and story beats actually come together &mdash; this is one of the most creatively open roles on the team, and touches almost every other part of the project (missions the builders' locations will host, dialogue for the enemies the modeller creates, and so on).</p>
+              <div class="role-general">
+                <h3>General Requirements (All Roles)</h3>
+                <ul>
+                  <li>Age 18+</li>
+                  <li>Knowledge of the Destiny universe</li>
+                  <li>Good communication and professionalism</li>
+                  <li>Genuine dedication to the project</li>
+                  <li>Not on another Destiny-in-Minecraft project</li>
+                  <li>Portfolio of relevant previous work</li>
+                </ul>
+              </div>
+              <h3>Role-Specific Requirements</h3>
               <ul class="role-reqs">
-                <li><strong>Portfolio of previous writing work</strong> (required)</li>
-                <li>Strong grasp of the Destiny universe, tone, and storytelling style</li>
-                <li>Comfortable writing collaboratively and taking direction alongside your own ideas</li>
+                <li><strong>Portfolio of previous writing work</strong> (required) &mdash; scripts, short stories, quest/mission writing, or similar</li>
+                <li>Strong grasp of the Destiny universe, its tone, lore, and storytelling style</li>
+                <li>Able to write both large-scale campaign arcs and smaller mission/side-mission content</li>
+                <li>Comfortable writing collaboratively, taking direction, and revising work to fit the wider project</li>
+                <li>Consistent voice and attention to continuity across a large, evolving body of lore</li>
+                <li class="is-bonus">Bonus: experience writing for games specifically (quest design, branching dialogue, environmental storytelling)</li>
+              </ul>
+            </div>
+            <div class="role-side">
+              <a class="role-apply-btn" href="https://addlinkhere.com" target="_blank" rel="noopener">Apply Here</a>
+              <p class="role-fineprint">Applications are reviewed within 1&ndash;3 weeks. We'll reach out via Discord DM &mdash; please also DM @CNTDarthgaming or ping in the server once you've applied so we see it quicker.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- OPEN APPLICATION -->
+      <div class="role-item" data-open="false">
+        <button class="role-trigger" aria-expanded="false" aria-controls="panel-open">
+          <span class="role-mark" aria-hidden="true"><span>&#9670;</span></span>
+          <span class="role-heading">
+            <span class="role-name">Something Else?</span>
+            <span class="role-summary">Open application for anyone with a skill or idea that doesn't fit a listed role</span>
+          </span>
+          <span class="role-meta">
+            <span class="role-openings">Open</span>
+            <span class="role-chevron" aria-hidden="true">&#9660;</span>
+          </span>
+        </button>
+        <div class="role-panel" id="panel-open">
+          <div class="role-panel-inner">
+            <div class="role-block">
+              <h3>What The Role Involves</h3>
+              <p>If you think you've got something to contribute that isn't covered by the roles above, this is for you. Rather than fixed requirements, this application asks you to tell us directly: what you'd want to do, why, what that would actually look like in practice, and any evidence or portfolio you can share to back it up.</p>
+              <p>There's no guarantee a spot exists for this yet &mdash; but if what you're offering is a genuine fit for the project, we'll figure out where it fits.</p>
+              <div class="role-general">
+                <h3>General Requirements (All Roles)</h3>
+                <ul>
+                  <li>Age 18+</li>
+                  <li>Knowledge of the Destiny universe</li>
+                  <li>Good communication and professionalism</li>
+                  <li>Genuine dedication to the project</li>
+                  <li>Not on another Destiny-in-Minecraft project</li>
+                  <li>Evidence/portfolio of relevant previous work</li>
+                </ul>
+              </div>
+              <h3>What The Form Will Ask</h3>
+              <ul class="role-reqs">
+                <li>What you'd want to do for the project</li>
+                <li>Why you want to do it</li>
+                <li>What that would look like in practice</li>
+                <li>Evidence or a portfolio of relevant previous work</li>
               </ul>
             </div>
             <div class="role-side">
