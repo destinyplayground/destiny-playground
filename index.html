@@ -398,6 +398,43 @@
     .tribute-tl-stat { padding: 0 1rem; }
     .tribute-tl-arrow { font-size: 0.7rem; }
   }
+  /* - NOW HIRING BANNER (TOP OF PAGE) - */
+  .hiring-banner {
+    display: block; width: 100%;
+    background: var(--gold); color: #080a10;
+    text-decoration: none;
+    padding: 0.95rem 3rem;
+    position: relative; overflow: hidden;
+  }
+  .hiring-banner-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: center; gap: 1rem;
+    flex-wrap: wrap; text-align: center;
+  }
+  .hiring-banner-pip {
+    flex-shrink: 0; width: 7px; height: 7px; border-radius: 50%;
+    background: #080a10;
+    animation: hiring-pip-pulse 2.2s ease-in-out infinite;
+  }
+  @keyframes hiring-pip-pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.35; }
+  }
+  .hiring-banner-label {
+    font-family: 'Orbitron', sans-serif; font-size: 0.78rem; font-weight: 700;
+    letter-spacing: 0.22em; text-transform: uppercase;
+  }
+  .hiring-banner-text {
+    font-family: 'Rajdhani', sans-serif; font-size: 0.9rem; font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+  .hiring-banner-arrow { font-size: 0.85rem; transition: transform 0.2s; }
+  .hiring-banner:hover .hiring-banner-arrow { transform: translateX(4px); }
+  .hiring-banner:hover { background: #59aae3; }
+  @media (max-width: 600px) {
+    .hiring-banner { padding: 0.9rem 1.5rem; }
+    .hiring-banner-text { display: none; }
+  }
 </style>
 </head>
 <body>
@@ -405,6 +442,15 @@
 <a class="skip-link" href="#main-content">Skip to main content</a>
 
 <div id="nav-placeholder"></div>
+
+<a class="hiring-banner" href="/destiny-playground/roles.html" aria-label="We're now hiring - view open volunteer roles">
+  <span class="hiring-banner-inner">
+    <span class="hiring-banner-pip" aria-hidden="true"></span>
+    <span class="hiring-banner-label">Now Hiring</span>
+    <span class="hiring-banner-text">We're expanding the team &mdash; see open volunteer roles</span>
+    <span class="hiring-banner-arrow" aria-hidden="true">&#8594;</span>
+  </span>
+</a>
 
 <main id="main-content">
 
@@ -425,7 +471,8 @@
     <p class="hero-desc">An in-development fan-made Minecraft server built in the world of Destiny. New destinations, new lore, a full campaign - rebuilt from scratch by the community, for the community. No mods required. Join the community and keep up to date with development.</p>
 
     <div class="hero-ctas">
-      <a class="hero-cta-btn hero-cta-btn--primary" href="/destiny-playground/getting-started.html">Development Info</a>
+      <a class="hero-cta-btn hero-cta-btn--primary" href="/destiny-playground/roles.html">Now Hiring &mdash; View Roles</a>
+      <a class="hero-cta-btn hero-cta-btn--secondary" href="/destiny-playground/getting-started.html">Development Info</a>
       <a class="hero-cta-btn hero-cta-btn--secondary" href="/destiny-playground/news.html">Latest News</a>
     </div>
   </section>
