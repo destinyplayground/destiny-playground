@@ -2,9 +2,6 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  /* NOTE: variable names kept as --gold/--gold-dim on purpose even though the
-     values are now blue, so nav.css and any other file that reads these
-     custom properties re-themes automatically without needing to be touched. */
   --gold:       #4d9bd6;  /* primary accent - steel/ice blue */
   --gold-dim:   #2f6388;  /* dim accent - deep navy-blue, borders/dividers */
   --white:      #e4eaf2;  /* headings - cool near-white */
@@ -13,7 +10,6 @@
   --dark:       #080a10;  /* background - cool navy-black */
   --border:     rgba(77,155,214,0.2);
 
-  /* Semantic aliases for future edits - same values, clearer names */
   --accent:      var(--gold);
   --accent-dim:  var(--gold-dim);
 }
