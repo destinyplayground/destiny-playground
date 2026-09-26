@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Destiny Playground</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/destiny-playground/css/styles.css">
+<link rel="stylesheet" href="/destiny-playground/css/article.css">
+<link rel="stylesheet" href="/destiny-playground/css/nav.css">
+<link rel="stylesheet" href="/destiny-playground/css/a11y-overrides.css">
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+<div style="height: 64px;"></div>
+
+<!-- BANNER -->
+<!-- swap src for the real banner art once you have it -->
+<div class="banner">
+  <img class="banner-img" src="/destiny-playground/images/dev-update-banners/banner_26.png" alt="Banner">
+  <div class="banner-overlay"></div>
+  <div class="banner-tag">Dev Update</div>
+</div>
+
+<!-- HEADER -->
+<div class="article-header">
+  <h1 class="article-title">Team Expansion, a New Recruit, and the UI is Finally Coming Together</h1>
+  <div class="article-meta">
+    <span class="meta-date">26 September, 2026</span>
+    <div class="meta-sep"></div>
+    <span class="meta-author">CNT Darthgaming</span>
+    <span class="meta-tag">Dev Update</span>
+  </div>
+</div>
+
+<!-- BODY -->
+<div class="article-body">
+
+  <p>Welcome back, Guardians. It's been a while since the last one of these - 8th August to now - so there's a fair bit to get through. Let's get into it.</p>
+
+  <h2>We're Expanding the Team</h2>
+
+  <p>For the past couple of months I've been working on a full overhaul of how we recruit and structure the volunteer team here. A lot of this project has been running through me - development, direction, community, all of it - largely because it's still early and most of the ideas are locked in my head. That's not sustainable, especially with my final year of university starting in just a few weeks, where I'll need to direct most of my time toward that and my final project.</p>
+
+  <p>So the goal is simple: spread the work out, reduce the bottleneck of everything running through one person, and build something that can keep moving even when I can't be glued to it constantly.</p>
+
+  <p>We've gone through every existing role listing and updated the requirements and expectations, and added several roles that didn't exist before. All of it now lives on a dedicated Roles page rather than being scattered across Discord messages.</p>
+
+  <p>Here's a proper look at what's actually open right now:</p>
+
+  <h3>Server Developer <span style="color:var(--gold-dim);font-weight:400;">- 1/2 positions</span></h3>
+  <p>This is a new one, and honestly one of the most important additions. You'd be coding the technical side of the server - weapons, armour, enemies, missions, and the systems holding it all together. Mostly working within .yml files and configuring existing plugins, but if you've got experience building custom plugins yourself, that's a huge plus for your application. This role also continues well past launch - there's ongoing maintenance and expansion work baked into it permanently.</p>
+
+  <h3>Builder <span style="color:var(--gold-dim);font-weight:400;">- 4/4 positions</span></h3>
+  <p>Recreating Destiny locations in Minecraft, built to accurate scale and faithful to the source material, detailed enough to actually hold up in a live server environment. Initial assignment options are The Last City, the EDZ, the Moon, or Mars - though you may be moved between locations later, nothing's fixed in stone. Builds leaning on import tools or Axiom alone won't be accepted; we want work that shows real hand-built skill.</p>
+
+  <h3>Modeller <span style="color:var(--gold-dim);font-weight:400;">- 1/1 position</span></h3>
+  <p>Modelling and animating enemies in Blockbench, to accurate scale and consistent with everything else already built. If you can also model weapons, or you've got MythicMobs/Nexo knowledge to help implement your own enemies directly into the server, both are strong bonuses on top of the base role.</p>
+
+  <h3>Pixel Artist - Armour and Textures <span style="color:var(--gold-dim);font-weight:400;">- 1/1 position</span></h3>
+  <p>Creating 2D armour textures for players and enemies, working faithfully from Destiny reference material - translating real armour sets, materials, and colour schemes into Minecraft's texture format without losing what makes them recognisable. This one's a steady stream of work rather than one-off pieces, so consistency matters as much as individual quality.</p>
+
+  <h3>Pixel Artist - UI and Menus <span style="color:var(--gold-dim);font-weight:400;">- 1/1 position</span></h3>
+  <p>The other new pixel art role, focused entirely on interface work - menu backgrounds, icons, buttons, inventory and GUI elements - rather than character or enemy assets. Worth being upfront: there isn't a huge amount of work for this role right now, since everything's still changing rapidly, but that opens up properly as we get closer to release.</p>
+
+  <h3>Narrative Writer <span style="color:var(--gold-dim);font-weight:400;">- 1/1 position</span></h3>
+  <p>Writing the campaign and narrative content across the entire project - missions, side missions, backstory, all of it. You'd be building outward from existing concept art and narrative material already established, working closely with me to keep everything aligned, but with a lot of genuine creative freedom in how missions and story beats come together. This one touches nearly every other part of the project - the locations builders create, dialogue for the enemies the modeller builds - so it's one of the most creatively open roles on the team.</p>
+
+  <h3>Something Else? <span style="color:var(--gold-dim);font-weight:400;">- Open</span></h3>
+  <p>If you think you've got something to offer that isn't covered by anything above, this one's for you. Instead of fixed requirements, the application just asks what you'd want to do, why, what that would actually look like in practice, and any evidence or portfolio to back it up. No guarantee a spot exists for it yet - but if it's a genuine fit, we'll figure out where it goes.</p>
+
+  <div class="survey-box">
+    <div class="survey-box-label">Full Details</div>
+    <div class="survey-box-title">All Roles and Requirements</div>
+    <p>Every role above has its full requirements, expectations, and an apply link on the Roles page.</p>
+    <a class="survey-btn" href="/destiny-playground/roles.html">&#9654; View Open Roles</a>
+  </div>
+
+  <p>Whether you've been thinking about applying for a while or this is the first you're hearing of it, now's a good time. Positions are first come, first served - we review applications in order and close a role once we've found a good fit, so don't sit on it if something above is calling to you.</p>
+
+  <h2>Welcome Yellowy - Our New Server Developer</h2>
+
+  <p>We've already got our first result from the new pipeline: Yellowy joins us as a Server Developer, and is currently underway building a custom weapon plugin from scratch.</p>
+
+  <p>I know how deep the current weapon system already goes, so I want to be upfront about this: the existing system is fully built on top of MythicMobs, which does limit what we can ultimately do with it. If there was ever a point to make the switch to something custom, with a much higher ceiling, this is it. The current work isn't wasted, either - it's directly informing how the new plugin gets built. I'm genuinely excited about this one, and I'll share clips and details as soon as there's something worth showing.</p>
+
+  <h2>Survey 1.1 - And a Founders Access Winner</h2>
+
+  <p>Survey 1.1 went out on the 9th of September. Where Survey 1.0 was about the big-picture stuff - launch content, progression, long-term direction - 1.1 narrowed in specifically on opinions around Destiny 1 and Destiny 2 activities, past and present. Thank you to everyone who took the time to fill it in, especially given this one needed actual Destiny familiarity to answer properly.</p>
+
+  <p>We also ran a Founders Access giveaway alongside it, open to anyone who completed the survey. That's now been decided - congratulations to <strong>chumsuke_</strong>, who's been awarded Founders Access for completing Survey 1.1. Details on what Founders status actually gets you are on the FAQ page, if you're curious what they just won.</p>
+
+  <p>Survey 1.0 is still open and welcomes everyone regardless of Destiny experience, if you haven't filled that one in yet.</p>
+
+  <h2>A Quiet Stretch on Streams</h2>
+
+  <p>There hasn't been a build stream in a while, and that's entirely down to spending that time on the team expansion instead, alongside preparing for my third and final year of university, which is going to demand a lot of focus for my final degree project. Streams will pick back up when they pick back up - no promises on timing, same as always.</p>
+
+  <h2>Campaign and UI Progress</h2>
+
+  <p>Behind the scenes there's been some campaign work, but the bigger news is the UI and menus - I've been working toward a final theme and design, and I believe I've actually found it.</p>
+
+  <p>Here are a couple of early concept sketches for some of the menus:</p>
+
+  <!-- add the 2 concept sketch images here, e.g. /destiny-playground/images/dev-updates/ui-concept-1.png -->
+  <p style="opacity:.6;font-size:.85rem;"><em>[Concept sketches go here]</em></p>
+
+  <p>And here's a collection of the menus in their mostly-complete state, which I'm genuinely happy with:</p>
+
+  <!-- add the 3 + 1 menu collection images here -->
+  <p style="opacity:.6;font-size:.85rem;"><em>[Menu collection images go here]</em></p>
+
+  <p>The last one is the Main Menu itself - the one I've been most hesitant to finalise since things keep changing, but I do believe this is close to the final version now. Since a lot of these haven't been talked about at all yet, here's a quick walkthrough of what each button actually does:</p>
+
+  <!-- swap src for /destiny-playground/images/dev-updates/main-menu.png -->
+  <p style="opacity:.6;font-size:.85rem;"><em>[Main Menu screenshot goes here]</em></p>
+
+  <ul style="color:var(--body-text);font-weight:300;line-height:1.85;font-size:.92rem;">
+    <li><strong>Season Pass</strong> - takes you to the Seasonal Hub, where you can access the pass itself, purchase the premium pass, and access seasonal challenges.</li>
+    <li><strong>Quests</strong> - access all your active quests.</li>
+    <li><strong>Bounties</strong> - access all your active bounties.</li>
+    <li><strong>Triumph</strong> - view your triumphs and claim triumph rewards.</li>
+    <li><strong>Titles</strong> - view and equip your earned titles.</li>
+    <li><strong>Collections</strong> - everything you've discovered across Sol - lore pages you've unlocked and can read, locations you've visited (some of which you can teleport to), enemies you've defeated and their drop tables, and more.</li>
+    <li><strong>Inspect</strong> - a detailed look at a weapon's stats and perks.</li>
+    <li><strong>Updates</strong> - highlights and patch notes for previous server updates and announcements.</li>
+    <li><strong>Trade</strong> - trade with other players, or buy and sell items.</li>
+    <li><strong>Store</strong> - the Eververse store, containing cosmetics and items from past seasons.</li>
+    <li><strong>Level</strong> - view your level.</li>
+    <li><strong>Armour</strong> - view your armour stats.</li>
+    <li><strong>Currency</strong> - view how much of all your currencies and engrams you have.</li>
+    <li><strong>Subclass</strong> - view your class, and view or change your subclass.</li>
+    <li><strong>Vault</strong> - access your vault virtually.</li>
+    <li><strong>Timeline</strong> - a timeline of major story moments across the world, filling out as you complete missions, quests, and discover story beats.</li>
+    <li><strong>Clan Hall</strong> - join or create a clan, view your clan, invite members, and more.</li>
+    <li><strong>Stats</strong> - a collection of lifetime stats, plus the top 3 players on the server for each one.</li>
+    <li><strong>Guide</strong> - the guidebook, covering all the important server features, mechanics, and systems.</li>
+    <li><strong>Change Character</strong> - change character.</li>
+  </ul>
+
+  <h2>Destiny Is Coming Back</h2>
+
+  <p>Slightly unrelated to us directly, but worth saying: Destiny was announced to be coming back, with the original campaigns being unvaulted. Genuinely exciting news, and I wanted to acknowledge it here rather than pretend it didn't happen.</p>
+
+  <p>To be clear though - this doesn't change anything about Destiny Playground, and if anything it makes what we're doing more interesting. We're not trying to be a copy of the original campaigns; Destiny Playground has always been about telling our own alternate, unique story within this world. That approach only gets more interesting alongside the real thing coming back, not less.</p>
+
+  <h2>Where the Team Stands</h2>
+
+  <p>Being straightforward with you: right now it's looking like myself and Yellowy are the only active staff members on the team. Emi, Unknown, and lilkorio are officially taking an extended break, and the rest is currently unknown. So please excuse it if progress looks a little slower than usual for a while - there's genuinely just two of us actively working at the moment. Hopefully the new roles pipeline starts changing that soon.</p>
+
+  <p>That's everything for this one. Thanks, as always, for sticking with us.</p>
+
+</div>
+
+<div class="divider"></div>
+
+<div class="socials-section">
+  <div class="socials-label">Find Us</div>
+  <div class="socials-title">Follow the Project</div>
+  <div class="socials-grid">
+    <a class="social-btn" href="https://discord.gg/Ah6Jt5KVPH">&#9671; Discord</a>
+    <a class="social-btn" href="https://youtube.com/@cntdarthgaming">&#9654; YouTube</a>
+    <a class="social-btn" href="https://bsky.app/profile/thedestinyplayground.bsky.social">&#9633; Bluesky</a>
+    <a class="social-btn" href="https://x.com/destinyplaygrnd">&#9632; Twitter</a>
+    <a class="social-btn" href="https://ko-fi.com/destinyplayground">&#9651; Ko-fi</a>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="back-section">
+  <a class="btn-back" href="/destiny-playground/news.html">&#8592; Back to News</a>
+</div>
+
+<div id="footer-placeholder"></div>
+<script src="/destiny-playground/js/shared.js"></script>
+</body>
+</html>
