@@ -1,5 +1,16 @@
 [
   {
+    "title": "Team Expansion, UI, and Updates...",
+    "tag": "Dev Update",
+    "date": "26 Sep, 2026",
+    "dateSort": 20260926,
+    "author": "CNT Darthgaming",
+    "excerpt": "A update on the team, progress, weapons plugins, roles, and more...",
+    "file": "articles/dev-update-26-09-2026.html",
+    "image": "/destiny-playground/images/dev-update-banners/banner_26.png",
+    "featured": true
+  },
+  {
     "title": "The Sparrow System",
     "tag": "Dev Update",
     "date": "08 Aug, 2026",
@@ -8,7 +19,7 @@
     "excerpt": "A look into the Sparrow System, and more...",
     "file": "articles/dev-update-08-08-2026.html",
     "image": "/destiny-playground/images/dev-update-banners/banner_21.png",
-    "featured": true
+    "featured": false
   },
   {
     "title": "MOTW Win, Weapons, Abilities and What's Changed",
@@ -19,7 +30,7 @@
     "excerpt": "Destiny Playground has received MOTW, four new soundtracks, website changes, ability teaser trailer, weapon & ability development updates, and more...",
     "file": "articles/dev-update-20-07-2026.html",
     "image": "/destiny-playground/images/dev-update-banners/banner_20.png",
-    "featured": true
+    "featured": false
   },
   {
     "title": "Destinations Trailer & Loose Variable Soundtrack Release",
